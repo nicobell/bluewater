@@ -1,0 +1,19 @@
+@import "./typography.scss";
+@import "./layout.scss";
+
+.beige {
+    background: #CAC3BB;
+    h3{
+        color: #14182E;
+    }
+    h1 {
+        color: #fff;
+    }
+}
+
+.grey {
+    background: #E3E3E3;
+    h3,h1{
+        color: #14182E;
+    }
+}
