@@ -1,7 +1,6 @@
 <template>
   <div class="template-page intro" >
-    <h1 >{{this.data.intro.title}}</h1>
-    <h3>{{this.data.intro.description}}</h3>
+    <h1>home</h1>
   </div>
 </template>
 

@@ -5,10 +5,10 @@
                 <span class="icon map"></span><router-link to="/">Location</router-link>
             </li>
             <li>
-                <span class="icon description"></span><a @click="changeRoute()">Project description</a>            
+                <span class="icon description"></span><router-link to="/project-description">Project description</router-link>           
             </li>
             <li>
-                <span class="icon process"></span><router-link to="/">Nepa process</router-link> 
+                <span class="icon process"></span> <router-link to="/">Nepa process</router-link> 
             </li>
             <li>
                 <span class="icon schedule"></span><router-link to="/">Schedule</router-link>
@@ -17,7 +17,7 @@
                 <span class="icon updates"></span><router-link to="/">Updates</router-link>
             </li>
             <li>
-                <span class="icon opinion"></span><router-link to="/">Your Opinion</router-link>            
+                <span class="icon opinion"></span><router-link to="/comments">Your Opinion</router-link>            
             </li>
             <li>
                 <span class="icon contacts"></span><router-link to="/">contacts</router-link>
@@ -33,10 +33,7 @@ export default {
     msg: String
   },
   methods:{
-      changeRoute(){
-          console.log(this.$route);
-          //this.$router.push(`/en/`)
-      }
+
   }
 }
 </script>

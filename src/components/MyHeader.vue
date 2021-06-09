@@ -46,6 +46,7 @@ header {
   width: 100%;
   height: 84px;
   &>div{
+    height: 100%;
     display: flex;
     align-items: stretch;
     justify-content: space-between;
@@ -55,9 +56,12 @@ header {
     display: flex;
     align-items: center;
     margin-left: 2rem;
+    img{
+      margin-right: 40px;
+    }
   }
   .meeting-banner {
-    padding: 10px 10px 10px 40px;
+    padding: 0px 10px 0px 40px;
     background-color: #EEB23A;
     border-radius: 40px 0px 0px 40px;
     display: flex;

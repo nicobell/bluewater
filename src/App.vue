@@ -2,7 +2,7 @@
   <div id="app">
     <my-header></my-header>
 	<Navigation></Navigation>
-    <router-view :langData="lang"></router-view>
+    <router-view></router-view>
   </div>
 </template>
 <script>
@@ -17,18 +17,13 @@ export default {
   	},
 	data:()=> {
 		return{
-			lang:""
 		}
   	},
 	mounted(){
-		if(navigator.language || navigator.userLanguage == "en-US") {
-			this.lang = "en"
-		} else {
-			this.lang = "it"
-		}
-		console.log('The language is: ',this.lang);
+
 	},
 	watch: {
+		/*
 		$route(to,from){
 			console.log('watch route change');
 			if(this.$route.params.lang == "en"){
@@ -37,6 +32,7 @@ export default {
 				this.lang = "it"
 			}
 		}
+		*/
 	}, 
 }
 </script>
