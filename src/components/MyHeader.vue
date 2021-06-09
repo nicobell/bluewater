@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="loghi">
-      <img src="../assets/logo-ma.png" width="270" height="37" alt="logo-ma">
+      <router-link to="/"><img src="../assets/logo-ma.png" width="270" height="37" alt="logo-ma"></router-link>
       <img src="../assets/logo-uscg.png" width="43" height="41" alt="logo-uscg">
     </div>
     <div>
@@ -30,12 +30,11 @@ export default {
   },
   methods:{
     changeLang() {
+      console.log('changeLang');
       if(this.$route.params.lang == "it"){
-        this.$router.push(`/en/`)
-        console.log('switched en');
+        this.$router.push(`/en/`+ this.$route.name )
       } else {
-        this.$router.push(`/it/`)
-        console.log('switched it');
+        this.$router.push(`/it/`+ this.$route.name )
       }
 		},
   }

@@ -4,7 +4,6 @@
     </header>
     <div class="main-content">
       <div class="title">
-        <h1>{{this.data.intro.title}}</h1>
       </div>
       <div class="container">
         <p>
