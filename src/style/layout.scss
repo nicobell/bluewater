@@ -1,14 +1,8 @@
-.absolute-center{
-    display: flex;
-    align-items: center;
-}
-
-.section {
-    padding-top: 8rem;
+.main-content {
     width: 100%;
-    height: 100vh;
-    position: relative;
-}
-h1 {
-    margin-bottom: 3.6rem;
+    background-color: red;
+    max-width: calc(100% - 100px);
+    .container {
+        background-color: #fff;
+    }
 }

@@ -4,6 +4,7 @@ import Router from 'vue-router'
 //routing
 import App from '@/App'
 import Home from '@/views/Home'
+import ProjectDescription from '@/views/ProjectDescription'
 
 Vue.use(Router)
 
@@ -19,6 +20,11 @@ export default new Router ({
             path:'/:lang/',
             name:'Home',
             component:Home,
+        },
+        {
+            path:'/:lang/project-description',
+            name:'project-description',
+            component:ProjectDescription,
         },
     ]
 })

@@ -1,8 +1,8 @@
 <template>
   <header>
     <div class="loghi">
-      <img src="" alt="">
-      <img src="" alt="">
+      <img src="../assets/logo-ma.png" width="270" height="37" alt="logo-ma">
+      <img src="../assets/logo-uscg.png" width="43" height="41" alt="logo-uscg">
     </div>
     <div>
       <ul class="lang-switch" @click="changeLang">
@@ -45,16 +45,27 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 header {
-  background: red;
+  background: #fff;
   position: fixed;
+  box-shadow: 0px 10px 10px 0px #000;
+  z-index: 9;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100px;
+  height: 84px;
   display: flex;
+  align-items: stretch;
   justify-content: space-between;
+  .loghi {
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+    margin-left: 2rem;
+  }
   .meeting-banner {
-    background-color: orange;
+    padding: 10px 10px 10px 60px;
+    background-color: #EEB23A;
+    border-radius: 40px 0px 0px 40px;
   }
 }
 </style>

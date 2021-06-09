@@ -1,15 +1,14 @@
 <template>
   <div class="template-page intro">
-    lang {{langData}}
-    <hr>
-    {{this.data}}
+    <h1>{{this.data.intro.title}}</h1>
+    <h3>{{this.data.intro.description}}</h3>
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'intro',
+  name: 'home',
   data:()=>{
     return{
       lang:"",
@@ -50,7 +49,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.template-page {
-  padding: 350px;
+.intro {
+  background-size: cover;
+  background: url("../assets/bg-intro.jpg") center no-repeat;
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }
 </style>
