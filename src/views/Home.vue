@@ -50,10 +50,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .intro {
-  background-size: cover;
   background: url("../assets/bg-intro.jpg") center no-repeat;
-  width: 100%;
-  height: 100%;
-  position: absolute;
 }
 </style>
