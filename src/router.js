@@ -14,15 +14,14 @@ export default new Router ({
             path:'/',
             name:'App',
             component:App,
-            redirect: '/it/'
         },
         {
-            path:'/:lang/',
+            path:'/:lang/:title',
             name:'Home',
             component:Home,
         },
         {
-            path:'/:lang/project-description',
+            path:'/:lang/:title',
             name:'project-description',
             component:ProjectDescription,
         },

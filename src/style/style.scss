@@ -1,6 +1,8 @@
 @import "./typography.scss";
 @import "./layout.scss";
 
-body{
+body {
+    padding: 0;
+    margin: 0;
     background-color: #ECF2F6;
 }

@@ -2,25 +2,25 @@
     <nav>
         <ul>
             <li>
-                <span class="icon"></span><router-link to="/">Location</router-link>
+                <span class="icon map"></span><router-link to="/">Location</router-link>
             </li>
             <li>
-                <span class="icon"></span><router-link :to="'/' + this.$route.params.lang + '/project-description'">Project description</router-link>            
+                <span class="icon description"></span><a @click="changeRoute()">Project description</a>            
             </li>
             <li>
-                <span class="icon"></span><router-link to="/">Nepa process</router-link> 
+                <span class="icon process"></span><router-link to="/">Nepa process</router-link> 
             </li>
             <li>
-                <span class="icon"></span><router-link to="/">Schedule</router-link>
+                <span class="icon schedule"></span><router-link to="/">Schedule</router-link>
             </li>
             <li>
-                <span class="icon"></span><router-link to="/">Updates</router-link>
+                <span class="icon updates"></span><router-link to="/">Updates</router-link>
             </li>
             <li>
-                <span class="icon"></span><router-link to="/">Your Opinion</router-link>            
+                <span class="icon opinion"></span><router-link to="/">Your Opinion</router-link>            
             </li>
             <li>
-                <span class="icon"></span><router-link to="/">contacts</router-link>
+                <span class="icon contacts"></span><router-link to="/">contacts</router-link>
             </li>
         </ul>
     </nav>
@@ -31,6 +31,12 @@ export default {
   name: 'navigation',
   props: {
     msg: String
+  },
+  methods:{
+      changeRoute(){
+          console.log(this.$route);
+          //this.$router.push(`/en/`)
+      }
   }
 }
 </script>
@@ -46,6 +52,7 @@ export default {
         overflow: hidden;
         display: flex;
         align-items: center;
+        z-index: 9;
         transition: 0.3s ease;
         &:hover {
             transition: 0.3s ease;
@@ -70,7 +77,27 @@ export default {
                 min-width: 60px;
                 width: 60px;
                 height: 60px;
+            }
+            .icon.map {
+                background-image: url("../assets/icon-menu-map.svg");
+            }
+            .icon.description {
+                background-image: url("../assets/icon-menu-description.svg");
+            }
+            .icon.process {
+                background-image: url("../assets/icon-menu-process.svg");
+            }
+            .icon.schedule {
+                background-image: url("../assets/icon-menu-schedule.svg");
+            }
+            .icon.updates {
                 background-image: url("../assets/icon-menu-updates.svg");
+            }
+            .icon.opinion {
+                background-image: url("../assets/icon-menu-opinion.svg");
+            }
+            .icon.contacts {
+                background-image: url("../assets/icon-menu-contacts.svg");
             }
             a {
                 text-decoration: none;
