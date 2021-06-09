@@ -20,9 +20,6 @@ export default {
 			lang:""
 		}
   	},
-	methods:{
-	
-	},
 	mounted(){
 		if(navigator.language || navigator.userLanguage == "en-US") {
 			this.lang = "en"

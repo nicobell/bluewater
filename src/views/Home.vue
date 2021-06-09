@@ -1,6 +1,8 @@
 <template>
   <div class="template-page intro">
     lang {{langData}}
+    <hr>
+    {{this.data}}
   </div>
 </template>
 
@@ -16,6 +18,11 @@ export default {
   },
   props:{
     langData: String
+  },
+  watch: {
+    langData() {
+      this.loadData()
+    },
   },
   methods:{
       loadData(){			
