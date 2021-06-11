@@ -3,9 +3,10 @@
     <div v-if="data">
       <h1>{{ content.intro.title}}</h1>
       <p>The purpose of this site is to inform stakeholders about the project, and to provide the public an opportunity to submit written comments.</p>
-      <button class="outline icon-left">
+      <router-link :to="{name: 'project-description'}"><button class="outline icon-left">
         Vai Al Sito
       </button>
+      </router-link>
     </div>
     <router-view></router-view>
   </div>
@@ -37,23 +38,23 @@ export default {
     },
   },
   methods:{
-      loadData(){			
-        fetch("./data.json",)
-          .then(response=>{
-            return response.json()
-          })
-          .then(json=>{
-              this.data = json
-          })
-          .catch(function(error) {  
-            console.log('Request failed', error)  
-          });
-      },
+    loadData(){			
+      fetch("./data.json",)
+        .then(response=>{
+          return response.json()
+        })
+        .then(json=>{
+          this.data = json
+        })
+        .catch(function(error) {  
+          console.log('Request failed', error)  
+        });
     },
-  mounted(){
-    this.loadData()
+    },
+    mounted(){
+      this.loadData()
+    }
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -91,9 +92,16 @@ export default {
       width: 200px;
       color: #fff;
       transition: 0.2s ease;
+      a{
+        color: #fff;
+        text-decoration: none;
+      }
       &:hover{
         color: #0b4e83;
         transition: 0.2s ease;
+        a{
+        color: #0b4e83;
+      }
         &:after {
           background-image: url("../assets/arrow-button-hover.svg");
         }
@@ -109,6 +117,7 @@ export default {
 
 @media (max-width: 992px) { 
   .intro {
+    padding-bottom: 100px;
     &>div {
       padding: 0 3rem;
       width: calc(100% - 6rem);
@@ -120,6 +129,12 @@ export default {
         line-height: 1.5rem;
       }
     }
+  }
+}
+@media (max-width: 480px) { 
+  .intro > div {
+      padding: 0 1rem;
+      width: calc(100% - 2rem);
   }
 }
 

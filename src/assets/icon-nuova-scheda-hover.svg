@@ -3,11 +3,13 @@
 <svg version="1.1" id="Raggruppa_1132" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
 	 y="0px" viewBox="0 0 20.7 20.6" style="enable-background:new 0 0 20.7 20.6;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#FFFFFF;}
+	.st0{fill:#1A3C6E;}
 </style>
 <g id="Raggruppa_1130">
-	<path id="Tracciato_8097" class="st0" d="M18.3,1.3h-6.4v1.1h5.7L10,9.9l0.8,0.8l7.6-7.6v5.7h1.1V1.3H18.3z"/>
-	<path id="Tracciato_8098" class="st0" d="M18.3,15.6c0,1.4-1.2,2.6-2.6,2.6H5c-1.4,0-2.6-1.2-2.6-2.6V5c0-1.4,1.2-2.6,2.6-2.6h3.9
-		V1.3H5c-2,0-3.7,1.7-3.7,3.7v10.7c0,2,1.7,3.7,3.7,3.7h10.7c2,0,3.7-1.7,3.7-3.7v-3.9h-1.1V15.6z"/>
+	<g>
+		<path id="Tracciato_8097_8_" class="st0" d="M18.3,1.3h-6.4v1.1h5.7L10,9.9l0.8,0.8l7.6-7.6v5.7h1.1V1.3H18.3z"/>
+		<path id="Tracciato_8098_8_" class="st0" d="M18.3,15.6c0,1.4-1.2,2.6-2.6,2.6H5c-1.4,0-2.6-1.2-2.6-2.6V5c0-1.4,1.2-2.6,2.6-2.6
+			h3.9V1.3H5c-2,0-3.7,1.7-3.7,3.7v10.7c0,2,1.7,3.7,3.7,3.7h10.7c2,0,3.7-1.7,3.7-3.7v-3.9h-1.1V15.6z"/>
+	</g>
 </g>
 </svg>

@@ -33,6 +33,11 @@
                     <span class="icon contacts"></span><span class="label">contacts</span>
             </li> </router-link>
         </ul>
+        <div class="lang-switch">
+            <p @click="changeLang" :class="this.$route.params.lang == 'it' ? 'it' : 'en'">
+                <a>It</a> / <a>En</a>
+            </p>
+      </div>
     </nav>
 </template>
 
@@ -48,13 +53,54 @@
             msg: String
         },
         methods: {
-
+            changeLang() {
+                if(this.$route.params.lang == "it"){
+                    this.$router.push(`/en/`)
+                    console.log(this.$store)
+                    this.$store.commit('SET_LANG', 'en')
+                } else {
+                    this.$router.push(`/it/`)
+                    this.$store.commit('SET_LANG', 'it')
+                }
+		    },
         }
+
     }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.lang-switch {
+    position: absolute;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.048);
+    height: auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 60px;
+    &:hover{
+        background: rgba(255, 255, 255, 0.096);
+    }
+    
+    p{
+        font-size: 0.875rem;
+        color: rgba(255, 255, 255, 0.253);
+    }
+    a {
+        color: #fff;
+    }
+    p.active a {
+        font-weight: 600;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    
+}
+
     nav {
         position: fixed;
         background-color: #1C2332;
@@ -191,12 +237,19 @@
             }
 
         }
+     
 
     }
 
 
 
     @media (max-width: 1024px) {
+           .lang-switch{
+            position: relative;
+            background: rgba(255, 255, 255, 0.048);
+            margin-top: 20px;
+            width: 100%;
+        }
         nav {
             width: 100%;
             height: 0%;
@@ -214,15 +267,16 @@
 
             }
 
-            li {
-                &:first-child {
+            a:first-child {
+                li{
                     margin-top: 60px;
                 }
 
-                .label {
-                    opacity: 1;
-                    transform: none;
-                }
+               
+            }
+             li .label {
+                opacity: 1;
+                transform: none;
             }
 
             .btn {
@@ -253,8 +307,23 @@
             .label {
                 display: block;
                 height: 100%;
+                opacity: 1;
                 padding: 20px 0px 20px 20px;
             }
+        }
+    }
+
+    @media (max-width: 480px) {
+        nav .label {
+            padding: 14px 0px 14px 0px;
+        }
+        nav li .icon{
+            height: 54px;
+        }
+        .lang-switch {
+            position: relative;
+            background: rgba(255, 255, 255, 0.048);
+            margin-top: 8px;
         }
     }
 </style>
