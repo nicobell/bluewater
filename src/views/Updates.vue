@@ -84,5 +84,21 @@ export default {
 
 }
 
+@media (max-width:1024px){
+    .item-update {
+        display: block;
+        padding: 20px 0px;
+        .date {
+            margin: 0;
+            width: auto;
+            text-align: left;
+        }
+        .text{
+            width: auto ;
+            margin: 5px 0px;
+        }
+    }
+}
+
 
 </style>

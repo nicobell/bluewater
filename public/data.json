@@ -84,7 +84,18 @@
             "title":"comments",
             "alertMessage":"Scoping Comments must be submitted by July 8, 2021.",
             "secondTitle": "Public comments may be provided by:",
-            "description": "adsz"
+            "description": "adsz",
+            "occhielloCard":"usefull documents",
+            "card1-title":"License Application",
+            "card1-desc":"link The license application is available for viewing at the Regulations.gov website",
+            "card2-title":"License Application",
+            "card2-desc":"link The license application is available for viewing at the Regulations.gov website",
+            "formTitle":"Need help, contact us.",
+            "formNameLabel":"Name",
+            "formSurnameLabel":"Sur",
+            "formEmailLabel":"ema",
+            "formMessageLabel":"messag",
+            "formCheckboxLabel":"I agree to the Terms and Privacy Policy"
         }
     },
     "en":{

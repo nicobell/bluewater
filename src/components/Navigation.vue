@@ -16,13 +16,13 @@
                 <span class="icon schedule"></span><router-link to="/nepa-process-schedule">Schedule</router-link>
             </li>
             <li>
-                <span class="icon updates"></span><router-link to="/">Updates</router-link>
+                <span class="icon updates"></span><router-link to="/updates">Updates</router-link>
             </li>
             <li>
                 <span class="icon opinion"></span><router-link to="/comments">Your Opinion</router-link>            
             </li>
             <li>
-                <span class="icon contacts"></span><router-link to="/">contacts</router-link>
+                <span class="icon contacts"></span><router-link to="/contacts">contacts</router-link>
             </li>
         </ul>
     </nav>

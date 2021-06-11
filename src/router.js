@@ -8,6 +8,8 @@ import Comments from '@/views/Comments';
 import updates from '@/views/Updates';
 import NepaProcess from '@/views/NepaProcess';
 import Schedule from '@/views/Schedule';
+import Contacts from '@/views/Contacts';
+
 
 Vue.use(Router)
 
@@ -42,6 +44,11 @@ export default new Router ({
             path:'/comments',
             name:'comments',
             component:Comments,
+        },
+        {
+            path:'/contacts',
+            name:'contacts',
+            component:Contacts,
         },
         
     ]
