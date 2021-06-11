@@ -32,6 +32,9 @@ body {
       background-color: #fff;
       transition: 0.3s ease;
       color: #1A3C6E;
+      &:after {
+        background-image: url("../assets/icon-nuova-scheda-hover.svg");
+        }
     }
   }
 

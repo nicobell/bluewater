@@ -5,12 +5,7 @@
         <router-link to="/"><img src="../assets/logo-ma.png" width="270" height="37" alt="logo-ma"></router-link>
         <img src="../assets/logo-uscg.png" width="43" height="41" alt="logo-uscg">
       </div>
-      <div>
-        <ul class="lang-switch" >
-          <li>It</li>
-          <li>En</li>
-        </ul>
-      </div>
+
       <div class="meeting-banner">
         <img src="../assets/icon-meeting.svg" width="42" height="42" alt="">
         <div class="text">

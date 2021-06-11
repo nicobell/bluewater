@@ -112,6 +112,7 @@
 
 @media (max-width: 992px) { 
   .intro {
+    padding-bottom: 100px;
     &>div {
       padding: 0 3rem;
       width: calc(100% - 6rem);
@@ -123,6 +124,12 @@
         line-height: 1.5rem;
       }
     }
+  }
+}
+@media (max-width: 480px) { 
+  .intro > div {
+      padding: 0 1rem;
+      width: calc(100% - 2rem);
   }
 }
 
