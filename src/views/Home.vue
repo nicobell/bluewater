@@ -1,51 +1,56 @@
 <template>
   <div class="template-page intro" >
-    <div>
-      <h1>Bluewater Texas Terminal Deepwater Port Project</h1>
+    <div v-if="data">
+      <h1>{{ content.intro.title}}</h1>
       <p>The purpose of this site is to inform stakeholders about the project, and to provide the public an opportunity to submit written comments.</p>
-      <router-link to="/project-description"><button class="outline icon-left">
+      <router-link :to="{name: 'project-description'}"><button class="outline icon-left">
         Vai Al Sito
       </button>
       </router-link>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'home',
-    data:()=>{
-      return{
-        lang:"",
-        data:null,
-      }
+
+export default {
+  name: 'home',
+  data:()=>{
+    return{
+      data:null,
+    }
+  },
+  computed: {
+    lang () {
+      return this.$store.state.lang
     },
-    props:{
-      langData: String
+    content () {
+      return this.data[this.lang]
+    }
+  },
+  props:{
+    langData: String
+  },
+  watch: {
+    langData() {
+      this.loadData()
     },
-    watch: {
-      langData() {
-        this.loadData()
-      },
+  },
+  methods:{
+    loadData(){			
+      fetch("./data.json",)
+        .then(response=>{
+          return response.json()
+        })
+        .then(json=>{
+          this.data = json
+        })
+        .catch(function(error) {  
+          console.log('Request failed', error)  
+        });
     },
-    methods:{
-        loadData(){			
-          fetch("./data.json",)
-            .then(response=>{
-              return response.json()
-            })
-            .then(json=>{
-              if(this.$route.params.lang=="it"){
-                this.data = json.it
-              } else {
-                this.data = json.en
-              }
-            })
-            .catch(function(error) {  
-              console.log('Request failed', error)  
-            });
-        },
-      },
+    },
     mounted(){
       this.loadData()
     }

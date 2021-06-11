@@ -3,39 +3,39 @@
         <div class="btn" @click="isActive = !isActive">
         </div>
         <ul @click="isActive = !isActive">
-            <router-link to="/">
+            <router-link :to="{name: 'Home'}">
                 <li>
                     <span class="icon map"></span><span class="label">Location</span>
             </li></router-link>
-            <router-link to="/project-description">
+            <router-link :to="{name:'project-description'}">
                 <li>
                     <span class="icon description"></span><span class="label">Project description</span>
            
             </li> </router-link>
-            <router-link to="/nepa-process">
+            <router-link :to="{name:'nepa-process'}">
                 <li>
                     <span class="icon process"></span><span class="label">Nepa process</span>
             </li> </router-link>
-            <router-link to="/nepa-process-schedule">
+            <router-link :to="{name: 'nepa-process-schedule'}">
                 <li>
                     <span class="icon schedule"></span><span class="label">Schedule</span>
             </li> </router-link>
-            <router-link to="/updates">
+            <router-link :to="{name: 'updates'}">
                 <li>
                     <span class="icon updates"></span><span class="label">Updates</span>
             </li> </router-link>
-            <router-link to="/comments">
+            <router-link :to="{name: 'comments'}">
                 <li>
                     <span class="icon opinion"></span><span class="label">Your Opinion</span>
             </li> </router-link>
-            <router-link to="/contacts">
+            <router-link :to="{name: 'contacts'}">
                 <li>
                     <span class="icon contacts"></span><span class="label">contacts</span>
             </li> </router-link>
         </ul>
         <div class="lang-switch">
-            <p>
-                <a class="active">It</a> / <a>En</a>
+            <p @click="changeLang" :class="this.$route.params.lang == 'it' ? 'it' : 'en'">
+                <a>It</a> / <a>En</a>
             </p>
       </div>
     </nav>
@@ -53,8 +53,18 @@
             msg: String
         },
         methods: {
-
+            changeLang() {
+                if(this.$route.params.lang == "it"){
+                    this.$router.push(`/en/`)
+                    console.log(this.$store)
+                    this.$store.commit('SET_LANG', 'en')
+                } else {
+                    this.$router.push(`/it/`)
+                    this.$store.commit('SET_LANG', 'it')
+                }
+		    },
         }
+
     }
 </script>
 
@@ -82,7 +92,7 @@
     a {
         color: rgba(255, 255, 255, 0.63);
     }
-    a.active {
+    p.active a {
         font-weight: 600;
         color: #fff;
     }
