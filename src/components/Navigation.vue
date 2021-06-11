@@ -34,8 +34,8 @@
             </li> </router-link>
         </ul>
         <div class="lang-switch">
-            <p @click="changeLang" :class="this.$route.params.lang == 'it' ? 'it' : 'en'">
-                <a>It</a> / <a>En</a>
+            <p @click="changeLang" :class="this.$route.params.lang == 'es' ? 'es' : 'en'">
+                <a>Es</a> / <a>En</a>
             </p>
       </div>
     </nav>
@@ -54,13 +54,16 @@
         },
         methods: {
             changeLang() {
-                if(this.$route.params.lang == "it"){
-                    this.$router.push(`/en/`)
+                console.log('this.$route',);
+
+                if(this.$route.params.lang == "es"){
+                    
+                    this.$router.push(`/en/`+this.$route.name)
                     console.log(this.$store)
                     this.$store.commit('SET_LANG', 'en')
                 } else {
-                    this.$router.push(`/it/`)
-                    this.$store.commit('SET_LANG', 'it')
+                    this.$router.push(`/es/`+this.$route.name)
+                    this.$store.commit('SET_LANG', 'es')
                 }
 		    },
         }
