@@ -6,7 +6,7 @@
         <img src="../assets/logo-uscg.png" width="43" height="41" alt="logo-uscg">
       </div>
       <div>
-        <ul class="lang-switch" >
+        <ul class="lang-switch" @click="changeLang" :class="this.$route.params.lang == 'it' ? 'it' : 'en'">
           <li>It</li>
           <li>En</li>
         </ul>
@@ -31,6 +31,18 @@ export default {
   props: {
     msg: String
   },
+  methods: {
+    changeLang() {
+      if(this.$route.params.lang == "it"){
+        this.$router.push(`/en/`)
+        console.log(this.$store)
+        this.$store.commit('SET_LANG', 'en')
+      } else {
+        this.$router.push(`/it/`)
+        this.$store.commit('SET_LANG', 'it')
+      }
+		},
+  }
 }
 </script>
 

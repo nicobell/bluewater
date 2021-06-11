@@ -3,32 +3,32 @@
         <div class="btn" @click="isActive = !isActive">
         </div>
         <ul @click="isActive = !isActive">
-            <router-link to="/">
+            <router-link :to="{name: 'Home'}">
                 <li>
                     <span class="icon map"></span><span class="label">Location</span>
             </li></router-link>
-            <router-link to="/project-description">
+            <router-link :to="{name:'project-description'}">
                 <li>
                     <span class="icon description"></span><span class="label">Project description</span>
            
             </li> </router-link>
-            <router-link to="/nepa-process">
+            <router-link :to="{name:'nepa-process'}">
                 <li>
                     <span class="icon process"></span><span class="label">Nepa process</span>
             </li> </router-link>
-            <router-link to="/nepa-process-schedule">
+            <router-link :to="{name: 'nepa-process-schedule'}">
                 <li>
                     <span class="icon schedule"></span><span class="label">Schedule</span>
             </li> </router-link>
-            <router-link to="/updates">
+            <router-link :to="{name: 'updates'}">
                 <li>
                     <span class="icon updates"></span><span class="label">Updates</span>
             </li> </router-link>
-            <router-link to="/comments">
+            <router-link :to="{name: 'comments'}">
                 <li>
                     <span class="icon opinion"></span><span class="label">Your Opinion</span>
             </li> </router-link>
-            <router-link to="/contacts">
+            <router-link :to="{name: 'contacts'}">
                 <li>
                     <span class="icon contacts"></span><span class="label">contacts</span>
             </li> </router-link>
