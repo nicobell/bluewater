@@ -3,53 +3,53 @@
     <div>
       <h1>Bluewater Texas Terminal Deepwater Port Project</h1>
       <p>The purpose of this site is to inform stakeholders about the project, and to provide the public an opportunity to submit written comments.</p>
-      <button class="outline icon-left">
+      <router-link to="/project-description"><button class="outline icon-left">
         Vai Al Sito
       </button>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
-
-export default {
-  name: 'home',
-  data:()=>{
-    return{
-      lang:"",
-      data:null,
-    }
-  },
-  props:{
-    langData: String
-  },
-  watch: {
-    langData() {
-      this.loadData()
+  export default {
+    name: 'home',
+    data:()=>{
+      return{
+        lang:"",
+        data:null,
+      }
     },
-  },
-  methods:{
-      loadData(){			
-        fetch("./data.json",)
-          .then(response=>{
-            return response.json()
-          })
-          .then(json=>{
-            if(this.$route.params.lang=="it"){
-              this.data = json.it
-            } else {
-              this.data = json.en
-            }
-          })
-          .catch(function(error) {  
-            console.log('Request failed', error)  
-          });
+    props:{
+      langData: String
+    },
+    watch: {
+      langData() {
+        this.loadData()
       },
     },
-  mounted(){
-    this.loadData()
+    methods:{
+        loadData(){			
+          fetch("./data.json",)
+            .then(response=>{
+              return response.json()
+            })
+            .then(json=>{
+              if(this.$route.params.lang=="it"){
+                this.data = json.it
+              } else {
+                this.data = json.en
+              }
+            })
+            .catch(function(error) {  
+              console.log('Request failed', error)  
+            });
+        },
+      },
+    mounted(){
+      this.loadData()
+    }
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -87,9 +87,16 @@ export default {
       width: 200px;
       color: #fff;
       transition: 0.2s ease;
+      a{
+        color: #fff;
+        text-decoration: none;
+      }
       &:hover{
         color: #0b4e83;
         transition: 0.2s ease;
+        a{
+        color: #0b4e83;
+      }
         &:after {
           background-image: url("../assets/arrow-button-hover.svg");
         }
