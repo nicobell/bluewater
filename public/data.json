@@ -1,22 +1,93 @@
 {
     "it":{
+        "header":{
+            "publicMeetingTitle":"lorem ipsum",
+            "publicMeetingData":"lorem ipsum",
+            "publicMeetingButton":"lorem ipsum"
+        },
+        "menu":[
+            {
+                "menu-label":"lorem ipsum"
+            },
+            {
+                "menu-label":"lorem ipsum"
+            },
+            {
+                "menu-label":"lorem ipsum"
+            },
+            {
+                "menu-label":"lorem ipsum"
+            },
+            {
+                "menu-label":"lorem ipsum"
+            },
+            {
+                "menu-label":"lorem ipsum"
+            }
+        ],
         "intro":{
             "title":"Bluewater Texas Terminal Deepwater Port Project",
-            "description": "The purpose of this site is to inform stakeholders about the project, and to provide the public an opportunity to submit written comments."
+            "description": "The purpose of this site is to inform stakeholders about the project, and to provide the public an opportunity to submit written comments.",
+            "button":"lorem ipsum"
         },
         "projectDescription":{
             "title":"project description",
             "description": "Bluewater is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construction of a deepwater port, approximately 56.18 statute miles of pipeline infrastructure. The Bluewater deepwater port would allow for up to two (2) very large crude carriers (VLCCs) or other crude oil carriers to moor at single point mooring (SPM) buoys and connect with the deepwater port via floating connecting crude oil hoses. During single vessel loading operations, the proposed project is capable of loading rates of up to approximately 80,000 barrels per hour (bph) and during simultaneous vessel loading operations, the proposed project is capable of loading rates of 40,000 bph. The facility is expected to service 16 VLCCs per month.Bluewater is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construction of a deepwater port, approximately 56.18 statute miles of pipeline infrastructure. The Bluewater deepwater port would allow for up to two (2) very large crude carriers (VLCCs) or other crude oil carriers to moor at single point mooring (SPM) buoys and connect with the deepwater port via floating connecting crude oil hoses. During single vessel loading operations, the proposed project is capable of loading rates of up to approximately 80,000 barrels per hour (bph) and during simultaneous vessel loading operations, the proposed project is capable of loading rates of 40,000 bph. The facility is expected to service 16 VLCCs per month."
+        },
+        "nepaProcess":{
+            "title":"NEPA process",
+            "stepProcess":[
+                {   
+                    "id":1,
+                    "title":"What is nepa?",
+                    "description":"lorem ipsum"
+                },
+                {   
+                    "id":2,
+                    "title":"Public scoping",
+                    "description":"lorem ipsum"
+                },
+                {   
+                    "id":3,
+                    "title":"Prepare draft eis",
+                    "description":"lorem ipsum"
+                },
+                {   
+                    "id":4,
+                    "title":"Prepare final eis",
+                    "description":"lorem ipsum"
+                }
+            ]
+        },
+        "updates":{
+            "title":"updates",
+            "items":[
+                {
+                    "date":"10 marzo 2020",
+                    "content":"lorem ipsum"
+                },
+                {
+                    "date":"10 marzo 2020",
+                    "content":"lorem ipsum"
+                },
+                {
+                    "date":"10 marzo 2020",
+                    "content":"lorem ipsum"
+                },
+                {
+                    "date":"10 marzo 2020",
+                    "content":"lorem ipsum"
+                }
+            ]
+        },
+        "comments":{
+            "title":"comments",
+            "alertMessage":"Scoping Comments must be submitted by July 8, 2021.",
+            "secondTitle": "Public comments may be provided by:",
+            "description": "adsz"
         }
     },
     "en":{
-        "intro":{
-            "title":"EN_Bluewater Texas Terminal Deepwater Port Project",
-            "description": "EN_The purpose of this site is to inform stakeholders about the project, and to provide the public an opportunity to submit written comments."
-        },
-        "projectDescription":{
-            "title":"EN_project description",
-            "description": "EN_Bluewater is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construction of a deepwater port, approximately 56.18 statute miles of pipeline infrastructure."
-        }
+        
     }
 }

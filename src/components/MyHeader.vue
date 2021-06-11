@@ -94,4 +94,47 @@ header {
     }
   }
 }
+
+@media (max-width: 1024px) {
+  header .meeting-banner {
+    position: fixed;
+    height: 100px;
+    bottom: 0%;
+    border-radius: 0px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    height: 65px;
+    .loghi {
+      padding-left: 0rem;
+      margin-left: 15px;
+
+      img {
+        width: auto;
+        max-height: 35px;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  header {
+    height: 65px;
+    .loghi {
+      padding-left: 0rem;
+      margin-left: 15px;
+      align-items: center;
+
+
+      img {
+        width: auto;
+        max-height: 30px;
+        margin-right: 30px;
+      }
+    }
+  }
+}
 </style>

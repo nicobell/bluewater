@@ -5,20 +5,23 @@
     min-height: 400px;
     background-image: url("../assets/header-bg.jpg")  ;
     background-size: cover;
+    position: fixed;
+    top: 0;
   } 
 
 .main-content {
     width: 100%;
+    transform: translateY(380px);
     margin: 0px auto;
     .content {
-        
         background-color: #fff;
     }
 }
 
 .main-content {
-    max-width: 1780px;
+    width: calc(100% - 160px);
     margin-right: 0;
+    margin-left: 160px;
     margin-top: -200px;
     position: relative;
 
@@ -31,16 +34,118 @@
       top: 20px;
       left: -140px;
     }
+    .title {
+      margin: 3rem 7rem 3rem 7rem;
+    }
+    .content.two-col {
+      display: flex;
+      flex-direction: row;
+    }
     .content{
        background-color: #fff;
+       
        .inner-content{
-          padding: 3rem 0rem 3rem 7rem;
+          padding: 3rem 7rem 6rem 7rem;
        }
        .inner-content-right{
-        padding: 4rem 4rem 4rem 4rem;
+        padding: 4rem 7rem 4rem 4rem;
        }
        .inner-content-left{
-        padding: 4rem 4rem 4rem 4rem;
+        padding: 4rem 4rem 4rem 7rem;
       }
     }
   }
+
+
+
+  
+
+@media (max-width: 1500px) { 
+  .main-content {
+    width: calc(100% - 120px);
+    margin-right: 0;
+    margin-left: 120px;
+    .title {
+      margin: 3rem 4rem ;
+    }
+    .content{
+        .inner-content{
+          padding: 3rem 3rem  ;
+       }
+       .inner-content-right{
+        padding: 4rem 3rem ;
+       }
+       .inner-content-left{
+        padding: 4rem 3rem  ;
+      }
+    }
+  }
+
+}
+
+@media (max-width: 1200px) { 
+  .intro-header {
+    min-height: 350px;
+    
+  }
+  .main-content {
+    width: calc(100% - 120px);
+    margin-right: 0;
+    transform: translateY(330px);
+    margin-left: 120px;
+    .title {
+      margin: 2rem 3rem ;
+    }
+  }
+
+}
+
+
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: 0;
+    width: auto;
+    .content.two-col{
+      display: flex;
+      flex-direction: column;
+      .inner-content-left,
+      .inner-content-right {
+        width: auto;
+      }
+    }
+  } 
+}
+
+
+@media (max-width: 768px) { 
+  .main-content {
+    transform: translateY(300px);
+    .title {
+      margin: 2rem 3rem 1rem 3rem;
+    }
+  .content  {
+
+
+    .inner-content-left,
+    .inner-content-right {
+      padding: 2rem 15px;
+    }
+  }
+}
+}
+
+
+
+
+@media (max-width: 576px) { 
+
+}
+
+
+
+@media (max-width: 992px) { 
+
+}
+
+
+
