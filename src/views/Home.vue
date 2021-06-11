@@ -11,8 +11,8 @@ export default {
   name: 'home',
   data:()=>{
     return{
-      lang:"",
-      data:null,
+      lang: "",
+      data: null,
     }
   },
   props:{
@@ -25,7 +25,7 @@ export default {
   },
   methods:{
       loadData(){			
-        fetch("./data.json",)
+        fetch("/data.json",)
           .then(response=>{
             return response.json()
           })

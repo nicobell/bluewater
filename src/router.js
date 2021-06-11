@@ -5,6 +5,7 @@ import Router from 'vue-router'
 import App from '@/App'
 import Home from '@/views/Home'
 import ProjectDescription from '@/views/ProjectDescription'
+import Playground from '@/views/Playground'
 
 Vue.use(Router)
 
@@ -13,7 +14,7 @@ export default new Router ({
         {
             path:'/',
             name:'App',
-            component:App,
+            component:Playground,
         },
         {
             path:'/:lang/:title',
@@ -25,5 +26,10 @@ export default new Router ({
             name:'project-description',
             component:ProjectDescription,
         },
+        {
+            path: '/playground',
+            name: 'playground',
+            component: Playground
+        }
     ]
 })
