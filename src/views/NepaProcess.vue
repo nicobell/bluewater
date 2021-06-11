@@ -251,7 +251,11 @@ export default {
         }
     }
 }
-
+@media(max-width:1024px){
+    .content.isMobile{
+        padding: 0;
+    }
+}
 @media(max-width:768px){
     .accordion-item {
         padding: 30px 30px;

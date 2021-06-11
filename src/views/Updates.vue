@@ -74,7 +74,7 @@ export default {
     .date {
         color: #1C6DA6;
         text-align: right;
-        width: 14%;
+        width: 16%;
         margin-right: 3rem;
     }
     .text {
