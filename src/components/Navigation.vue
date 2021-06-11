@@ -10,10 +10,10 @@
                 <span class="icon description"></span><router-link to="/project-description">Project description</router-link>           
             </li>
             <li>
-                <span class="icon process"></span> <router-link to="/">Nepa process</router-link> 
+                <span class="icon process"></span> <router-link to="/nepa-process">Nepa process</router-link> 
             </li>
             <li>
-                <span class="icon schedule"></span><router-link to="/">Schedule</router-link>
+                <span class="icon schedule"></span><router-link to="/nepa-process-schedule">Schedule</router-link>
             </li>
             <li>
                 <span class="icon updates"></span><router-link to="/">Updates</router-link>
@@ -177,7 +177,12 @@ export default {
         
         &.show {
             height: 100%;
+            .btn {
+                background-image: url("../assets/icon-hamburger-close.svg");
+            }
+            
         }
+        
         li {
             &:first-child {
                 margin-top: 60px;
@@ -201,6 +206,7 @@ export default {
             background-image: url("../assets/icon-hamburger.svg");
         }
     }
+
 }
 
 @media (max-width: 768px) {

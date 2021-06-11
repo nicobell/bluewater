@@ -213,13 +213,16 @@ form{
     textarea,
     input {
         border: 1px solid #ffffff33;
-        padding: 10px;
+        padding: 15px 10px;
         border-radius: 5px;
         font-size: 1rem;
         background: #ffffff05;
-        color: rgba(255, 255, 255, 0.239);
         margin-bottom: 15px;
+        color: #fff;
     }
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: rgba(255, 255, 255,0.3);
+        }
     div {
         div {
             display: flex;

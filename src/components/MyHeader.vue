@@ -102,6 +102,9 @@ header {
     bottom: 0%;
     border-radius: 0px;
     width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
   }
 }
 
@@ -117,6 +120,9 @@ header {
         max-height: 35px;
       }
     }
+    .meeting-banner .text{
+      margin: 0px 30px 0px 20px;
+    }
   }
 }
 
@@ -127,12 +133,34 @@ header {
       padding-left: 0rem;
       margin-left: 15px;
       align-items: center;
-
-
       img {
         width: auto;
         max-height: 30px;
         margin-right: 30px;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 480px) {
+  header {
+    .meeting-banner{
+      padding: 0px 15px;
+      justify-content: space-between;
+      width: calc(100% - 30px);
+      .text{
+        
+        margin: 0px ;
+        h2 {
+          font-size: 1.25rem;
+        }
+      }
+      button {
+        padding:  10px 12px;;
+      }
+      img {
+        display: none;
       }
     }
   }

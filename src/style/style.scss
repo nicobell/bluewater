@@ -49,3 +49,24 @@ body {
     top: 50%;
     transform: translateY(-50%);
   }
+
+
+/*OUT OF SCOPE SCSS*/
+nav.show + .template-page {
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+/*responsive*/
+.isMobile {
+  display: none !important;
+}
+@media(max-width:1024px){
+  .isDesktop{
+    display: none !important;
+  }
+  .isMobile {
+    display: block !important;
+  }
+}

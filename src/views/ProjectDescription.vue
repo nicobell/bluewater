@@ -32,32 +32,6 @@ export default {
   props:{
     langData: String
   },
-  watch: {
-    langData() {
-      this.loadData()
-    },
-  },
-  methods:{
-    loadData(){			
-      fetch("./data.json",)
-        .then(response=>{
-          return response.json()
-        })
-        .then(json=>{
-          if(this.$route.params.lang=="it"){
-            this.data = json.it
-          } else {
-            this.data = json.en
-          }
-        })
-        .catch(function(error) {  
-          console.log('Request failed', error)  
-        });
-    },
-  },
-  mounted(){
-    this.loadData()
-  }
 }
 </script>
 
