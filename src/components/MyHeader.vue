@@ -46,6 +46,7 @@ header {
   width: 100%;
   height: 84px;
   &>div{
+    height: 100%;
     display: flex;
     align-items: stretch;
     justify-content: space-between;
@@ -55,9 +56,12 @@ header {
     display: flex;
     align-items: center;
     margin-left: 2rem;
+    img{
+      margin-right: 40px;
+    }
   }
   .meeting-banner {
-    padding: 10px 10px 10px 40px;
+    padding: 0px 10px 0px 40px;
     background-color: #EEB23A;
     border-radius: 40px 0px 0px 40px;
     display: flex;
@@ -87,6 +91,77 @@ header {
       font-size: 1rem;
       padding: 10px 20px;
       font-weight: 600;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  header .meeting-banner {
+    position: fixed;
+    height: 100px;
+    bottom: 0%;
+    border-radius: 0px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    height: 65px;
+    .loghi {
+      padding-left: 0rem;
+      margin-left: 15px;
+
+      img {
+        width: auto;
+        max-height: 35px;
+      }
+    }
+    .meeting-banner .text{
+      margin: 0px 30px 0px 20px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  header {
+    height: 65px;
+    .loghi {
+      padding-left: 0rem;
+      margin-left: 15px;
+      align-items: center;
+      img {
+        width: auto;
+        max-height: 30px;
+        margin-right: 30px;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 480px) {
+  header {
+    .meeting-banner{
+      padding: 0px 15px;
+      justify-content: space-between;
+      width: calc(100% - 30px);
+      .text{
+        
+        margin: 0px ;
+        h2 {
+          font-size: 1.25rem;
+        }
+      }
+      button {
+        padding:  10px 12px;;
+      }
+      img {
+        display: none;
+      }
     }
   }
 }

@@ -1,6 +1,5 @@
 * {
     font-family: "Open Sans";
-    color: #333;
 }
 
 h1 {
@@ -10,6 +9,24 @@ h1 {
 }
 
 p{
-    font-size: 1.125rem;
-    line-height: 2.2rem;
+    font-size: 1rem;
+    line-height: 2rem;
+    max-width: 1000px;
+    color: #333;
+
+}
+
+a {
+    color: #125D91;
+}
+
+
+@media (max-width: 768px) {  
+    h1 {
+        font-size: 1.875rem;
+    }
+    p {
+        line-height: 1.7rem;
+    }
+    
 }
