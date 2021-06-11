@@ -80,10 +80,11 @@
         color: rgba(255, 255, 255, 0.253);
     }
     a {
-        color: #fff;
+        color: rgba(255, 255, 255, 0.63);
     }
     a.active {
         font-weight: 600;
+        color: #fff;
     }
     a:hover {
         text-decoration: underline;
