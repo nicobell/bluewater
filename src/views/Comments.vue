@@ -77,24 +77,24 @@
                  <div>
                     <div>
                         <label for="">Name</label>
-                        <input type="text" placeholder="Name" name="name" v-model="name" required/>
+                        <input type="text" placeholder="Name" name="name" required/>
                     </div>
                     <div>
                         <label for="">Email</label>
-                        <input type="text" placeholder="Email" name="email" v-model="email" required/>
+                        <input type="text" placeholder="Email" name="email" required/>
                     </div>
                     <div>
                         <label for="">Message</label>
-                        <textarea  type="text" placeholder="Message" name="message" v-model="message" required/>
+                        <textarea  type="text" placeholder="Message" name="message"  required/>
                     </div>
                     <div class="checkbox-container">
-                        <input type="checkbox" class="form-check-input" id="agree" v-model="agree" required>
+                        <input type="checkbox" class="form-check-input" id="agree"  required>
                         <label class="form-check-label" for="agree">I agree to the <span>Terms</span> and <span>Privacy Policy</span></label>
                     </div>
                     <div class="button-container">
                         <button class="cta cta-outline">Submit</button>
                     </div>
-                    <p class="response">{{ risposta }}</p>
+                    <p class="response">response</p>
                 </div>    
             </form>
         </div>

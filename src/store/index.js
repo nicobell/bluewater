@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    data:null,
     lang: 'en',
     isMobile: null,
   },
@@ -14,6 +15,9 @@ export default new Vuex.Store({
     },
     SET_DEVICE(state, deviceW) {
       state.isMobile = deviceW
+    },
+    SET_DATA(state, data) {
+      state.data = data
     },
   },
 })

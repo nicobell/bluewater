@@ -30,7 +30,7 @@ export default {
     }
   },
   mounted(){
-    console.log('d', this.$store.state);
+    console.log('data', this.$store.state.data);
   },
   props:{
     langData: String

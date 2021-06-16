@@ -11,9 +11,7 @@
     <router-view></router-view>
   </div>
 </template>
-
 <script>
-
 export default {
   name: 'home',
   data:()=>{
@@ -51,15 +49,10 @@ export default {
           console.log('Request failed', error)  
         });
       },
-    checkIfMobile(){
-      if(window.innerWidth<1024){
-        this.$store.commit('SET_DEVICE', true)
-      }
-    }
+    
     },
     mounted(){
       this.loadData()
-      this.checkIfMobile()
     }
   }
 </script>

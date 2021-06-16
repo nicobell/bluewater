@@ -1,5 +1,5 @@
 <template>
-    <nav ref="menu" :class="[{show: isActive && isMobile}]">
+    <nav ref="menu" :class="[{show: isActive}]">
         <div class="btn" @click="isActive = !isActive">
         </div>
         <ul @click="isActive = !isActive">
@@ -47,7 +47,6 @@
         data() {
             return {
                 isActive: null,
-                isMobile:null,
             }
         },
         props: {
@@ -56,9 +55,7 @@
         methods: {
             changeLang() {
                 console.log('this.$route',);
-
                 if(this.$route.params.lang == "es"){
-                    
                     this.$router.push(`/en/`+this.$route.name)
                     console.log(this.$store)
                     this.$store.commit('SET_LANG', 'en')
@@ -68,9 +65,6 @@
                 }
 		    },
         },
-        mounted(){
-            this.isMobile = this.$store.state.isMobile
-        }
     }
 </script>
 

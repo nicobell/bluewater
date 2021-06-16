@@ -19,12 +19,30 @@ export default {
 		return{
 		}
   	},
+	methods:{
+		checkIfMobile(){
+			if(window.innerWidth<1024){
+				this.$store.commit('SET_DEVICE', true)
+			} else {
+				this.$store.commit('SET_DEVICE', false)
+			}
+		},
+		fetchData(){
+			fetch("./data.json",)
+				.then(response=>{
+					return response.json()
+				})
+				.then(json=>{
+					this.$store.commit('SET_DATA', json)
+				})
+				.catch(function(error) {  
+					console.log('Request failed', error)  
+				});
+			},
+	},
 	mounted(){
-      if(window.innerWidth<1024){
-        this.$store.commit('SET_DEVICE', true)
-      } else {
-		  this.$store.commit('SET_DEVICE', false)
-	  }
+	  this.fetchData()
+	  this.checkIfMobile()
 	},
 }
 </script>
