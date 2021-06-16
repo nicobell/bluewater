@@ -17,44 +17,39 @@ export default new Router ({
     routes:[
         {
             path:'/',
-            redirect: '/en/'
-        },
-        {
-            path:'/:lang',
             name:'Home',
             component:Home,
-            children: [
-                {
-                    path:'project-description',
-                    name:'project-description',
-                    component:ProjectDescription,
-                },
-                {
-                    path:'nepa-process',
-                    name:'nepa-process',
-                    component:NepaProcess,
-                },
-                {
-                    path:'nepa-process-schedule',
-                    name:'nepa-process-schedule',
-                    component:Schedule,
-                },
-                {
-                    path:'updates',
-                    name:'updates',
-                    component:updates,
-                },
-                {
-                    path:'comments',
-                    name:'comments',
-                    component:Comments,
-                },
-                {
-                    path:'contacts',
-                    name:'contacts',
-                    component:Contacts,
-                },
-            ]
         },
+        {
+            path:'/project-description',
+            name:'project-description',
+            component:ProjectDescription,
+        },
+        {
+            path:'/nepa-process',
+            name:'nepa-process',
+            component:NepaProcess,
+        },
+        {
+            path:'/nepa-process-schedule',
+            name:'nepa-process-schedule',
+            component:Schedule,
+        },
+        {
+            path:'/updates',
+            name:'updates',
+            component:updates,
+        },
+        {
+            path:'/comments',
+            name:'comments',
+            component:Comments,
+        },
+        {
+            path:'/contacts',
+            name:'contacts',
+            component:Contacts,
+        },
+        
     ]
 })
