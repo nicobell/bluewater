@@ -1,8 +1,10 @@
 <template>
-  <div id="app">
-    <my-header></my-header>
-	<Navigation></Navigation>
-    <router-view></router-view>
+  <div id="app" >
+	<div :class="[{'is-mobile': isMobile}]">
+		<my-header></my-header>
+		<Navigation></Navigation>
+		<router-view ></router-view>
+	</div>
   </div>
 </template>
 <script>
@@ -17,31 +19,19 @@ export default {
   	},
 	data:()=> {
 		return{
+			isMobile:null,
 		}
   	},
 	methods:{
 		checkIfMobile(){
 			if(window.innerWidth<1024){
-				this.$store.commit('SET_DEVICE', true)
+				this.isMobile=true
 			} else {
-				this.$store.commit('SET_DEVICE', false)
+				this.isMobile=false
 			}
 		},
-		fetchData(){
-			fetch("./data.json",)
-				.then(response=>{
-					return response.json()
-				})
-				.then(json=>{
-					this.$store.commit('SET_DATA', json)
-				})
-				.catch(function(error) {  
-					console.log('Request failed', error)  
-				});
-			},
 	},
 	mounted(){
-	  this.fetchData()
 	  this.checkIfMobile()
 	},
 }
