@@ -17,7 +17,11 @@ export default new Router ({
     routes:[
         {
             path:'/',
-            name:'Home',
+            redirect: '/en'
+        },
+        {
+            path:'/:lang/',
+            name:'home-page',
             component:Home,
         },
         {

@@ -3,41 +3,47 @@
         <div class="btn" @click="isActive = !isActive">
         </div>
         <ul @click="isActive = !isActive">
-            <router-link :to="{name: 'Home'}">
+            <router-link :to="{name: 'home-page'}">
                 <li>
                     <span class="icon map"></span><span class="label">Location</span>
-            </li></router-link>
+                </li>
+            </router-link>
             <router-link :to="{name:'project-description'}">
                 <li>
                     <span class="icon description"></span><span class="label">Project description</span>
-           
-            </li> </router-link>
+                </li>
+            </router-link>
             <router-link :to="{name:'nepa-process'}">
                 <li>
                     <span class="icon process"></span><span class="label">Nepa process</span>
-            </li> </router-link>
+                </li>
+            </router-link>
             <router-link :to="{name: 'nepa-process-schedule'}">
                 <li>
                     <span class="icon schedule"></span><span class="label">Schedule</span>
-            </li> </router-link>
+                </li>
+            </router-link>
             <router-link :to="{name: 'updates'}">
                 <li>
                     <span class="icon updates"></span><span class="label">Updates</span>
-            </li> </router-link>
+                </li>
+            </router-link>
             <router-link :to="{name: 'comments'}">
                 <li>
                     <span class="icon opinion"></span><span class="label">Your Opinion</span>
-            </li> </router-link>
+                </li>
+            </router-link>
             <router-link :to="{name: 'contacts'}">
                 <li>
                     <span class="icon contacts"></span><span class="label">contacts</span>
-            </li> </router-link>
+                </li>
+            </router-link>
         </ul>
         <div class="lang-switch">
             <p @click="changeLang" :class="this.$route.params.lang == 'es' ? 'es' : 'en'">
                 <a>Es</a> / <a>En</a>
             </p>
-      </div>
+        </div>
     </nav>
 </template>
 
@@ -54,53 +60,57 @@
         },
         methods: {
             changeLang() {
-                console.log('this.$route',);
-                if(this.$route.params.lang == "es"){
-                    this.$router.push(`/en/`+this.$route.name)
+                console.log('this.$route', );
+                if (this.$route.params.lang == "es") {
+                    this.$router.push(`/en/`)
                     console.log(this.$store)
                     this.$store.commit('SET_LANG', 'en')
                 } else {
-                    this.$router.push(`/es/`+this.$route.name)
+                    this.$router.push(`/es/`)
                     this.$store.commit('SET_LANG', 'es')
                 }
-		    },
+            },
         },
     }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.lang-switch {
-    position: absolute;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.048);
-    height: auto;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    width: 60px;
-    &:hover{
-        background: rgba(255, 255, 255, 0.096);
+    .lang-switch {
+        position: absolute;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.048);
+        height: auto;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        width: 60px;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.096);
+        }
+
+        p {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.253);
+        }
+
+        a {
+            color: rgba(255, 255, 255, 0.63);
+        }
+
+        p.active a {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
     }
-    
-    p{
-        font-size: 0.875rem;
-        color: rgba(255, 255, 255, 0.253);
-    }
-    a {
-        color: rgba(255, 255, 255, 0.63);
-    }
-    p.active a {
-        font-weight: 600;
-        color: #fff;
-    }
-    a:hover {
-        text-decoration: underline;
-    }
-    
-}
 
     nav {
         position: fixed;
@@ -114,6 +124,7 @@
         align-items: center;
         z-index: 15;
         transition: 0.3s ease;
+
         a {
             text-decoration: none;
         }
@@ -190,7 +201,7 @@
                 font-size: 0.875rem;
                 font-weight: 600;
                 text-transform: uppercase;
-                
+
             }
         }
 
@@ -238,19 +249,20 @@
             }
 
         }
-     
+
 
     }
 
 
 
     @media (max-width: 1024px) {
-           .lang-switch{
+        .lang-switch {
             position: relative;
             background: rgba(255, 255, 255, 0.048);
             margin-top: 20px;
             width: 100%;
         }
+
         nav {
             width: 100%;
             height: 0%;
@@ -269,13 +281,14 @@
             }
 
             a:first-child {
-                li{
+                li {
                     margin-top: 60px;
                 }
 
-               
+
             }
-             li .label {
+
+            li .label {
                 opacity: 1;
                 transform: none;
             }
@@ -318,9 +331,11 @@
         nav .label {
             padding: 14px 0px 14px 0px;
         }
-        nav li .icon{
+
+        nav li .icon {
             height: 54px;
         }
+
         .lang-switch {
             position: relative;
             background: rgba(255, 255, 255, 0.048);

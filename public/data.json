@@ -28,7 +28,7 @@
         "intro":{
             "title":"IT Bluewater Texas Terminal Deepwater Port Project",
             "description": "The purpose of this site is to inform stakeholders about the project, and to provide the public an opportunity to submit written comments.",
-            "button":"Go To Webisite"
+            "buttonLabel":"Go To Webisite"
         },
         "projectDescription":{
             "title":"project description",
@@ -111,6 +111,114 @@
         }
     },
     "es":{
-        
+        "headerInfo":{
+            "publicMeetingTitle":"Public Meeting",
+            "publicMeetingData":"April 19, 2021 | 3.00 PM",
+            "publicMeetingButton":"Register Now"
+        },
+        "menu":[
+            {
+                "menu-label-1":"Location"
+            },
+            {
+                "menu-label-2":"Project Description"
+            },
+            {
+                "menu-label-3":"DWP Act & License "
+            },
+            {
+                "menu-label-4":"Schedule"
+            },
+            {
+                "menu-label-5":"Updates"
+            },
+            {
+                "menu-label-6":"Your Opinion"
+            }
+        ],
+        "intro":{
+            "title":"Agua-Blu Texas Terminal Deepwater Port Project",
+            "description": "The purpose of this site is to inform stakeholders about the project, and to provide the public an opportunity to submit written comments.",
+            "buttonLabel":"Go To Webisite"
+        },
+        "projectDescription":{
+            "title":"project description",
+            "description": "Bluewater is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construction of a deepwater port, approximately 56.18 statute miles of pipeline infrastructure. The Bluewater deepwater port would allow for up to two (2) very large crude carriers (VLCCs) or other crude oil carriers to moor at single point mooring (SPM) buoys and connect with the deepwater port via floating connecting crude oil hoses. During single vessel loading operations, the proposed project is capable of loading rates of up to approximately 80,000 barrels per hour (bph) and during simultaneous vessel loading operations, the proposed project is capable of loading rates of 40,000 bph. The facility is expected to service 16 VLCCs per month.Bluewater is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construction of a deepwater port, approximately 56.18 statute miles of pipeline infrastructure. The Bluewater deepwater port would allow for up to two (2) very large crude carriers (VLCCs) or other crude oil carriers to moor at single point mooring (SPM) buoys and connect with the deepwater port via floating connecting crude oil hoses. During single vessel loading operations, the proposed project is capable of loading rates of up to approximately 80,000 barrels per hour (bph) and during simultaneous vessel loading operations, the proposed project is capable of loading rates of 40,000 bph. The facility is expected to service 16 VLCCs per month."
+        },
+        "nepaProcess":{
+            "title":"NEPA process",
+            "stepProcess":[
+                {   
+                    "id":1,
+                    "title":"What is nepa?",
+                    "description":"lorem ipsum"
+                },
+                {   
+                    "id":2,
+                    "title":"Public scoping",
+                    "description":"lorem ipsum"
+                },
+                {   
+                    "id":3,
+                    "title":"Prepare draft eis",
+                    "description":"lorem ipsum"
+                },
+                {   
+                    "id":4,
+                    "title":"Prepare final eis",
+                    "description":"lorem ipsum"
+                }
+            ]
+        },
+        "updates":{
+            "title":"updates",
+            "items":[
+                {
+                    "date":"10 marzo 2020",
+                    "content":"lorem ipsum"
+                },
+                {
+                    "date":"10 marzo 2020",
+                    "content":"lorem ipsum"
+                },
+                {
+                    "date":"10 marzo 2020",
+                    "content":"lorem ipsum"
+                },
+                {
+                    "date":"10 marzo 2020",
+                    "content":"lorem ipsum"
+                }
+            ]
+        },
+        "comments":{
+            "title":"comments",
+            "alertMessage":"Scoping Comments must be submitted by July 8, 2021.",
+            "secondTitle": "Public comments may be provided by:",
+            "description": "lorem",
+            "titleSidebar":"usefull documents",
+            "card1-title":"License Application",
+            "card1-desc":"link The license application is available for viewing at the Regulations.gov website",
+            "card1-button":"Go To Lorem",
+            "card2-title":"License Application",
+            "card2-desc":"link The license application is available for viewing at the Regulations.gov website",
+            "card2-button":"Go To Lorem",
+            "formTitle":"Need help, contact us.",
+            "formNameLabel":"name",
+            "formSurnameLabel":"surname",
+            "formEmailLabel":"email",
+            "formMessageLabel":"message",
+            "formCheckboxLabel":"I agree to the Terms and Privacy Policy"
+        },
+        "contacts":{
+            "title":"Contacts",
+            "section-1-title":"Federal Docket Management Facility’s",
+            "section-2-title":"U.S. Coast Guard",
+            "section-3-title":"Maritime administration",
+            "labelPhone":"telephone number",
+            "labelFax":"fax number",
+            "labelWebsite":"Website",
+            "labelDocket":"Docket number"
+        }
     }
 }
