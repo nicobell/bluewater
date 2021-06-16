@@ -29,6 +29,9 @@ export default {
       data:null,
     }
   },
+  mounted(){
+    console.log('d', this.$store.state);
+  },
   props:{
     langData: String
   },

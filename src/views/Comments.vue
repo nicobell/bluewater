@@ -73,7 +73,7 @@
                 </button>
             </div>
             <form action="">
-                <h2>Draft EIS</h2>
+                <h2>Need help, contact us</h2>
                  <div>
                     <div>
                         <label for="">Name</label>

@@ -20,20 +20,12 @@ export default {
 		}
   	},
 	mounted(){
-
+      if(window.innerWidth<1024){
+        this.$store.commit('SET_DEVICE', true)
+      } else {
+		  this.$store.commit('SET_DEVICE', false)
+	  }
 	},
-	watch: {
-		/*
-		$route(to,from){
-			console.log('watch route change');
-			if(this.$route.params.lang == "en"){
-				this.lang = "en"
-			} else {
-				this.lang = "it"
-			}
-		}
-		*/
-	}, 
 }
 </script>
 

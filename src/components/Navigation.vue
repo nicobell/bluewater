@@ -1,5 +1,5 @@
 <template>
-    <nav ref="menu" :class="[{show: isActive}]">
+    <nav ref="menu" :class="[{show: isActive && isMobile}]">
         <div class="btn" @click="isActive = !isActive">
         </div>
         <ul @click="isActive = !isActive">
@@ -46,7 +46,8 @@
         name: 'navigation',
         data() {
             return {
-                isActive: null
+                isActive: null,
+                isMobile:null,
             }
         },
         props: {
@@ -66,8 +67,10 @@
                     this.$store.commit('SET_LANG', 'es')
                 }
 		    },
+        },
+        mounted(){
+            this.isMobile = this.$store.state.isMobile
         }
-
     }
 </script>
 

@@ -19,6 +19,7 @@ export default {
   data:()=>{
     return{
       data:null,
+      isMobile:null,
     }
   },
   computed: {
@@ -49,10 +50,16 @@ export default {
         .catch(function(error) {  
           console.log('Request failed', error)  
         });
-    },
+      },
+    checkIfMobile(){
+      if(window.innerWidth<1024){
+        this.$store.commit('SET_DEVICE', true)
+      }
+    }
     },
     mounted(){
       this.loadData()
+      this.checkIfMobile()
     }
   }
 </script>
