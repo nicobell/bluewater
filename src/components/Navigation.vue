@@ -89,7 +89,7 @@
                 }
                 //console.log(this.$route.params, this.$route.path)
             },
-        },
+        }
     }
 </script>
 
