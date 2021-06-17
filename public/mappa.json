@@ -1,0 +1,44 @@
+{
+    "it": {
+        "map_data":{
+            "points":[
+                {
+                    "id": "50059-25016",
+                    "title": "Titolo spalla oggetto",
+                    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo quae modi sed nam natus at qui debitis, vel excepturi. Eveniet, aut esse. Omnis tempore iste iusto repellat officiis nesciunt a!"
+                },
+                {
+                    "id": "50021-23036",
+                    "title": "Titolo spalla oggetto",
+                    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo quae modi sed nam natus at qui debitis, vel excepturi. Eveniet, aut esse. Omnis tempore iste iusto repellat officiis nesciunt a!"
+                },
+                {
+                    "id": "50214-27008",
+                    "title": "Titolo spalla oggetto",
+                    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo quae modi sed nam natus at qui debitis, vel excepturi. Eveniet, aut esse. Omnis tempore iste iusto repellat officiis nesciunt a!"
+                }
+            ]
+        }
+    },
+    "en": {
+        "map_data":{
+            "points":[
+                {
+                    "id": "50059-25016",
+                    "title": "Titolo spalla oggetto",
+                    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo quae modi sed nam natus at qui debitis, vel excepturi. Eveniet, aut esse. Omnis tempore iste iusto repellat officiis nesciunt a!"
+                },
+                {
+                    "id": "50021-23036",
+                    "title": "Titolo spalla oggetto",
+                    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo quae modi sed nam natus at qui debitis, vel excepturi. Eveniet, aut esse. Omnis tempore iste iusto repellat officiis nesciunt a!"
+                },
+                {
+                    "id": "50214-27008",
+                    "title": "Titolo spalla oggetto",
+                    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo quae modi sed nam natus at qui debitis, vel excepturi. Eveniet, aut esse. Omnis tempore iste iusto repellat officiis nesciunt a!"
+                }
+            ]
+        }
+    }
+}

@@ -30,7 +30,7 @@ export default {
   },
   methods:{
       loadData(){			
-        fetch("/data.json",)
+        fetch("/data.json")
           .then(response=>{
             return response.json()
           })

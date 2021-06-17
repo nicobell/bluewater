@@ -1,205 +1,405 @@
 <template>
   <div class="map-wrapper">
+
     <div id="viewDiv"></div>
+  
     <div id="info">
       <span id="name"></span> <br />
       <span id="category"></span> <br />
     </div>
+
+    <button id="toggleLayer" @click="toggleLayer()">{{ this.toggleLabel }}</button>
+    <button id="zoomout" @click="zoomOut()">zoom out</button>
+    <!--<button id="queryLayer" @click="prova()">query</button>-->
+
+    <!--<select name="provincia" id="select" @change="onChange($event)">
+      <option value="VI">VI</option>
+      <option value="PD">PD</option>
+      <option value="VR">VR</option>
+      <option value="VE">VE</option>
+    </select>-->
+
+    <div id="topbar">
+      <button
+        class="action-button esri-icon-measure-line"
+        id="distanceButton"
+        title="Measure distance between two or more points"
+      ></button>
+      <!--<button 
+        id="clear" 
+        title="Clear Measurements"
+      >Clear measure</button>-->
+    </div>
+
   </div>
 </template>
 
 <script>
-//import WebMap from "@arcgis/core/WebMap";
 import Map from "@arcgis/core/Map";
 import MapView from "@arcgis/core/views/MapView";
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer"
-//import SimpleRenderer from "@arcgis/core/renderers/SimpleRenderer"
+import Point from '@arcgis/core/geometry/Point'
+import Search from '@arcgis/core/widgets/Search'
+import DistanceMeasurement2D from '@arcgis/core/widgets/DistanceMeasurement2D'
+import Legend from '@arcgis/core/widgets/Legend'
 
 export default {
   name: 'playground',
   data: () => {
     return {
       view: null, 
-      webmap: null,
-      map: null
+      map: null,
+
+      itineraryLayer: null,
+      sanitariLayer: null,
+      showLayer: true,
+      
+      //province: "VI",
+      dataPoints: []
+    }
+  },
+  computed: {
+    toggleLabel() {
+      return (this.showLayer ? 'hide' : 'show') + ' itinerary layer'
     }
   },
   methods: {
-    goto() {
+    zoomOut() {
+      //let stL = this.sanitariLayer
+      //let vv = this.view
+
+      /*this.view.when()
+        .then(function() { return stL.when(); })
+        .then(function(layer) {
+          return vv.whenLayerView(layer);
+        })
+        .then(function(layerView) {*/
+          this.sanitariLayer.queryExtent().then((res) => {
+            this.view.goTo(res.extent, {
+              animate: true,
+              duration: 1500
+            })
+          })
+        //})
+    },
+    /*onChange(event) {
+      this.province = event.target.value
+    },*/
+    /*prova() {
+      let itL = this.itineraryLayer
+      let vv = this.view
+      let p = this.province
+      let h = this.hls
+      
+      this.view.when()
+      .then(function() { return itL.when(); })
+      .then(function(layer) {
+        return vv.whenLayerView(layer);
+      })
+      .then(function(layerView) {
+        const query = layerView.createQuery();
+        query.where = "Provincia = '" + p + "'"
+
+        layerView.queryObjectIds(query).then(function(ids) {
+          h = layerView.highlight(ids)
+        })
+
+        vv.on("click", eventHandler)
+        function eventHandler(event) {
+          const opts = {
+            include: itL
+          }
+          vv.hitTest(event, opts).then(getGraphics);
+        }
+        function getGraphics() {
+          if(h) {
+            h.remove();
+            h = null;
+          }
+        }
+      })
+
+    },*/
+    toggleLayer() {
+      this.showLayer = !this.showLayer;
+      this.itineraryLayer.visible = !this.itineraryLayer.visible;    
     }
   },
   mounted(){
-  const itinerariLayer = new FeatureLayer({
-    //url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Hurricanes/MapServer/1",
-    url: "https://services2.arcgis.com/qpFFG6wHMKCXpc0N/arcgis/rest/services/Itinerari/FeatureServer",
-    outFields: ["*"]
-  });
-
-  const sanitariLayer = new FeatureLayer({
-    //url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Hurricanes/MapServer/1",
-    url: "https://services2.arcgis.com/qpFFG6wHMKCXpc0N/arcgis/rest/services/Veneto_Strutture_Sanitarie/FeatureServer",
-    outFields: ["*"],
-    labelingInfo: [{
-      labelPlacement: "center-right",
-      labelExpression: "[Denominazione_struttura]",
-      symbol: {
-        type: "text",
-        color: "white",
-        font: { size: 10 },
-        backgroundColor: [255, 255, 255, .5],
-        borderLineSize: 20
-      }
-    }]
-});
-
-  const map = new Map({
-    basemap: "satellite",
-    layers: [itinerariLayer, sanitariLayer]
-  });
-
-  const view = new MapView({
-    container: "viewDiv",
-    map: map,
-    center: [12, 45.65],
-    zoom: 9,
-    highlightOptions: {
-      color: "blue"
-    }
-  });
-
-  view.ui.add("info", "top-right");
-
-  view
-    .when()
-    .then(function() {
-      return sanitariLayer.when();
-    })
-    .then(function(layer) {
-      const renderer = {
-        type: "simple", // autocasts as new SimpleRenderer()
-        symbol: {
-          type: "picture-marker", // autocasts as new SimpleMarkerSymbol()
-          width: '27px',
-          height: '27px',
-          url: 'plus.png'
-        }
+    fetch("/data.json")
+      .then(res => res.json())
+      .then(json => {
+        //console.log(json)
+        this.dataPoints = json.it.map_data.points
+      
+      const template = {
+        title: "{Denominazione_struttura} in {Provincia}",
+        /*content: [
+          {
+            // It is also possible to set the fieldInfos outside of the content
+            // directly in the popupTemplate. If no fieldInfos is specifically set
+            // in the content, it defaults to whatever may be set within the popupTemplate.
+            type: "fields",
+            fieldInfos: [
+              {
+                fieldName: "B12001_calc_pctMarriedE",
+                label: "Married %"
+              },
+              {
+                fieldName: "B12001_calc_numMarriedE",
+                label: "People Married",
+                format: {
+                  digitSeparator: true,
+                  places: 0
+                }
+              },
+              {
+                fieldName: "B12001_calc_numNeverE",
+                label: "People that Never Married",
+                format: {
+                  digitSeparator: true,
+                  places: 0
+                }
+              },
+              {
+                fieldName: "B12001_calc_numDivorcedE",
+                label: "People Divorced",
+                format: {
+                  digitSeparator: true,
+                  places: 0
+                }
+              }
+            ]
+          }
+        ]*/
       };
-      layer.renderer = renderer;
 
-      /*const trailheadsLabels = [{
-          labelPlacement: "center-right",
-          labelExpression: "[Denominazione_struttura]",
-          symbol: {
-            type: "text", // autocasts as new TextSymbol()
-            color: "white",
-            font: {
-              size: 10
-            },
-            backgroundColor: [255, 255, 255, 1]
-          }
-      }];*/
-      //layer.labelingInfo = trailheadsLabels;
+    this.itineraryLayer = new FeatureLayer({
+      url: "https://services2.arcgis.com/qpFFG6wHMKCXpc0N/arcgis/rest/services/Itinerari/FeatureServer/0",
+      outFields: ["*"]
+    });
 
-      // Set up an event handler for pointer-down (mobile)
-      // and pointer-move events (mouse)
-      // and retrieve the screen x, y coordinates
-
-      return view.whenLayerView(layer);
-    })
-    .then(function(layerView) {
-      //view.on("pointer-move", eventHandler);
-      //view.on("pointer-down", eventHandler);
-      view.on("click", eventHandler)
-
-      function eventHandler(event) {
-        // only include graphics from sanitariLayer in the hitTest
-        const opts = {
-          include: sanitariLayer
-        }
-        // the hitTest() checks to see if any graphics from the sanitariLayer
-        // intersect the x, y coordinates of the pointer
-        view.hitTest(event, opts).then(getGraphics);
+    const labelclass = {
+      labelExpression: "[Denominazione_struttura]",
+      labelPlacement: "above-left",
+      symbol: {
+        type: "text", // autocasts as new TextSymbol()
+        font: {
+          size: 10,
+          weight: "bold"
+        },
+        color: "white",
+        haloColor: "orange",
+        haloSize: 3,
+        backgroundColor: "white"
+        
       }
+    };
+    
 
-      let highlight, /*currentYear,*/ currentName;
+    this.sanitariLayer = new FeatureLayer({
+      url: "https://services2.arcgis.com/qpFFG6wHMKCXpc0N/arcgis/rest/services/Veneto_Strutture_Sanitarie/FeatureServer",
+      outFields: ["*"],
+      popupTemplate: template,
+      labelingInfo: [labelclass]
+    });
 
-      function getGraphics(response) {
-        // the topmost graphic from the sanitariLayer
-        // and display select attribute values from the
-        // graphic to the user
-        if (response.results.length) {
-          const graphic = response.results[0].graphic;
+    const map = new Map({
+      basemap: "satellite",
+      layers: [this.itineraryLayer, this.sanitariLayer]
+    });
 
-          const attributes = graphic.attributes;
-          //const category = attributes.CAT;
-          //const wind = attributes.WIND_KTS;
-          const provincia = attributes.Provincia;
-          const name = attributes.Denominazione_struttura;
-          //const year = attributes.YEAR;
-          //const id = attributes.OBJECTID;
-          //console.log(attributes)
-
-          if (
-            highlight &&
-            (currentName !== name )
-            //|| currentYear !== year)
-          ) {
-            highlight.remove();
-            highlight = null;
-            //return;
-          }
-
-          if (highlight) {
-            return;
-          }
-
-          document.getElementById("info").style.visibility = "visible";
-          document.getElementById("name").innerHTML = provincia;
-          document.getElementById("category").innerHTML = "Struttura: " + name;
-          //document.getElementById("wind").innerHTML = wind + " kts";
-
-          // highlight all features belonging to the same hurricane as the feature
-          // returned from the hitTest
-          
-          
-          if (highlight) {
-              highlight.remove()
-            }
-            highlight = layerView.highlight(graphic);
-            console.log(attributes.ObjectId)
-
-          /*const query = layerView.createQuery();
-          query.where = "Provincia = '" + name + "'";
-          layerView
-          layerView.queryObjectIds(query).then(function(ids) {
-            if (highlight) {
-              highlight.remove()
-            }
-            highlight = layerView.highlight(ids);
-            //currentYear = year;
-            currentName = name;
-          });*/
-          
-        } else {
-          // remove the highlight if no features are
-          // returned from the hitTest
-          if (highlight){
-            highlight.remove();
-            highlight = null;
-          }
-          document.getElementById("info").style.visibility = "hidden";
-        }
+    this.view = new MapView({
+      container: "viewDiv",
+      map: map,
+      center: [12, 45.65],
+      zoom: 9,
+      highlightOptions: {
+        color: "orange"
       }
     });
+
+    this.view.ui.add(new Legend({ view: this.view }), "bottom-left");
+
+    this.view.ui.add("toggleLayer", "top-left");
+    this.view.ui.add("zoomout", "top-left");
+    
+    this.view.ui.add(new Search({ view: this.view }), "top-right");
+    this.view.ui.add('topbar', 'top-right');
+
+    let activeWidget = null
+    let vv = this.view
+
+    document.getElementById("distanceButton").addEventListener("click", function() {
+      setActiveWidget(null);
+      if (!this.classList.contains("active")) {
+        setActiveWidget("distance");
+      } else {
+        setActiveButton(null);
+      }
+    });
+
+    /*document.getElementById("clear").addEventListener("click", function() {
+      setActiveWidget(null);
+      setActiveButton(null);
+    });*/
+
+    function setActiveWidget(type) {
+      switch (type) {
+        case "distance":
+          activeWidget = new DistanceMeasurement2D({ view: vv });
+          activeWidget.viewModel.start();
+          //vv.ui.add(activeWidget, "top-right");
+          setActiveButton(document.getElementById("distanceButton"));
+          break;
+        case null:
+          if (activeWidget) {
+            vv.ui.remove(activeWidget);
+            activeWidget.destroy();
+            activeWidget = null;
+          }
+          break;
+      }
+    }
+
+    function setActiveButton(selectedButton) {
+      // focus the view to activate keyboard shortcuts for sketching
+      vv.focus();
+      var elements = document.getElementsByClassName("active");
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].classList.remove("active");
+      }
+      if (selectedButton) {
+        selectedButton.classList.add("active");
+      }
+    }
+
+    let stL = this.sanitariLayer
+    let dpts = this.dataPoints
+
+    this.view
+      .when(function() {
+        vv.popup.autoOpenEnabled = true;
+      })
+      .then(function() { return stL.when(); })
+      .then(function(layer) {
+        const renderer = {
+          type: "simple", // autocasts as new SimpleRenderer()
+          symbol: {
+            type: "picture-marker", // autocasts as new SimpleMarkerSymbol()
+            width: '27px',
+            height: '27px',
+            url: 'plus.png'
+          }
+        };
+        layer.renderer = renderer;
+        
+        return vv.whenLayerView(layer);
+      })
+      .then(function(layerView) {
+        //vv.on("pointer-move", eventHandler);
+        //vv.on("pointer-down", eventHandler);
+        vv.on("click", eventHandler)
+
+
+        function eventHandler(event) {
+          const opts = {
+            include: stL
+          }
+          vv.hitTest(event, opts).then(getGraphics);
+        }
+
+        let highlight, currentName
+
+        function getGraphics(response) {
+          
+          if (response.results.length) {
+            const graphic = response.results[0].graphic;
+            
+            const attributes = graphic.attributes;
+            const provincia = attributes.Provincia;
+            const name = attributes.Denominazione_struttura;
+            console.log(attributes.Codice_struttura + '-' + attributes.Codice_Comune)
+
+            if (
+              highlight && //||
+              (currentName !== name )
+            ) {
+              highlight.remove();
+              highlight = null;
+              //return;
+            }
+
+            /*if (highlight)
+              return;*/
+
+            console.log(dpts)
+            let mp = dpts.find(p => {
+              console.log((p.Codice_struttura + '-' + p.Codice_Comune))
+              console.log(attributes.Codice_struttura + '-' + attributes.Codice_Comune)
+            
+              return p.id == (attributes.Codice_struttura + '-' + attributes.Codice_Comune)
+            })
+            console.log(mp)
+            if(mp) {
+              document.getElementById("info").style.visibility = "visible";
+              document.getElementById("name").innerHTML = mp.title;
+              document.getElementById("category").innerHTML = "Struttura: " + mp.description
+            }
+            else {
+              document.getElementById("info").style.visibility = "visible";
+              document.getElementById("name").innerHTML = provincia;
+              document.getElementById("category").innerHTML = "Struttura: " + name
+            }
+            
+            if (highlight)
+              highlight.remove()
+
+            highlight = layerView.highlight(graphic);
+            const query = layerView.createQuery();
+            query.where = "Provincia = '" + provincia + "'";
+            layerView.queryObjectIds(query).then(function(ids) {
+              vv.goTo({
+                target: new Point({
+                  latitude: graphic.geometry.latitude,
+                  longitude: graphic.geometry.longitude
+                }),
+                zoom: 12
+              }, {
+                animate: true,
+                duration: 1000
+              })
+
+              if (highlight)
+                highlight.remove()
+              
+              highlight = layerView.highlight(ids);
+              currentName = name;
+            });
+            
+          } else {
+            if (highlight){
+              highlight.remove();
+              highlight = null;
+            }
+            document.getElementById("info").style.visibility = "hidden";
+          }
+        }
+      })
+
+    })
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
-@import 'https://js.arcgis.com/4.19/@arcgis/core/assets/esri/themes/light/main.css';
+<style lang="scss" scoped>
+
 .map-wrapper,
 #viewDiv {
+  position: relative;
+  top: 45px;
+  left: 40px;
   padding: 0;
   margin: 0;
   height: 100%;
@@ -207,6 +407,13 @@ export default {
 }
 .map-wrapper {
   position: relative;
+  
+  max-height: calc(100vh - 100px);
+  max-width: calc(100vw - 100px);
+}
+
+.esri-popup .esri-popup__main-container .esri-popup__footer {
+  display: none !important;
 }
 
 #info {
@@ -226,4 +433,16 @@ export default {
     color: orange;
   }
 }
+
+.action-button:hover,
+.action-button:focus {
+  background: #0079c1;
+  color: #e4e4e4;
+}
+
+.active {
+  background: #0079c1;
+  color: #e4e4e4;
+}
+
 </style>

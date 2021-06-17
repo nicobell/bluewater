@@ -46,4 +46,6 @@ body, #app {
 	height: 100%;
 	width: 100%;
 }
+@import "https://js.arcgis.com/4.19/esri/themes/light/main.css";
+
 </style>
