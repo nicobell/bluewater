@@ -1,32 +1,59 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import { fetchRoutes } from './libs/drupalClient'
+import Router from 'vue-router'
 
-Vue.use(VueRouter)
+//routing
+import Home from '@/views/Home';
+import ProjectDescription from '@/views/ProjectDescription';
+import Comments from '@/views/Comments';
+import updates from '@/views/Updates';
+import NepaProcess from '@/views/NepaProcess';
+import Schedule from '@/views/Schedule';
+import Contacts from '@/views/Contacts';
 
-export function router() {
-  return fetchRoutes().then(data => {
-    console.log(data)
 
-    var fetchedRoutes = data.routes
-    fetchedRoutes.forEach(f => {
-      f.component = () => import(/* webpackChunkName: "drupal-custom-component" */ './views/' + f.name + '.vue')
-    })
+Vue.use(Router)
 
-    //route default per pagine/routes non esistenti 404
-    fetchedRoutes.push({
-      path: '*',
-      name: 'default',
-      component: () => import('./views/Default.vue')
-    })
-
-    return new VueRouter({
-      scrollBehavior() {
-        return { x: 0, y: 0 };
-      },
-      mode: 'history',
-      base: process.env.BASE_URL,
-      routes: fetchedRoutes
-    })
-  })
-}
+export default new Router ({
+    routes:[
+        {
+            path:'/',
+            redirect: '/en/home-page'
+        },
+        {
+            path:'/:lang/home-page',
+            name:'home-page',
+            component:Home,
+        },
+        {
+            path:'/:lang/project-description',
+            name:'project-description',
+            component:ProjectDescription,
+        },
+        {
+            path:'/:lang/nepa-process',
+            name:'nepa-process',
+            component:NepaProcess,
+        },
+        {
+            path:'/:lang/nepa-process-schedule',
+            name:'nepa-process-schedule',
+            component:Schedule,
+        },
+        {
+            path:'/:lang/updates',
+            name:'updates',
+            component:updates,
+        },
+        {
+            path:'/:lang/comments',
+            name:'comments',
+            component:Comments,
+        },
+        {
+            path:'/:lang/contacts',
+            name:'contacts',
+            component:Contacts,
+        },
+        
+    ]
+})

@@ -3,7 +3,7 @@
   <header class="intro-header">
     </header>
     <div class="main-content">
-      <h1 class="title">Project description</h1>
+      <h1 class="title">{{content.projectDescription.title}}</h1>
       <div class="content two-col">
         <div class="inner-content-left">
           <p>
@@ -25,12 +25,19 @@ export default {
   name: 'project-description',
    data:()=>{
     return{
-      lang:"",
       data:null,
     }
   },
+  computed:{
+    lang () {
+      return this.$store.state.lang
+    },
+    content () {
+      return this.$store.state.data[this.lang]
+    }
+  },
   mounted(){
-    console.log('data', this.$store.state.data);
+    console.log(this.$store.state.data[this.lang]);
   },
   props:{
     langData: String

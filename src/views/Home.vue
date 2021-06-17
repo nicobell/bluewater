@@ -1,6 +1,6 @@
 <template>
   <div class="template-page intro" >
-    <div v-if="data">
+    <div >
       <h1>{{ content.intro.title }}</h1>
       <p>{{ content.intro.description }}</p>
       <router-link :to="{name: 'project-description'}"><button class="outline icon-left">
@@ -25,35 +25,13 @@ export default {
       return this.$store.state.lang
     },
     content () {
-      return this.data[this.lang]
+      return this.$store.state.data[this.lang]
     }
   },
   props:{
     langData: String
   },
-  watch: {
-    langData() {
-      this.loadData()
-    },
-  },
-  methods:{
-    fetchData(){
-      fetch("./data.json")
-        .then(response=>{
-          return response.json()
-        })
-        .then(json=>{
-          this.$store.commit('SET_DATA', json)
-          this.data = this.$store.state.data
-        })
-        .catch(function(error) {  
-          console.log('Request failed', error)  
-        });
-    },
-  },
-  mounted(){
-    this.fetchData()
-  }
+ 
 }
 </script>
 

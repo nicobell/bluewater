@@ -8,32 +8,32 @@
                     <span class="icon map"></span><span class="label">Location</span>
                 </li>
             </router-link>
-            <router-link :to="{name:'project-description'}">
+            <router-link  :to="'/' + lang+ '/' +'project-description'" >
                 <li>
                     <span class="icon description"></span><span class="label">Project description</span>
                 </li>
             </router-link>
-            <router-link :to="{name:'nepa-process'}">
+            <router-link  :to="'/' + lang +'/nepa-process'" >
                 <li>
                     <span class="icon process"></span><span class="label">Nepa process</span>
                 </li>
             </router-link>
-            <router-link :to="{name: 'nepa-process-schedule'}">
+            <router-link  :to="'/' + lang+ '/' +'nepa-process-schedule'" >
                 <li>
                     <span class="icon schedule"></span><span class="label">Schedule</span>
                 </li>
             </router-link>
-            <router-link :to="{name: 'updates'}">
+            <router-link  :to="'/' + lang+ '/' +'updates'" >
                 <li>
                     <span class="icon updates"></span><span class="label">Updates</span>
                 </li>
             </router-link>
-            <router-link :to="{name: 'comments'}">
+            <router-link  :to="'/' + lang+ '/' +'comments'" >
                 <li>
                     <span class="icon opinion"></span><span class="label">Your Opinion</span>
                 </li>
             </router-link>
-            <router-link :to="{name: 'contacts'}">
+            <router-link  :to="'/' + lang+ '/' +'contacts'" >
                 <li>
                     <span class="icon contacts"></span><span class="label">contacts</span>
                 </li>
@@ -55,16 +55,24 @@
                 isActive: null,
             }
         },
+        computed:{
+            lang () {
+                return this.$store.state.lang
+            },
+            pageTitle () {
+                return this.$route.params.pageTitle
+            },
+        },
         props: {
             msg: String
         },
         methods: {
             changeLang() {
                 if (this.$route.params.lang == "es") {
-                    this.$router.push(`/en/`)
+                    this.$router.push(`/en/`+this.$route.name)
                     this.$store.commit('SET_LANG', 'en')
                 } else {
-                    this.$router.push(`/es/`)
+                    this.$router.push(`/es/`+this.$route.name)
                     this.$store.commit('SET_LANG', 'es')
                 }
             },

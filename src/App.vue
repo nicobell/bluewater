@@ -22,6 +22,11 @@ export default {
 			isMobile:null,
 		}
   	},
+	watch: {
+		langData() {
+		this.loadData()
+		},
+	},
 	methods:{
 		checkIfMobile(){
 			if(window.innerWidth<1024){
@@ -30,9 +35,23 @@ export default {
 				this.isMobile=false
 			}
 		},
+		fetchData(){
+			fetch("./data.json")
+				.then(response=>{
+				return response.json()
+				})
+				.then(json=>{
+					this.$store.commit('SET_DATA', json)
+					this.data = this.$store.state.data
+				})
+				.catch(function(error) {  
+					console.log('Request failed', error)  
+				});
+			},
 	},
 	mounted(){
 	  this.checkIfMobile()
+	  this.fetchData()
 	},
 }
 </script>
