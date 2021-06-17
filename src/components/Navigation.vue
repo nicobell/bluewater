@@ -3,9 +3,10 @@
         <div class="btn" @click="isActive = !isActive">
         </div>
         <ul @click="isActive = !isActive">
-            <router-link :to="{name: 'home-page'}">
+            <router-link :to="'/' + lang+ '/' +'project-description'">
                 <li>
-                    <span class="icon map"></span><span class="label">Location</span>
+                    <!--{{content.menu.menuLabel1}}-->
+                    <span class="icon map"></span><span class="label">ads</span>
                 </li>
             </router-link>
             <router-link  :to="'/' + lang+ '/' +'project-description'" >
@@ -59,12 +60,9 @@
             lang () {
                 return this.$store.state.lang
             },
-            pageTitle () {
-                return this.$route.params.pageTitle
-            },
-        },
-        props: {
-            msg: String
+            content () {
+                return this.$store.state.data[this.lang]
+            }
         },
         methods: {
             changeLang() {

@@ -5,26 +5,14 @@
             "publicMeetingData":"April 19, 2021 | 3.00 PM",
             "publicMeetingButton":"Register Now"
         },
-        "menu":[
-            {
-                "menu-label-1":"Location"
-            },
-            {
-                "menu-label-2":"Project Description"
-            },
-            {
-                "menu-label-3":"DWP Act & License "
-            },
-            {
-                "menu-label-4":"Schedule"
-            },
-            {
-                "menu-label-5":"Updates"
-            },
-            {
-                "menu-label-6":"Your Opinion"
-            }
-        ],
+        "menu":{
+            "menuLabel1":"Location",
+            "menuLabel2":"Project Description",
+            "menuLabel3":"DWP Act & License ",
+            "menuLabel4":"Schedule",
+            "menuLabel5":"Updates",
+            "menuLabel6":"Your Opinion"
+        },
         "intro":{
             "title":"IT Bluewater Texas Terminal Deepwater Port Project",
             "description": "The purpose of this site is to inform stakeholders about the project, and to provide the public an opportunity to submit written comments.",
@@ -118,22 +106,22 @@
         },
         "menu":[
             {
-                "menu-label-1":"Location"
+                "menuLabel1":"Location"
             },
             {
-                "menu-label-2":"Project Description"
+                "menuLabel2":"Project Description"
             },
             {
-                "menu-label-3":"DWP Act & License "
+                "menuLabel3":"DWP Act & License "
             },
             {
-                "menu-label-4":"Schedule"
+                "menuLabel4":"Schedule"
             },
             {
-                "menu-label-5":"Updates"
+                "menuLabel5":"Updates"
             },
             {
-                "menu-label-6":"Your Opinion"
+                "menuLabel6":"Your Opinion"
             }
         ],
         "intro":{

@@ -1,6 +1,6 @@
 <template>
   <div id="app" >
-	<div :class="[{'is-mobile': isMobile}]">
+	<div :class="[{'is-mobile': isMobile}]" v-if="this.dataLoaded">
 		<my-header></my-header>
 		<Navigation></Navigation>
 		<router-view ></router-view>
@@ -19,14 +19,10 @@ export default {
   	},
 	data:()=> {
 		return{
+			dataLoaded: false,
 			isMobile:null,
 		}
   	},
-	watch: {
-		langData() {
-		this.loadData()
-		},
-	},
 	methods:{
 		checkIfMobile(){
 			if(window.innerWidth<1024){
@@ -38,11 +34,12 @@ export default {
 		fetchData(){
 			fetch("./data.json")
 				.then(response=>{
-				return response.json()
+					return response.json()
 				})
 				.then(json=>{
 					this.$store.commit('SET_DATA', json)
 					this.data = this.$store.state.data
+					this.dataLoaded = true
 				})
 				.catch(function(error) {  
 					console.log('Request failed', error)  
@@ -52,6 +49,7 @@ export default {
 	mounted(){
 	  this.checkIfMobile()
 	  this.fetchData()
+	  console.log('mounted app');
 	},
 }
 </script>

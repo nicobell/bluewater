@@ -36,12 +36,6 @@ export default {
       return this.$store.state.data[this.lang]
     }
   },
-  mounted(){
-    console.log(this.$store.state.data[this.lang]);
-  },
-  props:{
-    langData: String
-  },
 }
 </script>
 

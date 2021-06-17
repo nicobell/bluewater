@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 //routing
+import App from '@/App';
 import Home from '@/views/Home';
 import ProjectDescription from '@/views/ProjectDescription';
 import Comments from '@/views/Comments';
@@ -17,10 +18,12 @@ export default new Router ({
     routes:[
         {
             path:'/',
-            redirect: '/en/home-page'
+            name:'app',
+            component:App,
+            redirect: '/en/',
         },
         {
-            path:'/:lang/home-page',
+            path:'/:lang/',
             name:'home-page',
             component:Home,
         },

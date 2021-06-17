@@ -3,7 +3,7 @@
     <div >
       <h1>{{ content.intro.title }}</h1>
       <p>{{ content.intro.description }}</p>
-      <router-link :to="{name: 'project-description'}"><button class="outline icon-left">
+      <router-link :to="'/' + lang + '/' +'project-description'"><button class="outline icon-left">
         {{ content.intro.buttonLabel }}
       </button>
       </router-link>
@@ -15,9 +15,7 @@
 export default {
   name: 'home',
   data:()=>{
-    return{
-      data:null,
-      isMobile:null,
+    return {
     }
   },
   computed: {
@@ -28,14 +26,9 @@ export default {
       return this.$store.state.data[this.lang]
     }
   },
-  props:{
-    langData: String
-  },
- 
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   .intro {
     background: url("../assets/bg-intro.jpg") center no-repeat;
