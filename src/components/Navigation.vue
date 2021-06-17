@@ -5,38 +5,37 @@
         <ul @click="isActive = !isActive">
             <router-link :to="'/' + lang+ '/' +'project-description'">
                 <li>
-                    <!--{{content.menu.menuLabel1}}-->
-                    <span class="icon map"></span><span class="label">ads</span>
+                    <span class="icon map"></span><span class="label">{{content.menu.menuLabel1}}</span>
                 </li>
             </router-link>
             <router-link  :to="'/' + lang+ '/' +'project-description'" >
                 <li>
-                    <span class="icon description"></span><span class="label">Project description</span>
+                    <span class="icon description"></span><span class="label">{{content.menu.menuLabel2}}</span>
                 </li>
             </router-link>
             <router-link  :to="'/' + lang +'/nepa-process'" >
                 <li>
-                    <span class="icon process"></span><span class="label">Nepa process</span>
+                    <span class="icon process"></span><span class="label">{{content.menu.menuLabel3}}</span>
                 </li>
             </router-link>
             <router-link  :to="'/' + lang+ '/' +'nepa-process-schedule'" >
                 <li>
-                    <span class="icon schedule"></span><span class="label">Schedule</span>
+                    <span class="icon schedule"></span><span class="label">{{content.menu.menuLabel4}}</span>
                 </li>
             </router-link>
             <router-link  :to="'/' + lang+ '/' +'updates'" >
                 <li>
-                    <span class="icon updates"></span><span class="label">Updates</span>
+                    <span class="icon updates"></span><span class="label">{{content.menu.menuLabel5}}</span>
                 </li>
             </router-link>
             <router-link  :to="'/' + lang+ '/' +'comments'" >
                 <li>
-                    <span class="icon opinion"></span><span class="label">Your Opinion</span>
+                    <span class="icon opinion"></span><span class="label">{{content.menu.menuLabel6}}</span>
                 </li>
             </router-link>
             <router-link  :to="'/' + lang+ '/' +'contacts'" >
                 <li>
-                    <span class="icon contacts"></span><span class="label">contacts</span>
+                    <span class="icon contacts"></span><span class="label">{{content.menu.menuLabel7}}</span>
                 </li>
             </router-link>
         </ul>

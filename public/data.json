@@ -11,7 +11,8 @@
             "menuLabel3":"DWP Act & License ",
             "menuLabel4":"Schedule",
             "menuLabel5":"Updates",
-            "menuLabel6":"Your Opinion"
+            "menuLabel6":"Your Opinion",
+            "menuLabel7":"Contacts"
         },
         "intro":{
             "title":"IT Bluewater Texas Terminal Deepwater Port Project",
@@ -24,29 +25,17 @@
         },
         "nepaProcess":{
             "title":"NEPA process",
-            "stepProcess":[
-                {   
-                    "id":1,
-                    "title":"What is nepa?",
-                    "description":"lorem ipsum"
-                },
-                {   
-                    "id":2,
-                    "title":"Public scoping",
-                    "description":"lorem ipsum"
-                },
-                {   
-                    "id":3,
-                    "title":"Prepare draft eis",
-                    "description":"lorem ipsum"
-                },
-                {   
-                    "id":4,
-                    "title":"Prepare final eis",
-                    "description":"lorem ipsum"
+            "stepProcess":{   
+                "title1":"What is nepa?",
+                "description1":"lorem ipsum",
+                "title2":"Public scoping",
+                "description2":"lorem ipsum",
+                "title3":"Prepare draft eis",
+                "description3":"lorem ipsum",
+                "title4":"Prepare final eis",
+                "description4":"lorem ipsum"
                 }
-            ]
-        },
+            },
         "updates":{
             "title":"updates",
             "items":[
@@ -56,7 +45,7 @@
                 },
                 {
                     "date":"10 marzo 2020",
-                    "content":"lorem ipsum"
+                    "content":"sadsad ipsum"
                 },
                 {
                     "date":"10 marzo 2020",

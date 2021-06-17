@@ -3,50 +3,17 @@
     <header class="intro-header">
     </header>
     <div class="main-content">
-      <h1 class="title">Updates</h1>
+      <h1 class="title">{{content.updates.title}}</h1>
       <div class="content">
           <div class="inner-content">
-              <div class="item-update">
+              <div class="item-update" v-for="(update, index) in content.updates.items" :key="index">
                   <p class="date">
-                      May 24, 2021
+                      {{update.date}}
                   </p>
                   <p class="text">
-                      Public Notice on Availability of the DEIS for the Bluewater Project
+                        {{update.content}}
                   </p>
               </div>
-              <div class="item-update">
-                  <p class="date">
-                      December 24, 2021
-                  </p>
-                  <p class="text">
-                      Public Notice on Availability of the DEIS for the Bluewater Project
-                  </p>
-              </div>
-              <div class="item-update">
-                  <p class="date">
-                      May 24, 2021
-                  </p>
-                  <p class="text">
-                      Public Notice on Availability of the DEIS for the Bluewater Project
-                  </p>
-              </div>
-              <div class="item-update">
-                  <p class="date">
-                      May 24, 2021
-                  </p>
-                  <p class="text">
-                      Public Notice on Availability of the DEIS for the Bluewater Project
-                  </p>
-              </div>
-              <div class="item-update">
-                  <p class="date">
-                      May 24, 2021
-                  </p>
-                  <p class="text">
-                      Public Notice on Availability of the DEIS for the Bluewater Project
-                  </p>
-              </div>
-
           </div>
         </div>
     </div>
@@ -58,8 +25,15 @@ export default {
   name: 'updates',
    data:()=>{
     return{
-      lang:"",
       data:null,
+    }
+  },
+computed: {
+    lang () {
+      return this.$store.state.lang
+    },
+    content () {
+      return this.$store.state.data[this.lang]
     }
   },
 }

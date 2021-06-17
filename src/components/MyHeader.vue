@@ -8,11 +8,11 @@
       <div class="meeting-banner">
         <img src="../assets/icon-meeting.svg" width="42" height="42" alt="">
         <div class="text">
-          <h2>Public meeting</h2>
-          <p>April 19, 2021 | 3.00 PM</p>
+          <h2>{{content.headerInfo.publicMeetingTitle}}</h2>
+          <p>{{content.headerInfo.publicMeetingData}}</p>
         </div>
         <div>
-          <button>Register now</button>
+          <button>{{content.headerInfo.publicMeetingButton}}</button>
         </div>
       </div>
     </div>
@@ -25,6 +25,14 @@ export default {
   props: {
     msg: String
   },
+  computed:{
+    lang () {
+        return this.$store.state.lang
+    },
+    content () {
+        return this.$store.state.data[this.lang]
+    }
+},
  }
 </script>
 

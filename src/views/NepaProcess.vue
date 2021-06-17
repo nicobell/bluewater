@@ -3,7 +3,7 @@
   <header class="intro-header">
     </header>
     <div class="main-content">
-      <h1 class="title">Nepa process</h1>
+      <h1 class="title">{{content.nepaProcess.title}}</h1>
       <div class="content two-col isDesktop active-section-1" ref="container" >
         <div class="inner-content-left">
             <div class="menu">
@@ -11,59 +11,59 @@
                     <div class="num">
                         01
                     </div>
-                    <h2>What is nepa?</h2>
+                    <h2>{{content.nepaProcess.stepProcess.title1}}</h2>
                 </div>
                 <div class="item-menu" @click="openSection(2)">
                     <div class="num">
                         01
                     </div>
-                    <h2>Public scoping</h2>
+                    <h2>{{content.nepaProcess.stepProcess.title2}}</h2>
                 </div>
                 <div class="item-menu" @click="openSection(3)">
                     <div class="num">
                         02
                     </div>
-                    <h2>Prepare draft eis</h2>
+                    <h2>{{content.nepaProcess.stepProcess.title3}}</h2>
                 </div>
                 <div class="item-menu" @click="openSection(4)">
                     <div class="num">
                         03
                     </div>
-                    <h2>Prepare final eis</h2>
+                    <h2>{{content.nepaProcess.stepProcess.title4}}</h2>
                 </div>
             </div>
         </div>
         <div class="inner-content-right">
             <div class="item-content item-content-1">
                 <h1>
-                    What is nepa?
+                    {{content.nepaProcess.stepProcess.title1}}
                 </h1>
                 <p>
-                    Bluewater is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construction of a deepwater port, approximately 56.18 statute miles of pipeline infrastructure.
+                    {{content.nepaProcess.stepProcess.description1}}
                 </p>
             </div>
             <div class="item-content item-content-2">
                 <h1>
-                    What is nepa?
+                    {{content.nepaProcess.stepProcess.title2}}
                 </h1>
                 <p>
-                    adsasd is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construction of a deepwater port, approximately 56.18 statute miles of pipeline infrastructure.
+                    {{content.nepaProcess.stepProcess.description2}}
                 </p>
             </div>
             <div class="item-content item-content-3">
                 <h1>
-                    What is nepa?
+                    {{content.nepaProcess.stepProcess.title3}}
                 </h1>
                 <p>
-                    dddddd is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construction of a deepwater port, approximately 56.18 statute miles of pipeline infrastructure.
+                    {{content.nepaProcess.stepProcess.description3}}
                 </p>
             </div>
             <div class="item-content item-content-4">
                 <h1>
-                    What is nepa?
+                    {{content.nepaProcess.stepProcess.title4}}
                 </h1>
                 <p>
-                    Bluewatder is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construction of a deepwater port, approximately 56.18 statute miles of pipeline infrastructure.
+                    {{content.nepaProcess.stepProcess.description4}}
                 </p>
             </div>
         </div>
@@ -72,18 +72,34 @@
         <div class="inner-content" >
             <div class="accordion-item" @click="e => e.target.classList.toggle('active')">
                 <div>
-                    <h2>1. What is nepa?</h2><span class="accordion-icon"></span>
+                    <h2>1. {{content.nepaProcess.stepProcess.title1}}</h2><span class="accordion-icon"></span>
                     </div>
                 <div>
-                    <p>Bluewater is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construct</p>
+                    <p>{{content.nepaProcess.stepProcess.description1}}</p>
                 </div>
             </div>
             <div class="accordion-item" @click="e => e.target.classList.toggle('active')">
                 <div>
-                    <h2>2. Public scoping</h2><span class="accordion-icon"></span>
-                </div>
+                    <h2>2. {{content.nepaProcess.stepProcess.title2}}</h2><span class="accordion-icon"></span>
+                    </div>
                 <div>
-                    <p>NEPA mandates that local, state, and fede</p>
+                    <p>{{content.nepaProcess.stepProcess.description2}}</p>
+                </div>
+            </div>
+            <div class="accordion-item" @click="e => e.target.classList.toggle('active')">
+                <div>
+                    <h2>3. {{content.nepaProcess.stepProcess.title3}}</h2><span class="accordion-icon"></span>
+                    </div>
+                <div>
+                    <p>{{content.nepaProcess.stepProcess.description3}}</p>
+                </div>
+            </div>
+            <div class="accordion-item" @click="e => e.target.classList.toggle('active')">
+                <div>
+                    <h2>4. {{content.nepaProcess.stepProcess.title4}}</h2><span class="accordion-icon"></span>
+                    </div>
+                <div>
+                    <p>{{content.nepaProcess.stepProcess.description4}}</p>
                 </div>
             </div>
         </div>
@@ -108,6 +124,14 @@ export default {
           this.$refs.container.className = 'content two-col isDesktop';
           this.$refs.container.classList.add("active-section-"+id)
       },
+  },
+computed: {
+    lang () {
+      return this.$store.state.lang
+    },
+    content () {
+      return this.$store.state.data[this.lang]
+    }
   },
 }
 </script>
