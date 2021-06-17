@@ -33,7 +33,14 @@
                     <span class="icon opinion"></span><span class="label">{{content.menu.menuLabel6}}</span>
                 </li>
             </router-link>
-            <router-link  :to="'/' + lang+ '/' +'contacts'" >
+            <!--<router-link  :to="'/' + lang+ '/' +'contacts'" >-->
+            <router-link :to="{
+                name: 'contacts', 
+                params: { 
+                    lang: this.lang, 
+                    pagetitle: (this.lang=='es' ? 'contactos' : 'contacts') 
+                    }
+            }">
                 <li>
                     <span class="icon contacts"></span><span class="label">{{content.menu.menuLabel7}}</span>
                 </li>
@@ -65,13 +72,22 @@
         },
         methods: {
             changeLang() {
-                if (this.$route.params.lang == "es") {
-                    this.$router.push(`/en/`+this.$route.name)
+                if (this.$store.state.lang == "es") {
                     this.$store.commit('SET_LANG', 'en')
+                    this.$router.push({ name: this.$route.name, params: { 
+                        lang: 'en' , 
+                        pagetitle: this.$route.name == 'contacts' ? 'contacts' : ( this.$route.name == 'home-page' ? 'home-page' : '' )
+                    }})
+                    //`/en/`+this.$route.params.pagetitle)*/
                 } else {
-                    this.$router.push(`/es/`+this.$route.name)
                     this.$store.commit('SET_LANG', 'es')
+                    this.$router.push({ name: this.$route.name, params: { 
+                        lang: 'es', 
+                        pagetitle: this.$route.name == 'contacts' ? 'contactos' : ( this.$route.name == 'home-page' ? 'home-page' : '' )
+                    }})
+                    //this.$router.push(`/es/`+this.$route.params.pagetitle)
                 }
+                //console.log(this.$route.params, this.$route.path)
             },
         },
     }

@@ -79,6 +79,25 @@ export default {
   props:{
     langData: String
   },
+  mounted() {
+    if(this.clang=='es')
+        this.$route.params.pagetitle = 'contactos'
+    else if(this.clang=='en')
+        this.$route.params.pagetitle = 'contacts'
+  },
+  computed: {
+      clang() {
+          return this.$route.params.lang
+      }
+  },
+  watch: {
+    /*clang()  {
+        if(this.clang=='en')
+            this.$route.params.pagetitle = 'contacts'
+        else if(this.clang=='es')
+            this.$route.params.pagetitle = 'contactos'
+    }*/
+  }
 }
 </script>
 

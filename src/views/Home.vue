@@ -26,6 +26,9 @@ export default {
       return this.$store.state.data[this.lang]
     }
   },
+  mounted() {
+    this.$store.commit('SET_LANG', this.$route.params.lang)
+  }
 }
 </script>
 
