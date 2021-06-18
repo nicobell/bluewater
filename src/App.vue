@@ -32,7 +32,7 @@ export default {
 			}
 		},
 		fetchData(){
-			fetch("./data.json")
+			fetch("/data.json")
 				.then(response=>{
 					return response.json()
 				})
@@ -47,9 +47,14 @@ export default {
 			},
 	},
 	mounted(){
-	  this.checkIfMobile()
-	  this.fetchData()
-	  console.log('mounted app');
+		this.checkIfMobile()
+		this.fetchData()
+		console.log('mounted app');
+		console.log(this.$store.state.pagetitle)
+		console.log(this.$route)
+		this.$router.push('/'+this.$store.state.lang)
+		//non funziona perchè store si resetta al refresh
+		//this.$router.push({name: this.$store.state.pagetitle!='' ? this.$store.state.pagetitle : 'home-page'})
 	},
 }
 </script>

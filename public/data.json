@@ -93,26 +93,15 @@
             "publicMeetingData":"April 19, 2021 | 3.00 PM",
             "publicMeetingButton":"Register Now"
         },
-        "menu":[
-            {
-                "menuLabel1":"Location"
-            },
-            {
-                "menuLabel2":"Project Description"
-            },
-            {
-                "menuLabel3":"DWP Act & License "
-            },
-            {
-                "menuLabel4":"Schedule"
-            },
-            {
-                "menuLabel5":"Updates"
-            },
-            {
-                "menuLabel6":"Your Opinion"
-            }
-        ],
+        "menu":{
+            "menuLabel1":"Localizatiòn",
+            "menuLabel2":"Descripciòn de proyecto",
+            "menuLabel3":"Ley y Licencia de DWP",
+            "menuLabel4":"Calendario",
+            "menuLabel5":"Actualizationes",
+            "menuLabel6":"Su opiniòn",
+            "menuLabel7":"Contactos"
+        },
         "intro":{
             "title":"Agua-Blu Texas Terminalz",
             "description": "The purpose of this site is to inform stakeholders about the project, and to provide the public an opportunity to submit written comments.",

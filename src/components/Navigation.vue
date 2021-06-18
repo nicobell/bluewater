@@ -3,32 +3,50 @@
         <div class="btn" @click="isActive = !isActive">
         </div>
         <ul @click="isActive = !isActive">
-            <router-link :to="'/' + lang+ '/' +'project-description'">
+            <router-link :to="{name: 'location',  params: { 
+                    lang: this.lang, 
+                    pagetitle: (this.lang=='es' ? 'localizacion' : 'location') 
+                    }}">
                 <li>
                     <span class="icon map"></span><span class="label">{{content.menu.menuLabel1}}</span>
                 </li>
             </router-link>
-            <router-link  :to="'/' + lang+ '/' +'project-description'" >
+            <router-link  :to="{name: 'project-description',  params: { 
+                    lang: this.lang, 
+                    pagetitle: (this.lang=='es' ? 'descripcion-de-proyecto' : 'project-description') 
+                    }}" >
                 <li>
                     <span class="icon description"></span><span class="label">{{content.menu.menuLabel2}}</span>
                 </li>
             </router-link>
-            <router-link  :to="'/' + lang +'/nepa-process'" >
+            <router-link  :to="{name: 'nepa-process',  params: { 
+                    lang: this.lang, 
+                    pagetitle: (this.lang=='es' ? 'proceso-nepa' : 'nepa-process') 
+                    }}" >
                 <li>
                     <span class="icon process"></span><span class="label">{{content.menu.menuLabel3}}</span>
                 </li>
             </router-link>
-            <router-link  :to="'/' + lang+ '/' +'nepa-process-schedule'" >
+            <router-link  :to="{name: 'nepa-process-schedule',  params: { 
+                    lang: this.lang, 
+                    pagetitle: (this.lang=='es' ? 'cronograma-de-proceso-nepa' : 'nepa-process-schedule') 
+                    }}">
                 <li>
                     <span class="icon schedule"></span><span class="label">{{content.menu.menuLabel4}}</span>
                 </li>
             </router-link>
-            <router-link  :to="'/' + lang+ '/' +'updates'" >
+            <router-link  :to="{name: 'updates',  params: { 
+                    lang: this.lang, 
+                    pagetitle: (this.lang=='es' ? 'actulizationes' : 'updates') 
+                    }}" >
                 <li>
                     <span class="icon updates"></span><span class="label">{{content.menu.menuLabel5}}</span>
                 </li>
             </router-link>
-            <router-link  :to="'/' + lang+ '/' +'comments'" >
+            <router-link  :to="{name: 'comments',  params: { 
+                    lang: this.lang, 
+                    pagetitle: (this.lang=='es' ? 'comentarios' : 'comments') 
+                    }}" >
                 <li>
                     <span class="icon opinion"></span><span class="label">{{content.menu.menuLabel6}}</span>
                 </li>
@@ -71,19 +89,69 @@
             }
         },
         methods: {
+            pageTitle(lang) {
+                var pt = ''
+                switch (this.$route.name) {
+                    case 'contacts':
+                        if(lang=='es')
+                            pt = 'contactos'
+                        else
+                            pt = 'contacts'
+                        break;
+                    case 'project-description':
+                        if(lang=='es')
+                            pt = 'descripcion-de-proyecto'
+                        else
+                            pt = 'project-description'
+                        break;
+                    case 'nepa-process':
+                        if(lang=='es')
+                            pt = 'proceso-nepa'
+                        else
+                            pt = 'nepa-process'
+                        break;
+                    case 'nepa-process-schedule':
+                        if(lang=='es')
+                            pt = 'cronograma-de-proceso-nepa'
+                        else
+                            pt = 'nepa-process-schedule'
+                        break;
+                    case 'updates':
+                        if(lang=='es')
+                            pt = 'actulizationes'
+                        else
+                            pt = 'updates'
+                        break;
+                    case 'comments':
+                        if(lang=='es')
+                            pt = 'comentarios'
+                        else
+                            pt = 'comments'
+                        break;
+                    case 'location':
+                        if(lang=='es')
+                            pt = 'localizacion'
+                        else
+                            pt = 'location'
+                    default:
+                        pt = 'home-page'
+                        break;
+                }
+                return pt
+            },
             changeLang() {
                 if (this.$store.state.lang == "es") {
                     this.$store.commit('SET_LANG', 'en')
                     this.$router.push({ name: this.$route.name, params: { 
                         lang: 'en' , 
-                        pagetitle: this.$route.name == 'contacts' ? 'contacts' : ( this.$route.name == 'home-page' ? 'home-page' : '' )
+                        pagetitle: this.pageTitle(this.$store.state.lang)
                     }})
                     //`/en/`+this.$route.params.pagetitle)*/
                 } else {
                     this.$store.commit('SET_LANG', 'es')
                     this.$router.push({ name: this.$route.name, params: { 
                         lang: 'es', 
-                        pagetitle: this.$route.name == 'contacts' ? 'contactos' : ( this.$route.name == 'home-page' ? 'home-page' : '' )
+                        pagetitle: this.pageTitle(this.$store.state.lang)
                     }})
                     //this.$router.push(`/es/`+this.$route.params.pagetitle)
                 }

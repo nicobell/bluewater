@@ -80,6 +80,9 @@ export default {
     langData: String
   },
   mounted() {
+    console.log('visiting ' + this.$route.name)
+    this.$store.commit('SET_LASTPAGE', this.$route.name)
+
     if(this.clang=='es')
         this.$route.params.pagetitle = 'contactos'
     else if(this.clang=='en')

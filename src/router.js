@@ -1,30 +1,36 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 
 //routing
 import App from '@/App';
 import Home from '@/views/Home';
 import ProjectDescription from '@/views/ProjectDescription';
 import Comments from '@/views/Comments';
-import updates from '@/views/Updates';
+import Updates from '@/views/Updates';
 import NepaProcess from '@/views/NepaProcess';
 import Schedule from '@/views/Schedule';
 import Contacts from '@/views/Contacts';
 
+Vue.use(VueRouter)
 
-Vue.use(Router)
-
-export default new Router ({
+const router = new VueRouter({
+    mode: 'history',
+    base: '',
     routes:[
         {
-            path:'/',
+            path:'/:lang',
             name:'app',
             component: App,
-            redirect: '/en/',
+            redirect: '/:lang/home-page'
+        },
+        {
+            path:'/:lang/home-page',
+            name:'home-page',
+            component:Home,
         },
         {
             path:'/:lang/:pagetitle',
-            name:'home-page',
+            name:'location',
             component:Home,
         },
         {
@@ -45,7 +51,7 @@ export default new Router ({
         {
             path:'/:lang/:pagetitle',
             name:'updates',
-            component:updates,
+            component:Updates,
         },
         {
             path:'/:lang/:pagetitle',
@@ -60,3 +66,5 @@ export default new Router ({
         
     ]
 })
+
+export default router

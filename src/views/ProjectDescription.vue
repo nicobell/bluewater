@@ -36,6 +36,10 @@ export default {
       return this.$store.state.data[this.lang]
     }
   },
+  mounted() {
+    console.log('visiting ' + this.$route.name)
+    this.$store.commit('SET_LASTPAGE', this.$route.name)
+  }
 }
 </script>
 

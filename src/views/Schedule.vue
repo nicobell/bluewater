@@ -29,6 +29,10 @@ export default {
   props:{
     langData: String
   },
+  mounted() {
+    console.log('visiting ' + this.$route.name)
+    this.$store.commit('SET_LASTPAGE', this.$route.name)
+  }
 }
 </script>
 

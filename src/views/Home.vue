@@ -27,6 +27,8 @@ export default {
     }
   },
   mounted() {
+    console.log('visiting ' + this.$route.name)
+    this.$store.commit('SET_LASTPAGE', this.$route.name)
     this.$store.commit('SET_LANG', this.$route.params.lang)
   }
 }

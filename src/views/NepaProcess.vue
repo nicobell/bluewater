@@ -110,29 +110,33 @@
 <script>
 
 export default {
-  name: 'nepa-process',
-  props:{
-    langData: String
-  },
-  data:()=>{
-      return{
-          isActive: true
-      }
-  },
-  methods:{
-      openSection(id){
-          this.$refs.container.className = 'content two-col isDesktop';
-          this.$refs.container.classList.add("active-section-"+id)
-      },
-  },
-computed: {
-    lang () {
-      return this.$store.state.lang
+    name: 'nepa-process',
+    props:{
+        langData: String
     },
-    content () {
-      return this.$store.state.data[this.lang]
+    data:()=>{
+        return{
+            isActive: true
+        }
+    },
+    methods:{
+        openSection(id){
+            this.$refs.container.className = 'content two-col isDesktop';
+            this.$refs.container.classList.add("active-section-"+id)
+        },
+    },
+    computed: {
+        lang () {
+        return this.$store.state.lang
+        },
+        content () {
+        return this.$store.state.data[this.lang]
+        }
+    },
+    mounted() {
+        console.log('visiting ' + this.$route.name)
+        this.$store.commit('SET_LASTPAGE', this.$route.name)
     }
-  },
 }
 </script>
 
