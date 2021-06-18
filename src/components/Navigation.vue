@@ -3,8 +3,7 @@
         <div class="btn" @click="isActive = !isActive">
         </div>
         <ul @click="isActive = !isActive">
-            <router-link :to="{name: 'location',  params: { 
-                    rid: 'location',
+            <router-link :to="{name: 'ProxyRouter',  params: { 
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'localizacion' : 'location') 
                     }}">
@@ -12,8 +11,7 @@
                     <span class="icon map"></span><span class="label">{{content.menu.menuLabel1}}</span>
                 </li>
             </router-link>
-            <router-link  :to="{name: 'project-description',  params: { 
-                    rid: 'project-description',
+            <router-link  :to="{name: 'ProxyRouter',  params: { 
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'descripcion-de-proyecto' : 'project-description') 
                     }}" >
@@ -21,8 +19,7 @@
                     <span class="icon description"></span><span class="label">{{content.menu.menuLabel2}}</span>
                 </li>
             </router-link>
-            <router-link  :to="{name: 'nepa-process',  params: { 
-                    rid: 'nepa-process',
+            <router-link  :to="{name: 'ProxyRouter',  params: { 
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'proceso-nepa' : 'nepa-process') 
                     }}" >
@@ -30,8 +27,7 @@
                     <span class="icon process"></span><span class="label">{{content.menu.menuLabel3}}</span>
                 </li>
             </router-link>
-            <router-link  :to="{name: 'nepa-process-schedule',  params: { 
-                    rid: 'nepa-process-schedule' ,
+            <router-link  :to="{name: 'ProxyRouter',  params: { 
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'cronograma-de-proceso-nepa' : 'nepa-process-schedule') 
                     }}">
@@ -39,8 +35,7 @@
                     <span class="icon schedule"></span><span class="label">{{content.menu.menuLabel4}}</span>
                 </li>
             </router-link>
-            <router-link  :to="{name: 'updates',  params: {
-                    rid: 'updates',
+            <router-link  :to="{name: 'ProxyRouter',  params: {
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'actulizationes' : 'updates') 
                     }}" >
@@ -48,8 +43,7 @@
                     <span class="icon updates"></span><span class="label">{{content.menu.menuLabel5}}</span>
                 </li>
             </router-link>
-            <router-link  :to="{name: 'comments',  params: { 
-                    rid: 'comments',
+            <router-link  :to="{name: 'ProxyRouter',  params: { 
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'comentarios' : 'comments') 
                     }}" >
@@ -59,9 +53,8 @@
             </router-link>
             <!--<router-link  :to="'/' + lang+ '/' +'contacts'" >-->
             <router-link :to="{
-                name: 'contacts', 
+                name: 'ProxyRouter', 
                 params: { 
-                    rid: 'contacts',
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'contactos' : 'contacts') 
                     }
@@ -85,6 +78,26 @@
         data() {
             return {
                 isActive: null,
+                componetsRoute: {
+                    "en": {
+                        "location": "location",
+                        "project-description": "project-description",
+                        "nepa-process-schedule": "nepa-process-schedule",
+                        "nepa-process": "proceso-nepa",
+                        "updates": "updates",
+                        "comments": "comments",
+                        "contacts": "contacts",
+                    },
+                    "es": {
+                        "localizacion": "location",
+                        "descripcion-de-proyecto": "project-description",
+                        "cronograma-de-proceso-nepa": "nepa-process-schedule",
+                        "proceso-nepa": "nepa-process",
+                        "actulizationes": "updates",
+                        "comentarios": "comments",
+                        "contactos": "contacts",
+                    },
+                },
             }
         },
         computed:{
@@ -149,16 +162,16 @@
             changeLang() {
                 if (this.$store.state.lang == "es") {
                     this.$store.commit('SET_LANG', 'en')
-                    this.$router.push({ name: this.$route.name, params: { 
+                    this.$router.push({ name: 'ProxyRouter', params: { 
                         lang: 'en' , 
-                        pagetitle: this.pageTitle(this.$store.state.lang)
+                        pagetitle: this.componetsRoute[this.$route.params.lang][this.$route.params.pagetitle]
                     }})
                     //`/en/`+this.$route.params.pagetitle)*/
                 } else {
                     this.$store.commit('SET_LANG', 'es')
-                    this.$router.push({ name: this.$route.name, params: { 
+                    this.$router.push({ name: 'ProxyRouter', params: { 
                         lang: 'es', 
-                        pagetitle: this.pageTitle(this.$store.state.lang)
+                        pagetitle: this.componetsRoute[this.$route.params.lang][this.$route.params.pagetitle]
                     }})
                     //this.$router.push(`/es/`+this.$route.params.pagetitle)
                 }

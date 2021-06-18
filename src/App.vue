@@ -45,15 +45,11 @@ export default {
 					console.log('Request failed', error)  
 				});
 		},
-		refreshPage () {
-			this.$route.name !== 'home-page' && this.$router.push(JSON.parse(localStorage.getItem('LS_ROUTE_KEY')))
-		}
 	},
 	mounted(){
 		this.checkIfMobile()
 		this.fetchData()
 		console.log('mounted app', );
-		this.refreshPage()
 	},
 }
 </script>
