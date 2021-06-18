@@ -44,17 +44,16 @@ export default {
 				.catch(function(error) {  
 					console.log('Request failed', error)  
 				});
-			},
+		},
+		refreshPage () {
+			this.$route.name !== 'home-page' && this.$router.push(JSON.parse(localStorage.getItem('LS_ROUTE_KEY')))
+		}
 	},
 	mounted(){
 		this.checkIfMobile()
 		this.fetchData()
-		console.log('mounted app');
-		console.log(this.$store.state.pagetitle)
-		console.log(this.$route)
-		this.$router.push('/'+this.$store.state.lang)
-		//non funziona perchè store si resetta al refresh
-		//this.$router.push({name: this.$store.state.pagetitle!='' ? this.$store.state.pagetitle : 'home-page'})
+		console.log('mounted app', );
+		this.refreshPage()
 	},
 }
 </script>

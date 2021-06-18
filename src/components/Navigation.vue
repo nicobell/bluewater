@@ -4,6 +4,7 @@
         </div>
         <ul @click="isActive = !isActive">
             <router-link :to="{name: 'location',  params: { 
+                    rid: 'location',
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'localizacion' : 'location') 
                     }}">
@@ -12,6 +13,7 @@
                 </li>
             </router-link>
             <router-link  :to="{name: 'project-description',  params: { 
+                    rid: 'project-description',
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'descripcion-de-proyecto' : 'project-description') 
                     }}" >
@@ -20,6 +22,7 @@
                 </li>
             </router-link>
             <router-link  :to="{name: 'nepa-process',  params: { 
+                    rid: 'nepa-process',
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'proceso-nepa' : 'nepa-process') 
                     }}" >
@@ -28,6 +31,7 @@
                 </li>
             </router-link>
             <router-link  :to="{name: 'nepa-process-schedule',  params: { 
+                    rid: 'nepa-process-schedule' ,
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'cronograma-de-proceso-nepa' : 'nepa-process-schedule') 
                     }}">
@@ -35,7 +39,8 @@
                     <span class="icon schedule"></span><span class="label">{{content.menu.menuLabel4}}</span>
                 </li>
             </router-link>
-            <router-link  :to="{name: 'updates',  params: { 
+            <router-link  :to="{name: 'updates',  params: {
+                    rid: 'updates',
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'actulizationes' : 'updates') 
                     }}" >
@@ -44,6 +49,7 @@
                 </li>
             </router-link>
             <router-link  :to="{name: 'comments',  params: { 
+                    rid: 'comments',
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'comentarios' : 'comments') 
                     }}" >
@@ -55,6 +61,7 @@
             <router-link :to="{
                 name: 'contacts', 
                 params: { 
+                    rid: 'contacts',
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'contactos' : 'contacts') 
                     }

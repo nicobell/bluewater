@@ -66,5 +66,18 @@ const router = new VueRouter({
         
     ]
 })
+// Save the last route name in localStorage
+router.afterEach((to) => {
+    const lastRouteName = JSON.parse(localStorage.getItem('LS_ROUTE_KEY'))
+    // al refresh non c'e' il route id (rid)
+    if (to.params.rid == null && to.name !== 'home-page') return
+
+    const myto = {
+        "path": to.path,
+        "name": to.name,
+        "params": to.params
+    }
+    localStorage.setItem('LS_ROUTE_KEY', JSON.stringify(myto))
+})
 
 export default router
