@@ -81,12 +81,12 @@
                 componetsRoute: {
                     "en": {
                         "location": "location",
-                        "project-description": "project-description",
-                        "nepa-process-schedule": "nepa-process-schedule",
+                        "project-description": "descripcion-de-proyecto",
+                        "nepa-process-schedule": "cronograma-de-proceso-nepa",
                         "nepa-process": "proceso-nepa",
-                        "updates": "updates",
-                        "comments": "comments",
-                        "contacts": "contacts",
+                        "updates": "actulizationes",
+                        "comments": "comentarios",
+                        "contacts": "contactos",
                     },
                     "es": {
                         "localizacion": "location",

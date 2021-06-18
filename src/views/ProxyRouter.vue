@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <keep-alive>
-      <component v-bind:is="myComponent"></component>
-    </keep-alive>
-  </div>
+  <keep-alive>
+    <component v-bind:is="myComponent"></component>
+  </keep-alive>
 </template>
 <script>
 export default {
