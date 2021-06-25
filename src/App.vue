@@ -44,7 +44,6 @@ export default {
 				.then(json=>{
 					this.$store.commit('SET_DATA', json)
 					this.dataLoaded = true
-
 					// Add Dynamic Routing
 					this.$router.addRoute({
 						path: '/',

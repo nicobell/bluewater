@@ -171,6 +171,8 @@
                 return pt
             },
             changeLang(lang) {
+                if (lang === this.$route.params.lang) return
+
                 this.$store.commit('SET_LANG', lang)
                 if (this.$route.params.pagetitle) {
                   this.$router.push({ name: 'ProxyRouter', params: { 
@@ -212,7 +214,7 @@
         color: rgba(255, 255, 255, 0.63);
     }
 
-    p.active a {
+    p a.active {
         font-weight: 600;
         color: #fff;
     }
