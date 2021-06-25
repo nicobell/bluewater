@@ -130,8 +130,8 @@
                 // stessa lingua
                 if (lang === this.$route.params.lang) return
                 // cambio lingua
+                this.$store.commit('SET_LANG', lang)
                 if (this.$route.params.pagetitle) {
-                  this.$store.commit('SET_LANG', lang)
                   const keyRout = this.getKeyByValue(this.i18nRoute(this.$route.params.lang), this.$route.params.pagetitle)
                   this.$router.push({ name: 'ProxyRouter', params: { 
                     lang: lang,
