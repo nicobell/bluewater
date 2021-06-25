@@ -5,7 +5,7 @@
         <ul @click="isActive = !isActive">
             <router-link :to="{name: 'ProxyRouter',  params: { 
                     lang: this.lang, 
-                    pagetitle: (this.lang=='es' ? 'localizacion' : 'location') 
+                    pagetitle: (this.lang=='es' ? 'localization' : 'location') 
                     }}">
                 <li>
                     <span class="icon map"></span><span class="label">{{content.menu.menuLabel1}}</span>
@@ -175,7 +175,7 @@
                 if (this.$route.params.pagetitle) {
                   this.$router.push({ name: 'ProxyRouter', params: { 
                     lang: lang,
-                    pagetitle: this.componetsRoute[lang][this.$route.params.pagetitle]
+                    pagetitle: this.componetsRoute[this.$route.params.lang][this.$route.params.pagetitle]
                   }})
                 } else {
                   this.$router.push({path: `/${lang}`})

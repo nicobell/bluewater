@@ -12,11 +12,16 @@ import Navigation from './components/Navigation.vue';
 import MyHeader from './components/MyHeader.vue';
 
 export default {
-	name: 'home',
+	name: 'App',
 	components: {
     	MyHeader,
 		Navigation
   	},
+	computed: {
+		langDefault () {
+			return this.$store.getters.langDefault
+		},
+	},
 	data:()=> {
 		return{
 			dataLoaded: false,
@@ -38,8 +43,13 @@ export default {
 				})
 				.then(json=>{
 					this.$store.commit('SET_DATA', json)
-					this.data = this.$store.state.data
 					this.dataLoaded = true
+
+					// Add Dynamic Routing
+					this.$router.addRoute({
+						path: '/',
+						redirect: this.langDefault
+					})
 				})
 				.catch(function(error) {  
 					console.log('Request failed', error)  
@@ -49,7 +59,6 @@ export default {
 	mounted(){
 		this.checkIfMobile()
 		this.fetchData()
-		console.log('mounted app', );
 	},
 }
 </script>

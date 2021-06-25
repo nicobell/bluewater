@@ -12,10 +12,10 @@ const router = new VueRouter({
     mode: 'history',
     base: '',
     routes:[
-        {
-            path:'/',
-            redirect: '/en'
-        },
+        // {
+        //     path:'/',
+        //     redirect: '/en'
+        // },
         {
             path:'/:lang',
             name:'Home',

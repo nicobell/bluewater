@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    data:null,
+    data: null,
     lang: 'en',
     isMobile: null,
     lastPage: null
@@ -24,4 +24,15 @@ export default new Vuex.Store({
       state.lastPage = page
     },
   },
+  getters: {
+    langDefault: state => {
+      for (const property in state.data) {
+        if (state.data[property]['default']) {
+          return `/${property}`
+        } else {
+          return '/en'
+        }
+      }
+    }
+  }
 })
