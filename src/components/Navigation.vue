@@ -65,8 +65,19 @@
             </router-link>
         </ul>
         <div class="lang-switch">
-            <p @click="changeLang" :class="this.$route.params.lang == 'es' ? 'es' : 'en'">
-                <a>Es</a> / <a>En</a>
+            <p>
+                <a
+                  @click="changeLang('es')"
+                  :class="this.$route.params.lang == 'es' ? 'active' : ''"
+                >
+                    Es
+                </a> / 
+                <a
+                  @click="changeLang('en')"
+                  :class="this.$route.params.lang == 'en' ? 'active' : ''"
+                >
+                    En
+                </a>
             </p>
         </div>
     </nav>
@@ -80,7 +91,7 @@
                 isActive: null,
                 componetsRoute: {
                     "en": {
-                        "location": "location",
+                        "location": "localization",
                         "project-description": "descripcion-de-proyecto",
                         "nepa-process-schedule": "cronograma-de-proceso-nepa",
                         "nepa-process": "proceso-nepa",
@@ -89,7 +100,7 @@
                         "contacts": "contactos",
                     },
                     "es": {
-                        "localizacion": "location",
+                        "localization": "location",
                         "descripcion-de-proyecto": "project-description",
                         "cronograma-de-proceso-nepa": "nepa-process-schedule",
                         "proceso-nepa": "nepa-process",
@@ -159,23 +170,16 @@
                 }
                 return pt
             },
-            changeLang() {
-                if (this.$store.state.lang == "es") {
-                    this.$store.commit('SET_LANG', 'en')
-                    this.$router.push({ name: 'ProxyRouter', params: { 
-                        lang: 'en' , 
-                        pagetitle: this.componetsRoute[this.$route.params.lang][this.$route.params.pagetitle]
-                    }})
-                    //`/en/`+this.$route.params.pagetitle)*/
+            changeLang(lang) {
+                this.$store.commit('SET_LANG', lang)
+                if (this.$route.params.pagetitle) {
+                  this.$router.push({ name: 'ProxyRouter', params: { 
+                    lang: lang,
+                    pagetitle: this.componetsRoute[lang][this.$route.params.pagetitle]
+                  }})
                 } else {
-                    this.$store.commit('SET_LANG', 'es')
-                    this.$router.push({ name: 'ProxyRouter', params: { 
-                        lang: 'es', 
-                        pagetitle: this.componetsRoute[this.$route.params.lang][this.$route.params.pagetitle]
-                    }})
-                    //this.$router.push(`/es/`+this.$route.params.pagetitle)
+                  this.$router.push({path: `/${lang}`})
                 }
-                //console.log(this.$route.params, this.$route.path)
             },
         }
     }

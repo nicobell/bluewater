@@ -13,14 +13,12 @@ const router = new VueRouter({
     base: '',
     routes:[
         {
-            path:'/:lang',
-            name:'app',
-            component: App,
-            redirect: '/:lang/home-page'
+            path:'/',
+            redirect: '/en'
         },
         {
-            path:'/:lang/home-page',
-            name:'home-page',
+            path:'/:lang',
+            name:'Home',
             component:Home,
 
         },

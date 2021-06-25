@@ -18,7 +18,7 @@ export default {
    data:()=>{
     return{
       componetsRoute: {
-        'localizacion': 'NepaProcess',
+        'localization': 'NepaProcess',
         'location': 'NepaProcess',
         'nepa-process-schedule': 'Schedule',
         'cronograma-de-proceso-nepa': 'Schedule',

@@ -2,7 +2,7 @@
   <header>
     <div class="container">
       <div class="loghi">
-        <router-link :to="`/${this.lang}/home-page`"><img src="../assets/logo-ma.png" width="270" height="37" alt="logo-ma"></router-link>
+        <router-link :to="`/${this.lang}`"><img src="../assets/logo-ma.png" width="270" height="37" alt="logo-ma"></router-link>
         <img src="../assets/logo-uscg.png" width="43" height="41" alt="logo-uscg">
       </div>
       <div class="meeting-banner">
