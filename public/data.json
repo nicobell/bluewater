@@ -1,37 +1,115 @@
 {
-    "it":{
-        "header":{
-            "publicMeetingTitle":"lorem ipsum",
-            "publicMeetingData":"lorem ipsum",
-            "publicMeetingButton":"lorem ipsum"
+    "en":{
+        "default": true,
+        "headerInfo":{
+            "publicMeetingTitle":"Public Meeting",
+            "publicMeetingData":"April 19, 2021 | 3.00 PM",
+            "publicMeetingButton":"Register Now"
         },
-        "menu":[
-            {
-                "menu-label":"lorem ipsum"
-            },
-            {
-                "menu-label":"lorem ipsum"
-            },
-            {
-                "menu-label":"lorem ipsum"
-            },
-            {
-                "menu-label":"lorem ipsum"
-            },
-            {
-                "menu-label":"lorem ipsum"
-            },
-            {
-                "menu-label":"lorem ipsum"
-            }
-        ],
+        "menu":{
+            "menuLabel1":"Location",
+            "menuLabel2":"Project Description",
+            "menuLabel3":"DWP Act & License ",
+            "menuLabel4":"Schedule",
+            "menuLabel5":"Updates",
+            "menuLabel6":"Your Opinion",
+            "menuLabel7":"Contacts"
+        },
         "intro":{
-            "title":"Bluewater Texas Terminal Deepwater Port Project",
+            "title":"IT Bluewater Texas Terminal Deepwater Port Project",
             "description": "The purpose of this site is to inform stakeholders about the project, and to provide the public an opportunity to submit written comments.",
-            "button":"lorem ipsum"
+            "buttonLabel":"Go To Webisite"
         },
         "projectDescription":{
             "title":"project description",
+            "description": "Bluewater is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construction of a deepwater port, approximately 56.18 statute miles of pipeline infrastructure. The Bluewater deepwater port would allow for up to two (2) very large crude carriers (VLCCs) or other crude oil carriers to moor at single point mooring (SPM) buoys and connect with the deepwater port via floating connecting crude oil hoses. During single vessel loading operations, the proposed project is capable of loading rates of up to approximately 80,000 barrels per hour (bph) and during simultaneous vessel loading operations, the proposed project is capable of loading rates of 40,000 bph. The facility is expected to service 16 VLCCs per month.Bluewater is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construction of a deepwater port, approximately 56.18 statute miles of pipeline infrastructure. The Bluewater deepwater port would allow for up to two (2) very large crude carriers (VLCCs) or other crude oil carriers to moor at single point mooring (SPM) buoys and connect with the deepwater port via floating connecting crude oil hoses. During single vessel loading operations, the proposed project is capable of loading rates of up to approximately 80,000 barrels per hour (bph) and during simultaneous vessel loading operations, the proposed project is capable of loading rates of 40,000 bph. The facility is expected to service 16 VLCCs per month."
+        },
+        "nepaProcess":{
+            "title":"NEPA process",
+            "stepProcess":{   
+                "title1":"What is nepa?",
+                "description1":"lorem ipsum",
+                "title2":"Public scoping",
+                "description2":"lorem ipsum",
+                "title3":"Prepare draft eis",
+                "description3":"lorem ipsum",
+                "title4":"Prepare final eis",
+                "description4":"lorem ipsum"
+                }
+            },
+        "updates":{
+            "title":"updates",
+            "items":[
+                {
+                    "date":"10 marzo 2020",
+                    "content":"lorem ipsum"
+                },
+                {
+                    "date":"10 marzo 2020",
+                    "content":"sadsad ipsum"
+                },
+                {
+                    "date":"10 marzo 2020",
+                    "content":"lorem ipsum"
+                },
+                {
+                    "date":"10 marzo 2020",
+                    "content":"lorem ipsum"
+                }
+            ]
+        },
+        "comments":{
+            "title":"comments",
+            "alertMessage":"Scoping Comments must be submitted by July 8, 2021.",
+            "secondTitle": "Public comments may be provided by:",
+            "description": "lorem",
+            "titleSidebar":"usefull documents",
+            "card1-title":"License Application",
+            "card1-desc":"link The license application is available for viewing at the Regulations.gov website",
+            "card1-button":"Go To Lorem",
+            "card2-title":"License Application",
+            "card2-desc":"link The license application is available for viewing at the Regulations.gov website",
+            "card2-button":"Go To Lorem",
+            "formTitle":"Need help, contact us.",
+            "formNameLabel":"name",
+            "formSurnameLabel":"surname",
+            "formEmailLabel":"email",
+            "formMessageLabel":"message",
+            "formCheckboxLabel":"I agree to the Terms and Privacy Policy"
+        },
+        "contacts":{
+            "title":"Contacts",
+            "section-1-title":"Federal Docket Management Facility’s",
+            "section-2-title":"U.S. Coast Guard",
+            "section-3-title":"Maritime administration",
+            "labelPhone":"telephone number",
+            "labelFax":"fax number",
+            "labelWebsite":"Website",
+            "labelDocket":"Docket number"
+        }
+    },
+    "es":{
+        "headerInfo":{
+            "publicMeetingTitle":"Public Meeting",
+            "publicMeetingData":"April 19, 2021 | 3.00 PM",
+            "publicMeetingButton":"Register Now"
+        },
+        "menu":{
+            "menuLabel1":"Localizatiòn",
+            "menuLabel2":"Descripciòn de proyecto",
+            "menuLabel3":"Ley y Licencia de DWP",
+            "menuLabel4":"Calendario",
+            "menuLabel5":"Actualizationes",
+            "menuLabel6":"Su opiniòn",
+            "menuLabel7":"Contactos"
+        },
+        "intro":{
+            "title":"Agua-Blu Texas Terminalz",
+            "description": "The purpose of this site is to inform stakeholders about the project, and to provide the public an opportunity to submit written comments.",
+            "buttonLabel":"Go To Webisite"
+        },
+        "projectDescription":{
+            "title":"ES project description",
             "description": "Bluewater is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construction of a deepwater port, approximately 56.18 statute miles of pipeline infrastructure. The Bluewater deepwater port would allow for up to two (2) very large crude carriers (VLCCs) or other crude oil carriers to moor at single point mooring (SPM) buoys and connect with the deepwater port via floating connecting crude oil hoses. During single vessel loading operations, the proposed project is capable of loading rates of up to approximately 80,000 barrels per hour (bph) and during simultaneous vessel loading operations, the proposed project is capable of loading rates of 40,000 bph. The facility is expected to service 16 VLCCs per month.Bluewater is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construction of a deepwater port, approximately 56.18 statute miles of pipeline infrastructure. The Bluewater deepwater port would allow for up to two (2) very large crude carriers (VLCCs) or other crude oil carriers to moor at single point mooring (SPM) buoys and connect with the deepwater port via floating connecting crude oil hoses. During single vessel loading operations, the proposed project is capable of loading rates of up to approximately 80,000 barrels per hour (bph) and during simultaneous vessel loading operations, the proposed project is capable of loading rates of 40,000 bph. The facility is expected to service 16 VLCCs per month."
         },
         "nepaProcess":{
@@ -84,28 +162,30 @@
             "title":"comments",
             "alertMessage":"Scoping Comments must be submitted by July 8, 2021.",
             "secondTitle": "Public comments may be provided by:",
-            "description": "adsz",
-            "occhielloCard":"usefull documents",
+            "description": "lorem",
+            "titleSidebar":"usefull documents",
             "card1-title":"License Application",
             "card1-desc":"link The license application is available for viewing at the Regulations.gov website",
+            "card1-button":"Go To Lorem",
             "card2-title":"License Application",
             "card2-desc":"link The license application is available for viewing at the Regulations.gov website",
+            "card2-button":"Go To Lorem",
             "formTitle":"Need help, contact us.",
-            "formNameLabel":"Name",
-            "formSurnameLabel":"Sur",
-            "formEmailLabel":"ema",
-            "formMessageLabel":"messag",
+            "formNameLabel":"name",
+            "formSurnameLabel":"surname",
+            "formEmailLabel":"email",
+            "formMessageLabel":"message",
             "formCheckboxLabel":"I agree to the Terms and Privacy Policy"
         },
         "contacts":{
             "title":"Contacts",
+            "section-1-title":"Federal Docket Management Facility’s",
+            "section-2-title":"U.S. Coast Guard",
+            "section-3-title":"Maritime administration",
             "labelPhone":"telephone number",
             "labelFax":"fax number",
             "labelWebsite":"Website",
             "labelDocket":"Docket number"
         }
-    },
-    "en":{
-        
     }
 }

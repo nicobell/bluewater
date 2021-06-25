@@ -1,39 +1,30 @@
 <template>
   <div class="template-page intro" >
-    <div >
-      <h1>{{ content.intro.title }}</h1>
-      <p>{{ content.intro.description }}</p>
-      <router-link :to="'/' + lang + '/' +'project-description'"><button class="outline icon-left">
-        {{ content.intro.buttonLabel }}
-      </button>
-      </router-link>
-    </div>
-    <router-view></router-view>
+      <h1>default</h1>
   </div>
 </template>
 <script>
 export default {
-  name: 'home',
+  name: 'default',
   data:()=>{
-    return {
+    return{
+      data:null,
+      isMobile:null,
     }
   },
-  computed: {
-    lang () {
-      return this.$store.state.lang
-    },
-    content () {
-      return this.$store.state.data[this.lang]
-    }
+  props:{
+    langData: String
   },
-  mounted() {
-    console.log('visiting ' + this.$route.name)
-    this.$store.commit('SET_LASTPAGE', this.$route.name)
-    this.$store.commit('SET_LANG', this.$route.params.lang)
+  watch: {
+  },
+  methods:{
+  },
+  mounted(){
   }
 }
 </script>
 
+<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   .intro {
     background: url("../assets/bg-intro.jpg") center no-repeat;

@@ -1,0 +1,20 @@
+{
+    "en": {
+        "location": "location",
+        "project-description": "project-description",
+        "nepa-process-schedule": "nepa-process-schedule",
+        "nepa-process": "nepa-process",
+        "updates": "updates",
+        "comments": "comments",
+        "contacts": "contacts"
+    },
+    "es": {
+        "localizacion": "location",
+        "descripcion-de-proyecto": "project-description",
+        "cronograma-de-proceso-nepa": "nepa-process-schedule",
+        "proceso-nepa": "nepa-process",
+        "actulizationes": "updates",
+        "comentarios": "comments",
+        "contactos": "contacts"
+    }
+}
