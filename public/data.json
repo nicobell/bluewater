@@ -1,6 +1,15 @@
 {
     "en":{
         "default": true,
+        "route": {
+            "location": "location",
+            "project-description": "project-description",
+            "nepa-process-schedule": "nepa-process-schedule",
+            "nepa-process": "nepa-process",
+            "updates": "updates",
+            "comments": "comments",
+            "contacts": "contacts"
+        },
         "headerInfo":{
             "publicMeetingTitle":"Public Meeting",
             "publicMeetingData":"April 19, 2021 | 3.00 PM",
@@ -89,6 +98,15 @@
         }
     },
     "es":{
+        "route": {
+            "location": "localization",
+            "project-description": "descripcion-de-proyecto",
+            "nepa-process-schedule": "cronograma-de-proceso-nepa",
+            "nepa-process": "proceso-nepa",
+            "updates": "actulizationes",
+            "comments": "comentarios",
+            "contacts": "contactos"
+        },
         "headerInfo":{
             "publicMeetingTitle":"Public Meeting",
             "publicMeetingData":"April 19, 2021 | 3.00 PM",
