@@ -1,23 +1,13 @@
 <template>
   <div class="map-wrapper">
-
     <div id="viewDiv"></div>
-  
-    <div id="info">
+    <!--<div id="info">
       <span id="name"></span> <br />
       <span id="category"></span> <br />
     </div>
 
     <button id="toggleLayer" @click="toggleLayer()">{{ this.toggleLabel }}</button>
     <button id="zoomout" @click="zoomOut()">zoom out</button>
-    <!--<button id="queryLayer" @click="prova()">query</button>-->
-
-    <!--<select name="provincia" id="select" @change="onChange($event)">
-      <option value="VI">VI</option>
-      <option value="PD">PD</option>
-      <option value="VR">VR</option>
-      <option value="VE">VE</option>
-    </select>-->
 
     <div id="topbar">
       <button
@@ -25,12 +15,7 @@
         id="distanceButton"
         title="Measure distance between two or more points"
       ></button>
-      <!--<button 
-        id="clear" 
-        title="Clear Measurements"
-      >Clear measure</button>-->
-    </div>
-
+    </div>-->
   </div>
 </template>
 
@@ -55,7 +40,7 @@ export default {
       showLayer: true,
       
       //province: "VI",
-      dataPoints: []
+      //dataPoints: []
     }
   },
   computed: {
@@ -129,11 +114,11 @@ export default {
     fetch("/data.json")
       .then(res => res.json())
       .then(json => {
-        //console.log(json)
-        this.dataPoints = {}
+        console.log(json)
+        //this.dataPoints = {}
       
       const template = {
-        title: "{Denominazione_struttura} in {Provincia}",
+        title: "prova",//{Denominazione_struttura} in {Provincia}",
         /*content: [
           {
             // It is also possible to set the fieldInfos outside of the content
@@ -175,7 +160,7 @@ export default {
       };
 
     this.itineraryLayer = new FeatureLayer({
-      url: "https://services2.arcgis.com/qpFFG6wHMKCXpc0N/arcgis/rest/services/Itinerari/FeatureServer/0",
+      url: "https://services2.arcgis.com/qpFFG6wHMKCXpc0N/arcgis/rest/services/Itinerari/FeatureServer/",
       outFields: ["*"]
     });
 
@@ -219,7 +204,7 @@ export default {
       }
     });
 
-    this.view.ui.add(new Legend({ view: this.view }), "bottom-left");
+    /*this.view.ui.add(new Legend({ view: this.view }), "bottom-left");
 
     this.view.ui.add("toggleLayer", "top-left");
     this.view.ui.add("zoomout", "top-left");
@@ -227,7 +212,7 @@ export default {
     this.view.ui.add(new Search({ view: this.view }), "top-right");
     this.view.ui.add('topbar', 'top-right');
 
-    let activeWidget = null
+    let activeWidget = null*/
     let vv = this.view
 
     document.getElementById("distanceButton").addEventListener("click", function() {
@@ -275,7 +260,7 @@ export default {
     }
 
     let stL = this.sanitariLayer
-    let dpts = this.dataPoints
+    //let dpts = this.dataPoints
 
     this.view
       .when(function() {
@@ -333,7 +318,7 @@ export default {
             /*if (highlight)
               return;*/
 
-            console.log(dpts)
+            /*console.log(dpts)
             let mp = dpts.find(p => {
               console.log((p.Codice_struttura + '-' + p.Codice_Comune))
               console.log(attributes.Codice_struttura + '-' + attributes.Codice_Comune)
@@ -350,7 +335,7 @@ export default {
               document.getElementById("info").style.visibility = "visible";
               document.getElementById("name").innerHTML = provincia;
               document.getElementById("category").innerHTML = "Struttura: " + name
-            }
+            }*/
             
             if (highlight)
               highlight.remove()
