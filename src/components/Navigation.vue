@@ -113,71 +113,29 @@
         },
         computed:{
             lang () {
-                return this.$store.state.lang
+              return this.$store.state.lang
             },
             content () {
-                return this.$store.state.data[this.lang]
-            }
+              return this.$store.state.data[this.lang]
+            },
         },
         methods: {
-            pageTitle(lang) {
-                var pt = ''
-                switch (this.$route.name) {
-                    case 'contacts':
-                        if(lang=='es')
-                            pt = 'contactos'
-                        else
-                            pt = 'contacts'
-                        break;
-                    case 'project-description':
-                        if(lang=='es')
-                            pt = 'descripcion-de-proyecto'
-                        else
-                            pt = 'project-description'
-                        break;
-                    case 'nepa-process':
-                        if(lang=='es')
-                            pt = 'proceso-nepa'
-                        else
-                            pt = 'nepa-process'
-                        break;
-                    case 'nepa-process-schedule':
-                        if(lang=='es')
-                            pt = 'cronograma-de-proceso-nepa'
-                        else
-                            pt = 'nepa-process-schedule'
-                        break;
-                    case 'updates':
-                        if(lang=='es')
-                            pt = 'actulizationes'
-                        else
-                            pt = 'updates'
-                        break;
-                    case 'comments':
-                        if(lang=='es')
-                            pt = 'comentarios'
-                        else
-                            pt = 'comments'
-                        break;
-                    case 'location':
-                        if(lang=='es')
-                            pt = 'localizacion'
-                        else
-                            pt = 'location'
-                    default:
-                        pt = 'home-page'
-                        break;
-                }
-                return pt
+            i18nRoute (lang) {
+                return this.$store.state.data[lang]['route']
+            },
+            getKeyByValue(object, value) {
+              return Object.keys(object).find(key => object[key] === value);
             },
             changeLang(lang) {
+                // stessa lingua
                 if (lang === this.$route.params.lang) return
-
+                // cambio lingua
                 this.$store.commit('SET_LANG', lang)
                 if (this.$route.params.pagetitle) {
+                  const keyRout = this.getKeyByValue(this.i18nRoute(this.$route.params.lang), this.$route.params.pagetitle)
                   this.$router.push({ name: 'ProxyRouter', params: { 
                     lang: lang,
-                    pagetitle: this.componetsRoute[this.$route.params.lang][this.$route.params.pagetitle]
+                    pagetitle: this.i18nRoute(lang)[keyRout]
                   }})
                 } else {
                   this.$router.push({path: `/${lang}`})
