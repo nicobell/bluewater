@@ -130,7 +130,7 @@ export default {
       .then(res => res.json())
       .then(json => {
         //console.log(json)
-        this.dataPoints = json.it.map_data.points
+        this.dataPoints = {}
       
       const template = {
         title: "{Denominazione_struttura} in {Provincia}",

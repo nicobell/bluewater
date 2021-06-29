@@ -26,12 +26,7 @@ const router = new VueRouter({
             path:'/:lang/:pagetitle',
             name:'ProxyRouter',
             component:ProxyRouter,
-        },
-        {
-            path:'/location',
-            name:'location',
-            component:Playground,
-        },
+        }
         
     ]
 })

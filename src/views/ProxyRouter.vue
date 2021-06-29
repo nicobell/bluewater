@@ -14,12 +14,13 @@ export default {
     'NepaProcess': () => import('@/views/NepaProcess'),
     'Comments': () => import('@/views/Comments'),
     'Contacts': () => import('@/views/Contacts'),
+    'Playground': () => import('@/views/Playground')
   },
    data:()=>{
     return{
       componetsRoute: {
-        'localization': 'NepaProcess',
-        'location': 'NepaProcess',
+        'localization': 'Playground',
+        'location': 'Playground',
         'nepa-process-schedule': 'Schedule',
         'cronograma-de-proceso-nepa': 'Schedule',
         'descripcion-de-proyecto' : 'ProjectDescription',
