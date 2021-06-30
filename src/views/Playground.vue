@@ -274,7 +274,7 @@ export default {
             type: "picture-marker", // autocasts as new SimpleMarkerSymbol()
             width: '27px',
             height: '27px',
-            url: 'plus.png'
+            url: './plus.png'
           }
         };
         layer.renderer = renderer;

@@ -72,3 +72,13 @@ button.icon-left::after {
     display: block !important;
   }
 }
+
+#viewDiv > div.esri-view-root > div.esri-ui > div.esri-ui-inner-container.esri-ui-corner-container > div.esri-ui-bottom-left.esri-ui-corner > div {
+  position: absolute;
+  left: -80px;
+  z-index: 1000;
+}
+
+#viewDiv > div.esri-view-root > div.esri-ui {
+  overflow: visible;
+}
