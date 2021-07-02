@@ -10,9 +10,13 @@
                 <span id="category"></span> <br />
             </div>
 
-            <button id="toggleLayer" @click="toggleLayer()">{{ this.toggleLabel }}</button>
+            <button id="toggleATWS" @click="toggleATWS()"><span :class="{'red': this.showATWS}">toggleATWS</span></button>
+            <button id="togglePE" @click="togglePE()"><span :class="{'green': this.showPE}">togglePE</span></button>
+            <button id="togglePEBDB" @click="togglePEBDB()"><span :class="{'purple': this.showPEBDB}">togglePEBDB</span></button>
+            <button id="toggleTCW" @click="toggleTCW()"><span :class="{'blue': this.showTCW}">toggleTCW</span></button>
 
-            <button id="zoomout" @click="zoomOut(workspacesLayer)">zoom out</button>
+            <button id="zoomout" @click="zoomOut()" class="esri-icon-zoom-out-fixed"></button>
+
 
             <div id="topbar">
                 <button
@@ -32,7 +36,9 @@ import FeatureLayer from "@arcgis/core/layers/FeatureLayer"
 import Point from '@arcgis/core/geometry/Point'
 import Search from '@arcgis/core/widgets/Search'
 import DistanceMeasurement2D from '@arcgis/core/widgets/DistanceMeasurement2D'
+//import LayerList from '@arcgis/core/widgets/LayerList'
 import Legend from '@arcgis/core/widgets/Legend'
+//import Collection from '@arcgis/core/core/Collection'
 
 export default {
     name: 'location',
@@ -45,29 +51,77 @@ export default {
             pipelineLayer: null,
             facilityLayer: null,
             valvesLayer: null,
-            showLayer: true,
+            showATWS: '',
+            showPE: '',
+            showPEBDB: '',
+            showTCW: ''
         }
     },
     computed: {
-        toggleLabel() {
-            return (this.showLayer ? 'hide' : 'show') + ' itinerary layer'
-        }
     },
     methods: {
-        zoomOut(layer) {
-            layer.queryExtent({
-                outSpatialReference: this.view.spatialReference
-            }).then((res) => {
-                console.log(res)
-                this.view.goTo(res.extent)
-                .catch(err => {
-                    console.log(err)
-                })
-            })
+        zoomOut() {
+            this.view.whenLayerView(this.workspacesLayer)
+                .then((layerView) => {
+                    layerView.queryExtent().then((response) => {
+                        this.view.goTo(response.extent);
+                    });
+                });
+        },
+        toggleATWS() {
+            if(this.showATWS=='')
+                this.showATWS = "Type <> 'ATWS'"
+            else 
+                this.showATWS = ''
+            this.toggleLayer()
+        },
+        togglePE() {
+            if(this.showPE=='')
+                this.showPE = "Type <> 'Permanent Easement'"
+            else 
+                this.showPE = ''
+            this.toggleLayer()
+        },
+        togglePEBDB() {
+            if(this.showPEBDB=='')
+                this.showPEBDB = "Type <> 'Permanent Easement - Between Drill Boxes'"
+            else 
+                this.showPEBDB = ''
+            this.toggleLayer()
+        },
+        toggleTCW() {
+            if(this.showTCW=='')
+                this.showTCW = "Type <> 'Temporary Construction Workspace'"
+            else 
+                this.showTCW = ''
+            this.toggleLayer()
         },
         toggleLayer() {
-            this.showLayer = !this.showLayer;
-            this.workspacesLayer.visible = !this.workspacesLayer.visible;
+            var qs = []
+            
+            if(this.showATWS) qs.push(this.showATWS)
+            else qs.slice(qs.indexOf(this.showATWS), 1)
+
+            if(this.showPE) qs.push(this.showPE)
+            else qs.slice(qs.indexOf(this.showPE), 1)
+
+            if(this.showPEBDB) qs.push(this.showPEBDB)
+            else qs.slice(qs.indexOf(this.showPEBDB), 1)
+
+            if(this.showTCW) qs.push(this.showTCW)
+            else qs.slice(qs.indexOf(this.showTCW), 1)
+
+            var query = ''
+            qs.forEach((q, i) => {
+                if(i!=qs.length-1)
+                    query += (' ' + q + ' AND')
+                else
+                    query += (' ' + q)
+            })
+
+            //console.log(query)
+            //console.log(qs)
+            this.workspacesLayer.definitionExpression = query
         }
     },
     mounted() {
@@ -91,16 +145,16 @@ export default {
 
         const labelclass = {
             labelExpression: "[name]",
-            labelPlacement: "above-left",
+            labelPlacement: "center-right",
             symbol: {
                 type: "text", // autocasts as new TextSymbol()
                 font: {
-                size: 10,
+                size: 12,
                 weight: "bold"
                 },
                 color: "white",
-                haloColor: "blue",
-                haloSize: 1,
+                haloColor: "#1C2332",
+                haloSize: 2,
                 backgroundColor: "white"
                 
             }
@@ -110,12 +164,21 @@ export default {
             url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/21464066_Bluewater_Project_Data/FeatureServer/0",
             outFields: ["*"],
             //popupTemplate: template,
-            labelingInfo: [labelclass]
+            labelingInfo: [labelclass],
+            renderer: {
+                type: "simple",
+                symbol: {
+                    type: "picture-marker",
+                    url: "/plus.png",
+                    width: "25px",
+                    height: "25px"
+                }
+            }
         })
 
         const map = new Map({
             basemap: "satellite",
-            layers: [this.workspacesLayer, this.valvesLayer, this.pipelineLayer, this.facilityLayer]
+            layers: [this.workspacesLayer, this.pipelineLayer, this.facilityLayer, this.valvesLayer]
         })
 
         this.view = new MapView({
@@ -131,11 +194,15 @@ export default {
         this.view.ui.add(new Legend({ view: this.view, 
             layerInfos: [{
                 layer: this.workspacesLayer,
-                title: "Legend"
+                title: "Workspaces Legend"
             }]
          }), "bottom-left");
 
-        this.view.ui.add("toggleLayer", "top-left");
+        this.view.ui.add("toggleATWS", "bottom-right");
+        this.view.ui.add("togglePE", "bottom-right");
+        this.view.ui.add("togglePEBDB", "bottom-right");
+        this.view.ui.add("toggleTCW", "bottom-right");
+
         this.view.ui.add("zoomout", "top-left");
         
         this.view.ui.add(new Search({ view: this.view }), "top-right");
@@ -224,7 +291,7 @@ export default {
                             latitude: graphic.geometry.latitude,
                             longitude: graphic.geometry.longitude
                         }),
-                        zoom: 15
+                        zoom: 16
                     }, {
                         animate: true,
                         duration: 1000
@@ -252,6 +319,18 @@ export default {
   width: 90vw;
 }
 
+.red {
+    color: red;
+}
+.green {
+    color: rgb(152, 230, 0);
+}
+.blue {
+    color: rgb(115, 223, 255);
+}
+.purple {
+    color: rgb(169, 0, 230);
+}
 
 .esri-popup .esri-popup__main-container .esri-popup__footer {
   display: none !important;
@@ -260,11 +339,11 @@ export default {
 
 
 #info {
-  background-color: black;
-  bottom: 20px;
+  background-color: white;
+  bottom: 100px;
   right: 20px;
   position: absolute;
-  opacity: 0.75;
+  opacity: 0.9;
   width: 300px;
   height: 70%;
   z-index: 1000;
@@ -273,7 +352,7 @@ export default {
   visibility: hidden;
 
   &> * {
-    color: orange;
+    color: #0079c1;
   }
 }
 
