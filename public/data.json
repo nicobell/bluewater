@@ -6,6 +6,7 @@
             "project-description": "project-description",
             "nepa-process-schedule": "nepa-process-schedule",
             "nepa-process": "nepa-process",
+            "dwp-act-license": "dwp-act-license",
             "updates": "updates",
             "comments": "comments",
             "contacts": "contacts"
@@ -18,11 +19,12 @@
         "menu":{
             "menuLabel1":"Location",
             "menuLabel2":"Project Description",
-            "menuLabel3":"DWP Act & License ",
-            "menuLabel4":"Schedule",
-            "menuLabel5":"Updates",
-            "menuLabel6":"Your Opinion",
-            "menuLabel7":"Contacts"
+            "menuLabel3":"NEPA Process",
+            "menuLabel4":"DWP Act & License ",
+            "menuLabel5":"Schedule",
+            "menuLabel6":"Updates",
+            "menuLabel7":"Your Opinion",
+            "menuLabel8":"Contacts"
         },
         "intro":{
             "title":"IT Bluewater Texas Terminal Deepwater Port Project",
@@ -36,16 +38,29 @@
         "nepaProcess":{
             "title":"NEPA process",
             "stepProcess":{   
-                "title1":"What is nepa?",
+                "title1":"What is NEPA?",
                 "description1":"lorem ipsum",
                 "title2":"Public scoping",
                 "description2":"lorem ipsum",
-                "title3":"Prepare draft eis",
+                "title3":"Prepare Draft EIS",
                 "description3":"lorem ipsum",
-                "title4":"Prepare final eis",
+                "title4":"Prepare Final EIS",
                 "description4":"lorem ipsum"
                 }
             },
+        "dwpAct": {
+            "title": "What is the Deepwater Port Act?",
+            "stepProcess": {
+                "title1": "Deepwater Port Licensing Process",
+                "description1": "lorem ipsum",
+                "title2": "Independent Risk Assessment",
+                "description2": "lorem ipsum",
+                "title3": "Deepwater Port Act's Criteria",
+                "description3": "lorem ipsum",
+                "title4": "Conditions and Requirements",
+                "description4": "lorem ipsum"
+            }
+        },
         "updates":{
             "title":"updates",
             "items":[
@@ -103,6 +118,7 @@
             "project-description": "descripcion-de-proyecto",
             "nepa-process-schedule": "cronograma-de-proceso-nepa",
             "nepa-process": "proceso-nepa",
+            "dwp-act-license": "ley-licencia-dwp",
             "updates": "actulizationes",
             "comments": "comentarios",
             "contacts": "contactos"
@@ -115,11 +131,12 @@
         "menu":{
             "menuLabel1":"Localizatiòn",
             "menuLabel2":"Descripciòn de proyecto",
-            "menuLabel3":"Ley y Licencia de DWP",
-            "menuLabel4":"Calendario",
-            "menuLabel5":"Actualizationes",
-            "menuLabel6":"Su opiniòn",
-            "menuLabel7":"Contactos"
+            "menuLabel3":"Proceso NEPA",
+            "menuLabel4":"Ley y Licencia de DWP",
+            "menuLabel5":"Calendario",
+            "menuLabel6":"Actualizationes",
+            "menuLabel7":"Su opiniòn",
+            "menuLabel8":"Contactos"
         },
         "intro":{
             "title":"Agua-Blu Texas Terminalz",
@@ -132,28 +149,29 @@
         },
         "nepaProcess":{
             "title":"NEPA process",
-            "stepProcess":[
-                {   
-                    "id":1,
-                    "title":"What is nepa?",
-                    "description":"lorem ipsum"
-                },
-                {   
-                    "id":2,
-                    "title":"Public scoping",
-                    "description":"lorem ipsum"
-                },
-                {   
-                    "id":3,
-                    "title":"Prepare draft eis",
-                    "description":"lorem ipsum"
-                },
-                {   
-                    "id":4,
-                    "title":"Prepare final eis",
-                    "description":"lorem ipsum"
+            "stepProcess":{   
+                "title1":"What is NEPA?",
+                "description1":"lorem ipsum",
+                "title2":"Public scoping",
+                "description2":"lorem ipsum",
+                "title3":"Prepare Draft EIS",
+                "description3":"lorem ipsum",
+                "title4":"Prepare Final EIS",
+                "description4":"lorem ipsum"
                 }
-            ]
+            },
+        "dwpAct": {
+            "title": "What is the Deepwater Port Act?",
+            "stepProcess": {
+                "title1": "Deepwater Port Licensing Process",
+                "description1": "lorem ipsum",
+                "title2": "Independent Risk Assessment",
+                "description2": "lorem ipsum",
+                "title3": "Deepwater Port Act's Criteria",
+                "description3": "lorem ipsum",
+                "title4": "Conditions and Requirements",
+                "description4": "lorem ipsum"
+            }
         },
         "updates":{
             "title":"updates",

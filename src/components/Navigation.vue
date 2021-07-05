@@ -29,29 +29,40 @@
             </router-link>
             <router-link  :to="{name: 'ProxyRouter',  params: { 
                     lang: this.lang, 
-                    pagetitle: (this.lang=='es' ? 'cronograma-de-proceso-nepa' : 'nepa-process-schedule') 
+                    pagetitle: (this.lang=='es' ? 'ley-licencia-dwp' : 'dwp-act-license') 
                     }}">
                 <li>
-                    <span class="icon schedule"></span><span class="label">{{content.menu.menuLabel4}}</span>
+                    <span class="icon process"></span><span class="label">{{content.menu.menuLabel4}}</span>
                 </li>
             </router-link>
             <router-link  :to="{name: 'ProxyRouter',  params: {
                     lang: this.lang, 
-                    pagetitle: (this.lang=='es' ? 'actulizationes' : 'updates') 
+                    ppagetitle: (this.lang=='es' ? 'cronograma-de-proceso-nepa' : 'nepa-process-schedule') 
                     }}" >
                 <li>
-                    <span class="icon updates"></span><span class="label">{{content.menu.menuLabel5}}</span>
+                    <span class="icon schedule"></span><span class="label">{{content.menu.menuLabel5}}</span>
                 </li>
             </router-link>
             <router-link  :to="{name: 'ProxyRouter',  params: { 
                     lang: this.lang, 
-                    pagetitle: (this.lang=='es' ? 'comentarios' : 'comments') 
+                    pagetitle: (this.lang=='es' ? 'actulizationes' : 'updates') 
                     }}" >
                 <li>
-                    <span class="icon opinion"></span><span class="label">{{content.menu.menuLabel6}}</span>
+                    <span class="icon updates"></span><span class="label">{{content.menu.menuLabel6}}</span>
                 </li>
             </router-link>
             <!--<router-link  :to="'/' + lang+ '/' +'contacts'" >-->
+            <router-link :to="{
+                name: 'ProxyRouter', 
+                params: { 
+                    lang: this.lang, 
+                    ppagetitle: (this.lang=='es' ? 'comentarios' : 'comments') 
+                    }
+            }">
+                <li>
+                    <span class="icon opinion"></span><span class="label">{{content.menu.menuLabel7}}</span>
+                </li>
+            </router-link>
             <router-link :to="{
                 name: 'ProxyRouter', 
                 params: { 
@@ -60,7 +71,7 @@
                     }
             }">
                 <li>
-                    <span class="icon contacts"></span><span class="label">{{content.menu.menuLabel7}}</span>
+                    <span class="icon contacts"></span><span class="label">{{content.menu.menuLabel8}}</span>
                 </li>
             </router-link>
         </ul>
@@ -89,12 +100,13 @@
         data() {
             return {
                 isActive: null,
-                componetsRoute: {
+                componentsRoute: {
                     "en": {
                         "location": "localization",
                         "project-description": "descripcion-de-proyecto",
                         "nepa-process-schedule": "cronograma-de-proceso-nepa",
                         "nepa-process": "proceso-nepa",
+                        "dwp-act-license": "ley-licencia-dwp",
                         "updates": "actulizationes",
                         "comments": "comentarios",
                         "contacts": "contactos",
@@ -104,6 +116,7 @@
                         "descripcion-de-proyecto": "project-description",
                         "cronograma-de-proceso-nepa": "nepa-process-schedule",
                         "proceso-nepa": "nepa-process",
+                        "ley-licencia-dwp" : "dwp-act-license",
                         "actulizationes": "updates",
                         "comentarios": "comments",
                         "contactos": "contacts",

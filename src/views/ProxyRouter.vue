@@ -12,13 +12,14 @@ export default {
     'Updates': () => import('@/views/Updates'),
     'Schedule': () => import('@/views/Schedule'),
     'NepaProcess': () => import('@/views/NepaProcess'),
+    'DWPActLicense': () => import('@/views/DWPActLicense'),
     'Comments': () => import('@/views/Comments'),
     'Contacts': () => import('@/views/Contacts'),
     'Location': () => import('@/views/Location')
   },
    data:()=>{
     return{
-      componetsRoute: {
+      componentsRoute: {
         'localization': 'Location',
         'location': 'Location',
         'nepa-process-schedule': 'Schedule',
@@ -27,6 +28,8 @@ export default {
         'project-description': 'ProjectDescription',
         'proceso-nepa' : 'NepaProcess',
         'nepa-process': 'NepaProcess',
+        'ley-licencia-dwp': 'DWPActLicense',
+        'dwp-act-license': 'DWPActLicense',
         'actulizationes' : 'Updates',
         'updates' : 'Updates',
         'comentarios' : 'Comments',
@@ -38,7 +41,7 @@ export default {
   },
   computed: {
     myComponent () {
-      return this.componetsRoute[this.$route.params.pagetitle]
+      return this.componentsRoute[this.$route.params.pagetitle]
     },
   },
   mounted(){

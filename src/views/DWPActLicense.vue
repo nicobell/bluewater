@@ -3,7 +3,7 @@
   <header class="intro-header">
     </header>
     <div class="main-content">
-      <h1 class="title">{{content.nepaProcess.title}}</h1>
+      <h1 class="title">{{content.dwpAct.title}}</h1>
       <div class="content two-col isDesktop active-section-1" ref="container" >
         <div class="inner-content-left">
             <div class="menu">
@@ -11,59 +11,59 @@
                     <div class="num">
                         01
                     </div>
-                    <h2>{{content.nepaProcess.stepProcess.title1}}</h2>
+                    <h2>{{content.dwpAct.stepProcess.title1}}</h2>
                 </div>
                 <div class="item-menu" @click="openSection(2)">
                     <div class="num">
                         02
                     </div>
-                    <h2>{{content.nepaProcess.stepProcess.title2}}</h2>
+                    <h2>{{content.dwpAct.stepProcess.title2}}</h2>
                 </div>
                 <div class="item-menu" @click="openSection(3)">
                     <div class="num">
                         03
                     </div>
-                    <h2>{{content.nepaProcess.stepProcess.title3}}</h2>
+                    <h2>{{content.dwpAct.stepProcess.title3}}</h2>
                 </div>
                 <div class="item-menu" @click="openSection(4)">
                     <div class="num">
                         04
                     </div>
-                    <h2>{{content.nepaProcess.stepProcess.title4}}</h2>
+                    <h2>{{content.dwpAct.stepProcess.title4}}</h2>
                 </div>
             </div>
         </div>
         <div class="inner-content-right">
             <div class="item-content item-content-1">
                 <h1>
-                    {{content.nepaProcess.stepProcess.title1}}
+                    {{content.dwpAct.stepProcess.title1}}
                 </h1>
                 <p>
-                    {{content.nepaProcess.stepProcess.description1}}
+                    {{content.dwpAct.stepProcess.description1}}
                 </p>
             </div>
             <div class="item-content item-content-2">
                 <h1>
-                    {{content.nepaProcess.stepProcess.title2}}
+                    {{content.dwpAct.stepProcess.title2}}
                 </h1>
                 <p>
-                    {{content.nepaProcess.stepProcess.description2}}
+                    {{content.dwpAct.stepProcess.description2}}
                 </p>
             </div>
             <div class="item-content item-content-3">
                 <h1>
-                    {{content.nepaProcess.stepProcess.title3}}
+                    {{content.dwpAct.stepProcess.title3}}
                 </h1>
                 <p>
-                    {{content.nepaProcess.stepProcess.description3}}
+                    {{content.dwpAct.stepProcess.description3}}
                 </p>
             </div>
             <div class="item-content item-content-4">
                 <h1>
-                    {{content.nepaProcess.stepProcess.title4}}
+                    {{content.dwpAct.stepProcess.title4}}
                 </h1>
                 <p>
-                    {{content.nepaProcess.stepProcess.description4}}
+                    {{content.dwpAct.stepProcess.description4}}
                 </p>
             </div>
         </div>
@@ -72,34 +72,34 @@
         <div class="inner-content" >
             <div class="accordion-item" @click="e => e.target.classList.toggle('active')">
                 <div>
-                    <h2>1. {{content.nepaProcess.stepProcess.title1}}</h2><span class="accordion-icon"></span>
+                    <h2>1. {{content.dwpAct.stepProcess.title1}}</h2><span class="accordion-icon"></span>
                     </div>
                 <div>
-                    <p>{{content.nepaProcess.stepProcess.description1}}</p>
+                    <p>{{content.dwpAct.stepProcess.description1}}</p>
                 </div>
             </div>
             <div class="accordion-item" @click="e => e.target.classList.toggle('active')">
                 <div>
-                    <h2>2. {{content.nepaProcess.stepProcess.title2}}</h2><span class="accordion-icon"></span>
+                    <h2>2. {{content.dwpAct.stepProcess.title2}}</h2><span class="accordion-icon"></span>
                     </div>
                 <div>
-                    <p>{{content.nepaProcess.stepProcess.description2}}</p>
+                    <p>{{content.dwpAct.stepProcess.description2}}</p>
                 </div>
             </div>
             <div class="accordion-item" @click="e => e.target.classList.toggle('active')">
                 <div>
-                    <h2>3. {{content.nepaProcess.stepProcess.title3}}</h2><span class="accordion-icon"></span>
+                    <h2>3. {{content.dwpAct.stepProcess.title3}}</h2><span class="accordion-icon"></span>
                     </div>
                 <div>
-                    <p>{{content.nepaProcess.stepProcess.description3}}</p>
+                    <p>{{content.dwpAct.stepProcess.description3}}</p>
                 </div>
             </div>
             <div class="accordion-item" @click="e => e.target.classList.toggle('active')">
                 <div>
-                    <h2>4. {{content.nepaProcess.stepProcess.title4}}</h2><span class="accordion-icon"></span>
+                    <h2>4. {{content.dwpAct.stepProcess.title4}}</h2><span class="accordion-icon"></span>
                     </div>
                 <div>
-                    <p>{{content.nepaProcess.stepProcess.description4}}</p>
+                    <p>{{content.dwpAct.stepProcess.description4}}</p>
                 </div>
             </div>
         </div>
@@ -110,11 +110,11 @@
 <script>
 
 export default {
-    name: 'nepa-process',
+    name: 'dwp-act-license',
     props:{
         langData: String
     },
-    data:()=>{
+    data: ()=>{
         return{
             isActive: true
         }
@@ -127,10 +127,10 @@ export default {
     },
     computed: {
         lang () {
-        return this.$store.state.lang
+            return this.$store.state.lang
         },
         content () {
-        return this.$store.state.data[this.lang]
+            return this.$store.state.data[this.lang]
         }
     },
     mounted() {
