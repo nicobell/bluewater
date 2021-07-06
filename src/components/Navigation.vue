@@ -37,7 +37,7 @@
             </router-link>
             <router-link  :to="{name: 'ProxyRouter',  params: {
                     lang: this.lang, 
-                    ppagetitle: (this.lang=='es' ? 'cronograma-de-proceso-nepa' : 'nepa-process-schedule') 
+                    pagetitle: (this.lang=='es' ? 'cronograma-de-proceso-nepa' : 'nepa-process-schedule') 
                     }}" >
                 <li>
                     <span class="icon schedule"></span><span class="label">{{content.menu.menuLabel5}}</span>
@@ -56,7 +56,7 @@
                 name: 'ProxyRouter', 
                 params: { 
                     lang: this.lang, 
-                    ppagetitle: (this.lang=='es' ? 'comentarios' : 'comments') 
+                    pagetitle: (this.lang=='es' ? 'comentarios' : 'comments') 
                     }
             }">
                 <li>
