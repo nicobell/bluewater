@@ -3,101 +3,40 @@
   <header class="intro-header">
     </header>
     <div class="main-content">
-      <h1 class="title">{{content.nepaProcess.title}}</h1>
+      <h1 class="title">{{content.title}}</h1>
       <div class="content two-col isDesktop active-section-1" ref="container" >
         <div class="inner-content-left">
             <div class="menu">
-                <div class="item-menu" @click="openSection(1)">
-                    <div class="num">
-                        01
-                    </div>
-                    <h2>{{content.nepaProcess.stepProcess.title1}}</h2>
+
+                <div class="item-menu" @click="openSection(index+1)" v-for="(d, index) in content.stepProcess" :key="'label'+index">
+                    <div class="num"> 0{{index+1}} </div>
+                    <h2>{{d.title}}</h2>
                 </div>
-                <div class="item-menu" @click="openSection(2)">
-                    <div class="num">
-                        02
-                    </div>
-                    <h2>{{content.nepaProcess.stepProcess.title2}}</h2>
-                </div>
-                <div class="item-menu" @click="openSection(3)">
-                    <div class="num">
-                        03
-                    </div>
-                    <h2>{{content.nepaProcess.stepProcess.title3}}</h2>
-                </div>
-                <div class="item-menu" @click="openSection(4)">
-                    <div class="num">
-                        04
-                    </div>
-                    <h2>{{content.nepaProcess.stepProcess.title4}}</h2>
-                </div>
+
             </div>
         </div>
+
         <div class="inner-content-right">
-            <div class="item-content item-content-1">
-                <h1>
-                    {{content.nepaProcess.stepProcess.title1}}
-                </h1>
-                <p v-html="content.nepaProcess.stepProcess.description1">
-                </p>
-            </div>
-            <div class="item-content item-content-2">
-                <h1>
-                    {{content.nepaProcess.stepProcess.title2}}
-                </h1>
-                <p v-html="content.nepaProcess.stepProcess.description2">
-                </p>
-            </div>
-            <div class="item-content item-content-3">
-                <h1>
-                    {{content.nepaProcess.stepProcess.title3}}
-                </h1>
-                <p v-html="content.nepaProcess.stepProcess.description3">
-                </p>
-            </div>
-            <div class="item-content item-content-4">
-                <h1>
-                    {{content.nepaProcess.stepProcess.title4}}
-                </h1>
-                <p v-html="content.nepaProcess.stepProcess.description4">
-                </p>
+            <div :class="['item-content', 'item-content-'+(index+1)]" v-for="(d, index) in content.stepProcess" :key="'title'+index">
+                <h1> {{ d.title }} </h1>
+                <p v-html="d.description"></p>
             </div>
         </div>
+
       </div>
-      <div class="content two-col isMobile"  >
-        <div class="inner-content" >
-            <div class="accordion-item" @click="e => e.target.classList.toggle('active')">
+      <div class="content two-col isMobile">
+        <div class="inner-content">
+
+            <div class="accordion-item" @click="e => e.target.classList.toggle('active')"
+                v-for="(d, index) in content.stepProcess" :key="'accordion'+index">
                 <div>
-                    <h2>1. {{content.nepaProcess.stepProcess.title1}}</h2><span class="accordion-icon"></span>
-                    </div>
+                    <h2>{{index+1}}. {{d.title}}</h2><span class="accordion-icon"></span>
+                </div>
                 <div>
-                    <p>{{content.nepaProcess.stepProcess.description1}}</p>
+                    <p v-html="d.description"></p>
                 </div>
             </div>
-            <div class="accordion-item" @click="e => e.target.classList.toggle('active')">
-                <div>
-                    <h2>2. {{content.nepaProcess.stepProcess.title2}}</h2><span class="accordion-icon"></span>
-                    </div>
-                <div>
-                    <p>{{content.nepaProcess.stepProcess.description2}}</p>
-                </div>
-            </div>
-            <div class="accordion-item" @click="e => e.target.classList.toggle('active')">
-                <div>
-                    <h2>3. {{content.nepaProcess.stepProcess.title3}}</h2><span class="accordion-icon"></span>
-                    </div>
-                <div>
-                    <p>{{content.nepaProcess.stepProcess.description3}}</p>
-                </div>
-            </div>
-            <div class="accordion-item" @click="e => e.target.classList.toggle('active')">
-                <div>
-                    <h2>4. {{content.nepaProcess.stepProcess.title4}}</h2><span class="accordion-icon"></span>
-                    </div>
-                <div>
-                    <p>{{content.nepaProcess.stepProcess.description4}}</p>
-                </div>
-            </div>
+
         </div>
       </div>
     </div>
@@ -123,10 +62,11 @@ export default {
     },
     computed: {
         lang () {
-        return this.$store.state.lang
+            return this.$store.state.lang
         },
         content () {
-        return this.$store.state.data[this.lang]
+            console.log(this.$store.state.data[this.lang].nepaProcess)
+            return this.$store.state.data[this.lang].nepaProcess
         }
     },
     mounted() {
