@@ -10,8 +10,7 @@
                   <p class="date">
                       {{update.date}}
                   </p>
-                  <p class="text">
-                        {{update.content}}
+                  <p class="text" v-html="update.content">
                   </p>
               </div>
           </div>

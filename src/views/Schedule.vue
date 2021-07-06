@@ -3,7 +3,7 @@
   <header class="intro-header">
     </header>
     <div class="main-content">
-      <h1 class="title">Nepa Process Schedule</h1>
+      <h1 class="title">{{ content.title }}</h1>
       <div class="content two-col">
 
         <div class="view-more">
@@ -21,22 +21,10 @@
         <div class="spalla" :style="spallaStyle">
           <button @click="toggleSpalla">X</button>
           <div>
-            <div>
-              <a @click="openAccordion(1)">KEY DATES THROUGH FINAL EIS AND APPLICATION PUBLIC HEARINGS {{openLabel(1)}}</a>
+            <div v-for="(a, index) in content.items" :key="'accordion'+index">
+              <a @click="openAccordion(index)">{{ a.title }}{{openLabel(index)}}</a>
               <hr>
-              <p :class="{'accordion-1': true, 'open': this.openAcc==1}">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quam repellat, assumenda, itaque velit, nostrum aliquid porro quisquam eum explicabo molestias enim nesciunt veritatis obcaecati nam earum eius soluta in!
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia corrupti aliquam suscipit exercitationem rem porro reprehenderit rerum officiis cum, eum laborum iusto expedita sequi commodi accusantium libero natus eaque nihil.
-              </p>
-            </div>
-            <div>
-              <a @click="openAccordion(2)">FUTURE ACTION {{openLabel(2)}}</a>
-              <hr>
-              <p :class="{'accordion-1': true, 'open': this.openAcc==2}">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam voluptas pariatur, ipsa ea ab voluptatem consectetur in! Nisi voluptatibus cum quasi repellat. Quas fuga aliquid neque error deserunt, eum dolorem?
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae commodi deserunt consectetur iure placeat neque non rem. Omnis quo, quaerat ab dicta qui eaque asperiores architecto, mollitia quasi in neque?
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum repellendus hic quia suscipit neque necessitatibus rerum iste, nihil tenetur id aliquam! Repellat, culpa impedit earum id fuga quod dicta voluptate.
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti natus qui quisquam a obcaecati. Omnis veniam praesentium nesciunt optio nisi soluta. Architecto labore voluptatibus molestias cum totam in quasi dolores.
+              <p :class="{'accordion' : true, 'open': openAcc==index}" v-html="a.description">
               </p>
             </div>
           </div>
@@ -50,13 +38,12 @@
 export default {
   name: 'nepa-process-schedule',
    data:()=>{
-    return{
-      lang:"",
+    return {
       data: null,
       showSpalla: false,
       openAcc1: false,
       openAcc2: false,
-      openAcc: 0
+      openAcc: -1
     }
   },
   props:{
@@ -68,7 +55,7 @@ export default {
     },
     openAccordion(index) {
       if(this.openAcc == index)
-        this.openAcc = 0
+        this.openAcc = -1
       else
         this.openAcc = index
     },
@@ -80,9 +67,9 @@ export default {
     },
     openLabel(index) {
       if(this.openAcc == index)
-        return '^'
+        return ' ^'
       else
-        return 'v'
+        return ' v'
     }
   },
   computed: {
@@ -90,11 +77,18 @@ export default {
       return 'visibility: ' + (this.showSpalla ? 'visible' : 'hidden') + ';' +
         'right: ' + (this.showSpalla ? '10px' : '-35%') + ';' +
         'opacity: ' + (this.showSpalla ? '1' : '0.5') + ';'
+    },
+    lang () {
+      return this.$store.state.lang
+    },
+    content () {
+      return this.$store.state.data[this.lang].schedule
     }
   },
   mounted() {
     console.log('visiting ' + this.$route.name)
     this.$store.commit('SET_LASTPAGE', this.$route.name)
+    console.log(this.content)
   }
 }
 </script>
@@ -177,7 +171,7 @@ img {
   }
 }
 
-.accordion-1, .accordion-2 {
+.accordion {
   display: none;
   &.open {
     display: block;

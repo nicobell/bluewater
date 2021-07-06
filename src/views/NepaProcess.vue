@@ -38,32 +38,28 @@
                 <h1>
                     {{content.nepaProcess.stepProcess.title1}}
                 </h1>
-                <p>
-                    {{content.nepaProcess.stepProcess.description1}}
+                <p v-html="content.nepaProcess.stepProcess.description1">
                 </p>
             </div>
             <div class="item-content item-content-2">
                 <h1>
                     {{content.nepaProcess.stepProcess.title2}}
                 </h1>
-                <p>
-                    {{content.nepaProcess.stepProcess.description2}}
+                <p v-html="content.nepaProcess.stepProcess.description2">
                 </p>
             </div>
             <div class="item-content item-content-3">
                 <h1>
                     {{content.nepaProcess.stepProcess.title3}}
                 </h1>
-                <p>
-                    {{content.nepaProcess.stepProcess.description3}}
+                <p v-html="content.nepaProcess.stepProcess.description3">
                 </p>
             </div>
             <div class="item-content item-content-4">
                 <h1>
                     {{content.nepaProcess.stepProcess.title4}}
                 </h1>
-                <p>
-                    {{content.nepaProcess.stepProcess.description4}}
+                <p v-html="content.nepaProcess.stepProcess.description4">
                 </p>
             </div>
         </div>
