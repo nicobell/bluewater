@@ -5,93 +5,95 @@
             "publicMeetingData":"April 19, 2021 | 3.00 PM",
             "publicMeetingButton":"Register Now"
         },
-        "menu":[
-            {
-                "menu-label-1":"Location"
-            },
-            {
-                "menu-label-2":"Project Description"
-            },
-            {
-                "menu-label-3":"DWP Act & License "
-            },
-            {
-                "menu-label-4":"Schedule"
-            },
-            {
-                "menu-label-5":"Updates"
-            },
-            {
-                "menu-label-6":"Your Opinion"
-            }
-        ],
+        "menu":{
+            "menuLabel1":"Location",
+            "menuLabel2":"Project Description",
+            "menuLabel3":"DWP Act & License ",
+            "menuLabel4":"Schedule",
+            "menuLabel5":"Updates",
+            "menuLabel6":"Your Opinion",
+            "menuLabel7":"Contacts"
+        },
         "intro":{
-            "title":"IT Bluewater Texas Terminal Deepwater Port Project",
+            "title":"Bluewater Texas Terminal Deepwater Port Project",
             "description": "The purpose of this site is to inform stakeholders about the project, and to provide the public an opportunity to submit written comments.",
             "buttonLabel":"Go To Webisite"
         },
         "projectDescription":{
             "title":"project description",
-            "description": "Bluewater is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construction of a deepwater port, approximately 56.18 statute miles of pipeline infrastructure. The Bluewater deepwater port would allow for up to two (2) very large crude carriers (VLCCs) or other crude oil carriers to moor at single point mooring (SPM) buoys and connect with the deepwater port via floating connecting crude oil hoses. During single vessel loading operations, the proposed project is capable of loading rates of up to approximately 80,000 barrels per hour (bph) and during simultaneous vessel loading operations, the proposed project is capable of loading rates of 40,000 bph. The facility is expected to service 16 VLCCs per month.Bluewater is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construction of a deepwater port, approximately 56.18 statute miles of pipeline infrastructure. The Bluewater deepwater port would allow for up to two (2) very large crude carriers (VLCCs) or other crude oil carriers to moor at single point mooring (SPM) buoys and connect with the deepwater port via floating connecting crude oil hoses. During single vessel loading operations, the proposed project is capable of loading rates of up to approximately 80,000 barrels per hour (bph) and during simultaneous vessel loading operations, the proposed project is capable of loading rates of 40,000 bph. The facility is expected to service 16 VLCCs per month."
+            "description": "Bluewater is proposing to construct, own, operate, and eventually decommission a deepwater port (DWP), associated pipeline infrastructure, and facility located within Aransas, Nueces, and San Patricio counties, Texas.  The proposed project involves the design, engineering, and construction of a DWP and approximately 56.18 statute miles of pipeline infrastructure. The 12-acre Harbor Island Facility, located on Harbor Island in Nueces County, would consist of pig launchers/receivers, meters and valves, operations building, and communications facility, with no crude oil storage on site.<br /> The Bluewater DWP would allow for the loading of two (2) very large crude carriers (VLCCs) at the proposed DWP via two single point mooring (SPM) buoy systems and connect with the DWP via floating connecting crude oil hoses.  The proposed Project would be capable of loading rates of up to approximately 80,000 barrels per hour (bph).  The proposed Project is expected to service 16 VLCCs per month."
         },
         "nepaProcess":{
             "title":"NEPA process",
-            "stepProcess":[
-                {   
-                    "id":1,
-                    "title":"What is nepa?",
-                    "description":"lorem ipsum"
-                },
-                {   
-                    "id":2,
-                    "title":"Public scoping",
-                    "description":"lorem ipsum"
-                },
-                {   
-                    "id":3,
-                    "title":"Prepare draft eis",
-                    "description":"lorem ipsum"
-                },
-                {   
-                    "id":4,
-                    "title":"Prepare final eis",
-                    "description":"lorem ipsum"
+            "stepProcess":{   
+                "title1":"What is nepa?",
+                "description1":"The National Environmental Policy Act (NEPA) was passed in 1969 and has two major objectives:<br />
+                - To ensure that federal agencies consider the potential environmental effects of proposed programs, projects, and actions before initiating them.<br />
+                - To inform the public and encourage and facilitate public involvement in federal agency activities that may affect the quality of the human environment.<br />
+                Guidelines for Federal agencies to implement NEPA were established in regulations by the President’s Council on Environmental Quality (CEQ) in 40 CFR 1500-1508. In addition, the U.S. Coast Guard (Coast Guard) has issued implementing procedures and policy for considering environmental impacts under NEPA and related laws.<br />
+                Documents prepared under NEPA include a Categorical Exclusion, and Environmental Assessment, and an Environmental Impact Statement (EIS). When a proposed action has the potential for significant impacts, and EIS, the most detailed analysis conducted under NEPA, is prepared.",
+                "title2":"Public scoping",
+                "description2":"The public scoping meeting provides opportunities for the public, federal, state, and local agencies, any affected Indian tribes, and other interested parties to provide input on the range of actions, alternatives, and impacts to be considered in the EIS.<br />
+                The open house and public scoping meeting, for the Bluewater Texas Terminal Project were held on July 22, 2019 in Corpus Christi, Texas.",
+                "title3":"Prepare draft eis",
+                "description3":"Draft EIS is distributes to interested stakeholders including federal, state and local agencies, affected Indian tribes, private citizens and organizations and is placed in community libraries in the affected region.<br />
+                Open houses and public meetings provide the public an opportunity to make oral comments or submit written comments.",
+                "title4":"Prepare final eis",
+                "description4":"The Final EIS includes copies of all comments and Coast Guard/MARAD responses. The Notice of Availability (NOA) of the Final EIS will appear in the Federal Register and local newspapers."
                 }
-            ]
-        },
+            },
         "updates":{
             "title":"updates",
             "items":[
                 {
-                    "date":"10 marzo 2020",
-                    "content":"lorem ipsum"
+                    "date":"May 24, 2021",
+                    "content":"Public Notice on Availability of the DEIS for the Bluewater Project and Public Meeting and Commenting info"
                 },
                 {
-                    "date":"10 marzo 2020",
-                    "content":"lorem ipsum"
+                    "date":"May 24, 2021",
+                    "content":"Registration to participate in the Virtual Public Meeting"
                 },
                 {
-                    "date":"10 marzo 2020",
-                    "content":"lorem ipsum"
+                    "date":"May 24, 2021",
+                    "content":"Public Repositories Locations<br />
+                    Electronic versions of these documents are also available for viewing at the following libraries:
+•	La Retama Public Library, 805 Comanche Street, Corpus Christi, Texas 78401; (361) 826-7055
+•	Ingleside Public Library, 2775 Waco Street, Ingleside, Texas 78362; (361) 776-5355
+•	Ed & Hazel Richmond Public Library, 110 North Lamont Street, Aransas Pass, Texas 78336; (361) 758-2350
+•	Texas A&M University, Corpus Christi Mary & Jeff Bell Library/Federal Depository, 6300 Ocean Drive #5702, Corpus Christi, Texas 78412; (361) 825-2340
+•	Owen R. Hopkins Public Library, 3202 McKinzie Road, Corpus Christi, Texas 78410; (361) 826-2350"
                 },
                 {
-                    "date":"10 marzo 2020",
-                    "content":"lorem ipsum"
+                    "date":"Date",
+                    "content":"Newspaper Notices<br />
+•	The Aransas Pass Progress – 5/12/2021
+•	Ingleside Index - 5/12/2021
+•	Port Aransas South Jetty – 5/13/2021 & 5/27/2011
+•	Corpus Christi Caller – 5/14/2021 & 5/28/2021
+•	The Rockport Pilot – 5/8/2021 & 5/22/2021"
+                },
+                {
+                    "date":"Date",
+                    "content":"NEPA Process - President’s Council on Environmental Quality (CEQ) in 40 CFR 1500-1508"
+                },
+                {
+                    "date":"July 3, 2019",
+                    "content":"Notice of Intent (NOI) to prepare an Environmental Impact Statement (EIS)"
                 }
             ]
         },
         "comments":{
             "title":"comments",
-            "alertMessage":"Scoping Comments must be submitted by July 8, 2021.",
+            "alertMessage":"Public Comments on the DEIS must be submitted by July 8, 2021.",
             "secondTitle": "Public comments may be provided by:",
-            "description": "lorem",
+            "description": "Electronically (preferred to expedite processing): Through the Federal Docket Management System website: http://regulations.gov under docket number MARAD-2019-0094. Electronically through the Federal eRulemaking Portal",
             "titleSidebar":"usefull documents",
             "card1-title":"License Application",
-            "card1-desc":"link The license application is available for viewing at the Regulations.gov website",
-            "card1-button":"Go To Lorem",
-            "card2-title":"License Application",
-            "card2-desc":"link The license application is available for viewing at the Regulations.gov website",
-            "card2-button":"Go To Lorem",
+            "card1-desc":"The license application is available for viewing at the Regulations.gov website",
+            "card1-button":"Go To Website",
+            "card2-title":"Draft EIS",
+            "card2-desc":"The Draft EIS is available for viewing at the Regulations.gov website:",
+            "card2-button":"Go To Website",
             "formTitle":"Need help, contact us.",
             "formNameLabel":"name",
             "formSurnameLabel":"surname",
@@ -116,33 +118,22 @@
             "publicMeetingData":"April 19, 2021 | 3.00 PM",
             "publicMeetingButton":"Register Now"
         },
-        "menu":[
-            {
-                "menu-label-1":"Location"
-            },
-            {
-                "menu-label-2":"Project Description"
-            },
-            {
-                "menu-label-3":"DWP Act & License "
-            },
-            {
-                "menu-label-4":"Schedule"
-            },
-            {
-                "menu-label-5":"Updates"
-            },
-            {
-                "menu-label-6":"Your Opinion"
-            }
-        ],
+        "menu":{
+            "menuLabel1":"Localizatiòn",
+            "menuLabel2":"Descripciòn de proyecto",
+            "menuLabel3":"Ley y Licencia de DWP",
+            "menuLabel4":"Calendario",
+            "menuLabel5":"Actualizationes",
+            "menuLabel6":"Su opiniòn",
+            "menuLabel7":"Contactos"
+        },
         "intro":{
             "title":"Agua-Blu Texas Terminalz",
             "description": "The purpose of this site is to inform stakeholders about the project, and to provide the public an opportunity to submit written comments.",
             "buttonLabel":"Go To Webisite"
         },
         "projectDescription":{
-            "title":"project description",
+            "title":"ES project description",
             "description": "Bluewater is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construction of a deepwater port, approximately 56.18 statute miles of pipeline infrastructure. The Bluewater deepwater port would allow for up to two (2) very large crude carriers (VLCCs) or other crude oil carriers to moor at single point mooring (SPM) buoys and connect with the deepwater port via floating connecting crude oil hoses. During single vessel loading operations, the proposed project is capable of loading rates of up to approximately 80,000 barrels per hour (bph) and during simultaneous vessel loading operations, the proposed project is capable of loading rates of 40,000 bph. The facility is expected to service 16 VLCCs per month.Bluewater is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construction of a deepwater port, approximately 56.18 statute miles of pipeline infrastructure. The Bluewater deepwater port would allow for up to two (2) very large crude carriers (VLCCs) or other crude oil carriers to moor at single point mooring (SPM) buoys and connect with the deepwater port via floating connecting crude oil hoses. During single vessel loading operations, the proposed project is capable of loading rates of up to approximately 80,000 barrels per hour (bph) and during simultaneous vessel loading operations, the proposed project is capable of loading rates of 40,000 bph. The facility is expected to service 16 VLCCs per month."
         },
         "nepaProcess":{
