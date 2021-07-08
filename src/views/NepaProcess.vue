@@ -4,26 +4,35 @@
     </header>
     <div class="main-content">
         <h1 class="title">{{content.title}}</h1>
-        <div class="content two-col isDesktop active-section-1" ref="container" >
+
+        <div class="content two-col isDesktop" ref="container" >
             <div class="inner-content-left">
                 <div class="menu">
+                    <div :class="{'item-menu': true, 'active-section': isActive==index+1}" 
+                        @click="openSection(index+1)"
+                        v-for="(d, index) in content.stepProcess" 
+                        :key="'label'+index">
 
-                    <div class="item-menu" @click="openSection(index+1)" v-for="(d, index) in content.stepProcess" :key="'label'+index">
                         <div class="num"> 0{{index+1}} </div>
                         <h2>{{d.title}}</h2>
                     </div>
-
                 </div>
             </div>
 
             <div class="inner-content-right">
-                <div :class="['item-content', 'item-content-'+(index+1)]" v-for="(d, index) in content.stepProcess" :key="'title'+index">
-                    <h1> {{ d.title }} </h1>
-                    <p v-html="d.description"></p>
+                <div class="item-content">
+                    <h1>{{ selectedStep.title }}</h1>
+                    <p v-html="selectedStep.description"></p>
+                    <div v-if="selectedStep.body">
+                        <div v-for="(b, index) in selectedStep.body" :key="'element' + index">
+                            <h4>{{ b.title }}</h4>
+                            <div v-html="b.description"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
+
         <div class="content two-col isMobile">
             <div class="inner-content">
 
@@ -49,15 +58,14 @@ export default {
     props:{
         langData: String
     },
-    data:()=>{
+    data: () => {
         return{
-            isActive: true
+            isActive: 1
         }
     },
     methods:{
         openSection(id){
-            this.$refs.container.className = 'content two-col isDesktop';
-            this.$refs.container.classList.add("active-section-"+id)
+            this.isActive = id
         },
     },
     computed: {
@@ -67,6 +75,9 @@ export default {
         content () {
             console.log(this.$store.state.data[this.lang].nepaProcess)
             return this.$store.state.data[this.lang].nepaProcess
+        },
+        selectedStep() {
+            return this.content.stepProcess.find(step => step.id == this.isActive)
         }
     },
     mounted() {
@@ -82,15 +93,11 @@ export default {
 }
 .inner-content-right {
     border-left: 1px solid #70707036;
+    max-width: 55%;
 }
-
 .item-menu {
     cursor: pointer;
 }
-.item-content {
-    display: none;
-}
-
 .content h1 {
     color:#175B8F;
     font-size: 1.5rem;
@@ -133,7 +140,7 @@ export default {
         transition: 0.3s ease;
         color:#175B8F;
         border: 2px solid #175b8f31;
-        width: 50px;
+        min-width: 50px;
         height: 50px;
         display: flex;
         justify-content: center;
@@ -144,10 +151,7 @@ export default {
     }
 }
 
-.active-section-2 .item-menu:nth-child(2),
-.active-section-3 .item-menu:nth-child(3),
-.active-section-4 .item-menu:nth-child(4),
-.active-section-1 .item-menu:nth-child(1) {
+.active-section {
     .num {
         background-color: #175B8F;
         color: #fff;
@@ -156,15 +160,6 @@ export default {
         color: #175B8F;
     }
 }
-
-
-.active-section-1 .item-content:nth-child(1) {display: block;}
-.active-section-2 .item-content:nth-child(2) {display: block;}
-.active-section-3 .item-content:nth-child(3) {display: block;}
-.active-section-4 .item-content:nth-child(4) {display: block;}
-
-
-
 
 .accordion-item {
     padding: 30px 50px;
