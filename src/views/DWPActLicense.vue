@@ -35,13 +35,21 @@
         <div class="content two-col isMobile">
             <div class="inner-content">
 
-                <div class="accordion-item" @click="e => e.target.classList.toggle('active')"
+                <div class="accordion-item"
                     v-for="(d, index) in content.stepProcess" :key="'accordion'+index">
-                    <div>
-                        <h2>{{index+1}}. {{d.title}}</h2><span class="accordion-icon"></span>
+                    <div class="clicker" @click="toggle">
+                        <h2>{{index+1}}. {{d.label}}</h2><span class="accordion-icon"></span>
                     </div>
                     <div>
-                        <p v-html="d.description"></p>
+                        <div class="hidden-content">
+                            <h2>{{ d.title }}</h2>
+                            <p v-html="d.description"></p>
+                            <div v-for="(b, index) in d.body" :key="'element' + index" :class="['body', b.titleClass]">
+                                <div class="detail">{{ b.detail }}</div>
+                                <h4 class="title">{{ b.title }}</h4>
+                                <div v-html="b.description"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -66,6 +74,10 @@ export default {
         openSection(id){
             this.isActive = id
         },
+        toggle(e) {
+            console.log(e.target.parentNode)
+            e.target.parentNode.classList.toggle('active')
+        }
     },
     computed: {
         lang () {
