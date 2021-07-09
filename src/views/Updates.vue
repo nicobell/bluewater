@@ -7,11 +7,12 @@
       <div class="content">
           <div class="inner-content">
               <div class="item-update" v-for="(update, index) in content.updates.items" :key="index">
-                  <p class="date">
-                      {{update.date}}
-                  </p>
-                  <p class="text" v-html="update.content">
-                  </p>
+                  <p class="date"> {{update.date}}  </p>
+                  <div class="text">
+                    {{update.subtitle}}
+                    <p v-if="update.content" v-html="update.content"></p>
+                  </div>
+                  
               </div>
           </div>
         </div>

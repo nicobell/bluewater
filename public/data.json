@@ -65,10 +65,6 @@
                         }, {
                             "title": "Public comment",
                             "description": "<p>Comments may be made verbally and/ or in writing at the open house and public meetings or directly to the Federal Docket Management System.</p><p>The Federal Docket Management System at www.regulations.gov is a public record and includes, or will include the application, Draft and Final EISs, Federal Register notices, letters, consultations, public and agency comments, and other supporting information for the Project such as this open house material and meeting transcripts under Docket number MARAD-2019-0094.</p>"
-                        },
-                        {
-                            "title": "",
-                            "description": "<button>Go to comments</button>"
                         }
                     ]
                 },
@@ -230,58 +226,114 @@
             "items":[
                 {
                     "date":"May 24, 2021",
-                    "content":"Public Notice on Availability of the DEIS for the Bluewater Project and Public Meeting and Commenting info"
+                    "subtitle":"Public Notice on Availability of the DEIS for the Bluewater Project and Public Meeting and Commenting info",
+                    "content": ""
                 },
                 {
                     "date":"May 24, 2021",
-                    "content":"Registration to participate in the Virtual Public Meeting"
+                    "subtitle":"Registration to participate in the Virtual Public Meeting",
+                    "content": ""
                 },
                 {
                     "date":"May 24, 2021",
-                    "content": "Public Repositories Locations<br />Electronic versions of these documents are also available for viewing at the following libraries:Retama Public Library, 805 Comanche Street, Corpus Christi, Texas 78401; (361) 826-7055<br>• Ingleside Public Library, 2775 Waco Street, Ingleside, Texas 78362; (361) 776-5355<br>• Ed & Hazel Richmond Public Library, 110 North Lamont Street, Aransas Pass, Texas 78336; (361) 758-2350<br>• Texas A&M University, Corpus Christi Mary & Jeff Bell Library/Federal Depository, 6300 Ocean Drive #5702, Corpus Christi, Texas 78412; (361) 825-2340<br>• Owen R. Hopkins Public Library, 3202 McKinzie Road, Corpus Christi, Texas 78410; (361) 826-2350"
+                    "subtitle": "Public Repositories Locations",
+                    "content": "Electronic versions of these documents are also available for viewing at the following libraries:<ul><li>Retama Public Library, 805 Comanche Street, Corpus Christi, Texas 78401; (361) 826-7055</li><li>Ingleside Public Library, 2775 Waco Street, Ingleside, Texas 78362; (361) 776-5355</li><li>Ed & Hazel Richmond Public Library, 110 North Lamont Street, Aransas Pass, Texas 78336; (361) 758-2350</li><li>Texas A&M University, Corpus Christi Mary & Jeff Bell Library/Federal Depository, 6300 Ocean Drive #5702, Corpus Christi, Texas 78412; (361) 825-2340</li><li>Owen R. Hopkins Public Library, 3202 McKinzie Road, Corpus Christi, Texas 78410; (361) 826-2350</li></ul>"
                 },
                 {
                     "date":"Date",
-                    "content":"Newspaper Notices<br>• The Aransas Pass Progress – 5/12/2021<br>• Ingleside Index - 5/12/2021<br>• Port Aransas South Jetty – 5/13/2021 & 5/27/2011<br>• Corpus Christi Caller – 5/14/2021 & 5/28/2021<br>• The Rockport Pilot – 5/8/2021 & 5/22/2021"
+                    "subtitle":"Newspaper Notices",
+                    "content": "<ul><li>The Aransas Pass Progress – 5/12/2021</li><li>Ingleside Index - 5/12/2021</li><li>Port Aransas South Jetty – 5/13/2021 & 5/27/2011</li><li>Corpus Christi Caller – 5/14/2021 & 5/28/2021</li><li>The Rockport Pilot – 5/8/2021 & 5/22/2021</li></ul>"
                 },
                 {
                     "date":"Date",
-                    "content":"NEPA Process - President’s Council on Environmental Quality (CEQ) in 40 CFR 1500-1508"
+                    "subtitle":"NEPA Process - President’s Council on Environmental Quality (CEQ) in 40 CFR 1500-1508",
+                    "content": ""
                 },
                 {
                     "date":"July 3, 2019",
-                    "content":"Notice of Intent (NOI) to prepare an Environmental Impact Statement (EIS)"
+                    "subtitle":"Notice of Intent (NOI) to prepare an Environmental Impact Statement (EIS)",
+                    "content": ""
                 }
             ]
         },
         "comments":{
             "title":"comments",
-            "alertMessage":"Public Comments on the DEIS must be submitted by July 8, 2021.",
+            "cards": [
+                {
+                    "title":"License Application",
+                    "description":"The License Application is available for viewing at the <span>Regulations</span> website",
+                    "button":"Go to Website",
+                    "link": "http://regulations.gov"
+                }, {
+                    "title":"Draft EIS",
+                    "description":"The Draft EIS is available for viewing at the <span>Regulations</span> website:",
+                    "button":"Go to Website",
+                    "link": "https://www.google.com"
+                }
+            ],
+            "alertMessage":"Scoping Comments must be submitted by <span>July 8, 2021.</span>",
             "secondTitle": "Public comments may be provided by:",
-            "description": "Electronically (preferred to expedite processing): Through the Federal Docket Management System website: http://regulations.gov under docket number MARAD-2019-0094. Electronically through the Federal eRulemaking Portal",
-            "titleSidebar":"usefull documents",
-            "card1-title":"License Application",
-            "card1-desc":"The license application is available for viewing at the Regulations.gov website",
-            "card1-button":"Go To Website",
-            "card2-title":"Draft EIS",
-            "card2-desc":"The Draft EIS is available for viewing at the Regulations.gov website:",
-            "card2-button":"Go To Website",
-            "formTitle":"Need help, contact us.",
-            "formNameLabel":"name",
-            "formSurnameLabel":"surname",
-            "formEmailLabel":"email",
-            "formMessageLabel":"message",
-            "formCheckboxLabel":"I agree to the Terms and Privacy Policy"
+            "sidebarTitle":"Useful Documents",
+            "body": [
+                {
+                    "title": "Electronically (preferred to expedite processing):",
+                    "content": "<p>Through the Federal Docket Management System website: <a href=\"http://regulations.gov\" target=\"_blank\">http://regulations.gov</a> under docket number MARAD-2019-0094.</p><p>Electronically through the Federal eRulemaking Portal</p>"
+                }, {
+                    "title": "By Mail:",
+                    "content": "Docket Management Facility (MARAD-2019-0094), U.S. Department of Transportation, West Building, Ground Floor, Room W12-140, 1200 New Jersey Avenue, SE, Washington, DC 20590-0001"
+                }, {
+                    "title": "By Fax:",
+                    "content": "To the Docket Management Facility at (202) 493-2251"
+                }
+            ]
         },
         "contacts":{
             "title":"Contacts",
-            "section-1-title":"Federal Docket Management Facility’s",
-            "section-2-title":"U.S. Coast Guard",
-            "section-3-title":"Maritime administration",
-            "labelPhone":"telephone number",
-            "labelFax":"fax number",
-            "labelWebsite":"Website",
-            "labelDocket":"Docket number"
+            "sections": [
+                {
+                    "title": "Federal Docket Management Facilities",
+                    "subtitle": "",
+                    "body": [
+                        {
+                            "title": "Telephone Number",
+                            "content": "(XXX) XXX-XXXX<br>(XXX) XXX-XXXX"
+                        }, {
+                            "title": "Fax Number",
+                            "content": "(XXX) XXX-XXXX"
+                        }, {
+                            "title": "Website",
+                            "content": "http://www.regulations.gov"
+                        }, {
+                            "title": "Docket Number",
+                            "content": "MARAD-2019-0094"
+                        }
+                    ]
+                }, {
+                    "title": "U.S. Coast Guard",
+                    "subtitle": "Mr. Roddy Bachman, USCG",
+                    "body": [
+                        {
+                            "title": "Telephone Number",
+                            "content": "(XXX) XXX-XXXX"
+                        }, {
+                            "title": "Fax Number",
+                            "content": "(XXX) XXX-XXXX"
+                        }
+                    ]
+                }, {
+                    "title": "Maritime Administration",
+                    "subtitle": "Ms. Yvette M. Fields, MARAD",
+                    "body": [
+                        {
+                            "title": "Website",
+                            "content": "http://www.regulations.gov"
+                        }, {
+                            "title": "Docket Number",
+                            "content": "MARAD-2019-0094"
+                        }
+                    ]
+                }
+            ]
         }
     },
     "es":{
@@ -320,30 +372,176 @@
             "description": "Bluewater is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construction of a deepwater port, approximately 56.18 statute miles of pipeline infrastructure. The Bluewater deepwater port would allow for up to two (2) very large crude carriers (VLCCs) or other crude oil carriers to moor at single point mooring (SPM) buoys and connect with the deepwater port via floating connecting crude oil hoses. During single vessel loading operations, the proposed project is capable of loading rates of up to approximately 80,000 barrels per hour (bph) and during simultaneous vessel loading operations, the proposed project is capable of loading rates of 40,000 bph. The facility is expected to service 16 VLCCs per month.Bluewater is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construction of a deepwater port, approximately 56.18 statute miles of pipeline infrastructure. The Bluewater deepwater port would allow for up to two (2) very large crude carriers (VLCCs) or other crude oil carriers to moor at single point mooring (SPM) buoys and connect with the deepwater port via floating connecting crude oil hoses. During single vessel loading operations, the proposed project is capable of loading rates of up to approximately 80,000 barrels per hour (bph) and during simultaneous vessel loading operations, the proposed project is capable of loading rates of 40,000 bph. The facility is expected to service 16 VLCCs per month."
         },
         "nepaProcess":{
-            "title":"NEPA process",
-            "stepProcess":{   
-                "title1":"What is NEPA?",
-                "description1":"lorem ipsum",
-                "title2":"Public scoping",
-                "description2":"lorem ipsum",
-                "title3":"Prepare Draft EIS",
-                "description3":"lorem ipsum",
-                "title4":"Prepare Final EIS",
-                "description4":"lorem ipsum"
+            "title" : "NEPA process",
+            "stepProcess" : [
+                {
+                    "id": 1,
+                    "label": "What is NEPA?",
+                    "title":"What is NEPA?",
+                    "description":"<p>The National Environmental Policy Act (NEPA) was passed in 1969 and has two major objectives:</p><ul><li>To ensure that federal agencies consider the potential environmental effects of proposed programs, projects, and actions before initiating them.</li><li> To inform the public and encourage and facilitate public involvement in federal agency activities that may affect the quality of the human environment.</li></ul><p>Guidelines for Federal agencies to implement NEPA were established in regulations by the President’s Council on Environmental Quality (CEQ) in 40 CFR 1500-1508. In addition, the U.S. Coast Guard (Coast Guard) has issued implementing procedures and policy for considering environmental impacts under NEPA and related laws.</p><p>Documents prepared under NEPA include a Categorical Exclusion, and Environmental Assessment, and an Environmental Impact Statement (EIS). When a proposed action has the potential for significant impacts, and EIS, the most detailed analysis conducted under NEPA, is prepared.</p>"
+                },
+                {
+                    "id": 2,
+                    "label": "Public Scoping",
+                    "title":"Public Scoping",
+                    "description":"<p>The public scoping meeting provides opportunities for the public, federal, state, and local agencies, any affected Indian tribes, and other interested parties to provide input on the range of actions, alternatives, and impacts to be considered in the EIS.</p><h3>The open house and public scoping meeting, for the Bluewater Texas Terminal Project were held on July 22, 2019 in Corpus Christi, Texas.</h3>"
+                },
+                {
+                    "id": 3,
+                    "label": "Prepare Draft EIS",
+                    "title":"Prepare Draft EIS",
+                    "description":"<p>Draft EIS is distributes to interested stakeholders including federal, state and local agencies, affected Indian tribes, private citizens and organizations and is placed in community libraries in the affected region. Open houses and public meetings provide the public an opportunity to make oral comments or submit written comments.</p>",
+                    "body": [
+                        {
+                            "title": "Public Involvement",
+                            "description": "<p>NEPA mandates that local, state, and federal agencies, any affected Indian tribes, and private citizens within the potentially affected areas be given the opportunity to comment of proposed actions throughout the NEPA process.</p>"
+                        }, {
+                            "title": "Agency coordination",
+                            "description": "<p>The Deepwater Port Act directs the Coast Guard and MARAD to prepare the EIS in a manner that fulfills the requirements of all Federal agencies in carrying out their responsibilities under NEPA. Coast Guard and MARAD also ensure that all connected actions which may affect local, state, and Indian tribe interests are analyzed. The list of agencies contacted for coordination and comments are part of the EIS.</p>"
+                        }, {
+                            "title": "Public comment",
+                            "description": "<p>Comments may be made verbally and/ or in writing at the open house and public meetings or directly to the Federal Docket Management System.</p><p>The Federal Docket Management System at www.regulations.gov is a public record and includes, or will include the application, Draft and Final EISs, Federal Register notices, letters, consultations, public and agency comments, and other supporting information for the Project such as this open house material and meeting transcripts under Docket number MARAD-2019-0094.</p>"
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "label": "Prepare Final EIS",
+                    "title":"Prepare Final EIS",
+                    "description":"<p>The Final EIS includes copies of all comments and Coast Guard/MARAD responses.  The Notice of Availability (NOA) of the Final EIS will appear in the Federal Register and local newspapers.</p>"
                 }
-            },
+            ]
+        },
         "dwpAct": {
-            "title": "What is the Deepwater Port Act?",
-            "stepProcess": {
-                "title1": "Deepwater Port Licensing Process",
-                "description1": "lorem ipsum",
-                "title2": "Independent Risk Assessment",
-                "description2": "lorem ipsum",
-                "title3": "Deepwater Port Act's Criteria",
-                "description3": "lorem ipsum",
-                "title4": "Conditions and Requirements",
-                "description4": "lorem ipsum"
-            }
+            "title": "Deepwater Port Act and Licensing Process",
+            "stepProcess": [
+                {
+                    "id": 1,
+                    "label": "Deepwater Port Act",
+                    "title":"What Is The Deepwater Port Act?",
+                    "description": "<ul><li>Establishes a licensing system for ownership, construction, operation, and eventual decommissioning of deepwater ports located beyond the State seaward boundaries of a State that are used to import or export oil or natural gas to or from the U.S.</li><li>Deepwater ports are licensed by the Maritime Administration.</li><li>Mandates compliance with the National Environmental Policy Act.</li></ul>"
+                },
+                {
+                    "id": 2,
+                    "label": "Deepwater Port Licensing Process",
+                    "title":"What Is The Deepwater Port Licensing Process?",
+                    "description":"<p>The Secretary of Transportation delegated the responsibility for processing deepwater port applications to the Maritime Administration (MARAD) and the Coast Guard. The Secretary of Transportation delegated to the Maritime Administrator the authority to issue, transfer, amend, or reinstate a license for the construction and operation of a deepwater port.  The Administrator may approve, approve with conditions, or disapprove a deepwater port license application.</p><p>License application review process includes a series of statutory deadlines, totaling a maximum of 356 days, from the date that the application is filed.</p>",
+                    "body": [
+                        {
+                            "title": "Application Phase",
+                            "titleClass": "bar",
+                            "detail": "26 Days",
+                            "description": "<p>Within 21 days following submittal of a DWP license application, the Coast Guard and MARAD, in coordination with federal cooperating agencies, must determine if an application contains sufficient information. If complete, a FR Notice of Application (NOA) must be issued by Day 26.</p>"
+                        },{
+                            "title": "Deis Phase",
+                            "titleClass": "bar",
+                            "detail": "",
+                            "description": "<p>National Environmental Policy Act (NEPA) process and EIS development.</p><p>FR Notice of Intent (NOI) to prepare Environmental Impact Statement (EIS) is issued and 30-day NEPA Scoping Period begins including comments and public meeting(s). DEIS is prepared and published by FR Notice of Availability, 45-day comment period and public meeting(s).</p>"
+                        },{
+                            "title": "Feis Phase",
+                            "titleClass": "bar",
+                            "detail": "266 Days",
+                            "description": "<p>All necessary information and analyses to meet Federal and state environmental requirements is incorporated into one NEPA document. FEIS is prepared and by FR NOA is published with 30-day comment period and DWPA public hearings. Deepwater Port Act requires at least one public license application hearing in each adjacent coastal State for each application. Final public license application public hearing must occur no later than 240 days after the publication of the Notice of Application in the Federal Register.</p>"
+                        },{
+                            "title": "Decision Phase",
+                            "titleClass": "bar",
+                            "detail": "45 Days",
+                            "description": "<p>Governor(s) of the adjacent coastal State(s) have 45 days after the final public license application hearing to make their final comments on the application. Governor(s) may approve, approve with conditions, or disapprove the application.</p>"
+                        },{
+                            "title": "Record Phase",
+                            "titleClass": "bar",
+                            "detail": "90 Days",
+                            "description": "<p>The Maritime Administrator has a total of 90 days to issue a Record of Decision (ROD) after the public license application hearing. The Administrator may approve, approve with conditions, or disapprove a deepwater port license application. License determination/development to follow.</p>"
+                        },{
+                            "title": "Total",
+                            "titleClass": "bar",
+                            "detail": "356 Days",
+                            "description": "<p></p>"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "label": "Independent Risk Assessment",
+                    "title":"What Is The Independent Risk Assessment (IRA)?",
+                    "description":"<ul><li>U.S. Coast Guard works with local stakeholders and the applicant to conduct an independent risk assessment (IRA).</li><li>Purpose of the IRA is to identify credible accidental and intentional scenarios that could lead to the release of oil during port operations, determine worst-case consequences, and identify and other maritime safety/ security issues that should be addressed.</li><li>Mitigation strategies to properly manage risks will be developed and required by license conditions and included in the Port Operations Manual.</li></ul>"
+                },
+                {
+                    "id": 4,
+                    "label": "Deepwater Port Act’s Criteria",
+                    "title": "The Deepwater Act’s Criteria for Issuance of License to Own, Construct, and Operate a Deepwater Port",
+                    "description":"MARAD issues a Record of Decision (ROD) for each deepwater port license application. MARAD’s decision to issue a license, issue a license with conditions, or deny the license will be based on the nine criteria contained in Section 1503 (c) of the Deepwater Port Act.",
+                    "body": [
+                        {
+                            "title": "",
+                            "titleClass": "tile light",
+                            "detail": "1",
+                            "description": "<p>The applicant must be financially responsible and able to meet the requirements of Section 1016 of the Oil Pollution Act of 1990 (33 U.S.C Section 2716 [2018].)</p>"
+                        },{
+                            "title": "",
+                            "titleClass": "tile dark",
+                            "detail": "2",
+                            "description": "<p>It must be determined the applicant can and will comply with applicable laws, regulations and license conditions.</p>"
+                        },{
+                            "title": "",
+                            "titleClass": "tile light",
+                            "detail": "3",
+                            "description": "<p>The construction and operation of the deepwater port must be in the national interest and consistent with national security and other national policy goals and objectives, including energy sufficiency and environmental quality.</p>"
+                        },{
+                            "title": "",
+                            "titleClass": "tile dark",
+                            "detail": "4",
+                            "description": "<p>The deepwater port will not unreasonably interfere with international navigation or other reasonable uses of the high seas, as defined by treaty, convention, or customary international law.</p>"
+                        },{
+                            "title": "",
+                            "titleClass": "tile light",
+                            "detail": "5",
+                            "description": "<p>In accordance with the environmental review criteria, it must be determined the applicant would construct and operate the deepwater port using the best available technology, so as to prevent or minimize adverse impact on the marine environment.</p>"
+                        },{
+                            "title": "",
+                            "titleClass": "tile dark",
+                            "detail": "6",
+                            "description": "<p>The application must properly address all applicable provisions of the Clean Air Act, as amended, the Federal Water Pollution Control Act, as amended, and the Marine Protection, Research and Sanctuaries Act, as amended.</p>"
+                        },{
+                            "title": "",
+                            "titleClass": "tile light",
+                            "detail": "7",
+                            "description": "<p>The Secretary of the Army, the Secretary of the State, and the Secretary of Defense may convey their views on the adequacy of the application, and its effect on programs within their respective jurisdictions.</p>"
+                        },{
+                            "title": "",
+                            "titleClass": "tile dark",
+                            "detail": "8",
+                            "description": "<p>The Governor(s) of the adjacent coastal State(s), pursuant to 33 U.S.C. Section 1508 (2018), must approve the issuance of a deepwater port license. Silence on this issue denotes approval.</p>"
+                        },{
+                            "title": "",
+                            "titleClass": "tile light",
+                            "detail": "9",
+                            "description": "<p>The adjacent coastal State(s) to which the deepwater port is to be directly connected by pipeline has developed or is making reasonable progress on developing an approved coastal zone management program pursuant to the Coastal Zone Management Act of 1972.</p>"
+                        }
+                    ]
+                },
+                {
+                    "id": 5,
+                    "label": "Conditions and Requirements",
+                    "title": "Deepwater Port Record of Decision, License Conditions and Post Licensing Requirements – Part 1",
+                    "description": "<p>The following regulatory mechanisms will aid in the managing safety and environmental risks.</p><p>The Maritime Administration will issue a Record of Decision (ROD) and may issue a subsequent License that may include any necessary conditions.</p><p>Conditions of Licensing may include:</p>",
+                    "body": [
+                        {
+                            "title": "Management of Change",
+                            "description": "<p>This requires additional evaluation for any substantive design, equipment, and/or operational changes that may have unanticipated effects on or changes in the environment that are not consistent with the environmental analysis, permits, Operations/ Security Manual, or ROD/ License conditions.</p>"
+                        }, {
+                            "title": "Federal and State Permits, Authorizations, and Regulatory Requirements",
+                            "description": "<p>These include, but are not limited to:</p><ul><li>U.S. Environmental Protection Agency (EPA), Clean Water Act (CWA), National Pollutant Discharge</li><li>Elimination System (NPDES) Permits(s), Clean Air Act (CAA) Permits, and General Conformity Determination.</li><li> U.S. Army Corps of Engineers Section 10 Rivers and Harbors Act/ Section 404 CWA Permit(s).</li><li>Coastal Zone Management Act (CZMA) Consistency Certification.</li><li>National Oceanic and Atmospheric Administration (NOAA) and U.S. Fish and Wildlife Service (USFWS)</li><li>Endangered Species Act, National Marine Sanctuaries Act, Magnuson-Stevens Fishery Conservation and Management Act, Marine Mammal Protection Act, and associated consultations and authorizations.</li><li>Pipeline and Hazardous Material Safety Administration (PHMSA) requirements.</li><li>Bureau of Ocean Energy Management (BOEM) and Bureau of Safety and Environmental Enforcement (BSEE) requirements.</li><li>National Historic Preservation Act compliance.</li><li>Procedures for avoidance of geologic hazards and hazardous materials, and protection of cultural and archaeological resource.</li><li>Texas state approvals for onshore/inshore storage, pipeline and other applied-for infrastructure.</li><li>Other federal, state or local regulations, permits, and authorizations as applicable.</li></ul>"
+                        }, {
+                            "title": "Project Specific Requirements",
+                            "description": "<p>For the construction, operation, and decommissioning of the port including those that may be specified by MARAD, the Coast Guard, another federal or state agency, or an adjacent coastal state Governor.</p>"
+                        }, {
+                            "title": "Manuals, Programs and Measures",
+                            "description": "<p></p><ul><li>Coast Guard Approved Operations and Security Manual (OPSMAN):<ul><li> Details all design and construction; operating and maintenance procedures; communications systems; personnel qualifications/ training; occupational safety and health; emergency response and security plans; etc.</li></ul></li><li>Prevention, Monitoring and Mitigation Program (PMMP):<ul><li> Includes both the general regulatory and project-specific environmental requirements and mitigation measures that must be implemented during construction, operations, and decommissioning.</li><li>The PMMP is included within the OPSMAN.</li></ul></li><li>Risk Management:<ul><li>Achieved through risk mitigation measures identified in the Coast Guard’s Independent Risk Assessment (IRA).</li></ul></li><li>Additional Maritime Safety and Security Navigational Requirements:<ul><li>Including safety zones, no-anchoring area, area tbe avoided, regulated navigation areas, navigational aids, standoff from other structures and navigational procedures as applicable.</li><li>Vessels arriving at the port must conform tapplicable federal regulations</li></ul></li><li>Coast Guard Approval of Port Design, Fabrication, Installation, Operations, Maintenance and Inspection:Vessels arriving at the port must conform tapplicable federal regulations.<ul><li> Additional requirements can be found in:<ul><li> 33 Code of Federal Regulations (CFR) Subchapter NN Parts 148, 149, and 150 Deepwater Ports;</li><li>Coast Guard Navigation and Vessel Inspection Circular (NVIC) 03-05: Guidance for Oversight of Post Licensing Activities Associated with Development of Deepwater Ports;</li><li>Classification Society Requirements</li></ul></li></ul></li></ul>"
+                        }
+                    ]
+                }
+            ]
         },
         "schedule": {
             "title": "Nepa Process Schedule",
@@ -363,20 +561,21 @@
             "title":"updates",
             "items":[
                 {
-                    "date":"10 marzo 2020",
-                    "content":"lorem ipsum"
+                    "date": "dd mese yyyy",
+                    "subtitle":"solo titolo"
                 },
                 {
-                    "date":"10 marzo 2020",
-                    "content":"lorem ipsum"
+                    "date": "dd mese yyyy",
+                    "subtitle": "titolo",
+                    "content": "contenuto"
                 },
                 {
-                    "date":"10 marzo 2020",
-                    "content":"lorem ipsum"
+                    "date": "dd mese yyyy",
+                    "subtitle": "solo titolo"
                 },
                 {
-                    "date":"10 marzo 2020",
-                    "content":"lorem ipsum"
+                    "date": "dd mese yyyy",
+                    "content": "solo contenuto"
                 }
             ]
         },
@@ -384,35 +583,80 @@
             "title":"comments",
             "cards": [
                 {
-                    "card1-title":"License Application",
-                    "card1-desc":"link The license application is available for viewing at the Regulations.gov website",
-                    "card1-button":"Go To Lorem"
+                    "title":"License Application",
+                    "description":"The License Application is available for viewing at the <span>Regulations</span> website",
+                    "button":"Go to Website",
+                    "link": "http://regulations.gov"
                 }, {
-                    "card2-title":"License Application",
-                    "card2-desc":"link The license application is available for viewing at the Regulations.gov website",
-                    "card2-button":"Go To Lorem"
+                    "title":"Draft EIS",
+                    "description":"The Draft EIS is available for viewing at the <span>Regulations</span> website:",
+                    "button":"Go to Website",
+                    "link": "https://www.google.com"
                 }
             ],
-            "alertMessage":"Scoping Comments must be submitted by July 8, 2021.",
+            "alertMessage":"Scoping Comments must be submitted by <span>July 8, 2021.</span>",
             "secondTitle": "Public comments may be provided by:",
-            "description": "lorem",
-            "titleSidebar":"usefull documents",
-            "formTitle":"Need help, contact us.",
-            "formNameLabel":"name",
-            "formSurnameLabel":"surname",
-            "formEmailLabel":"email",
-            "formMessageLabel":"message",
-            "formCheckboxLabel":"I agree to the Terms and Privacy Policy"
+            "sidebarTitle":"Useful Documents",
+            "body": [
+                {
+                    "title": "Electronically (preferred to expedite processing):",
+                    "content": "<p>Through the Federal Docket Management System website: <a href=\"http://regulations.gov\" target=\"_blank\">http://regulations.gov</a> under docket number MARAD-2019-0094.</p><p>Electronically through the Federal eRulemaking Portal</p>"
+                }, {
+                    "title": "By Mail:",
+                    "content": "Docket Management Facility (MARAD-2019-0094), U.S. Department of Transportation, West Building, Ground Floor, Room W12-140, 1200 New Jersey Avenue, SE, Washington, DC 20590-0001"
+                }, {
+                    "title": "By Fax:",
+                    "content": "To the Docket Management Facility at (202) 493-2251"
+                }
+            ]
         },
         "contacts":{
             "title":"Contacts",
-            "section-1-title":"Federal Docket Management Facility’s",
-            "section-2-title":"U.S. Coast Guard",
-            "section-3-title":"Maritime administration",
-            "labelPhone":"telephone number",
-            "labelFax":"fax number",
-            "labelWebsite":"Website",
-            "labelDocket":"Docket number"
+            "sections": [
+                {
+                    "title": "Federal Docket Management Facilities",
+                    "subtitle": "",
+                    "body": [
+                        {
+                            "title": "Telephone Number",
+                            "content": "<p>(XXX) XXX-XXXX</p><p>(XXX) XXX-XXXX</p>"
+                        }, {
+                            "title": "Fax Number",
+                            "content": "<p>(XXX) XXX-XXXX</p>"
+                        }, {
+                            "title": "Website",
+                            "content": "http://www.regulations.gov"
+                        }, {
+                            "title": "Docket Number",
+                            "content": "MARAD-2019-0094"
+                        }
+                    ]
+                }, {
+                    "title": "U.S. Coast Guard",
+                    "subtitle": "Mr. Roddy Bachman, USCG",
+                    "body": [
+                        {
+                            "title": "Telephone Number",
+                            "content": "<p>(XXX) XXX-XXXX</p>"
+                        }, {
+                            "title": "Fax Number",
+                            "content": "<p>(XXX) XXX-XXXX</p>"
+                        }
+                    ]
+                }, {
+                    "title": "Maritime Administration",
+                    "subtitle": "Ms. Yvette M. Fields, MARAD",
+                    "body": [
+                        {
+                            "title": "Website",
+                            "content": "http://www.regulations.gov"
+                        }, {
+                            "title": "Docket Number",
+                            "content": "MARAD-2019-0094"
+                        }
+                    ]
+                }
+            ]
         }
     }
 }

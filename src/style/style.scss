@@ -23,24 +23,41 @@ button {
   cursor: pointer;
 }
 
+.main-button {
+  color: #fff;
+  font-size: 0.875rem;
+  background-color: #1A3C6E;
+  border: transparent 1px solid;
+  &:hover {
+    background-color: #fff;
+    transition: 0.3s ease;
+    border-color: #1A3C6E;
+    color: #1A3C6E;
+  }
+}
+
 button.outline {
   background-color: transparent;
   border: 1px solid rgba(255, 255, 255, 0.411);
   border-radius: 50px;
   font-size: 0.875rem;
   font-weight: 600;
+  color: #fff;
   &:hover {
     background-color: #fff;
     transition: 0.3s ease;
     color: #1A3C6E;
-    &:after {
-      background-image: url("../assets/icon-nuova-scheda-hover.svg");
-      }
   }
 }
 
 button.icon-left {
   padding: 15px 60px 15px 20px;
+  &:hover {
+    transition: 0.3s ease;
+    &:after {
+      background-image: url("../assets/icon-nuova-scheda-hover.svg");
+    }
+  }
 }
 
 button.icon-left::after {

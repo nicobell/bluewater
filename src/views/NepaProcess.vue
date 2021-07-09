@@ -26,7 +26,10 @@
                     <div v-for="(b, index) in selectedStep.body" :key="'element' + index" :class="['body', b.titleClass]">
                         <div class="detail">{{ b.detail }}</div>
                         <h4 class="title">{{ b.title }}</h4>
-                        <div v-html="b.description"></div>
+                        <div v-if="b.description" v-html="b.description"></div>
+                        <div v-if="index==2">
+                            <button class="main-button" @click="gotoComments()">Go to Comments</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -66,6 +69,9 @@ export default {
         openSection(id){
             this.isActive = id
         },
+        gotoComments() {
+            this.$router.push('/' + this.lang + '/comments')
+        }
     },
     computed: {
         lang () {
@@ -87,5 +93,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+::v-deep button {
+    color: #fff;
+    font-size: 0.875rem;
+    background-color: #125D91;
+    border: transparent 1px solid;
+    transition: all .3s;
+    &:hover {
+        background-color: #fff;
+        transition: 0.3s ease;
+        border-color: #125D91;
+        color: #125D91;
+    }
+}
 </style>

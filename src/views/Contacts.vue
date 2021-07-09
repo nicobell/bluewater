@@ -3,65 +3,19 @@
   <header class="intro-header">
     </header>
     <div class="main-content">
-      <h1 class="title">Contacts</h1>
+      <h1 class="title">{{ content.title }}</h1>
       <div class="content three-col">
-          <div>
-              <h2>
-                  Federal Docket Management Facility’s
-              </h2>
-              <div class="contacts">
+          <div v-for="(s, index) in content.sections" :key="'section'+index">
+              <h2>{{ s.title }}</h2>
+              <p>{{ s.subtitle }}</p>
+              <div class="contacts" v-for="(c, index) in s.body" :key="'contact'+index">
                   <div>
-                      <h3>Telephone number</h3>
-                      <p>202–372–1451</p>
-                      <p>202–372–1451</p>
-                  </div>
-                  <div>
-                      <h3>Fax number</h3>
-                      <p>202–372–1451</p>
-                  </div>
-                  <div>
-                      <h3>Website</h3>
-                      <p>http://www.regulations.gov</p>
-                  </div>
-                  <div>
-                      <h3>Docket number</h3>
-                      <p>MARAD–2019–0094</p>
+                      <h3>{{ c.title }}</h3>
+                      <p v-html="c.content"></p>
                   </div>
               </div>
           </div>
-          <div>
-              <h2>
-                  U.S. Coast Guard
-              </h2>
-              <p class="person">Mr. Roddy Bachman, USCG</p>
-              <div class="contacts">
-                  <div>
-                      <h3>Telephone number</h3>
-                      <p>202–372–1451</p>
-                      <p>202–372–1451</p>
-                  </div>
-                  <div>
-                      <h3>Fax number</h3>
-                      <p>202–372–1451</p>
-                  </div>
-              </div>
-          </div>
-          <div>
-              <h2>
-                  Maritime administration
-              </h2>
-              <p class="person">Ms. Yvette M. Fields, MARAD</p>
-              <div class="contacts">
-                  <div>
-                      <h3>Website</h3>
-                      <a href="#">http://www.regulations.gov</a>
-                  </div>
-                  <div>
-                      <h3>Docket number</h3>
-                      <p>MARAD–2019–0094</p>
-                  </div>
-              </div>
-          </div>
+          
       </div>
     </div>
   </div>
@@ -70,10 +24,8 @@
 
 export default {
   name: 'contacts',
-   data:()=>{
-    return{
-      lang:"",
-      data:null,
+   data: () => {
+    return {
     }
   },
   props:{
@@ -83,21 +35,25 @@ export default {
     console.log('visiting ' + this.$route.name)
     this.$store.commit('SET_LASTPAGE', this.$route.name)
 
-    if(this.clang=='es')
+    if(this.lang=='es')
         this.$route.params.pagetitle = 'contactos'
-    else if(this.clang=='en')
+    else if(this.lang=='en')
         this.$route.params.pagetitle = 'contacts'
   },
   computed: {
-      clang() {
-          return this.$route.params.lang
-      }
+        lang () {
+            return this.$store.state.lang
+        },
+        content () {
+            console.log(this.$store.state.data[this.lang].contacts)
+            return this.$store.state.data[this.lang].contacts
+        },
   },
   watch: {
-    /*clang()  {
-        if(this.clang=='en')
+    /*lang()  {
+        if(this.lang=='en')
             this.$route.params.pagetitle = 'contacts'
-        else if(this.clang=='es')
+        else if(this.lang=='es')
             this.$route.params.pagetitle = 'contactos'
     }*/
   }
@@ -127,7 +83,7 @@ p {
 }
 h2 {
     text-transform: uppercase;
-    color: #1C2332;
+    color: #125D91;
     font-size: 1.625rem;
     font-weight: 300;
     margin-bottom: 0;
