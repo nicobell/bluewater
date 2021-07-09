@@ -72,7 +72,7 @@
                     Go To Lorem
                 </button>
             </div>
-            <form action="">
+            <!--<form action="">
                 <h2>Need help, contact us</h2>
                  <div>
                     <div>
@@ -96,7 +96,7 @@
                     </div>
                     <p class="response">response</p>
                 </div>    
-            </form>
+            </form>-->
         </div>
         </div>
     </div>

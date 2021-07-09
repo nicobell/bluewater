@@ -23,11 +23,10 @@
                 <div class="item-content">
                     <h1>{{ selectedStep.title }}</h1>
                     <p v-html="selectedStep.description"></p>
-                    <div v-if="selectedStep.body">
-                        <div v-for="(b, index) in selectedStep.body" :key="'element' + index">
-                            <h4>{{ b.title }}</h4>
-                            <div v-html="b.description"></div>
-                        </div>
+                    <div v-for="(b, index) in selectedStep.body" :key="'element' + index" :class="['body', b.titleClass]">
+                        <div class="detail">{{ b.detail }}</div>
+                        <h4 class="title">{{ b.title }}</h4>
+                        <div v-html="b.description"></div>
                     </div>
                 </div>
             </div>
@@ -88,139 +87,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.inner-content-left {
-    min-width: 240px;
-}
-.inner-content-right {
-    border-left: 1px solid #70707036;
-    max-width: 55%;
-}
-.item-menu {
-    cursor: pointer;
-}
-.content h1 {
-    color:#175B8F;
-    font-size: 1.5rem;
-    font-weight: 400;
-}
 
-.menu {
-    .item-menu {
-        display: flex;
-        padding: 20px 0px;
-        position: relative;
-        &:before {
-         background-color: #175b8f31;
-            width: 2px;
-            height: 23px;
-            left: 26px;
-            top: 80px;
-            position: absolute;
-            content: "";
-        }
-        &:last-child:before {
-            display: none;
-        }
-    }
-    .item-menu:hover {
-        .num { 
-            background-color: #175b8f31;
-            transition: 0.3s ease;
-            color:#175B8F;
-            border: 2px solid #175b8f00;
-        }
-    }
-    h2 {
-        color: #9AABD1;
-        font-size: 1.125rem;
-        font-weight: 400;
-        margin: 10px 20px ;
-    }
-    .num {
-        transition: 0.3s ease;
-        color:#175B8F;
-        border: 2px solid #175b8f31;
-        min-width: 50px;
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        border-radius: 50px;
-        align-items: center;
-        font-size: 1rem;
-        font-weight: 600;
-    }
-}
-
-.active-section {
-    .num {
-        background-color: #175B8F;
-        color: #fff;
-    }
-    h2 {
-        color: #175B8F;
-    }
-}
-
-.accordion-item {
-    padding: 30px 50px;
-    border-radius: 7px;
-    margin-bottom: 10px;
-    background-color: #D2E9F7;
-    *{
-        pointer-events: none;
-    }
-    >div:first-child {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    h2 {
-        font-size: 1.5rem;
-        font-weight: 400;
-        margin: 10px 20px ;
-        color: #175B8F;
-        margin-left: 0px;
-    }
-    p{
-        display: none;
-    }
-    .accordion-icon{
-        background-color: #fff;
-        color:#175B8F;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        justify-content: center;
-        border-radius: 50px;
-        align-items: center;
-        font-weight: 600;
-        &:after {
-            content: "+";
-            font-size: 1.5rem;
-        }
-    }
-}
-.accordion-item.active{
-    p{
-        display: block;
-    }
-    .accordion-icon{
-        &:after {
-            content: "-";
-        }
-    }
-}
-@media(max-width:1024px){
-    .content.isMobile{
-        padding: 0;
-    }
-}
-@media(max-width:768px){
-    .accordion-item {
-        padding: 30px 30px;
-        h2 {
-            font-size: 1.25rem;
-        }
-    }
-}
 </style>

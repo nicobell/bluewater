@@ -65,6 +65,10 @@
                         }, {
                             "title": "Public comment",
                             "description": "<p>Comments may be made verbally and/ or in writing at the open house and public meetings or directly to the Federal Docket Management System.</p><p>The Federal Docket Management System at www.regulations.gov is a public record and includes, or will include the application, Draft and Final EISs, Federal Register notices, letters, consultations, public and agency comments, and other supporting information for the Project such as this open house material and meeting transcripts under Docket number MARAD-2019-0094.</p>"
+                        },
+                        {
+                            "title": "",
+                            "description": "<button>Go to comments</button>"
                         }
                     ]
                 },
@@ -92,7 +96,7 @@
                     "description":"<p>The Secretary of Transportation delegated the responsibility for processing deepwater port applications to the Maritime Administration (MARAD) and the Coast Guard. The Secretary of Transportation delegated to the Maritime Administrator the authority to issue, transfer, amend, or reinstate a license for the construction and operation of a deepwater port.  The Administrator may approve, approve with conditions, or disapprove a deepwater port license application.</p><p>License application review process includes a series of statutory deadlines, totaling a maximum of 356 days, from the date that the application is filed.</p>",
                     "body": [
                         {
-                            "title": "Appplication Phase",
+                            "title": "Application Phase",
                             "titleClass": "bar",
                             "detail": "26 Days",
                             "description": "<p>Within 21 days following submittal of a DWP license application, the Coast Guard and MARAD, in coordination with federal cooperating agencies, must determine if an application contains sufficient information. If complete, a FR Notice of Application (NOA) must be issued by Day 26.</p>"
@@ -138,47 +142,47 @@
                     "body": [
                         {
                             "title": "",
-                            "titleClass": "light",
+                            "titleClass": "tile light",
                             "detail": "1",
                             "description": "<p>The applicant must be financially responsible and able to meet the requirements of Section 1016 of the Oil Pollution Act of 1990 (33 U.S.C Section 2716 [2018].)</p>"
                         },{
                             "title": "",
-                            "titleClass": "dark",
+                            "titleClass": "tile dark",
                             "detail": "2",
                             "description": "<p>It must be determined the applicant can and will comply with applicable laws, regulations and license conditions.</p>"
                         },{
                             "title": "",
-                            "titleClass": "light",
+                            "titleClass": "tile light",
                             "detail": "3",
                             "description": "<p>The construction and operation of the deepwater port must be in the national interest and consistent with national security and other national policy goals and objectives, including energy sufficiency and environmental quality.</p>"
                         },{
                             "title": "",
-                            "titleClass": "dark",
+                            "titleClass": "tile dark",
                             "detail": "4",
                             "description": "<p>The deepwater port will not unreasonably interfere with international navigation or other reasonable uses of the high seas, as defined by treaty, convention, or customary international law.</p>"
                         },{
                             "title": "",
-                            "titleClass": "light",
+                            "titleClass": "tile light",
                             "detail": "5",
                             "description": "<p>In accordance with the environmental review criteria, it must be determined the applicant would construct and operate the deepwater port using the best available technology, so as to prevent or minimize adverse impact on the marine environment.</p>"
                         },{
                             "title": "",
-                            "titleClass": "dark",
+                            "titleClass": "tile dark",
                             "detail": "6",
                             "description": "<p>The application must properly address all applicable provisions of the Clean Air Act, as amended, the Federal Water Pollution Control Act, as amended, and the Marine Protection, Research and Sanctuaries Act, as amended.</p>"
                         },{
                             "title": "",
-                            "titleClass": "light",
+                            "titleClass": "tile light",
                             "detail": "7",
                             "description": "<p>The Secretary of the Army, the Secretary of the State, and the Secretary of Defense may convey their views on the adequacy of the application, and its effect on programs within their respective jurisdictions.</p>"
                         },{
                             "title": "",
-                            "titleClass": "dark",
+                            "titleClass": "tile dark",
                             "detail": "8",
                             "description": "<p>The Governor(s) of the adjacent coastal State(s), pursuant to 33 U.S.C. Section 1508 (2018), must approve the issuance of a deepwater port license. Silence on this issue denotes approval.</p>"
                         },{
                             "title": "",
-                            "titleClass": "light",
+                            "titleClass": "tile light",
                             "detail": "9",
                             "description": "<p>The adjacent coastal State(s) to which the deepwater port is to be directly connected by pipeline has developed or is making reasonable progress on developing an approved coastal zone management program pursuant to the Coastal Zone Management Act of 1972.</p>"
                         }
@@ -198,7 +202,7 @@
                             "description": "<p>These include, but are not limited to:</p><ul><li>U.S. Environmental Protection Agency (EPA), Clean Water Act (CWA), National Pollutant Discharge</li><li>Elimination System (NPDES) Permits(s), Clean Air Act (CAA) Permits, and General Conformity Determination.</li><li> U.S. Army Corps of Engineers Section 10 Rivers and Harbors Act/ Section 404 CWA Permit(s).</li><li>Coastal Zone Management Act (CZMA) Consistency Certification.</li><li>National Oceanic and Atmospheric Administration (NOAA) and U.S. Fish and Wildlife Service (USFWS)</li><li>Endangered Species Act, National Marine Sanctuaries Act, Magnuson-Stevens Fishery Conservation and Management Act, Marine Mammal Protection Act, and associated consultations and authorizations.</li><li>Pipeline and Hazardous Material Safety Administration (PHMSA) requirements.</li><li>Bureau of Ocean Energy Management (BOEM) and Bureau of Safety and Environmental Enforcement (BSEE) requirements.</li><li>National Historic Preservation Act compliance.</li><li>Procedures for avoidance of geologic hazards and hazardous materials, and protection of cultural and archaeological resource.</li><li>Texas state approvals for onshore/inshore storage, pipeline and other applied-for infrastructure.</li><li>Other federal, state or local regulations, permits, and authorizations as applicable.</li></ul>"
                         }, {
                             "title": "Project Specific Requirements",
-                            "description": "For the construction, operation, and decommissioning of the port including those that may be specified by MARAD, the Coast Guard, another federal or state agency, or an adjacent coastal state Governor."
+                            "description": "<p>For the construction, operation, and decommissioning of the port including those that may be specified by MARAD, the Coast Guard, another federal or state agency, or an adjacent coastal state Governor.</p>"
                         }, {
                             "title": "Manuals, Programs and Measures",
                             "description": "<p></p><ul><li>Coast Guard Approved Operations and Security Manual (OPSMAN):<ul><li> Details all design and construction; operating and maintenance procedures; communications systems; personnel qualifications/ training; occupational safety and health; emergency response and security plans; etc.</li></ul></li><li>Prevention, Monitoring and Mitigation Program (PMMP):<ul><li> Includes both the general regulatory and project-specific environmental requirements and mitigation measures that must be implemented during construction, operations, and decommissioning.</li><li>The PMMP is included within the OPSMAN.</li></ul></li><li>Risk Management:<ul><li>Achieved through risk mitigation measures identified in the Coast Guard’s Independent Risk Assessment (IRA).</li></ul></li><li>Additional Maritime Safety and Security Navigational Requirements:<ul><li>Including safety zones, no-anchoring area, area tbe avoided, regulated navigation areas, navigational aids, standoff from other structures and navigational procedures as applicable.</li><li>Vessels arriving at the port must conform tapplicable federal regulations</li></ul></li><li>Coast Guard Approval of Port Design, Fabrication, Installation, Operations, Maintenance and Inspection:Vessels arriving at the port must conform tapplicable federal regulations.<ul><li> Additional requirements can be found in:<ul><li> 33 Code of Federal Regulations (CFR) Subchapter NN Parts 148, 149, and 150 Deepwater Ports;</li><li>Coast Guard Navigation and Vessel Inspection Circular (NVIC) 03-05: Guidance for Oversight of Post Licensing Activities Associated with Development of Deepwater Ports;</li><li>Classification Society Requirements</li></ul></li></ul></li></ul>"
@@ -378,16 +382,21 @@
         },
         "comments":{
             "title":"comments",
+            "cards": [
+                {
+                    "card1-title":"License Application",
+                    "card1-desc":"link The license application is available for viewing at the Regulations.gov website",
+                    "card1-button":"Go To Lorem"
+                }, {
+                    "card2-title":"License Application",
+                    "card2-desc":"link The license application is available for viewing at the Regulations.gov website",
+                    "card2-button":"Go To Lorem"
+                }
+            ],
             "alertMessage":"Scoping Comments must be submitted by July 8, 2021.",
             "secondTitle": "Public comments may be provided by:",
             "description": "lorem",
             "titleSidebar":"usefull documents",
-            "card1-title":"License Application",
-            "card1-desc":"link The license application is available for viewing at the Regulations.gov website",
-            "card1-button":"Go To Lorem",
-            "card2-title":"License Application",
-            "card2-desc":"link The license application is available for viewing at the Regulations.gov website",
-            "card2-button":"Go To Lorem",
             "formTitle":"Need help, contact us.",
             "formNameLabel":"name",
             "formSurnameLabel":"surname",
