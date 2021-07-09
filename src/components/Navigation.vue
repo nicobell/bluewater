@@ -75,7 +75,7 @@
                 </li>
             </router-link>
         </ul>
-        <div class="lang-switch">
+        <!--<div class="lang-switch">
             <p>
                 <a
                   @click="changeLang('es')"
@@ -90,7 +90,7 @@
                     En
                 </a>
             </p>
-        </div>
+        </div>-->
     </nav>
 </template>
 

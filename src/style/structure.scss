@@ -15,7 +15,7 @@
         font-weight: 400;
     }
     p, ul {
-        width: 90%;
+        width: 100%;
     }
     h3 {
         color: #175b8f;
@@ -243,6 +243,11 @@
 @media(max-width:1024px){
     .content.isMobile{
         padding: 0;
+    }
+    .hidden-content {
+        p, ul {
+            width: auto;
+        }
     }
 }
 @media(max-width:768px){

@@ -29,11 +29,24 @@
         "intro":{
             "title":"Bluewater Texas Terminal Deepwater Port Project",
             "description": "The purpose of this site is to inform stakeholders about the project, and to provide the public an opportunity to submit written comments.",
-            "buttonLabel":"Go To Webisite"
+            "buttonLabel":"Go to Webisite"
         },
         "projectDescription":{
-            "title":"project description",
-            "description": "Bluewater is proposing to construct, own, operate, and eventually decommission a deepwater port (DWP), associated pipeline infrastructure, and facility located within Aransas, Nueces, and San Patricio counties, Texas.  The proposed project involves the design, engineering, and construction of a DWP and approximately 56.18 statute miles of pipeline infrastructure. The 12-acre Harbor Island Facility, located on Harbor Island in Nueces County, would consist of pig launchers/receivers, meters and valves, operations building, and communications facility, with no crude oil storage on site.<br /> The Bluewater DWP would allow for the loading of two (2) very large crude carriers (VLCCs) at the proposed DWP via two single point mooring (SPM) buoy systems and connect with the DWP via floating connecting crude oil hoses.  The proposed Project would be capable of loading rates of up to approximately 80,000 barrels per hour (bph).  The proposed Project is expected to service 16 VLCCs per month."
+            "title":"Project Description",
+            "description": "<p>Bluewater is proposing to construct, own, operate, and eventually decommission a deepwater port (DWP), associated pipeline infrastructure, and facility located within Aransas, Nueces, and San Patricio counties, Texas.  The proposed project involves the design, engineering, and construction of a DWP and approximately 56.18 statute miles of pipeline infrastructure.  The 12-acre Harbor Island Facility, located on Harbor Island in Nueces County, would consist of pig launchers/receivers, meters and valves, operations building, and communications facility, with no crude oil storage on site.</p><p>The Bluewater DWP would allow for the loading of two (2) very large crude carriers (VLCCs) at the proposed DWP via two single point mooring (SPM) buoy systems and connect with the DWP via floating connecting crude oil hoses.  The proposed Project would be capable of loading rates of up to approximately 80,000 barrels per hour (bph).  The proposed Project is expected to service 16 VLCCs per month.</p>",
+            "data": {
+                "mooringPointd": 2,
+                "depths": "88-90",
+                "location": 15,
+                "miles": 56.58,
+                "milesDescription": "Two 30-inch Outside Diameter Crude Oil Pipelines",
+                "milesLabels": ["Onshore", "Inshore", "Offshore"],
+                "harborFacility": 12,
+                "carriersMonths": 16,
+                "loadingRates": 80,
+                "simultaneousOperations": 40
+            }
+
         },
         "nepaProcess":{
             "title" : "NEPA process",
@@ -221,7 +234,7 @@
                 }
             ]
         },
-        "updates":{
+        "updates": {
             "title":"updates",
             "items":[
                 {
@@ -256,8 +269,8 @@
                 }
             ]
         },
-        "comments":{
-            "title":"comments",
+        "comments": {
+            "title":"Comments",
             "cards": [
                 {
                     "title":"License Application",
@@ -268,7 +281,7 @@
                     "title":"Draft EIS",
                     "description":"The Draft EIS is available for viewing at the <span>Regulations</span> website:",
                     "button":"Go to Website",
-                    "link": "https://www.google.com"
+                    "link": "http://regulations.gov"
                 }
             ],
             "alertMessage":"Scoping Comments must be submitted by <span>July 8, 2021.</span>",
@@ -287,7 +300,7 @@
                 }
             ]
         },
-        "contacts":{
+        "contacts": {
             "title":"Contacts",
             "sections": [
                 {
@@ -296,10 +309,10 @@
                     "body": [
                         {
                             "title": "Telephone Number",
-                            "content": "(XXX) XXX-XXXX<br>(XXX) XXX-XXXX"
+                            "content": "202–372–1451<br>202–372–1451"
                         }, {
                             "title": "Fax Number",
-                            "content": "(XXX) XXX-XXXX"
+                            "content": "202–372–1451"
                         }, {
                             "title": "Website",
                             "content": "http://www.regulations.gov"
@@ -314,22 +327,22 @@
                     "body": [
                         {
                             "title": "Telephone Number",
-                            "content": "(XXX) XXX-XXXX"
+                            "content": "202–372–1451"
                         }, {
-                            "title": "Fax Number",
-                            "content": "(XXX) XXX-XXXX"
+                            "title": "Email",
+                            "content": "Roddy.C.Bachman@uscg.mil"
                         }
                     ]
                 }, {
                     "title": "Maritime Administration",
-                    "subtitle": "Ms. Yvette M. Fields, MARAD",
+                    "subtitle": "Carlos I. Perez-Perez",
                     "body": [
                         {
-                            "title": "Website",
-                            "content": "http://www.regulations.gov"
+                            "title": "Telephone Number",
+                            "content": "202-366-7094"
                         }, {
-                            "title": "Docket Number",
-                            "content": "MARAD-2019-0094"
+                            "title": "Email",
+                            "content": "c.perezperez@dot.gov"
                         }
                     ]
                 }
@@ -347,12 +360,12 @@
             "comments": "comentarios",
             "contacts": "contactos"
         },
-        "headerInfo":{
+        "headerInfo": {
             "publicMeetingTitle":"Public Meeting",
             "publicMeetingData":"April 19, 2021 | 3.00 PM",
             "publicMeetingButton":"Register Now"
         },
-        "menu":{
+        "menu": {
             "menuLabel1":"Localizatiòn",
             "menuLabel2":"Descripciòn de proyecto",
             "menuLabel3":"Proceso NEPA",
@@ -363,13 +376,26 @@
             "menuLabel8":"Contactos"
         },
         "intro":{
-            "title":"Agua-Blu Texas Terminalz",
+            "title":"Bluewater Texas Terminal Deepwater Port Project",
             "description": "The purpose of this site is to inform stakeholders about the project, and to provide the public an opportunity to submit written comments.",
-            "buttonLabel":"Go To Webisite"
+            "buttonLabel":"Go to Webisite"
         },
         "projectDescription":{
-            "title":"ES project description",
-            "description": "Bluewater is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construction of a deepwater port, approximately 56.18 statute miles of pipeline infrastructure. The Bluewater deepwater port would allow for up to two (2) very large crude carriers (VLCCs) or other crude oil carriers to moor at single point mooring (SPM) buoys and connect with the deepwater port via floating connecting crude oil hoses. During single vessel loading operations, the proposed project is capable of loading rates of up to approximately 80,000 barrels per hour (bph) and during simultaneous vessel loading operations, the proposed project is capable of loading rates of 40,000 bph. The facility is expected to service 16 VLCCs per month.Bluewater is proposing to construct, own, operate, and the eventual decommission a deepwater port terminal in the Gulf of Mexico to export domestically produced crude oil. The proposed project involves the design, engineering, and construction of a deepwater port, approximately 56.18 statute miles of pipeline infrastructure. The Bluewater deepwater port would allow for up to two (2) very large crude carriers (VLCCs) or other crude oil carriers to moor at single point mooring (SPM) buoys and connect with the deepwater port via floating connecting crude oil hoses. During single vessel loading operations, the proposed project is capable of loading rates of up to approximately 80,000 barrels per hour (bph) and during simultaneous vessel loading operations, the proposed project is capable of loading rates of 40,000 bph. The facility is expected to service 16 VLCCs per month."
+            "title":"Project Description",
+            "description": "<p>Bluewater is proposing to construct, own, operate, and eventually decommission a deepwater port (DWP), associated pipeline infrastructure, and facility located within Aransas, Nueces, and San Patricio counties, Texas.  The proposed project involves the design, engineering, and construction of a DWP and approximately 56.18 statute miles of pipeline infrastructure.  The 12-acre Harbor Island Facility, located on Harbor Island in Nueces County, would consist of pig launchers/receivers, meters and valves, operations building, and communications facility, with no crude oil storage on site.</p><p>The Bluewater DWP would allow for the loading of two (2) very large crude carriers (VLCCs) at the proposed DWP via two single point mooring (SPM) buoy systems and connect with the DWP via floating connecting crude oil hoses.  The proposed Project would be capable of loading rates of up to approximately 80,000 barrels per hour (bph).  The proposed Project is expected to service 16 VLCCs per month.</p>",
+            "data": {
+                "mooringPointd": 2,
+                "depths": "88-90",
+                "location": 15,
+                "miles": 56.58,
+                "milesDescription": "Two 30-inch Outside Diameter Crude Oil Pipelines",
+                "milesLabels": ["Onshore", "Inshore", "Offshore"],
+                "harborFacility": 12,
+                "carriersMonths": 16,
+                "loadingRates": 80,
+                "simultaneousOperations": 40
+            }
+
         },
         "nepaProcess":{
             "title" : "NEPA process",
@@ -557,30 +583,43 @@
                 }
             ]
         },
-        "updates":{
+        "updates": {
             "title":"updates",
             "items":[
                 {
-                    "date": "dd mese yyyy",
-                    "subtitle":"solo titolo"
+                    "date":"May 24, 2021",
+                    "subtitle":"Public Notice on Availability of the DEIS for the Bluewater Project and Public Meeting and Commenting info",
+                    "content": ""
                 },
                 {
-                    "date": "dd mese yyyy",
-                    "subtitle": "titolo",
-                    "content": "contenuto"
+                    "date":"May 24, 2021",
+                    "subtitle":"Registration to participate in the Virtual Public Meeting",
+                    "content": ""
                 },
                 {
-                    "date": "dd mese yyyy",
-                    "subtitle": "solo titolo"
+                    "date":"May 24, 2021",
+                    "subtitle": "Public Repositories Locations",
+                    "content": "Electronic versions of these documents are also available for viewing at the following libraries:<ul><li>Retama Public Library, 805 Comanche Street, Corpus Christi, Texas 78401; (361) 826-7055</li><li>Ingleside Public Library, 2775 Waco Street, Ingleside, Texas 78362; (361) 776-5355</li><li>Ed & Hazel Richmond Public Library, 110 North Lamont Street, Aransas Pass, Texas 78336; (361) 758-2350</li><li>Texas A&M University, Corpus Christi Mary & Jeff Bell Library/Federal Depository, 6300 Ocean Drive #5702, Corpus Christi, Texas 78412; (361) 825-2340</li><li>Owen R. Hopkins Public Library, 3202 McKinzie Road, Corpus Christi, Texas 78410; (361) 826-2350</li></ul>"
                 },
                 {
-                    "date": "dd mese yyyy",
-                    "content": "solo contenuto"
+                    "date":"Date",
+                    "subtitle":"Newspaper Notices",
+                    "content": "<ul><li>The Aransas Pass Progress – 5/12/2021</li><li>Ingleside Index - 5/12/2021</li><li>Port Aransas South Jetty – 5/13/2021 & 5/27/2011</li><li>Corpus Christi Caller – 5/14/2021 & 5/28/2021</li><li>The Rockport Pilot – 5/8/2021 & 5/22/2021</li></ul>"
+                },
+                {
+                    "date":"Date",
+                    "subtitle":"NEPA Process - President’s Council on Environmental Quality (CEQ) in 40 CFR 1500-1508",
+                    "content": ""
+                },
+                {
+                    "date":"July 3, 2019",
+                    "subtitle":"Notice of Intent (NOI) to prepare an Environmental Impact Statement (EIS)",
+                    "content": ""
                 }
             ]
         },
-        "comments":{
-            "title":"comments",
+        "comments": {
+            "title":"Comments",
             "cards": [
                 {
                     "title":"License Application",
@@ -591,7 +630,7 @@
                     "title":"Draft EIS",
                     "description":"The Draft EIS is available for viewing at the <span>Regulations</span> website:",
                     "button":"Go to Website",
-                    "link": "https://www.google.com"
+                    "link": "http://regulations.gov"
                 }
             ],
             "alertMessage":"Scoping Comments must be submitted by <span>July 8, 2021.</span>",
@@ -610,7 +649,7 @@
                 }
             ]
         },
-        "contacts":{
+        "contacts": {
             "title":"Contacts",
             "sections": [
                 {
@@ -619,10 +658,10 @@
                     "body": [
                         {
                             "title": "Telephone Number",
-                            "content": "<p>(XXX) XXX-XXXX</p><p>(XXX) XXX-XXXX</p>"
+                            "content": "202–372–1451<br>202–372–1451"
                         }, {
                             "title": "Fax Number",
-                            "content": "<p>(XXX) XXX-XXXX</p>"
+                            "content": "202–372–1451"
                         }, {
                             "title": "Website",
                             "content": "http://www.regulations.gov"
@@ -637,22 +676,22 @@
                     "body": [
                         {
                             "title": "Telephone Number",
-                            "content": "<p>(XXX) XXX-XXXX</p>"
+                            "content": "202–372–1451"
                         }, {
-                            "title": "Fax Number",
-                            "content": "<p>(XXX) XXX-XXXX</p>"
+                            "title": "Email",
+                            "content": "Roddy.C.Bachman@uscg.mil"
                         }
                     ]
                 }, {
                     "title": "Maritime Administration",
-                    "subtitle": "Ms. Yvette M. Fields, MARAD",
+                    "subtitle": "Carlos I. Perez-Perez",
                     "body": [
                         {
-                            "title": "Website",
-                            "content": "http://www.regulations.gov"
+                            "title": "Telephone Number",
+                            "content": "202-366-7094"
                         }, {
-                            "title": "Docket Number",
-                            "content": "MARAD-2019-0094"
+                            "title": "Email",
+                            "content": "c.perezperez@dot.gov"
                         }
                     ]
                 }

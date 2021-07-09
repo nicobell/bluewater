@@ -260,19 +260,16 @@ form{
 }
 
 @media (max-width: 1024px) {  
-    .main-content {
-    .content.two-col{
-      display: flex;
-      flex-direction: column;
-      .inner-content-left,
-      .inner-content-right {
-        width: auto;
-      }
+    .main-content .content.two-col{
+        display: flex;
+        .inner-content-right {
+            width: auto;
+            max-width: unset;
+        }
+        .inner-content-left {
+            width: auto;
+        }
     }
-  } 
 }
-
-
-
 
 </style>

@@ -12,8 +12,8 @@
 
         <div class="inner-content">
             <div class="image-container">
-              <div class="hotspot hotspot-1"></div>
-              <div class="hotspot hotspot-2"></div>
+              <!--<div class="hotspot hotspot-1"></div>
+              <div class="hotspot hotspot-2"></div>-->
               <img src="../assets/timeline.png" alt="">
             </div>
         </div>

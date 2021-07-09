@@ -45,7 +45,6 @@
                     </div>
                     <div>
                         <div class="hidden-content">
-                            <h2>{{ d.title }}</h2>
                             <p v-html="d.description"></p>
                             <div v-for="(b, index) in d.body" :key="'element' + index" :class="['body', b.titleClass]">
                                 <div class="detail">{{ b.detail }}</div>
