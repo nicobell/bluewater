@@ -6,23 +6,26 @@
             <div id="viewDiv"></div>
 
             <div id="info">
-                <div class="close">
-                    <button @click="hideInfo()">X</button>
+                <div class="close" @click="hideInfo()"></div>
+
+                <div class="intro">
+                    <p><span id="name"></span></p>
                 </div>
-                <span id="name"></span>
-                <hr>
-                <span id="objectid"></span>
-                <hr>
-                <span id="category">
+                <p><span id="objectid"></span></p>
+                <p id="category">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore tempore in harum consectetur fugiat voluptatum ex. Eveniet est facilis itaque rerum, odit quo deserunt? Ad, nulla. Perspiciatis odio fuga omnis.
-                </span>
+                </p>
             </div>
 
             <div id="toggles" class="toggles">
-                <button id="toggleATWS" @click="toggleATWS()" :class="{'tog': true, 'red': true, 'tog-active': this.showATWS}">toggleATWS</button>
-                <button id="togglePE" @click="togglePE()" :class="{'tog': true, 'green': true, 'tog-active': this.showPE}">togglePE</button>
-                <button id="togglePEBDB" @click="togglePEBDB()" :class="{'tog': true, 'purple': true, 'tog-active': this.showPEBDB}">togglePEBDB</button>
-                <button id="toggleTCW" @click="toggleTCW()" :class="{'tog': true, 'blue': true, 'tog-active': this.showTCW}">toggleTCW</button>
+                <button id="toggleATWS" @click="toggleATWS()" :class="{'tog': true, 'red': true, 
+                    'esri-icon-non-visible tog-active': this.showATWS, 'esri-icon-visible': !this.showATWS}"><span>ATWS</span></button>
+                <button id="togglePE" @click="togglePE()" :class="{'tog': true, 'green': true, 
+                    'esri-icon-non-visible tog-active': this.showPE, 'esri-icon-visible': !this.showPE}"><span>PE</span></button>
+                <button id="togglePEBDB" @click="togglePEBDB()" :class="{'tog': true, 'purple': true, 
+                    'esri-icon-non-visible tog-active': this.showPEBDB, 'esri-icon-visible': !this.showPEBDB}"><span>PEBDB</span></button>
+                <button id="toggleTCW" @click="toggleTCW()" :class="{'tog': true, 'blue': true, 
+                    'esri-icon-non-visible tog-active': this.showTCW, 'esri-icon-visible': !this.showTCW}"><span>TCW</span></button>
             </div>
 
             <button id="zoomout" @click="zoomOut()" class="esri-icon-zoom-out-fixed"></button>
@@ -30,10 +33,15 @@
 
             <div id="measure">
                 <button
-                    class="action-button esri-icon-measure-line"
+                    class="esri-icon-measure-line"
                     id="distanceButton"
                     title="Measure distance between two or more points"
                 ></button>
+            </div>
+
+            <div id="zoomer">
+                <button class="esri-icon-minus" @click="zoomminus()"></button>
+                <button class="esri-icon-plus" @click="zoomplus()"></button>
             </div>
         </div>
     </div>
@@ -48,6 +56,7 @@ import Search from '@arcgis/core/widgets/Search'
 import DistanceMeasurement2D from '@arcgis/core/widgets/DistanceMeasurement2D'
 //import LayerList from '@arcgis/core/widgets/LayerList'
 import Legend from '@arcgis/core/widgets/Legend'
+import ZoomViewModel from '@arcgis/core/widgets/Zoom/ZoomViewModel'
 //import Collection from '@arcgis/core/core/Collection'
 
 export default {
@@ -56,7 +65,7 @@ export default {
         return {
             view: null, 
             map: null,
-
+            zoomViewModel: null,
             workspacesLayer: null,
             pipelineLayer: null,
             facilityLayer: null,
@@ -70,8 +79,15 @@ export default {
     computed: {
     },
     methods: {
+        zoomplus() {
+            this.zoomViewModel.zoomIn();
+        },
+        zoomminus() {
+            this.zoomViewModel.zoomOut();
+        },
         hideInfo() {
             document.getElementById("info").style.visibility = "hidden";
+            document.getElementById("info").style.opacity = "0.2";
             document.getElementById("info").style.right = "-50%";
         },
         zoomOut() {
@@ -141,6 +157,8 @@ export default {
     mounted() {
         //const template = { title: "prova" }
 
+        
+
         this.workspacesLayer = new FeatureLayer({
             url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/21464066_Bluewater_Project_Data/FeatureServer/3",
             outFields: ["*"]
@@ -183,9 +201,9 @@ export default {
                 type: "simple",
                 symbol: {
                     type: "picture-marker",
-                    url: "/plus.png",
-                    width: "25px",
-                    height: "25px"
+                    url: "/point-1.png",
+                    width: "40px",
+                    height: "40px"
                 }
             }
         })
@@ -205,6 +223,9 @@ export default {
             }
         })
 
+        this.zoomViewModel = new ZoomViewModel()
+        this.zoomViewModel.view = this.view
+
         this.view.ui.add(new Legend({ view: this.view, 
             layerInfos: [{
                 layer: this.workspacesLayer,
@@ -212,8 +233,13 @@ export default {
             }]
          }), "bottom-left");
 
-        this.view.ui.add("zoomout", "top-left");
-        this.view.ui.add("toggles", "top-left");
+        
+        this.view.ui.add(new Search({ view: this.view }), "top-left");
+        this.view.ui.add('measure', "top-left");
+        this.view.ui.add("toggles", "bottom-left");
+        
+        this.view.ui.add("zoomer", "bottom-right");
+        this.view.ui.add("zoomout", "bottom-right");
         /*
         this.view.ui.add("toggleATWS", "top-left");
         this.view.ui.add("togglePE", "top-left");
@@ -221,8 +247,7 @@ export default {
         this.view.ui.add("toggleTCW", "top-left");
         */
 
-        this.view.ui.add(new Search({ view: this.view }), "top-right");
-        this.view.ui.add('measure', "top-right");
+        
 
         let activeWidget = null
         let vv = this.view
@@ -300,7 +325,8 @@ export default {
                     }
 
                     document.getElementById("info").style.visibility = "visible";
-                    document.getElementById("info").style.right = "1%";
+                    document.getElementById("info").style.right = "0";
+                    document.getElementById("info").style.opacity = "1";
                     document.getElementById("name").innerHTML = name;
                     document.getElementById("objectid").innerHTML = "OBJECTID: " + objid;
 
@@ -310,7 +336,7 @@ export default {
                             latitude: graphic.geometry.latitude,
                             longitude: graphic.geometry.longitude
                         }),
-                        zoom: 15
+                        zoom: 16
                     }, {
                         animate: true,
                         duration: 1000
@@ -321,6 +347,7 @@ export default {
                         highlight = null;
                     }
                     document.getElementById("info").style.visibility = "hidden";
+                    document.getElementById("info").style.opacity = "0.2";
                     document.getElementById("info").style.right = "-50%";
                 }
             }
@@ -341,13 +368,12 @@ export default {
     overflow: hidden;
 }
 
-
 #info {
     background-color: white;
   
-    height: 90%;
-    bottom: 4%;
-    padding: 1%;
+    height: 96%;
+    bottom: 0;
+    padding: 1% 2%;
     width: 25%;
     right: -50%;
 
@@ -356,24 +382,69 @@ export default {
     visibility: hidden;
 
     z-index: 1000;
-    font-size: 18pt;
+    font-size: 16pt;
     transition: all 500ms ease-in-out;
 
     &> * {
         color: #0079c1;
     }
 
+    .intro, .intro p {
+        color: #fff;
+        font-weight: 700;
+        font-size: 18pt;
+        margin: 0;
+
+    }
+
+    .intro p {
+        bottom: 10%;
+        position: absolute;
+    }
+
+    .intro {
+        position: relative;
+        min-height: 170px;
+        margin-bottom: 20px;
+    }
+
+    &::before {
+        content: '';
+        width: 100%;
+        min-height: calc(220px + 2%);
+        background-image: url("../assets/header-bg.jpg")  ;
+        background-size: cover;
+        left: 0;
+        top: 0;
+        position: absolute;
+        z-index: -1;
+    }
+
+    &::after {
+        content: '';
+        width: 100%;
+        min-height: calc(220px + 2%);
+        background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .6));
+        background-size: cover;
+        left: 0;
+        top: 0;
+        position: absolute;
+        z-index: -1;
+    }
+
     .close {
-        button {
-            border-radius: 0;
-            background: #0079c1;
-            color: #fff;
-            width: 50px;
-            height: 50px;
-            position: relative;
-            left: -45px;
-            top: -10px;
-        }
+        cursor: pointer;
+        content: url(/close-button.svg);
+        display: block;
+        border-radius: 0;
+        background: #0079c1;
+        color: #fff;
+        width: 50px;
+        height: 50px;
+        position: relative;
+        left: -60px;
+        top: -10px;
+        
     }
 }
 
@@ -406,22 +477,30 @@ export default {
 
 .tog {
     border-radius: 0;
-    font-size: .8rem;
+    //font-size: .8rem;
     margin: 0;
     margin-right: 10px;
 }
 
 .red:hover {
-    background-color: red;
+    //background-color: red;
+    background-color: #ccc;
+    color: black;
 }
 .green:hover {
-    background-color: rgb(152, 230, 0);
+    //background-color: rgb(152, 230, 0);
+    background-color: #ccc;
+    color: black;
 }
 .blue:hover {
-    background-color: rgb(115, 223, 255);
+    //background-color: rgb(115, 223, 255)
+    background-color: #ccc;
+    color: black;
 }
 .purple:hover {
-    background-color: rgb(169, 0, 230);
+    //background-color: rgb(169, 0, 230);
+    background-color: #ccc;
+    color: black;
 }
 .tog-active {
     background-color: #0079c1;
@@ -432,14 +511,17 @@ export default {
   display: none !important;
 }
 
-#zoomout:hover {
-    background: #0079c1;
+#measure button,
+#zoomout {
+    padding: 10px;
+    &:hover {
+        background: #0079c1;
+        color: #fff;
+    }
 }
 
-
-
-.esri-ui {
-    overflow: visible;
+#measure button {
+    margin-left: 10px;
 }
 
 .action-button:hover,
@@ -450,11 +532,50 @@ export default {
 
 .active {
   background: #0079c1;
-  color: #e4e4e4;
+  color: #fff;
 }
 
 .toggles {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    text-align: left;
+    button {
+        margin-top: 10px;
+        span {
+            font-family: "Open Sans";
+            margin-left: 10px;
+        };
+    }
 }
+
+#zoomer button {
+    background: #0079c1;
+    color: #fff;
+    padding: 10px;
+    &:first-child {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right: 1px #fff solid;
+    }
+    &:last-child {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}
+
+@media (max-width: 992px) {
+    #info {
+        width: 100%;
+        height: calc(100% - 100px);
+        padding: 0;
+        .close {
+            left: 10px;
+            top: 10px;
+        }
+        p {
+            padding: 0 2%;
+        }
+    }
+}
+
 </style>
