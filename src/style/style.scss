@@ -95,6 +95,10 @@ button.icon-left::after {
   border-radius: 50px;
 }
 
+#viewDiv .esri-view-root .esri-ui .esri-ui-inner-container.esri-ui-corner-container .esri-ui-corner .esri-component {
+  box-shadow: none;
+}
+
 #viewDiv > div.esri-view-root > div.esri-ui > div.esri-ui-inner-container.esri-ui-corner-container > div.esri-ui-corner .esri-legend__layer-caption,
 #viewDiv > div.esri-view-root > div.esri-ui > div.esri-ui-inner-container.esri-ui-corner-container > div.esri-ui-top-left.esri-ui-corner > div.esri-component.esri-zoom.esri-widget {
   display: none;

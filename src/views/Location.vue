@@ -54,6 +54,8 @@ import FeatureLayer from "@arcgis/core/layers/FeatureLayer"
 import Point from '@arcgis/core/geometry/Point'
 import Search from '@arcgis/core/widgets/Search'
 import DistanceMeasurement2D from '@arcgis/core/widgets/DistanceMeasurement2D'
+import GeometryService from '@arcgis/core/tasks/GeometryService'
+import ProjectParameters from '@arcgis/core/tasks/support/ProjectParameters'
 //import LayerList from '@arcgis/core/widgets/LayerList'
 import Legend from '@arcgis/core/widgets/Legend'
 import ZoomViewModel from '@arcgis/core/widgets/Zoom/ZoomViewModel'
@@ -91,12 +93,39 @@ export default {
             document.getElementById("info").style.right = "-50%";
         },
         zoomOut() {
-            this.view.whenLayerView(this.workspacesLayer)
+            /*this.view.whenLayerView(this.workspacesLayer)
                 .then((layerView) => {
                     layerView.queryExtent().then((response) => {
                         this.view.goTo(response.extent);
                     });
-                });
+                });*/
+
+            if(this.workspacesLayer.fullExtent.spatialReference != this.view.SpatialReference) {
+                var geomSer = new GeometryService({url: 'http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/Geometry/GeometryServer'});            
+                var params = new ProjectParameters({              
+                    geometries: [this.workspacesLayer.fullExtent],              
+                    outSpatialReference: this.view.spatialReference            
+                });            
+                var vv =  this.view
+                geomSer.project(params).then(function(results){              
+                    vv.goTo({
+                        target: results[0],
+                        zoom: 11.989
+                    }, {
+                        animate: true,
+                        duration: 3000
+                    });            
+                });  
+            } else  {
+                this.view.goTo({
+                    target: this.workspacesLayer.fullExtent,
+                    zoom: 11.989
+                }, {
+                    animate: true,
+                    duration: 3000
+                })
+            }
+
         },
         toggleATWS() {
             if(this.showATWS=='')
@@ -336,7 +365,7 @@ export default {
                             latitude: graphic.geometry.latitude,
                             longitude: graphic.geometry.longitude
                         }),
-                        zoom: 16
+                        zoom: 15.5
                     }, {
                         animate: true,
                         duration: 1000
@@ -371,7 +400,7 @@ export default {
 #info {
     background-color: white;
   
-    height: 96%;
+    height: 97%;
     bottom: 0;
     padding: 1% 2%;
     width: 25%;
@@ -443,7 +472,7 @@ export default {
         height: 50px;
         position: relative;
         left: -60px;
-        top: -10px;
+        top: 0;
         
     }
 }
@@ -451,16 +480,25 @@ export default {
 @media (max-width: 1200px) {
     .map-wrapper{
         margin-top: -235px;
-        height: calc(100vh - 95px);
-        width: calc(100vw - 70px);
+        height: calc(100vh - 90px);
+        width: calc(100vw - 5%);
     }
+
+    #info {
+        height: calc(100% - 20px);
+        width: 33%;
+        .close {
+            left: -50px;
+        }
+    }
+
 }
 
 @media (max-width: 1024px) {
     .map-wrapper {
         width: 100vw;
         margin-left: 0;
-        height: calc(100vh - 184px);
+        height: calc(100vh - 164px);
     }
 
     #info {
