@@ -226,11 +226,81 @@
                 {
                     "id": 1,
                     "title": "KEY DATES THROUGH FINAL EIS AND APPLICATION PUBLIC HEARINGS",
-                    "description": "Accordion 1"
+                    "content": [
+                        {
+                            "description": "DWP Application submitted",
+                            "date": "May 30, 2019"
+                        }, {
+                            "description": "FR NOA noticed application complete following review with other Federal agencies. Start 240 day DWPA statutory timeline to final hearing",
+                            "date": "June 26, 2019"
+                        }, {
+                            "description": "FR Notice of Intent initiated 30 day scoping period and prepare EIS",
+                            "date": "July 3, 2019"
+                        }, {
+                            "description": "NEPA Scoping Open House/Public Meeting - Corpus Christi",
+                            "date": "July 22, 2019"
+                        }, {
+                            "description": "Extentions of NEPA Scoping comment period to allow additional outreach",
+                            "date": "August 15, 2019"
+                        }, {
+                            "description": "End NEPA Public Scoping Period",
+                            "date": "August 30, 2019"
+                        }, {
+                            "description": "\"Stop-the-Clock\" issued on day 137 of the 240-day DWPA statuatory timeline fill final hearings; day 163 of 356-day MARAD ROD timeline. Issuance was to provide for additional outreach, additional information and analysis for the EIS; and additional spill analysis and risk assessment.",
+                            "date": "November 7, 2019"
+                        }, {
+                            "description": "Submission, by Bluewater, of project change to remove oil storage tanks and pump station originally proposed for Harbor Island. Changes were noticed in FR and provided additional 30-day comment period.",
+                            "date": "March 19, 2020"
+                        }, {
+                            "description": "\"Restart-the-Clock\" retroactively to October 23, 2020 due to recent change in historical USCG practice of timeline suspension to meet 1974 DWPA statuatory schedule.",
+                            "date": "January 8, 2021"
+                        }, {
+                            "description": "Draft EIS filed with EPA; Re-Start Clock",
+                            "date": "May 24, 2021"
+                        }, {
+                            "description": "Notice of Availability (Draft EIS); Request for Public Comments",
+                            "date": "July, 2021"
+                        }, {
+                            "description": "Notice of Public (Virtual) Meeting to Receive Comments on the Draft EIS",
+                            "date": "July, 2021"
+                        }, {
+                            "description": "Draft EIS Public (Virtual) Meeting",
+                            "date": "July, 2021"
+                        }
+                    ]
                 },{
                     "id": 2,
                     "title": "FUTURE ACTION",
-                    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam voluptas pariatur, ipsa ea ab voluptatem consectetur in! Nisi voluptatibus cum quasi repellat. Quas fuga aliquid neque error deserunt, eum dolorem? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae commodi deserunt consectetur iure placeat neque non rem. Omnis quo, quaerat ab dicta qui eaque asperiores architecto, mollitia quasi in neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum repellendus hic quia suscipit neque necessitatibus rerum iste, nihil tenetur id aliquam! Repellat, culpa impedit earum id fuga quod dicta voluptate. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti natus qui quisquam a obcaecati. Omnis veniam praesentium nesciunt optio nisi soluta. Architecto labore voluptatibus molestias cum totam in quasi dolores."
+                    "content": [
+                        {
+                            "description": "End of Public Comment Period on the Draft EIS",
+                            "date": "August, 2021"
+                        }, {
+                            "description": "Distribution of Final EIS; file w/ EPA; posto to docket",
+                            "date": "November, 2021"
+                        }, {
+                            "description": "FR Notice of Availability (FEIS) and Public Hearings",
+                            "date": "November, 2021"
+                        }, {
+                            "description": "Final EIS and Application Public Hearings",
+                            "date": "December, 2021"
+                        }, {
+                            "description": "End 45-day public and agency comment period",
+                            "date": "Date TBD"
+                        }, {
+                            "description": "Adjacent Coastal State Texas Governor's Decision",
+                            "date": "Date TBD"
+                        }, {
+                            "description": "After Governors' decision and NLT Date TBD-MARAD ROD on DWP Application/FEIS",
+                            "date": "Date TBD"
+                        }, {
+                            "description": "DOE Order (after MARAD ROD)",
+                            "date": "Date TBD"
+                        }, {
+                            "description": "MARAD Deepwater Port License",
+                            "date": "Date TBD"
+                        }
+                    ]
                 }
             ]
         },

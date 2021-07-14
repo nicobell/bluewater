@@ -19,15 +19,24 @@
         </div>
 
         <div class="spalla" :style="spallaStyle">
-          <button @click="toggleSpalla">X</button>
-          <div>
-            <div v-for="(a, index) in content.items" :key="'accordion'+index">
+          <div class="button-container">
+            <button @click="toggleSpalla">X</button>
+          </div>
+
+            <div class="text-container" v-for="(a, index) in content.items" :key="'accordion'+index">
               <a @click="openAccordion(index)">{{ a.title }}{{openLabel(index)}}</a>
               <hr>
-              <p :class="{'accordion' : true, 'open': openAcc==index}" v-html="a.description">
-              </p>
+              <div :class="{'open': openAcc==index}">
+                <div v-for="(item, ind) in a.content"
+                class="accordion"
+                  :key="'update'+ind">
+                  <p>{{ item.date }}</p>
+                  <p>{{ item.description }}</p>
+                </div>
+              </div>
+
             </div>
-          </div>
+        
         </div>
       </div>
     </div>
@@ -37,7 +46,7 @@
 
 export default {
   name: 'nepa-process-schedule',
-   data:()=>{
+   data: () => {
     return {
       data: null,
       showSpalla: false,
@@ -75,7 +84,7 @@ export default {
   computed: {
     spallaStyle() {
       return 'visibility: ' + (this.showSpalla ? 'visible' : 'hidden') + ';' +
-        'right: ' + (this.showSpalla ? '10px' : '-35%') + ';' +
+        'right: ' + (this.showSpalla ? '0' : '-35%') + ';' +
         'opacity: ' + (this.showSpalla ? '1' : '0.5') + ';'
     },
     lang () {
@@ -137,6 +146,7 @@ img {
 
 .main-content {
   overflow: hidden;
+  //height: 75vh;
 }
 
 .spalla {
@@ -144,22 +154,27 @@ img {
   background: #fff;
   right: -35%;
   opacity: .5;
-  height: calc(100vh - 100px);
-  width: 27%;
+  width: 33%;
+  height: 97%;
   bottom: 0;
   visibility: hidden;
   z-index: 1000;
-  padding: 0 40px;
-
+  //padding: 0 40px;
   transition: 500ms all ease-in-out;
 
+  .button-container {
+    position: relative;
+  }
+
   button {
+    position: absolute;
+
     background: #0079c1;
     border-radius: 0;
     color: #fff;
     width: 50px;
     height: 50px;
-    left: -55px;
+    left: -20px;
     top: -15px;
   }
 
@@ -168,13 +183,150 @@ img {
     display: block;
     cursor: pointer;
     margin-top: 20px;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+
+  > div {
+    padding: 0 40px;
+  }
+
+}
+
+.text-container {
+  height: fit-content;
+  max-height: 80%;
+  > div:not(.open) {
+    .accordion {
+      display: none;
+    }
+  }
+
+  > div.open {
+    max-height: 400px;
+    overflow: auto;
+    position: relative;
+    height: fit-content;
+
+    .accordion {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+
+      p {
+        display: inline-block;
+        line-height: 1.5rem;
+        margin: 20px 0;
+      }
+
+      p:last-child {
+        width: 68%;
+        color: #1C2332;
+      }
+      p:first-child {
+        width: 30%;
+        color: #1C2332;
+        font-weight: 700;
+      }
+    }
+  }
+
+}
+@media (max-width: 1200px) {
+  .main-content {
+    overflow: visible;
+  }
+  .spalla {
+    width: 50%;
+    right: 0;
+    position: absolute;
+    height: 80vh;
+    bottom: -10vh;
+    
+    .button-container {
+      button {
+        left: 10px;
+        top: 10px;
+      }
+    }
+
+    .text-container:not(:last-child) {
+      padding-top: 50px;
+    }
+    .text-container > div.open {
+      max-height: 400px;
+    }
+
+    .text-container .open .accordion {
+      flex-direction: column;
+      margin-bottom: 20px;
+
+      p {
+        width: 90% !important;
+        margin: 0;
+      }
+    }
   }
 }
 
-.accordion {
-  display: none;
-  &.open {
-    display: block;
+@media (max-width: 992px) {
+  .spalla {
+    width: 100%;
+    right: 0;
+    
+    .button-container {
+      button {
+        left: 10px;
+        top: 10px;
+      }
+    }
+
+    .text-container:not(:last-child) {
+      padding-top: 50px;
+    }
+    .text-container > div.open {
+      max-height: 320px;
+    }
+
+    .text-container .open .accordion {
+      flex-direction: column;
+      margin-bottom: 20px;
+
+      p {
+        width: 90% !important;
+        margin: 0;
+      }
+    }
   }
 }
+
+@media (max-width: 768px) {
+   .main-content {
+    overflow: visible;
+  }
+  .spalla {
+    width: 100%;
+    right: 0;
+    bottom: -40vh;
+    position: absolute;
+    height: 90vh;
+
+    .button-container {
+      button {
+        left: 10px;
+        top: 10px;
+      }
+    }
+
+    .text-container:not(:last-child) {
+      padding-top: 50px;
+    }
+
+    .text-container > div.open {
+      max-height: 320px;
+    }
+  }
+}
+
 </style>
