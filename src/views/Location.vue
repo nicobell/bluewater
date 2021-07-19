@@ -17,7 +17,7 @@
                 </p>
             </div>
 
-            <div id="toggles" class="toggles">
+            <!--<div id="toggles" class="toggles">
                 <button id="toggleATWS" @click="toggleATWS()" :class="{'tog': true, 'red': true, 
                     'esri-icon-non-visible tog-active': this.showATWS, 'esri-icon-visible': !this.showATWS}"><span>ATWS</span></button>
                 <button id="togglePE" @click="togglePE()" :class="{'tog': true, 'green': true, 
@@ -26,7 +26,7 @@
                     'esri-icon-non-visible tog-active': this.showPEBDB, 'esri-icon-visible': !this.showPEBDB}"><span>PEBDB</span></button>
                 <button id="toggleTCW" @click="toggleTCW()" :class="{'tog': true, 'blue': true, 
                     'esri-icon-non-visible tog-active': this.showTCW, 'esri-icon-visible': !this.showTCW}"><span>TCW</span></button>
-            </div>
+            </div>-->
 
             <button id="zoomout" @click="zoomOut()" class="esri-icon-zoom-out-fixed"></button>
 
@@ -265,7 +265,7 @@ export default {
         
         this.view.ui.add(new Search({ view: this.view }), "top-left");
         this.view.ui.add('measure', "top-left");
-        this.view.ui.add("toggles", "bottom-left");
+        //this.view.ui.add("toggles", "bottom-left");
         
         this.view.ui.add("zoomer", "bottom-right");
         this.view.ui.add("zoomout", "bottom-right");
@@ -573,7 +573,7 @@ export default {
   color: #fff;
 }
 
-.toggles {
+/*.toggles {
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -584,7 +584,7 @@ export default {
             margin-left: 10px;
         };
     }
-}
+}*/
 
 #zoomer button {
     background: #0079c1;

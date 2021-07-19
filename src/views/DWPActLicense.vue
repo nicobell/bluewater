@@ -66,7 +66,7 @@ export default {
         langData: String
     },
     data: () => {
-        return{
+        return {
             isActive: 1
         }
     },
@@ -89,11 +89,19 @@ export default {
         },
         selectedStep() {
             return this.content.stepProcess.find(step => step.id == this.isActive)
+        },
+        route() {
+            return this.$route
         }
     },
     mounted() {
         console.log('visiting ' + this.$route.name)
         this.$store.commit('SET_LASTPAGE', this.$route.name)
+    },
+    watch: {
+        route() {
+            this.isActive = 1
+        }
     }
 }
 </script>
