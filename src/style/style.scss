@@ -91,22 +91,91 @@ button.icon-left::after {
   }
 }
 
-#viewDiv > div.esri-view-root > div.esri-ui > div.esri-ui-inner-container.esri-ui-corner-container > div.esri-ui-top-left.esri-ui-corner > div.esri-component.esri-search.esri-widget {
-  border-radius: 50px;
-}
-
+//REMOVE DEFAULT SHADOW FROM ALL WIDGETS
 #viewDiv .esri-view-root .esri-ui .esri-ui-inner-container.esri-ui-corner-container .esri-ui-corner .esri-component {
   box-shadow: none;
 }
 
+//STYLE SEARCH WIDGET
+#viewDiv > div.esri-view-root > div.esri-ui > div.esri-ui-inner-container.esri-ui-corner-container > div.esri-ui-top-left.esri-ui-corner > div.esri-component.esri-search.esri-widget {
+  border-radius: 50px;
+  margin-right: 10px;
+}
+
+//HIDE DEFAULT ZOOM BUTTONS + HIDE LEGEND SUBTITLE
 #viewDiv > div.esri-view-root > div.esri-ui > div.esri-ui-inner-container.esri-ui-corner-container > div.esri-ui-corner .esri-legend__layer-caption,
 #viewDiv > div.esri-view-root > div.esri-ui > div.esri-ui-inner-container.esri-ui-corner-container > div.esri-ui-top-left.esri-ui-corner > div.esri-component.esri-zoom.esri-widget {
   display: none;
 }
+
+//DISPLAY TOP LEFT WIDGETS IN LINE
 #viewDiv > div.esri-view-root > div.esri-ui > div.esri-ui-inner-container.esri-ui-corner-container > div.esri-ui-top-left.esri-ui-corner {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+
+//ROTATE ZOOM BUTTONS --> VERTICAL LAYER
+#viewDiv > div.esri-view-root > div.esri-ui > div.esri-ui-inner-container.esri-ui-corner-container > div.esri-ui-bottom-right.esri-ui-corner {
+  transform: rotateZ(90deg) translateX(-45%) translateY(-100%);
+}
+
+#zoomer > button.esri-icon-minus::before {
+  transform: rotateZ(90deg);
+  display: block;
+}
+
+//STYLE EXPAND BUTTON FOR LEGEND
+#viewDiv > div.esri-view-root > div.esri-ui > div.esri-ui-inner-container.esri-ui-corner-container > div.esri-ui-bottom-left.esri-ui-corner > div {
+  border-radius: 50px;
+  background-color: transparent;
+  &> div.esri-expand__container > div.esri-expand__panel > div {
+    border-radius: 50px;
+    padding: 10px;
+    &:hover {
+      background: #0079c1;
+      color: #fff;
+    }
+  }
+}
+
+//EXPAND BUTTON FOR SPANISH LEGEND (es)
+.lang-es {
+  #viewDiv > div.esri-view-root > div.esri-ui > div.esri-ui-inner-container.esri-ui-corner-container > div.esri-ui-bottom-left.esri-ui-corner > div > div.esri-expand__container:not(.esri-expand__container--expanded) > div.esri-expand__panel > div {
+    position: relative;
+    width: 200px;
+    &::after {
+      content: 'Leyenda de los espacios';
+      width: fit-content;
+      position: absolute;
+      top: 8px;
+      right: 10px;
+    }
+    &> span.esri-collapse__icon.esri-icon-layer-list {
+      position: absolute;
+      left: 10px;
+    }
+  }
+}
+
+//EXPAND BUTTON FOR ENGLISH LEGEND (en)
+.lang-en {
+  #viewDiv > div.esri-view-root > div.esri-ui > div.esri-ui-inner-container.esri-ui-corner-container > div.esri-ui-bottom-left.esri-ui-corner > div > div.esri-expand__container:not(.esri-expand__container--expanded) > div.esri-expand__panel > div {
+    position: relative;
+    width: 170px;
+    &::after {
+      content: 'Workspaces legend';
+      width: fit-content;
+      position: absolute;
+      top: 8px;
+      right: 10px;
+    }
+    &> span.esri-collapse__icon.esri-icon-layer-list {
+      position: absolute;
+      left: 10px;
+    }
+  }
 }
 
 @media (max-width: 1024px) {
@@ -116,17 +185,5 @@ button.icon-left::after {
   #viewDiv > div.esri-view-root > div.esri-ui > div.esri-ui-inner-container.esri-ui-corner-container > div.esri-ui-top-left.esri-ui-corner {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  #viewDiv > div.esri-view-root > div.esri-ui > div.esri-ui-inner-container.esri-ui-corner-container > div.esri-ui-bottom-left.esri-ui-corner > div > div > div h3 {
-    &::after {
-      content: 'v';
-      width: 100px;
-      height: 100%;
-      display: block;
-      position: absolute;
-      right: 0;
-      bottom: -8em;
-    }
   }
 }

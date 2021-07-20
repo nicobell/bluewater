@@ -1,7 +1,7 @@
 <template>
     <div class="template-page intro" >
         <header class="intro-header"></header>
-        <div class="main-content map-wrapper">
+        <div :class="['main-content', 'map-wrapper', 'lang-'+this.lang] ">
 
             <div id="viewDiv"></div>
 
@@ -17,6 +17,7 @@
                 </p>
             </div>
 
+            <!-- BUTTONS TO TOGGLE LAYERS -->
             <!--<div id="toggles" class="toggles">
                 <button id="toggleATWS" @click="toggleATWS()" :class="{'tog': true, 'red': true, 
                     'esri-icon-non-visible tog-active': this.showATWS, 'esri-icon-visible': !this.showATWS}"><span>ATWS</span></button>
@@ -56,10 +57,9 @@ import Search from '@arcgis/core/widgets/Search'
 import DistanceMeasurement2D from '@arcgis/core/widgets/DistanceMeasurement2D'
 import GeometryService from '@arcgis/core/tasks/GeometryService'
 import ProjectParameters from '@arcgis/core/tasks/support/ProjectParameters'
-//import LayerList from '@arcgis/core/widgets/LayerList'
 import Legend from '@arcgis/core/widgets/Legend'
 import ZoomViewModel from '@arcgis/core/widgets/Zoom/ZoomViewModel'
-//import Collection from '@arcgis/core/core/Collection'
+import Expand from '@arcgis/core/widgets/Expand'
 
 export default {
     name: 'location',
@@ -79,6 +79,9 @@ export default {
         }
     },
     computed: {
+        lang () {
+            return this.$store.state.lang
+        },
     },
     methods: {
         zoomplus() {
@@ -93,6 +96,7 @@ export default {
             document.getElementById("info").style.right = "-50%";
         },
         zoomOut() {
+            //FIRST EXTENT TO LAYER FUNCTION
             /*this.view.whenLayerView(this.workspacesLayer)
                 .then((layerView) => {
                     layerView.queryExtent().then((response) => {
@@ -127,7 +131,8 @@ export default {
             }
 
         },
-        toggleATWS() {
+        //LAYER TOGGLE FUNCTIONS + FILTER BUTTONS STYLING
+        /*toggleATWS() {
             if(this.showATWS=='')
                 this.showATWS = "Type <> 'ATWS'"
             else 
@@ -181,13 +186,9 @@ export default {
             //console.log(query)
             //console.log(qs)
             this.workspacesLayer.definitionExpression = query
-        }
+        }*/
     },
     mounted() {
-        //const template = { title: "prova" }
-
-        
-
         this.workspacesLayer = new FeatureLayer({
             url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/21464066_Bluewater_Project_Data/FeatureServer/3",
             outFields: ["*"]
@@ -208,7 +209,7 @@ export default {
             labelExpression: "[name]",
             labelPlacement: "center-right",
             symbol: {
-                type: "text", // autocasts as new TextSymbol()
+                type: "text", //autocasts as new TextSymbol()
                 font: {
                 size: 12,
                 weight: "bold"
@@ -221,6 +222,7 @@ export default {
             }
         }
 
+        //const template = { title: "prova" }
         this.valvesLayer = new FeatureLayer({
             url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/21464066_Bluewater_Project_Data/FeatureServer/0",
             outFields: ["*"],
@@ -252,15 +254,24 @@ export default {
             }
         })
 
+        //element to compute layer extent and zoom out correctly
         this.zoomViewModel = new ZoomViewModel()
         this.zoomViewModel.view = this.view
 
-        this.view.ui.add(new Legend({ view: this.view, 
-            layerInfos: [{
-                layer: this.workspacesLayer,
-                title: "Workspaces Legend"
-            }]
-         }), "bottom-left");
+         var legend = new Expand({
+            content: new Legend({
+                view: this.view,
+                style: "classic",
+                layerInfos: [{
+                    layer: this.workspacesLayer,
+                    title: "Workspaces Legend"
+                }]
+            }),
+            view: this.view,
+            expanded: false
+        })
+
+        this.view.ui.add(legend, "bottom-left");
 
         
         this.view.ui.add(new Search({ view: this.view }), "top-left");
@@ -268,16 +279,10 @@ export default {
         //this.view.ui.add("toggles", "bottom-left");
         
         this.view.ui.add("zoomer", "bottom-right");
-        this.view.ui.add("zoomout", "bottom-right");
-        /*
-        this.view.ui.add("toggleATWS", "top-left");
-        this.view.ui.add("togglePE", "top-left");
-        this.view.ui.add("togglePEBDB", "top-left");
-        this.view.ui.add("toggleTCW", "top-left");
-        */
+        this.view.ui.add("zoomout", "bottom-right");        
 
-        
-
+        //click on Measure Widget to activate/reset distance computation
+        //+ button style accordingly
         let activeWidget = null
         let vv = this.view
         document.getElementById("distanceButton").addEventListener("click", function() {
@@ -306,7 +311,6 @@ export default {
                     break;
             }
         }
-
         function setActiveButton(selectedButton) {
             // focus the view to activate keyboard shortcuts for sketching
             vv.focus();
@@ -319,10 +323,11 @@ export default {
             }
         }
 
-        let stL = this.valvesLayer
-
+        //click on any vale point on the map to get infos and zoom in place
+        //focus on object and data fetching
+        let vsL = this.valvesLayer
         this.view.when()
-        .then(function() { return stL.when(); })
+        .then(function() { return vsL.when(); })
         .then(function(layer) {
             return vv.whenLayerView(layer);
         })
@@ -331,34 +336,34 @@ export default {
 
             function eventHandler(event) {
                 const opts = {
-                    include: stL
+                    include: vsL
                 }
                 vv.hitTest(event, opts).then(getGraphics);
             }
 
             let highlight, currentName
-
             function getGraphics(response) {
-                console.log(response)
                 if (response.results.length) {
                     const graphic = response.results[0].graphic;
                     
                     const attributes = graphic.attributes;
                     const name = attributes.Name;
                     const objid = attributes.OBJECTID;
-                    console.log(attributes)
+                    //console.log(attributes)
 
                     if ( highlight && (currentName !== name ) ) {
                         highlight.remove();
                         highlight = null;
                     }
 
+                    //SHOW info section if data is clicked
                     document.getElementById("info").style.visibility = "visible";
                     document.getElementById("info").style.right = "0";
                     document.getElementById("info").style.opacity = "1";
                     document.getElementById("name").innerHTML = name;
                     document.getElementById("objectid").innerHTML = "OBJECTID: " + objid;
 
+                    //HIGHLIGHT and ZOOM ON POINT (optional)
                     highlight = layerView.highlight(graphic);
                     vv.goTo({
                         target: new Point({
@@ -371,6 +376,7 @@ export default {
                         duration: 1000
                     })
                 } else {
+                    //HIDE info section if empty point on map is clicked
                     if (highlight){
                         highlight.remove();
                         highlight = null;
@@ -558,10 +564,6 @@ export default {
     }
 }
 
-#measure button {
-    margin-left: 10px;
-}
-
 .action-button:hover,
 .action-button:focus {
   background: #0079c1;
@@ -586,18 +588,20 @@ export default {
     }
 }*/
 
-#zoomer button {
-    background: #0079c1;
-    color: #fff;
-    padding: 10px;
-    &:first-child {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-        border-right: 1px #fff solid;
-    }
-    &:last-child {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
+#zoomer {
+    button {
+        background: #0079c1;
+        color: #fff;
+        padding: 10px;
+        &:first-child {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-right: 1px #fff solid;
+        }
+        &:last-child {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
     }
 }
 
