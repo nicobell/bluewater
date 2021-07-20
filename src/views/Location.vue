@@ -190,12 +190,12 @@ export default {
     },
     mounted() {
         this.workspacesLayer = new FeatureLayer({
-            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/21464066_Bluewater_Project_Data/FeatureServer/3",
+            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWater_LocationsANDWorkspaces/FeatureServer/2",
             outFields: ["*"]
         })
 
         this.pipelineLayer = new FeatureLayer({
-            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/21464066_Bluewater_Project_Data/FeatureServer/1",
+            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWater_LocationsANDWorkspaces/FeatureServer/1",
             outFields: ["*"]
         })
 
@@ -206,7 +206,7 @@ export default {
 
 
         const labelclass = {
-            labelExpression: "[name]",
+            labelExpression: "["+this.lang+"_title]",
             labelPlacement: "center-right",
             symbol: {
                 type: "text", //autocasts as new TextSymbol()
@@ -224,7 +224,7 @@ export default {
 
         //const template = { title: "prova" }
         this.valvesLayer = new FeatureLayer({
-            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/21464066_Bluewater_Project_Data/FeatureServer/0",
+            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWater_LocationsANDWorkspaces/FeatureServer/0",
             outFields: ["*"],
             //popupTemplate: template,
             labelingInfo: [labelclass],
@@ -326,6 +326,7 @@ export default {
         //click on any vale point on the map to get infos and zoom in place
         //focus on object and data fetching
         let vsL = this.valvesLayer
+        let lang = this.lang
         this.view.when()
         .then(function() { return vsL.when(); })
         .then(function(layer) {
@@ -347,9 +348,10 @@ export default {
                     const graphic = response.results[0].graphic;
                     
                     const attributes = graphic.attributes;
-                    const name = attributes.Name;
+                    const name = attributes[lang+"_title"];
                     const objid = attributes.OBJECTID;
-                    //console.log(attributes)
+                    const description = attributes[lang+"_description"]
+                    console.log(attributes)
 
                     if ( highlight && (currentName !== name ) ) {
                         highlight.remove();
@@ -361,7 +363,8 @@ export default {
                     document.getElementById("info").style.right = "0";
                     document.getElementById("info").style.opacity = "1";
                     document.getElementById("name").innerHTML = name;
-                    document.getElementById("objectid").innerHTML = "OBJECTID: " + objid;
+                    //document.getElementById("objectid").innerHTML = "OBJECTID: " + objid;
+                    document.getElementById("category").innerHTML = description;
 
                     //HIGHLIGHT and ZOOM ON POINT (optional)
                     highlight = layerView.highlight(graphic);
