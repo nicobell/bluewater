@@ -32,7 +32,7 @@ export default {
     langData: String
   },
   mounted() {
-    console.log('visiting ' + this.$route.name)
+    //console.log('visiting ' + this.$route.name)
     this.$store.commit('SET_LASTPAGE', this.$route.name)
 
     if(this.lang=='es')
@@ -45,7 +45,7 @@ export default {
             return this.$store.state.lang
         },
         content () {
-            console.log(this.$store.state.data[this.lang].contacts)
+            //console.log(this.$store.state.data[this.lang].contacts)
             return this.$store.state.data[this.lang].contacts
         },
   },

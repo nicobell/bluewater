@@ -349,9 +349,9 @@ export default {
                     
                     const attributes = graphic.attributes;
                     const name = attributes[lang+"_title"];
-                    const objid = attributes.OBJECTID;
+                    //const objid = attributes.OBJECTID;
                     const description = attributes[lang+"_description"]
-                    console.log(attributes)
+                    //console.log(attributes)
 
                     if ( highlight && (currentName !== name ) ) {
                         highlight.remove();

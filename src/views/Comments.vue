@@ -78,7 +78,7 @@ export default {
         return this.$store.state.lang
     },
     content () {
-        console.log(this.$store.state.data[this.lang].comments)
+        //console.log(this.$store.state.data[this.lang].comments)
         return this.$store.state.data[this.lang].comments
     },
   },
@@ -88,7 +88,7 @@ export default {
       }
   },
   mounted() {
-        console.log('visiting ' + this.$route.name)
+        //console.log('visiting ' + this.$route.name)
         this.$store.commit('SET_LASTPAGE', this.$route.name)
     }
 }

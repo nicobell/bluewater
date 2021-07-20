@@ -80,7 +80,7 @@ export default {
             this.isActive = id
         },
         toggle(e) {
-            console.log(e.target.parentNode)
+            //console.log(e.target.parentNode)
             e.target.parentNode.classList.toggle('active')
         },
         gotoComments() {
@@ -92,7 +92,7 @@ export default {
             return this.$store.state.lang
         },
         content () {
-            console.log(this.$store.state.data[this.lang].nepaProcess)
+            //console.log(this.$store.state.data[this.lang].nepaProcess)
             return this.$store.state.data[this.lang].nepaProcess
         },
         selectedStep() {
@@ -103,7 +103,7 @@ export default {
         }
     },
     mounted() {
-        console.log('visiting ' + this.$route.name)
+        //console.log('visiting ' + this.$route.name)
         this.$store.commit('SET_LASTPAGE', this.$route.name)
     },
     watch: {

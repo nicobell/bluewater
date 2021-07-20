@@ -87,9 +87,9 @@ export default {
     }
   },
   mounted() {
-    console.log('visiting ' + this.$route.name)
+    //console.log('visiting ' + this.$route.name)
     this.$store.commit('SET_LASTPAGE', this.$route.name)
-    console.log(this.content)
+    //console.log(this.content)
   }
 }
 </script>
