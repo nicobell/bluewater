@@ -13,7 +13,7 @@
                 </div>
                 <p><span id="objectid"></span></p>
                 <p id="category">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore tempore in harum consectetur fugiat voluptatum ex. Eveniet est facilis itaque rerum, odit quo deserunt? Ad, nulla. Perspiciatis odio fuga omnis.
+                    ...
                 </p>
             </div>
 
@@ -482,7 +482,6 @@ export default {
         position: relative;
         left: -60px;
         top: 0;
-        
     }
 }
 

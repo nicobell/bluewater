@@ -1,8 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
-//routing
-import App from '@/App';
 import Home from '@/views/Home';
 import ProxyRouter from '@/views/ProxyRouter';
 
@@ -12,20 +9,15 @@ const router = new VueRouter({
     mode: 'history',
     base: '',
     routes:[
-        // {
-        //     path:'/',
-        //     redirect: '/en'
-        // },
         {
-            path:'/:lang',
-            name:'Home',
-            component:Home,
-
+            path: '/:lang',
+            name: 'Home',
+            component: Home
         },
         {
-            path:'/:lang/:pagetitle',
-            name:'ProxyRouter',
-            component:ProxyRouter,
+            path: '/:lang/:pagetitle',
+            name: 'ProxyRouter',
+            component: ProxyRouter
         }
         
     ]

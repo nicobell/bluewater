@@ -11,20 +11,18 @@
         </div>
 
         <div class="inner-content">
-            <div class="image-container">
-              <!--<div class="hotspot hotspot-1"></div>
-              <div class="hotspot hotspot-2"></div>-->
-              <img src="../assets/timeline.png" alt="">
-            </div>
+          <div class="image-container">
+            <img src="../assets/timeline.png" alt="">
+          </div>
         </div>
 
         <div class="spalla" :style="spallaStyle">
           <div class="button-container">
-            <button @click="toggleSpalla">X</button>
+            <div @click="toggleSpalla"></div>
           </div>
 
             <div class="text-container" v-for="(a, index) in content.items" :key="'accordion'+index">
-              <a @click="openAccordion(index)">{{ a.title }}{{openLabel(index)}}</a>
+              <a @click="openAccordion(index)" :class="{'open': openAcc==index}">{{ a.title }}</a>
               <hr>
               <div :class="{'open': openAcc==index}">
                 <div v-for="(item, ind) in a.content"
@@ -73,12 +71,6 @@ export default {
         return 'display: block;'
       if(index==2 && this.openAcc2)
         return 'display: block;'
-    },
-    openLabel(index) {
-      if(this.openAcc == index)
-        return ' ^'
-      else
-        return ' v'
     }
   },
   computed: {
@@ -107,18 +99,6 @@ export default {
 .image-container {
   width: 100%;
   position: relative;
-  .hotspot {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: red;
-    top: 25%;
-    left: 16%;
-  }
-  .hotspot-2 {
-    top: 65%;
-    left: 46%;
-  }
 }
 
 img {
@@ -164,18 +144,21 @@ img {
 
   .button-container {
     position: relative;
-  }
+    &> div {
+      position: absolute;
 
-  button {
-    position: absolute;
+      cursor: pointer;
+      content: url(/close-button.svg);
+      display: block;
+      border-radius: 0;
+      background: #0079c1;
+      color: #fff;
+      width: 50px;
+      height: 50px;
 
-    background: #0079c1;
-    border-radius: 0;
-    color: #fff;
-    width: 50px;
-    height: 50px;
-    left: -20px;
-    top: -15px;
+      left: -20px;
+      top: -15px;
+    }
   }
 
   a {
@@ -199,6 +182,26 @@ img {
   > div:not(.open) {
     .accordion {
       display: none;
+    }
+  }
+
+  > a {
+    &::after {
+      content: url('/dropdown.svg');
+      width: 1em;
+      display: inline-block;
+      position: relative;
+      margin-left: 5px;
+      transform: rotateZ(0deg);
+      transition: all .3s;
+    }
+    &.open {
+      &::after {
+        display: inline-block;
+        top: 5px;
+        transform: rotateZ(-180deg);
+        transition: all .3s;
+      }
     }
   }
 

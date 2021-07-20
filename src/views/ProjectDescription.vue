@@ -1,52 +1,52 @@
 <template>
 <div class="template-page project-description intro">
-    <header class="intro-header">
-    </header>
-    <div class="main-content">
-      <h1 class="title">{{ content.title }}</h1>
-      <div class="content two-col">
-        <div class="inner-content-left">
-          <div v-html="content.description"></div>
-        </div>
+  <header class="intro-header">
+  </header>
+  <div class="main-content">
+    <h1 class="title">{{ content.title }}</h1>
+    <div class="content two-col">
+      <div class="inner-content-left">
+        <div v-html="content.description"></div>
+      </div>
 
-        <div class="inner-content-right">
-          <div class="data">
-            <div class="section-1">
-              <img src="../assets/mooring-point.svg" alt="mooring point logo">
-              <div class="num"><span>{{ content.data.mooringPointd }}</span></div>
-              <h3>SINGLE POINT MOORING BUOY SYSTEMS</h3>
+      <div class="inner-content-right">
+        <div class="data">
+          <div class="section-1">
+            <img src="../assets/mooring-point.svg" alt="mooring point logo">
+            <div class="num"><span>{{ content.data.mooringPointd }}</span></div>
+            <h3>SINGLE POINT MOORING BUOY SYSTEMS</h3>
+          </div>
+          <div class="section-2">
+            <div class="depths"><span class="small">{{ content.data.depths }}</span>ft.</div>
+            <div class="location"><span class="small">{{ content.data.location }}</span>nm off the coast of San Jose Island</div>
+          </div>
+          <div class="section-3">
+            <div class="main">
+              <div><span>{{ content.data.miles }}</span>miles</div>
+              <h3>{{ content.data.milesDescription }}</h3>
             </div>
-            <div class="section-2">
-              <div class="depths"><span class="small">{{ content.data.depths }}</span>ft.</div>
-              <div class="location"><span class="small">{{ content.data.location }}</span>nm off the coast of San Jose Island</div>
-            </div>
-            <div class="section-3">
-              <div class="main">
-                <div><span>{{ content.data.miles }}</span>miles</div>
-                <h3>{{ content.data.milesDescription }}</h3>
+            <div class="labels">
+              <div v-for="(l, index) in content.data.milesLabels" :key="'label'+index">
+                {{ l }}
               </div>
-              <div class="labels">
-                <div v-for="(l, index) in content.data.milesLabels" :key="'label'+index">
-                  {{ l }}
-                </div>
-              </div>
-            </div>
-            <div class="section-4">
-              <div class="acres"><span class="small">{{ content.data.harborFacility }}</span>acres</div>
-              <h4>Harbor Island Facility</h4>
-            </div>
-            <div class="section-1">
-              <img src="../assets/carry.svg" alt="carry logo">
-              <div class="num"><span>{{ content.data.carriersMonths }}</span></div>
-              <h3>VERY LARGE CRUDE CARRIERS</h3>
-            </div>
-            <div class="section-2">
-              <div class="loading"><span class="small">{{ content.data.loadingRates }}</span>ft.</div>
-              <div class="operations"><span class="small">{{ content.data.simultaneousOperations }}</span>nm off the coast of San Jose Island</div>
             </div>
           </div>
+          <div class="section-4">
+            <div class="acres"><span class="small">{{ content.data.harborFacility }}</span>acres</div>
+            <h4>Harbor Island Facility</h4>
+          </div>
+          <div class="section-1">
+            <img src="../assets/carry.svg" alt="carry logo">
+            <div class="num"><span>{{ content.data.carriersMonths }}</span></div>
+            <h3>VERY LARGE CRUDE CARRIERS</h3>
+          </div>
+          <div class="section-2">
+            <div class="loading"><span class="small">{{ content.data.loadingRates }}</span>ft.</div>
+            <div class="operations"><span class="small">{{ content.data.simultaneousOperations }}</span>nm off the coast of San Jose Island</div>
+          </div>
         </div>
-        </div>
+      </div>
+      </div>
     </div>
   </div>
 </template>
@@ -54,28 +54,28 @@
 
 export default {
   name: 'comments',
-   data: () => {
-        return {
-        }
+  data: () => {
+    return {
+    }
   },
   computed: {
     lang() {
-        return this.$store.state.lang
+      return this.$store.state.lang
     },
     content () {
-        console.log(this.$store.state.data[this.lang].projectDescription)
-        return this.$store.state.data[this.lang].projectDescription
+      console.log(this.$store.state.data[this.lang].projectDescription)
+      return this.$store.state.data[this.lang].projectDescription
     },
   },
   methods: {
-      gotolink(link) {
-        window.open(link, '_blank')
-      }
+    gotolink(link) {
+      window.open(link, '_blank')
+    }
   },
   mounted() {
-        console.log('visiting ' + this.$route.name)
-        this.$store.commit('SET_LASTPAGE', this.$route.name)
-    }
+    console.log('visiting ' + this.$route.name)
+    this.$store.commit('SET_LASTPAGE', this.$route.name)
+  }
 }
 </script>
 <style scoped lang="scss">
