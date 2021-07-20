@@ -423,10 +423,6 @@ export default {
     font-size: 16pt;
     transition: all 500ms ease-in-out;
 
-    &> * {
-        color: #0079c1;
-    }
-
     .intro, .intro p {
         color: #fff;
         font-weight: 700;
@@ -442,14 +438,14 @@ export default {
 
     .intro {
         position: relative;
-        min-height: 170px;
+        min-height: 140px;
         margin-bottom: 20px;
     }
 
     &::before {
         content: '';
         width: 100%;
-        min-height: calc(220px + 2%);
+        min-height: calc(190px + 2%);
         background-image: url("../assets/header-bg.jpg")  ;
         background-size: cover;
         left: 0;
@@ -461,7 +457,7 @@ export default {
     &::after {
         content: '';
         width: 100%;
-        min-height: calc(220px + 2%);
+        min-height: calc(190px + 2%);
         background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .6));
         background-size: cover;
         left: 0;
