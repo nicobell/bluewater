@@ -21,18 +21,18 @@
             </router-link>
             <router-link  :to="{name: 'ProxyRouter',  params: { 
                     lang: this.lang, 
-                    pagetitle: (this.lang=='es' ? 'proceso-nepa' : 'nepa-process') 
-                    }}" >
+                    pagetitle: (this.lang=='es' ? 'ley-licencia-dwp' : 'dwp-act-license') 
+                    }}">
                 <li>
-                    <span class="icon process"></span><span class="label">{{content.menu.menuLabel3}}</span>
+                    <span class="icon license"></span><span class="label">{{content.menu.menuLabel4}}</span>
                 </li>
             </router-link>
             <router-link  :to="{name: 'ProxyRouter',  params: { 
                     lang: this.lang, 
-                    pagetitle: (this.lang=='es' ? 'ley-licencia-dwp' : 'dwp-act-license') 
-                    }}">
+                    pagetitle: (this.lang=='es' ? 'proceso-nepa' : 'nepa-process') 
+                    }}" >
                 <li>
-                    <span class="icon process"></span><span class="label">{{content.menu.menuLabel4}}</span>
+                    <span class="icon process"></span><span class="label">{{content.menu.menuLabel3}}</span>
                 </li>
             </router-link>
             <router-link  :to="{name: 'ProxyRouter',  params: {
@@ -262,6 +262,10 @@ nav {
             background-image: url("../assets/icon-menu-process.svg");
         }
 
+        .icon.license {
+            background-image: url("../assets/icon-menu-license-01.svg");
+        }
+
         .icon.schedule {
             background-image: url("../assets/icon-menu-schedule.svg");
         }
@@ -352,9 +356,17 @@ nav {
         display: block;
         left: auto;
 
+        ul {
+            opacity: 0;
+            pointer-events: none;
+        }
+
         &.show {
             height: 100%;
-
+            ul {
+                opacity: 1;
+                pointer-events: auto;
+            }
             .btn {
                 background-image: url("../assets/icon-hamburger-close.svg");
             }
@@ -386,6 +398,7 @@ nav {
             background-position: center;
             background-repeat: no-repeat;
             background-image: url("../assets/icon-hamburger.svg");
+            border-bottom-left-radius: 30px;
         }
     }
 

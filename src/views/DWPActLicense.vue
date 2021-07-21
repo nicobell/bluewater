@@ -76,7 +76,17 @@ export default {
         },
         toggle(e) {
             //console.log(e.target.parentNode)
-            e.target.parentNode.classList.toggle('active')
+            if(Array.from(e.target.parentNode.classList).includes('active')) {
+                e.target.parentNode.classList.toggle('active')
+            } else {
+                Array.from(document.getElementsByClassName('accordion-item')).forEach(el => {
+                    el.classList.remove('active')
+                })
+                e.target.parentNode.classList.toggle('active')
+            }
+            
+            e.target.parentNode.scrollIntoView(true);
+            window.scrollBy(0, -70);
         }
     },
     computed: {
@@ -101,6 +111,10 @@ export default {
     watch: {
         route() {
             this.isActive = 1
+            Array.from(document.getElementsByClassName('accordion-item')).forEach(el => {
+                //console.log(el, el.classList)
+                el.classList.remove('active')
+            })
         }
     }
 }

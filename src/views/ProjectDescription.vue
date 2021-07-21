@@ -18,7 +18,10 @@
           </div>
           <div class="section-2">
             <div class="depths"><span class="small">{{ content.data.depths }}</span>ft.</div>
-            <div class="location"><span class="small">{{ content.data.location }}</span>nm off the coast of San Jose Island</div>
+            <div class="location">
+              <span class="small">{{ content.data.location }}</span>
+              <div>nm off the coast of San Jose Island</div>
+            </div>
           </div>
           <div class="section-3">
             <div class="main">
@@ -27,12 +30,12 @@
             </div>
             <div class="labels">
               <div v-for="(l, index) in content.data.milesLabels" :key="'label'+index">
-                {{ l }}
+                {{ l.toUpperCase() }}
               </div>
             </div>
           </div>
           <div class="section-4">
-            <div class="acres"><span class="small">{{ content.data.harborFacility }}</span>acres</div>
+            <div class="acres"><span class="small">{{ content.data.harborFacility }}</span><div>acres</div></div>
             <h4>Harbor Island Facility</h4>
           </div>
           <div class="section-1">
@@ -41,8 +44,11 @@
             <h3>VERY LARGE CRUDE CARRIERS</h3>
           </div>
           <div class="section-2">
-            <div class="loading"><span class="small">{{ content.data.loadingRates }}</span>ft.</div>
-            <div class="operations"><span class="small">{{ content.data.simultaneousOperations }}</span>nm off the coast of San Jose Island</div>
+            <div class="loading"><span class="small">{{ content.data.loadingRates }}</span>bph</div>
+            <div class="operations"><span class="small">{{ content.data.simultaneousOperations }}</span>
+              <div>bph</div>
+              <h4>Simultaneous Operations</h4>
+            </div>
           </div>
         </div>
       </div>
@@ -98,12 +104,17 @@ export default {
     font-size: 1.2em;
     color: rgba(255, 255, 255, .7);
   }
+  h4 {
+    color: #fff;
+    font-weight: 300;
+  }
   span {
-    font-size: 3.5rem;
-    font-weight: 700;
+    font-size: 3.7rem;
+    font-weight: 600;
     color: #fff;
     &.small {
-      font-size: 2.5rem;
+      font-size: 2.7rem;
+      font-weight: 600;
     }
   }
 
@@ -166,10 +177,27 @@ export default {
       margin-right: 10px;
     }
 
-    .location, .operations {
+    .location {
       display: flex;
       flex-direction: row;
-      align-items: center;
+      align-content: center;
+      div {
+        margin: auto 0;
+      }
+    }
+
+    .operations {
+      display: flex;
+      div {
+        line-height: 2.6em;
+        margin-top: auto;
+      }
+      h4 {
+        margin: auto 0;
+        margin-left: 20px;
+        position: relative;
+        top: 0;
+      }
     }
 
     .location::before {
@@ -225,8 +253,14 @@ export default {
       position: relative;
       div {
         color: #fff;
-        font-size: 1.2em;
-        margin: 10px 0;
+        font-size: 1em;
+        margin: 20px 0;
+        &:first-child {
+          margin-top: 10px;
+        }
+        &:last-child {
+          margin-bottom: 10px;
+        }
       }
       &:before {
         content: url(../assets/graffa.svg);
@@ -257,7 +291,11 @@ export default {
     .acres {
       display: flex;
       flex-direction: column;
+      align-content: center;
       margin-right: 20px;
+      div {
+        margin: 0 auto;
+      }
     }
     h4 {
       color: #fff;
@@ -434,3 +472,4 @@ export default {
 
 </style>
 
+\

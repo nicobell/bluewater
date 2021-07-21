@@ -313,7 +313,7 @@ export default {
         }
         function setActiveButton(selectedButton) {
             // focus the view to activate keyboard shortcuts for sketching
-            vv.focus();
+            //vv.focus();
             var elements = document.getElementsByClassName("active");
             for (var i = 0; i < elements.length; i++) {
                 elements[i].classList.remove("active");
@@ -342,7 +342,7 @@ export default {
                 vv.hitTest(event, opts).then(getGraphics);
             }
 
-            let highlight, currentName
+            //let highlight, currentName
             function getGraphics(response) {
                 if (response.results.length) {
                     const graphic = response.results[0].graphic;
@@ -353,10 +353,10 @@ export default {
                     const description = attributes[lang+"_description"]
                     //console.log(attributes)
 
-                    if ( highlight && (currentName !== name ) ) {
+                    /*if ( highlight && (currentName !== name ) ) {
                         highlight.remove();
                         highlight = null;
-                    }
+                    }*/
 
                     //SHOW info section if data is clicked
                     document.getElementById("info").style.visibility = "visible";
@@ -367,7 +367,7 @@ export default {
                     document.getElementById("category").innerHTML = description;
 
                     //HIGHLIGHT and ZOOM ON POINT (optional)
-                    highlight = layerView.highlight(graphic);
+                    //highlight = layerView.highlight(graphic);
                     vv.goTo({
                         target: new Point({
                             latitude: graphic.geometry.latitude,
@@ -380,10 +380,10 @@ export default {
                     })
                 } else {
                     //HIDE info section if empty point on map is clicked
-                    if (highlight){
+                    /*if (highlight){
                         highlight.remove();
                         highlight = null;
-                    }
+                    }*/
                     document.getElementById("info").style.visibility = "hidden";
                     document.getElementById("info").style.opacity = "0.2";
                     document.getElementById("info").style.right = "-50%";
@@ -412,7 +412,7 @@ export default {
     height: 97%;
     bottom: 0;
     padding: 1% 2%;
-    width: 25%;
+    width: 33%;
     right: -50%;
 
     position: absolute;
@@ -490,7 +490,7 @@ export default {
 
     #info {
         height: calc(100% - 20px);
-        width: 33%;
+        width: 45%;
         .close {
             left: -50px;
         }
@@ -508,6 +508,7 @@ export default {
     #info {
         height: calc(100% - 120px);
         bottom: 100px;
+        
     }    
 }
 
@@ -562,8 +563,8 @@ export default {
     }
 }
 
-.action-button:hover,
-.action-button:focus {
+.action-button:hover {
+//.action-button:focus 
   background: #0079c1;
   color: #e4e4e4;
 }
@@ -612,8 +613,17 @@ export default {
             left: 10px;
             top: 10px;
         }
-        p {
-            padding: 0 2%;
+        p#category, p:first-child {
+            padding: 20px 50px 0 50px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    #info {
+        p#category, p:first-child {
+            padding: 20px;
+            padding-bottom: 0;
         }
     }
 }

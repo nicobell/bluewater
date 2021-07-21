@@ -38,7 +38,7 @@
                 "mooringPointd": 2,
                 "depths": "88-90",
                 "location": 15,
-                "miles": 56.58,
+                "miles": 56.48,
                 "milesDescription": "Two 30-inch Outside Diameter Crude Oil Pipelines",
                 "milesLabels": ["Onshore", "Inshore", "Offshore"],
                 "harborFacility": 12,
@@ -221,7 +221,7 @@
             ]
         },
         "schedule": {
-            "title": "Nepa Process Schedule",
+            "title": "DWPA and NEPA Process Statutory Timeline",
             "items": [
                 {
                     "id": 1,
@@ -344,12 +344,12 @@
             "cards": [
                 {
                     "title":"License Application",
-                    "description":"The License Application is available for viewing at the <span>Regulations</span> website",
+                    "description":"The License Application is available for viewing at the <span>Regulations.gov</span> website",
                     "button":"Go to Website",
                     "link": "http://regulations.gov"
                 }, {
                     "title":"Draft EIS",
-                    "description":"The Draft EIS is available for viewing at the <span>Regulations</span> website:",
+                    "description":"The Draft EIS is available for viewing at the <span>Regulations.gov</span> website",
                     "button":"Go to Website",
                     "link": "http://regulations.gov"
                 }
@@ -457,7 +457,7 @@
                 "mooringPointd": 2,
                 "depths": "88-90",
                 "location": 15,
-                "miles": 56.58,
+                "miles": 56.48,
                 "milesDescription": "Two 30-inch Outside Diameter Crude Oil Pipelines",
                 "milesLabels": ["Onshore", "Inshore", "Offshore"],
                 "harborFacility": 12,

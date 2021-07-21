@@ -178,6 +178,12 @@ button.icon-left::after {
   }
 }
 
+.esri-view .esri-view-surface--inset-outline:focus::after {
+  outline: none !important; 
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+
 @media (max-width: 1024px) {
   #viewDiv > div.esri-view-root > div.esri-ui > div.esri-ui-inner-container.esri-ui-corner-container > div.esri-ui-bottom-left.esri-ui-corner > div.esri-component.esri-legend.esri-widget.esri-widget--panel {
     display: none;

@@ -1,6 +1,6 @@
 <template>
-  <div id="app" >
-	<div :class="[{'is-mobile': isMobile}]" v-if="this.dataLoaded">
+  <div id="app">
+	<div :class="{'is-mobile': isMobile, 'obscure': spallaState}" v-if="this.dataLoaded">
 		<my-header></my-header>
 		<Navigation></Navigation>
 		<router-view ></router-view>
@@ -18,12 +18,15 @@ export default {
 		Navigation
   	},
 	computed: {
-		langDefault () {
+		langDefault() {
 			return this.$store.getters.langDefault
 		},
+		spallaState() {
+			return this.$store.state.obscure
+		}
 	},
-	data:()=> {
-		return{
+	data: () => {
+		return {
 			dataLoaded: false,
 			isMobile:null,
 		}
@@ -70,7 +73,21 @@ body, #app {
 	margin: 0;
 	height: 100%;
 	width: 100%;
+	position: relative;
 }
+
+/*.obscure::before {
+	content: '';
+	background: rgba(0, 0, 0, .5);
+	width: 100vw;
+	height: calc(110vh +  84px);
+	position: absolute;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+	z-index: 10;
+}*/
+
 @import "https://js.arcgis.com/4.19/esri/themes/light/main.css";
 
 </style>

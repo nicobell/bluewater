@@ -8,7 +8,8 @@ export default new Vuex.Store({
     data: null,
     lang: 'en',
     isMobile: null,
-    lastPage: null
+    lastPage: null,
+    obscure: false
   },
   mutations: {
     SET_LANG(state, currentLang) {
@@ -23,6 +24,9 @@ export default new Vuex.Store({
     SET_LASTPAGE(state, page) {
       state.lastPage = page
     },
+    SET_OBSCURE(state, payload) {
+      state.obscure = payload;
+    }
   },
   getters: {
     langDefault: state => {

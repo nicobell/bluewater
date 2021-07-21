@@ -5,7 +5,7 @@
         <router-link :to="`/${this.lang}`"><img src="../assets/logo-ma.png" width="270" height="37" alt="logo-ma"></router-link>
         <img src="../assets/logo-uscg.png" width="43" height="41" alt="logo-uscg">
       </div>
-      <div class="meeting-banner">
+      <div :class="['meeting-banner', this.$route.name.toLowerCase()]">
         <img src="../assets/icon-meeting.svg" width="42" height="42" alt="">
         <div class="text">
           <h2>{{content.headerInfo.publicMeetingTitle}}</h2>
@@ -148,6 +148,9 @@ header {
 @media (max-width: 480px) {
   header {
     .meeting-banner{
+      &.home {
+        display: none;
+      }
       padding: 0px 15px;
       justify-content: space-between;
       width: calc(100% - 30px);
