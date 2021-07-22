@@ -103,6 +103,19 @@
 </script>
 
 <style scoped lang="scss">
+ .button-container {
+    position: relative;
+    div {
+      content: url(/close-button-dark.svg);
+      position: fixed;
+      cursor: pointer;
+      display: block;
+      width: 70px;
+      height: 70px;
+      z-index: 99;
+      transform: translate(-110px, -81px);
+    }
+  }
 .schedule.spallaOpen{
   position: absolute;
   height: 100%;
@@ -125,7 +138,7 @@
 .spalla{
   position: fixed;
   top: 84px;
-  background: red;
+  background: #f2f6ff;
   width: 500px;
   z-index: 99;
   overflow-y: scroll;
@@ -179,7 +192,7 @@
 
   .text-container {
     margin: 0px 0px 40px 0px;
-
+    cursor: pointer;
 
     &.closed {
       height: unset;
@@ -256,12 +269,22 @@
 
 
   @media (max-width: 992px) {
+    .button-container div {
+      content: url(/close-button-dark.svg);
+      position: fixed;
+      top: auto;
+      bottom: 40px;
+      z-index: 99999;
+      transform: none;
+      right: 0;
+      left: auto;
+    }
     .spalla {
       width: 100%;
       padding:0 ;
       height: 100%;
       .accordions{
-        padding: 45px 15px;
+        padding: 45px 15px 105px 15px;
       }
     }
 
@@ -277,18 +300,23 @@
     .main-content {
       height: 70vh;
     }
-  }
 
-  @media (max-width: 576px) {
+    .image-container {
+      height: 50vh;
+      overflow-y: hidden;
+      overflow-x: scroll;
+      margin-bottom: 160px;
+      display: block;
 
-    .schedule .main-content {
-
-      .inner-content {
-        .image-container {
-          img {
-          }
-        }
+      img {
+        width: auto;
+        height: 100%;
       }
+    }
+    .schedule.spallaOpen {
+      .image-container {
+        display: none;
+    }
     }
   }
 </style>
