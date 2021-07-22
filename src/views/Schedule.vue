@@ -1,5 +1,8 @@
 <template>
-  <div class="template-page schedule intro">"
+  <div :class="['template-page schedule intro',{spallaOpen:showSpalla}]">
+    <div class="overlay-spalla" @click="toggleSpalla">
+
+    </div>
     <header class="intro-header">
     </header>
     <div class="main-content">
@@ -16,11 +19,8 @@
           </div>
         </div>
       </div>
-
-  
     </div>
     
-    <div class="spalla-container">
       <div :class="['spalla',{open:showSpalla}]">
         <div class="button-container">
           <div @click="toggleSpalla"></div>
@@ -38,7 +38,6 @@
           </div>
         </div>
       </div>
-    </div>
   </div>
 </template>
 <script>
@@ -104,6 +103,45 @@
 </script>
 
 <style scoped lang="scss">
+.schedule.spallaOpen{
+  position: absolute;
+  height: 100%;
+  overflow: hidden;
+  .overlay-spalla{
+    display: block;
+  }
+}
+  .overlay-spalla {
+    background: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 1;
+  }
+
+.spalla{
+  position: fixed;
+  top: 84px;
+  background: red;
+  width: 500px;
+  z-index: 99;
+  overflow-y: scroll;
+  display: none;
+  height: calc( 100% - 184px);
+  padding: 80px 110px 50px 110px;
+  &.open{
+    right: 0px;
+    display: block;
+  }
+}
+
+.accordions{
+  margin-bottom: 90px;
+}
+
   .main-content {
     overflow: hidden;
 
@@ -139,76 +177,9 @@
     }
   }
 
-  .spalla {
-    position: fixed;
-    width: 550px;
-    height: calc( 100% - 84px);
-    top: 84px;
-    z-index: 1000;
-    background: red;
-    right: 550px;
-    opacity: .5;
-    transition: 500ms all ease-in-out;
-    overflow-y:scroll ;
-    overflow-x: visible;
-    &::before{
-        content: '';
-        width: 100%;
-        height:100%;
-        background:#000;
-        pointer-events: none;
-        bottom: 0;
-        left: 0;
-        position: absolute;
-    }
-
-    &.open{
-      display: block;
-      opacity: 1;
-      visibility: visible;
-      right: 0;
-    }
-   
-    >div {
-      padding: 0 40px;
-    }
-
-    .button-container {
-      position: relative;
-
-      div {
-        position: absolute;
-        left: -20px;
-        top: -15px;
-        cursor: pointer;
-        display: block;
-        content: url(/close-button-dark.svg);
-        width: 50px;
-        height: 50px;
-      }
-    }
-
-    .accordions {
-      padding-top: 50px;
-      display: flex;
-      flex-direction: column;
-
-      &.space {
-        justify-content: space-between;
-      }
-
-      a {
-        width: 100%;
-        display: block;
-        cursor: pointer;
-        font-weight: 700;
-        font-size: 1.2rem;
-      }
-    }
-  }
-
   .text-container {
-    margin-bottom: 10px;
+    margin: 0px 0px 40px 0px;
+
 
     &.closed {
       height: unset;
@@ -217,28 +188,23 @@
     &.open {
       height: 85%;
       position: relative;
-
-      &::after {
-        content: '';
-        width: 100%;
-        height: 70px;
-        background: linear-gradient(transparent 10%, #fff 80%);
-        pointer-events: none;
-        bottom: 0;
-        position: absolute;
-      }
     }
 
     >a {
-      width: 100%;
+      width: 90%;
       position: relative;
+      font-size: 1.25rem;  
+      display: block;
+      margin-bottom: 5px;
+
+    
 
       &::after {
         content: url('/dropdown.svg');
         width: 1em;
         display: inline-block;
         position: absolute;
-        right: 15px;
+        right: -10%;
         bottom: 0;
         transform: rotateZ(0deg);
         transition: all .3s;
@@ -259,14 +225,6 @@
         display: none;
       }
     }
-
-    /*&:nth-child(2) {
-    > div.open {
-      &:nth-of-type(1) {
-        max-height: calc(90% - 24px);
-      }
-    }
-  }*/
 
     >div.open {
       overflow: scroll;
@@ -296,111 +254,38 @@
 
   }
 
-  @media (max-width: 1200px) {
-
-    .spalla {
-      width: 50%;
-      height: 100%;
-
-      .accordions {
-        padding-top: 70px;
-        height: 75%;
-      }
-
-      .text-container .open .accordion {
-        flex-direction: column;
-        margin-bottom: 20px;
-
-        p {
-          width: 90% !important;
-          margin: 0;
-        }
-      }
-    }
-  }
 
   @media (max-width: 992px) {
+    .spalla {
+      width: 100%;
+      padding:0 ;
+      height: 100%;
+      .accordions{
+        padding: 45px 15px;
+      }
+    }
 
     .schedule .main-content {
       overflow: visible;
     }
-
-    .spalla {
-      width: 100%;
-      display: none;
-      top: 87px;
-      right: 0;
-      height: auto;
-      min-height: 100vh;
-      position: fixed;
-      top: -89px;
-      z-index: 999;
-
-      &>div {
-        padding: 0 10px;
-      }
-
-
-      .button-container {
-        div {
-          left: 10px;
-          top: 10px;
-        }
-      }
-
-      .accordions {
-        padding-top: 80px;
-        margin-bottom: 15rem;
-        height: auto;
-      }
-
-      .text-container.open {
-        height: auto;
-
-        &::after {
-          display: none;
-        }
-      }
-
-      .text-container a {
-        margin: 15px 0 10px 0;
-      }
-
-      .text-container .open .accordion {
-        flex-direction: column;
-        margin-bottom: 20px;
-
-        p {
-          width: 90% !important;
-          margin: 0;
-        }
-      }
-    }
   }
 
   @media (max-width: 768px) {
+    .spalla {
+      top: 65px;
+    }
     .main-content {
       height: 70vh;
     }
-
   }
 
   @media (max-width: 576px) {
+
     .schedule .main-content {
 
-      height: auto;
-
       .inner-content {
-        margin-bottom: 7rem;
-
         .image-container {
-          height: 50vh;
-          overflow-x: scroll;
-          overflow-y: hidden;
-
           img {
-            height: 100%;
-            width: auto;
           }
         }
       }
