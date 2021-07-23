@@ -102,6 +102,7 @@ header {
     position: fixed;
     height: 100px;
     bottom: 0%;
+    transform: translate3d(0px, 0px, 0px);
     border-radius: 0px;
     width: 100%;
     justify-content: center;
