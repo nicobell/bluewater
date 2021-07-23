@@ -98,14 +98,11 @@ header {
 }
 
 @media (max-width: 1024px) {
-  header{
-    transform: translate3d(0,0,0); 
-  }
   header .meeting-banner {
     position: fixed;
     height: 100px;
-    transform: translate3d(0,0,0); 
     bottom: 0%;
+    transform: translate3d(0px, 0px, 0px);
     border-radius: 0px;
     width: 100%;
     justify-content: center;
