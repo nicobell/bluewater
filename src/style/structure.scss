@@ -30,6 +30,11 @@
         //list-style: disc;
         margin-bottom: .8em;
     }
+    
+    ol > li::before {
+        font-weight: 700;
+        color: #0079c1;
+    }
 
     li {
         margin: .8rem 0;
