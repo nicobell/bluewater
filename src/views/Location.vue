@@ -3,6 +3,8 @@
         <header class="intro-header"></header>
         <div :class="['main-content', 'map-wrapper', 'lang-'+this.lang] ">
 
+            <!--<div id="loader" class="loader"></div>-->
+
             <div id="viewDiv"></div>
 
             <div id="info">
@@ -45,6 +47,8 @@
                 <button class="esri-icon-plus" @click="zoomplus()"></button>
             </div>
         </div>
+
+        
     </div>
 </template>
 
@@ -71,6 +75,7 @@ export default {
             workspacesLayer: null,
             pipelineLayer: null,
             citiesLayer: null,
+            loading: true,
             //facilityLayer: null,
             valvesLayer: null,
             showATWS: '',
@@ -267,7 +272,7 @@ export default {
         container: "viewDiv",
             map: map,
             center: [-97, 27.90],
-            zoom: 11.99,
+            zoom: 11.989,
             highlightOptions: {
                 color: "rgb(115, 223, 255)"
             }
@@ -298,7 +303,7 @@ export default {
         //this.view.ui.add("toggles", "bottom-left");
         
         this.view.ui.add("zoomer", "bottom-right");
-        this.view.ui.add("zoomout", "bottom-right");        
+        this.view.ui.add("zoomout", "bottom-right");
 
         //click on Measure Widget to activate/reset distance computation
         //+ button style accordingly
@@ -347,7 +352,11 @@ export default {
         let vsL = this.valvesLayer
         let lang = this.lang
         this.view.when()
-        .then(function() { return vsL.when(); })
+        .then(function() {
+            console.log(document.getElementById('loader').classList);
+            document.getElementById('loader').classList.add('hidden');
+            return vsL.when(); 
+        })
         .then(function(layer) {
             return vv.whenLayerView(layer);
         })
@@ -409,8 +418,6 @@ export default {
                 }
             }
         })
-
-        
     }
 }
 </script>
@@ -667,6 +674,21 @@ export default {
 
 @media (max-width: 480px) {
 
+}
+
+.loader {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: blue;
+    z-index: 1000;
+    top: 0;
+    pointer-events: none;
+    opacity: 1;
+
+    &.hidden {
+        opacity: 0;
+    }
 }
 
 </style>

@@ -3,7 +3,7 @@
     <div >
       <h1>{{ content.intro.title }}</h1>
       <p>{{ content.intro.description }}</p>
-      <router-link :to="'/' + lang + '/' +'project-description'"><button class="outline icon-left">
+      <router-link :to="'/' + lang + '/' +'location'"><button class="outline icon-left">
         {{ content.intro.buttonLabel }}
       </button>
       </router-link>
