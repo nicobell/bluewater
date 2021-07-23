@@ -70,7 +70,8 @@ export default {
             zoomViewModel: null,
             workspacesLayer: null,
             pipelineLayer: null,
-            facilityLayer: null,
+            citiesLayer: null,
+            //facilityLayer: null,
             valvesLayer: null,
             showATWS: '',
             showPE: '',
@@ -109,7 +110,7 @@ export default {
                         zoom: 11.989
                     }, {
                         animate: true,
-                        duration: 3000
+                        duration: 1500
                     });            
                 });  
             } else  {
@@ -118,7 +119,7 @@ export default {
                     zoom: 11.989
                 }, {
                     animate: true,
-                    duration: 3000
+                    duration: 1500
                 })
             }
 
@@ -182,20 +183,47 @@ export default {
     },
     mounted() {
         this.workspacesLayer = new FeatureLayer({
-            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWater_LocationsANDWorkspaces/FeatureServer/2",
+            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210722/FeatureServer/4",
             outFields: ["*"]
         })
 
         this.pipelineLayer = new FeatureLayer({
-            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWater_LocationsANDWorkspaces/FeatureServer/1",
+            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210722/FeatureServer/3",
             outFields: ["*"]
         })
 
-        this.facilityLayer = new FeatureLayer({
+        /*this.facilityLayer = new FeatureLayer({
             url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/21464066_Bluewater_Project_Data/FeatureServer/2",
             outFields: ["*"]
-        })
+        })*/
 
+        const cityLabel = {
+            labelExpression: "[NAME]",
+            labelPlacement: "center-right",
+            symbol: {
+                type: "text", //autocasts as new TextSymbol()
+                font: {
+                    size: 10,
+                    weight: "bold"
+                },
+                color: "white"
+            }
+        }
+
+        this.citiesLayer = new FeatureLayer({
+            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210722/FeatureServer/1",
+            labelingInfo: [cityLabel],
+            outFields: ["*"],
+            renderer: {
+                type: "simple",
+                symbol: {
+                    type: "picture-marker",
+                    url: "/point-1.png",
+                    width: "1px",
+                    height: "1px"
+                }
+            }
+        })
 
         const labelclass = {
             labelExpression: "["+this.lang+"_title]",
@@ -203,20 +231,19 @@ export default {
             symbol: {
                 type: "text", //autocasts as new TextSymbol()
                 font: {
-                size: 12,
-                weight: "bold"
+                    size: 12,
+                    weight: "bold"
                 },
                 color: "white",
                 haloColor: "#1C2332",
-                haloSize: 2,
-                backgroundColor: "white"
+                haloSize: 2
                 
             }
         }
 
         //const template = { title: "prova" }
         this.valvesLayer = new FeatureLayer({
-            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWater_LocationsANDWorkspaces/FeatureServer/0",
+            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210722/FeatureServer/2",
             outFields: ["*"],
             //popupTemplate: template,
             labelingInfo: [labelclass],
@@ -233,7 +260,7 @@ export default {
 
         const map = new Map({
             basemap: "satellite",
-            layers: [this.workspacesLayer, this.pipelineLayer, this.facilityLayer, this.valvesLayer]
+            layers: [this.workspacesLayer, this.pipelineLayer, this.valvesLayer, this.citiesLayer]//, this.facilityLayer
         })
 
         this.view = new MapView({
@@ -445,14 +472,32 @@ export default {
     .intro {
         position: relative;
         padding-top: 150px;
-        padding-left: 90px;
-        padding-right: 90px;
+        padding-left: 50px;
+        padding-right: 50px;
         margin-bottom: 20px;
         padding-bottom: 40px;
     }
 
     #category {
-        padding:50px 90px ;
+        padding: 30px;
+        padding-right: 50px;
+        ::v-deep li {
+            counter-increment: my-awesome-counter;
+            position: relative;
+        }
+        ::v-deep ol {
+            counter-reset: my-awesome-counter;
+            list-style: none;
+        }
+        ::v-deep li::before {
+            content: counter(my-awesome-counter) '.';
+            color: #0079c1;
+            font-size: 1.1em;
+            top: -.1em;
+            font-weight: 700;
+            position: absolute;
+            left: -1.5em;
+        }
     }
 
     .close {
