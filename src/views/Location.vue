@@ -96,14 +96,6 @@ export default {
             document.getElementById("info").style.right = "-50%";
         },
         zoomOut() {
-            //FIRST EXTENT TO LAYER FUNCTION
-            /*this.view.whenLayerView(this.workspacesLayer)
-                .then((layerView) => {
-                    layerView.queryExtent().then((response) => {
-                        this.view.goTo(response.extent);
-                    });
-                });*/
-
             if(this.workspacesLayer.fullExtent.spatialReference != this.view.SpatialReference) {
                 var geomSer = new GeometryService({url: 'http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/Geometry/GeometryServer'});            
                 var params = new ProjectParameters({              
@@ -407,63 +399,60 @@ export default {
 }
 
 #info {
-    background-color: white;
-  
-    height: 97%;
-    bottom: 0;
-    padding: 1% 2%;
-    width: 33%;
+    background-color: #fff;
+    height: 100%;
+    top: 0;
+    overflow-y: scroll;
+    bottom: 0px;
+    padding: 0;
+    width: 710px;
+    z-index: 99;
     right: -50%;
-
-    position: absolute;
+    position: fixed;
     opacity: 1;
     visibility: hidden;
-
-    z-index: 1000;
-    font-size: 16pt;
+    font-size: 16px;
     transition: all 500ms ease-in-out;
+
+    .intro{
+        background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .6)), url("../assets/header-bg.jpg")  ;
+    }
+       /*
+    &::before {
+        content: '';
+        width: 100%;
+        min-height: calc(190px + 2%);
+        
+        background-size: cover;
+        left: 0;
+        top: 0;
+        position: absolute;
+        z-index: -1;
+    }
+    */
 
     .intro, .intro p {
         color: #fff;
         font-weight: 700;
         font-size: 18pt;
         margin: 0;
-
     }
 
     .intro p {
         bottom: 10%;
-        position: absolute;
     }
 
     .intro {
         position: relative;
-        min-height: 140px;
+        padding-top: 150px;
+        padding-left: 90px;
+        padding-right: 90px;
         margin-bottom: 20px;
+        padding-bottom: 40px;
     }
 
-    &::before {
-        content: '';
-        width: 100%;
-        min-height: calc(190px + 2%);
-        background-image: url("../assets/header-bg.jpg")  ;
-        background-size: cover;
-        left: 0;
-        top: 0;
-        position: absolute;
-        z-index: -1;
-    }
-
-    &::after {
-        content: '';
-        width: 100%;
-        min-height: calc(190px + 2%);
-        background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .6));
-        background-size: cover;
-        left: 0;
-        top: 0;
-        position: absolute;
-        z-index: -1;
+    #category {
+        padding:50px 90px ;
     }
 
     .close {
@@ -473,11 +462,10 @@ export default {
         border-radius: 0;
         background: #0079c1;
         color: #fff;
-        width: 50px;
-        height: 50px;
-        position: relative;
-        left: -60px;
-        top: 0;
+        width: 70px;
+        height: 70px;
+        position: fixed;
+        z-index: 9;
     }
 }
 
@@ -487,15 +475,6 @@ export default {
         height: calc(100vh - 90px);
         width: calc(100vw - 5%);
     }
-
-    #info {
-        height: calc(100% - 20px);
-        width: 45%;
-        .close {
-            left: -50px;
-        }
-    }
-
 }
 
 @media (max-width: 1024px) {
@@ -505,11 +484,6 @@ export default {
         height: calc(100vh - 164px);
     }
 
-    #info {
-        height: calc(100% - 120px);
-        bottom: 100px;
-        
-    }    
 }
 
 #viewDiv {
@@ -604,28 +578,50 @@ export default {
     }
 }
 
-@media (max-width: 992px) {
-    #info {
-        width: 100%;
-        height: calc(100% - 100px);
-        padding: 0;
-        .close {
-            left: 10px;
-            top: 10px;
+@media (max-width: 1200px) {
+    #info{
+        width: 576px;
+        .intro{
+            padding-top: 100px;
         }
-        p#category, p:first-child {
-            padding: 20px 50px 0 50px;
+        #category{
+            padding: 30px 90px;
         }
     }
 }
 
-@media (max-width: 480px) {
-    #info {
-        p#category, p:first-child {
-            padding: 20px;
-            padding-bottom: 0;
+@media (max-width: 1024px) {
+    #info{
+        width: auto;
+        transition: none;
+        .intro{
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        #category{
+            padding: 30px 20px 190px;
         }
     }
+}
+
+
+@media (max-width: 992px) {
+
+    .map-wrapper {
+        height: calc(100% - 185px);
+        position: absolute;
+    }
+}
+
+@media (max-width:768px){
+        .map-wrapper {
+        height: calc(100% - 165px);
+        position: absolute;
+    }
+}
+
+@media (max-width: 480px) {
+
 }
 
 </style>

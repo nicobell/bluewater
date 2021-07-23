@@ -140,6 +140,7 @@ button.icon-left::after {
   }
 }
 
+
 //EXPAND BUTTON FOR SPANISH LEGEND (es)
 .lang-es {
   #viewDiv > div.esri-view-root > div.esri-ui > div.esri-ui-inner-container.esri-ui-corner-container > div.esri-ui-bottom-left.esri-ui-corner > div > div.esri-expand__container:not(.esri-expand__container--expanded) > div.esri-expand__panel > div {
@@ -191,5 +192,29 @@ button.icon-left::after {
   #viewDiv > div.esri-view-root > div.esri-ui > div.esri-ui-inner-container.esri-ui-corner-container > div.esri-ui-top-left.esri-ui-corner {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+
+}
+
+
+@media (max-width: 992px) {
+  .esri-view-width-xsmall .esri-expand--auto .esri-expand__container--expanded {
+    position: fixed;
+    top: 251px;
+    bottom: 0;
+    margin: 0;
+    height: 409px;
+    background: #ffffff;
+    z-index: 1;
+    overflow: auto;
+    width: 100%;
+    left: 0;
+  }
+  .esri-view-height-xsmall .esri-ui-corner .esri-component .esri-expand__content {
+    max-height: none;
+  }
+  .esri-view-height-xsmall .esri-expand .esri-widget--panel, .esri-view-height-xsmall .esri-expand .esri-widget--panel-height-only, .esri-view-height-xsmall .esri-ui-corner .esri-component.esri-widget--panel, .esri-view-height-xsmall .esri-ui-corner .esri-component.esri-widget--panel-height-only {
+    max-height: none;
   }
 }
