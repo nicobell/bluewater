@@ -1,5 +1,5 @@
 <template>
-  <div :class="['template-page schedule intro',{spallaOpen:showSpalla}]">
+  <div :class="['template-page schedule intro',{spallaOpen :showSpalla}]">
     <div class="overlay-spalla" @click="toggleSpalla">
 
     </div>

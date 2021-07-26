@@ -77,6 +77,7 @@ export default {
             citiesLayer: null,
             loading: true,
             //facilityLayer: null,
+            multiterminalLayer: null,
             valvesLayer: null,
             showATWS: '',
             showPE: '',
@@ -217,7 +218,7 @@ export default {
 
         this.citiesLayer = new FeatureLayer({
             url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210722/FeatureServer/1",
-            labelingInfo: [cityLabel],
+            //labelingInfo: [cityLabel],
             outFields: ["*"],
             renderer: {
                 type: "simple",
@@ -226,6 +227,23 @@ export default {
                     url: "/point-1.png",
                     width: "1px",
                     height: "1px"
+                }
+            }
+        })
+
+        this.multiterminalLayer = new FeatureLayer({
+            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/ArcGIS/rest/services/BlueWaterData_update_20210722/FeatureServer/0",
+            outFields: ["*"],
+            renderer: {
+                type: "simple",  // autocasts as new SimpleRenderer()
+                symbol: {
+                    type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
+                    size: 6,
+                    color: "orange",
+                    outline: {  // autocasts as new SimpleLineSymbol()
+                        width: 0,
+                        color: "orange"
+                    }
                 }
             }
         })
@@ -246,12 +264,12 @@ export default {
             }
         }
 
-        //const template = { title: "prova" }
+        //const template = { title: "{en_title}", overwriteActions: true, declaredClass: 'blue' }
         this.valvesLayer = new FeatureLayer({
             url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210722/FeatureServer/2",
             outFields: ["*"],
             //popupTemplate: template,
-            labelingInfo: [labelclass],
+            //labelingInfo: [labelclass],
             renderer: {
                 type: "simple",
                 symbol: {
@@ -265,7 +283,7 @@ export default {
 
         const map = new Map({
             basemap: "satellite",
-            layers: [this.workspacesLayer, this.pipelineLayer, this.valvesLayer, this.citiesLayer]//, this.facilityLayer
+            layers: [this.workspacesLayer, this.pipelineLayer, this.valvesLayer, this.citiesLayer, this.multiterminalLayer]//, this.facilityLayer
         })
 
         this.view = new MapView({
@@ -273,9 +291,9 @@ export default {
             map: map,
             center: [-97, 27.90],
             zoom: 11.989,
-            highlightOptions: {
+            /*highlightOptions: {
                 color: "rgb(115, 223, 255)"
-            }
+            }*/
         })
 
         //element to compute layer extent and zoom out correctly
@@ -297,8 +315,14 @@ export default {
 
         this.view.ui.add(legend, "bottom-left");
 
-        
-        this.view.ui.add(new Search({ view: this.view }), "top-left");
+        var search = new Search({ view: this.view })
+        search.on("select-result", function(evt){        
+            this.view.popup.open({          
+                location: evt.result.extent.center,          
+                features:[evt.result.feature]        
+            });      
+        });
+        this.view.ui.add(search, "top-left");
         this.view.ui.add('measure', "top-left");
         //this.view.ui.add("toggles", "bottom-left");
         
@@ -353,8 +377,8 @@ export default {
         let lang = this.lang
         this.view.when()
         .then(function() {
-            console.log(document.getElementById('loader').classList);
-            document.getElementById('loader').classList.add('hidden');
+            /*console.log(document.getElementById('loader').classList);
+            document.getElementById('loader').classList.add('hidden');*/
             return vsL.when(); 
         })
         .then(function(layer) {
