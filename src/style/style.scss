@@ -191,6 +191,10 @@ button.icon-left::after {
   width: unset;
 }
 
+#viewDiv > .esri-view-root > .esri-ui > .esri-ui-inner-container.esri-ui-manual-container > .esri-component.esri-popup > div.esri-popup__pointer > div {
+  background: #1A3C6E;
+}
+
 @media (max-width: 1024px) {
   #viewDiv > div.esri-view-root > div.esri-ui > div.esri-ui-inner-container.esri-ui-corner-container > div.esri-ui-bottom-left.esri-ui-corner > div.esri-component.esri-legend.esri-widget.esri-widget--panel {
     display: none;

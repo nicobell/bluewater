@@ -56,6 +56,7 @@
 import Map from "@arcgis/core/Map";
 import MapView from "@arcgis/core/views/MapView";
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer"
+//import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer"
 import Point from '@arcgis/core/geometry/Point'
 import Search from '@arcgis/core/widgets/Search'
 import DistanceMeasurement2D from '@arcgis/core/widgets/DistanceMeasurement2D'
@@ -119,7 +120,7 @@ export default {
                         duration: 1500
                     });            
                 });  
-            } else  {
+            } else {
                 this.view.goTo({
                     target: this.workspacesLayer.fullExtent,
                     zoom: 11.989
@@ -203,7 +204,7 @@ export default {
             outFields: ["*"]
         })*/
 
-        const cityLabel = {
+        /*const cityLabel = {
             labelExpression: "[NAME]",
             labelPlacement: "center-right",
             symbol: {
@@ -214,7 +215,7 @@ export default {
                 },
                 color: "white"
             }
-        }
+        }*/
 
         this.citiesLayer = new FeatureLayer({
             url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210722/FeatureServer/1",
@@ -234,6 +235,19 @@ export default {
         this.multiterminalLayer = new FeatureLayer({
             url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/ArcGIS/rest/services/BlueWaterData_update_20210722/FeatureServer/0",
             outFields: ["*"],
+            labelingInfo: {
+                labelExpression: "[LABEL]",
+                labelPlacement: "below-center",
+                symbol: {
+                    type: "text",
+                    font: {
+                        size: 11
+                    },
+                    color: "#fff",
+                    haloColor: "#1C2332",
+                    haloSize: 2
+                }
+            },
             renderer: {
                 type: "simple",  // autocasts as new SimpleRenderer()
                 symbol: {
@@ -249,13 +263,12 @@ export default {
         })
 
         const labelclass = {
-            labelExpression: "["+this.lang+"_title]",
+            labelExpression: "  ["+this.lang+"_title]",
             labelPlacement: "center-right",
             symbol: {
                 type: "text", //autocasts as new TextSymbol()
                 font: {
-                    size: 12,
-                    weight: "bold"
+                    size: 13
                 },
                 color: "white",
                 haloColor: "#1C2332",
@@ -264,19 +277,22 @@ export default {
             }
         }
 
-        //const template = { title: "{en_title}", overwriteActions: true, declaredClass: 'blue' }
+        //const template = { title: "{en_title}", overwriteActions: true, autoOpenEnabled: true }
         this.valvesLayer = new FeatureLayer({
             url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210722/FeatureServer/2",
             outFields: ["*"],
             //popupTemplate: template,
-            //labelingInfo: [labelclass],
+            //popupEnabled: true,
+            labelingInfo: [labelclass],
             renderer: {
                 type: "simple",
                 symbol: {
                     type: "picture-marker",
                     url: "/point-1.png",
-                    width: "40px",
-                    height: "40px"
+                    //width: "220px",
+                    width: "45px",
+                    height: "45px",
+                    //xoffset: "110px"
                 }
             }
         })
@@ -291,9 +307,9 @@ export default {
             map: map,
             center: [-97, 27.90],
             zoom: 11.989,
-            /*highlightOptions: {
-                color: "rgb(115, 223, 255)"
-            }*/
+            highlightOptions: {
+                color: "rgba(115, 223, 255, 0)"
+            }
         })
 
         //element to compute layer extent and zoom out correctly
@@ -315,13 +331,13 @@ export default {
 
         this.view.ui.add(legend, "bottom-left");
 
-        var search = new Search({ view: this.view })
-        search.on("select-result", function(evt){        
-            this.view.popup.open({          
-                location: evt.result.extent.center,          
-                features:[evt.result.feature]        
+        var search = new Search({ view: this.view, popupTemplate: { overwriteActions: true, title: '{Match_addr}' } })
+        /*search.on("select-result", function(evt){
+            this.view.popup.open({
+                title: evt.result.feature.attributes.Match_addr,
+                location: evt.result.extent.center
             });      
-        });
+        });*/
         this.view.ui.add(search, "top-left");
         this.view.ui.add('measure', "top-left");
         //this.view.ui.add("toggles", "bottom-left");
@@ -379,7 +395,7 @@ export default {
         .then(function() {
             /*console.log(document.getElementById('loader').classList);
             document.getElementById('loader').classList.add('hidden');*/
-            return vsL.when(); 
+            return vsL.when();
         })
         .then(function(layer) {
             return vv.whenLayerView(layer);
