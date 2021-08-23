@@ -387,6 +387,9 @@ export default {
             }
         }
 
+        //hide points without a label on the multiterminal layer (punto in mezzo al mare nascosto)
+        this.multiterminalLayer.definitionExpression = "LABEL <> ''"
+
         //click on any vale point on the map to get infos and zoom in place
         //focus on object and data fetching
         let vsL = this.valvesLayer
@@ -622,16 +625,13 @@ export default {
 
 #measure button,
 #zoomout {
+    background: rgb(239, 239, 239);
+    color: black;
     padding: 10px;
     &:hover {
         background: #0079c1;
         color: #fff;
     }
-}
-
-.action-button {
-background-color: rgb(239, 239, 239);
-color: black;
 }
 
 .action-button:hover {
