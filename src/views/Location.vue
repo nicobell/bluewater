@@ -303,13 +303,22 @@ export default {
         })
 
         this.view = new MapView({
-        container: "viewDiv",
+            container: "viewDiv",
             map: map,
             center: [-97, 27.90],
             zoom: 11.989,
             highlightOptions: {
                 color: "rgba(115, 223, 255, 0)"
+            },
+            popup: {
+                dockEnabled: false,
+                dockOptions: {
+                    breakpoint: false,
+                    buttonEnabled: false,
+                    position: 'top-center'
+                }    
             }
+            
         })
 
         //element to compute layer extent and zoom out correctly
@@ -331,7 +340,13 @@ export default {
 
         this.view.ui.add(legend, "bottom-left");
 
-        var search = new Search({ view: this.view, popupTemplate: { overwriteActions: true, title: '{Match_addr}' } })
+        var search = new Search({ 
+            view: this.view, 
+            popupTemplate: { 
+                overwriteActions: true, 
+                title: '{Match_addr}'
+            } 
+        })
         /*search.on("select-result", function(evt){
             this.view.popup.open({
                 title: evt.result.feature.attributes.Match_addr,
