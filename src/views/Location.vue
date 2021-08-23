@@ -1,9 +1,12 @@
 <template>
     <div class="template-page intro" >
         <header class="intro-header"></header>
+
         <div :class="['main-content', 'map-wrapper', 'lang-'+this.lang] ">
 
-            <!--<div id="loader" class="loader"></div>-->
+            <div id="loader" class="loader">
+                <p>Loading . . .</p>
+            </div>
 
             <div id="viewDiv"></div>
 
@@ -18,18 +21,6 @@
                     ...
                 </p>
             </div>
-
-            <!-- BUTTONS TO TOGGLE LAYERS -->
-            <!--<div id="toggles" class="toggles">
-                <button id="toggleATWS" @click="toggleATWS()" :class="{'tog': true, 'red': true, 
-                    'esri-icon-non-visible tog-active': this.showATWS, 'esri-icon-visible': !this.showATWS}"><span>ATWS</span></button>
-                <button id="togglePE" @click="togglePE()" :class="{'tog': true, 'green': true, 
-                    'esri-icon-non-visible tog-active': this.showPE, 'esri-icon-visible': !this.showPE}"><span>PE</span></button>
-                <button id="togglePEBDB" @click="togglePEBDB()" :class="{'tog': true, 'purple': true, 
-                    'esri-icon-non-visible tog-active': this.showPEBDB, 'esri-icon-visible': !this.showPEBDB}"><span>PEBDB</span></button>
-                <button id="toggleTCW" @click="toggleTCW()" :class="{'tog': true, 'blue': true, 
-                    'esri-icon-non-visible tog-active': this.showTCW, 'esri-icon-visible': !this.showTCW}"><span>TCW</span></button>
-            </div>-->
 
             <button id="zoomout" @click="zoomOut()" class="esri-icon-zoom-out-fixed"></button>
 
@@ -56,7 +47,6 @@
 import Map from "@arcgis/core/Map";
 import MapView from "@arcgis/core/views/MapView";
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer"
-//import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer"
 import Point from '@arcgis/core/geometry/Point'
 import Search from '@arcgis/core/widgets/Search'
 import DistanceMeasurement2D from '@arcgis/core/widgets/DistanceMeasurement2D'
@@ -76,7 +66,6 @@ export default {
             workspacesLayer: null,
             pipelineLayer: null,
             citiesLayer: null,
-            loading: true,
             //facilityLayer: null,
             multiterminalLayer: null,
             valvesLayer: null,
@@ -476,11 +465,36 @@ export default {
                 }
             }
         })
+        .then(function() {
+            document.getElementById('loader').style.visibility = 'hidden'
+        }) 
     }
 }
 </script>
 
 <style lang="scss" scoped>
+
+.loader {
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    z-index: 1000;
+    pointer-events: none;
+    background: url(/img/bg-intro.7e6dba88.jpg) center no-repeat;
+    background-size: cover;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    p {
+        color: #fff;
+        font-size: 1.5em;
+    }
+}
+
 .map-wrapper {
     margin: 0;
     width: calc(100vw - 60px);
@@ -602,38 +616,6 @@ export default {
   width: 100%;
 }
 
-.tog {
-    border-radius: 0;
-    //font-size: .8rem;
-    margin: 0;
-    margin-right: 10px;
-}
-
-.red:hover {
-    //background-color: red;
-    background-color: #ccc;
-    color: black;
-}
-.green:hover {
-    //background-color: rgb(152, 230, 0);
-    background-color: #ccc;
-    color: black;
-}
-.blue:hover {
-    //background-color: rgb(115, 223, 255)
-    background-color: #ccc;
-    color: black;
-}
-.purple:hover {
-    //background-color: rgb(169, 0, 230);
-    background-color: #ccc;
-    color: black;
-}
-.tog-active {
-    background-color: #0079c1;
-    color: #fff;
-}
-
 .esri-popup .esri-popup__main-container .esri-popup__footer {
   display: none !important;
 }
@@ -649,29 +631,10 @@ export default {
     }
 }
 
-.action-button:hover {
-//.action-button:focus 
-  background: #0079c1;
-  color: #e4e4e4;
-}
-
 .active {
   background: #0079c1;
   color: #fff;
 }
-
-/*.toggles {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    button {
-        margin-top: 10px;
-        span {
-            font-family: "Open Sans";
-            margin-left: 10px;
-        };
-    }
-}*/
 
 #zoomer {
     button {
@@ -734,21 +697,6 @@ export default {
 
 @media (max-width: 480px) {
 
-}
-
-.loader {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background: blue;
-    z-index: 1000;
-    top: 0;
-    pointer-events: none;
-    opacity: 1;
-
-    &.hidden {
-        opacity: 0;
-    }
 }
 
 </style>
