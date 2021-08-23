@@ -629,6 +629,11 @@ export default {
     }
 }
 
+.action-button {
+background-color: rgb(239, 239, 239);
+color: black;
+}
+
 .action-button:hover {
 //.action-button:focus 
   background: #0079c1;
