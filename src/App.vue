@@ -10,6 +10,7 @@
 <script>
 import Navigation from './components/Navigation.vue';
 import MyHeader from './components/MyHeader.vue';
+import path from 'path';
 
 export default {
 	name: 'App',
@@ -40,7 +41,8 @@ export default {
 			}
 		},
 		fetchData(){
-			fetch("/data.json")
+			console.log(path.join(__dirname, 'data.json'))
+			fetch(path.join(__dirname, 'data.json'))
 				.then(response=>{
 					return response.json()
 				})
@@ -61,6 +63,7 @@ export default {
 	mounted(){
 		this.checkIfMobile()
 		this.fetchData()
+		this.$router.push('/')
 	},
 }
 </script>
