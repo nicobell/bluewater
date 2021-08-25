@@ -19,7 +19,6 @@ const router = new VueRouter({
             name: 'ProxyRouter',
             component: ProxyRouter
         }
-        
     ]
 })
 

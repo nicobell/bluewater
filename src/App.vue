@@ -63,7 +63,7 @@ export default {
 	mounted(){
 		this.checkIfMobile()
 		this.fetchData()
-		this.$router.push('/')
+		//this.$router.push('/')
 	},
 }
 </script>
