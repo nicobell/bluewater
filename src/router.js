@@ -22,4 +22,8 @@ const router = new VueRouter({
     ]
 })
 
+router.afterEach((to, from, next) => {
+    document.getElementsByClassName('main-content')[0].tabindex = "0";
+})
+
 export default router

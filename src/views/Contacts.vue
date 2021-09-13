@@ -1,24 +1,23 @@
 <template>
-<div class="template-page project-description intro">
-  <header class="intro-header">
-    </header>
-    <div class="main-content">
-      <h1 class="title">{{ content.title }}</h1>
-      <div class="content three-col">
-          <div v-for="(s, index) in content.sections" :key="'section'+index">
-              <h2>{{ s.title }}</h2>
-              <p>{{ s.subtitle }}</p>
-              <div class="contacts" v-for="(c, index) in s.body" :key="'contact'+index">
-                  <div>
-                      <h3>{{ c.title }}</h3>
-                      <p v-html="c.content"></p>
-                  </div>
-              </div>
-          </div>
-          
-      </div>
-    </div>
-  </div>
+    <main role="main" class="template-page project-description intro">
+        <div class="intro-header"></div>
+
+        <div class="main-content">
+            <h1 class="title">{{ content.title }}</h1>
+            <div class="content three-col">
+                <div v-for="(s, index) in content.sections" :key="'section'+index">
+                    <h2>{{ s.title }}</h2>
+                    <p>{{ s.subtitle }}</p>
+                    <div class="contacts" v-for="(c, index) in s.body" :key="'contact'+index">
+                        <div>
+                            <h3>{{ c.title }}</h3>
+                            <p v-html="c.content"></p>
+                        </div>
+                    </div>
+                </div>        
+            </div>
+        </div>
+    </main>
 </template>
 <script>
 

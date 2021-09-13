@@ -1,16 +1,16 @@
 <template>
-  <header>
+  <header role="banner">
     <div class="container">
       <div class="loghi">
-        <router-link :to="`/${this.lang}`"><img src="../assets/logo-ma.png" width="270" height="37" alt="logo-ma"></router-link>
+        <router-link :to="`/${this.lang}`"><img src="../assets/logo-ma.png" width="270" height="37" alt="logo homepage link"></router-link>
         <img src="../assets/logo-uscg.png" width="43" height="41" alt="logo-uscg">
       </div>
       <div :class="['meeting-banner', this.$route.name.toLowerCase()]">
-        <img src="../assets/icon-meeting.svg" width="42" height="42" alt="">
-        <div class="text">
+        <img tabindex="-1" src="../assets/icon-meeting.svg" width="42" height="42" alt="">
+        <aside class="text">
           <h2>{{content.headerInfo.publicMeetingTitle}}</h2>
           <p>{{content.headerInfo.publicMeetingData}}</p>
-        </div>
+        </aside>
         <div>
           <button>{{content.headerInfo.publicMeetingButton}}</button>
         </div>

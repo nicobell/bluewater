@@ -1,72 +1,75 @@
 <template>
-<div class="template-page project-description intro">
-    <header class="intro-header">
-    </header>
-    <div class="main-content">
-      <h1 class="title">Comments</h1>
-      <div class="content two-col">
-        <div class="inner-content-left">
-            <div class="important">
-                <h2 v-html="content.alertMessage"></h2>
-            </div>
-            <h3>{{ content.secondTitle }}</h3>
-            <div v-for="(c, index) in content.body" :key="'body'+index">
-                <h4>{{ c.title }}</h4>
-                <p v-html="c.content"></p>
-                <button v-if="index==0" class="main-button icon-left">Submit Your Comment</button>
-            </div>
-        </div>
+    <main role="main" class="template-page project-description intro">
+        <div class="intro-header"></div>
 
-        <div class="inner-content-right">
-            <h5>{{ content.sidebarTitle }}</h5>
-            <div v-for="(card, index) in content.cards" :key="'card'+index" class="card">
-                <h2>{{ card.title }}</h2>
-                <p v-html="card.description"></p>
-                <button @click="gotolink(card.link)" class="outline icon-left">{{ card.button }}</button>
-            </div>
-            <!--<form action="">
-                <h2>Need help, contact us</h2>
-                 <div>
-                    <div>
-                        <label for="">Name</label>
-                        <input type="text" placeholder="Name" name="name" required/>
-                    </div>
-                    <div>
-                        <label for="">Email</label>
-                        <input type="text" placeholder="Email" name="email" required/>
-                    </div>
-                    <div>
-                        <label for="">Message</label>
-                        <textarea  type="text" placeholder="Message" name="message"  required/>
-                    </div>
-                    <div class="checkbox-container">
-                        <input type="checkbox" class="form-check-input" id="agree"  required>
-                        <label class="form-check-label" for="agree">I agree to the <span>Terms</span> and <span>Privacy Policy</span></label>
-                    </div>
-                    <div class="button-container">
-                        <button class="cta cta-outline">Submit</button>
-                    </div>
-                    <p class="response">response</p>
-                </div>    
-            </form>-->
+        <div class="main-content">
 
-            <div class="needhelp">
-                <h2>Need help, contact us.</h2>
-                <div>
-                    <div>
-                        <label for="">Telephone Number</label>
-                        <p>(XXX) XXX-XXXX</p>
+            <h1 class="title">Comments</h1>
+
+            <div class="content two-col">
+                <div class="inner-content-left">
+                    <div class="important">
+                        <h2 v-html="content.alertMessage"></h2>
+                    </div>
+                    <h3>{{ content.secondTitle }}</h3>
+                    <div v-for="(c, index) in content.body" :key="'body'+index">
+                        <h4>{{ c.title }}</h4>
+                        <p v-html="c.content"></p>
+                        <button v-if="index==0" class="main-button icon-left">Submit Your Comment</button>
                     </div>
                 </div>
+
+                <div class="inner-content-right">
+                    <h5>{{ content.sidebarTitle }}</h5>
+                    <div v-for="(card, index) in content.cards" :key="'card'+index" class="card">
+                        <h2>{{ card.title }}</h2>
+                        <p v-html="card.description"></p>
+                        <button @click="gotolink(card.link)" class="outline icon-left">{{ card.button }}</button>
+                    </div>
+
+                    <!--<form action="">
+                        <h2>Need help, contact us</h2>
+                        <div>
+                            <div>
+                                <label for="">Name</label>
+                                <input type="text" placeholder="Name" name="name" required/>
+                            </div>
+                            <div>
+                                <label for="">Email</label>
+                                <input type="text" placeholder="Email" name="email" required/>
+                            </div>
+                            <div>
+                                <label for="">Message</label>
+                                <textarea  type="text" placeholder="Message" name="message"  required/>
+                            </div>
+                            <div class="checkbox-container">
+                                <input type="checkbox" class="form-check-input" id="agree"  required>
+                                <label class="form-check-label" for="agree">I agree to the <span>Terms</span> and <span>Privacy Policy</span></label>
+                            </div>
+                            <div class="button-container">
+                                <button class="cta cta-outline">Submit</button>
+                            </div>
+                            <p class="response">response</p>
+                        </div>    
+                    </form>-->
+
+                    <div class="needhelp">
+                        <h2>Need help, contact us.</h2>
+                        <div>
+                            <div>
+                                <label for="">Telephone Number</label>
+                                <p>(XXX) XXX-XXXX</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-
         </div>
-        </div>
-    </div>
-  </div>
+    </main>
 </template>
-<script>
 
+<script>
 export default {
   name: 'comments',
    data: () => {

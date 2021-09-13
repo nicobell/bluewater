@@ -1,79 +1,102 @@
 <template>
     <nav ref="menu" :class="[{show: isActive}]">
+
         <div class="btn" @click="isActive = !isActive">
         </div>
-        <ul @click="isActive = !isActive">
-            <router-link :to="{name: 'ProxyRouter',  params: { 
+
+        <ul @click="isActive = !isActive" role="navigation" aria-label="main menu">
+
+            <li role="none" aria-hidden>
+                <router-link role="menuitem" tabindex="0"
+                    aria-labelledby="menulabel1"
+                    :to="{name: 'ProxyRouter',  params: { 
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'localization' : 'location') 
                     }}">
-                <li>
-                    <span class="icon map"></span><span class="label">{{content.menu.menuLabel1}}</span>
-                </li>
-            </router-link>
-            <router-link  :to="{name: 'ProxyRouter',  params: { 
+                    <span class="icon map"></span><span id="menulabel1" class="label">{{content.menu.menuLabel1}}</span>
+                </router-link>
+            </li>
+            
+            <li role="none" aria-hidden>
+                <router-link role="menuitem" tabindex="-1"
+                    aria-labelledby="menulabel2"
+                    :to="{name: 'ProxyRouter',  params: { 
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'descripcion-de-proyecto' : 'project-description') 
                     }}" >
-                <li>
-                    <span class="icon description"></span><span class="label">{{content.menu.menuLabel2}}</span>
-                </li>
-            </router-link>
-            <router-link  :to="{name: 'ProxyRouter',  params: { 
+                        <span class="icon description"></span><span id="menulabel2" class="label">{{content.menu.menuLabel2}}</span>
+                    </router-link>
+            </li>
+            
+            <li role="none">
+                <router-link role="menuitem" tabindex="-1"
+                    aria-label="deepwater port act license"
+                    :to="{name: 'ProxyRouter',  params: { 
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'ley-licencia-dwp' : 'dwp-act-license') 
                     }}">
-                <li>
-                    <span class="icon license"></span><span class="label">{{content.menu.menuLabel4}}</span>
-                </li>
-            </router-link>
-            <router-link  :to="{name: 'ProxyRouter',  params: { 
+                        <span class="icon license"></span><span id="menulabel3" class="label">{{content.menu.menuLabel4}}</span>
+                    </router-link>
+            </li>
+            
+            <li role="none">
+                <router-link role="menuitem" tabindex="-1"
+                    aria-labelledby="menulabel4"
+                    :to="{name: 'ProxyRouter',  params: { 
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'proceso-nepa' : 'nepa-process') 
                     }}" >
-                <li>
-                    <span class="icon process"></span><span class="label">{{content.menu.menuLabel3}}</span>
-                </li>
-            </router-link>
-            <router-link  :to="{name: 'ProxyRouter',  params: {
+                        <span class="icon process"></span><span id="menulabel4" class="label">{{content.menu.menuLabel3}}</span>
+                    </router-link>
+            </li>
+            
+            
+            <li role="none">
+                <router-link role="menuitem" tabindex="-1"
+                    aria-labelledby="menulabel5"
+                    :to="{name: 'ProxyRouter',  params: { 
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'cronograma-de-proceso-nepa' : 'nepa-process-schedule') 
                     }}" >
-                <li>
-                    <span class="icon schedule"></span><span class="label">{{content.menu.menuLabel5}}</span>
-                </li>
-            </router-link>
-            <router-link  :to="{name: 'ProxyRouter',  params: { 
+                        <span class="icon schedule"></span><span id="menulabel5" class="label">{{content.menu.menuLabel5}}</span>
+                    </router-link>
+            </li>
+            
+            <li role="none">
+                <router-link role="menuitem" tabindex="-1"
+                    aria-labelledby="menulabel6"
+                    :to="{name: 'ProxyRouter',  params: { 
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'actulizationes' : 'updates') 
                     }}" >
-                <li>
-                    <span class="icon updates"></span><span class="label">{{content.menu.menuLabel6}}</span>
-                </li>
-            </router-link>
+                        <span class="icon updates"></span><span id="menulabel6" class="label">{{content.menu.menuLabel6}}</span>
+                    </router-link>
+            </li>
+            
             <!--<router-link  :to="'/' + lang+ '/' +'contacts'" >-->
-            <router-link :to="{
-                name: 'ProxyRouter', 
-                params: { 
+            
+            <li role="none">
+                <router-link role="menuitem" tabindex="-1"
+                    aria-labelledby="menulabel7"
+                    :to="{name: 'ProxyRouter',  params: { 
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'comentarios' : 'comments') 
-                    }
-            }">
-                <li>
-                    <span class="icon opinion"></span><span class="label">{{content.menu.menuLabel7}}</span>
-                </li>
-            </router-link>
-            <router-link :to="{
-                name: 'ProxyRouter', 
-                params: { 
-                    lang: this.lang, 
-                    pagetitle: (this.lang=='es' ? 'contactos' : 'contacts') 
-                    }
-            }">
-                <li>
-                    <span class="icon contacts"></span><span class="label">{{content.menu.menuLabel8}}</span>
-                </li>
-            </router-link>
+                    }}">
+                        <span class="icon opinion"></span><span id="menulabel7" class="label">{{content.menu.menuLabel7}}</span>
+                </router-link>
+            </li>
+            
+            <li role="none">
+                <router-link role="menuitem" tabindex="-1"
+                aria-labelledby="menulabel8"
+                :to="{name: 'ProxyRouter',  params: { 
+                lang: this.lang, 
+                pagetitle: (this.lang=='es' ? 'contactos' : 'contacts') 
+                }}">
+                    <span class="icon contacts"></span><span id="menulabel8" class="label">{{content.menu.menuLabel8}}</span>
+                </router-link>
+            </li>
+            
         </ul>
         <!--<div class="lang-switch">
             <p>
@@ -209,10 +232,6 @@ nav {
     z-index: 15;
     transition: 0.3s ease;
 
-    a {
-        text-decoration: none;
-    }
-
     ul {
         margin: 0;
         padding: 0;
@@ -290,6 +309,16 @@ nav {
             font-weight: 600;
             text-transform: uppercase;
 
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
         }
     }
 
@@ -370,14 +399,6 @@ nav {
             .btn {
                 background-image: url("../assets/icon-hamburger-close.svg");
             }
-
-        }
-
-        a:first-child {
-            li {
-                margin-top: 60px;
-            }
-
 
         }
 

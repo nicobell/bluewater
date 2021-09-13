@@ -1,70 +1,69 @@
 <template>
-<div class="template-page project-description intro">
-  <header class="intro-header">
-    </header>
-    <div class="main-content">
-        <h1 class="title">{{content.title}}</h1>
+    <main role="main" class="template-page project-description intro">
+        <div class="intro-header"></div>
 
-        <div class="content two-col isDesktop" ref="container" >
-            <div class="inner-content-left">
-                <div class="menu">
-                    <div :class="{'item-menu': true, 'active-section': isActive==index+1}" 
-                        @click="openSection(index+1)"
-                        v-for="(d, index) in content.stepProcess" 
-                        :key="'label'+index">
-                        
-                        <div class="num"> 0{{index+1}} </div>
-                        <h2>{{d.label}}</h2>
+        <div class="main-content">
+            <h1 class="title">{{content.title}}</h1>
+
+            <div class="content two-col isDesktop" ref="container" >
+                <div class="inner-content-left">
+                    <div class="menu">
+                        <div :class="{'item-menu': true, 'active-section': isActive==index+1}" 
+                            @click="openSection(index+1)"
+                            v-for="(d, index) in content.stepProcess" 
+                            :key="'label'+index">
+                            
+                            <div class="num"> 0{{index+1}} </div>
+                            <h2>{{d.label}}</h2>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="inner-content-right">
-                <div class="item-content">
-                    <h1>{{ selectedStep.title }}</h1>
-                    <p v-html="selectedStep.description"></p>
-                    <div v-for="(b, index) in selectedStep.body" :key="'element' + index" :class="['body', b.titleClass]">
-                        <div class="detail">{{ b.detail }}</div>
-                        <h4 class="title">{{ b.title }}</h4>
-                        <div v-html="b.description"></div>
-                        <div v-if="index==2">
-                            <button class="main-button" @click="gotoComments()">Go to Comments</button>
+                <div class="inner-content-right">
+                    <div class="item-content">
+                        <h1>{{ selectedStep.title }}</h1>
+                        <p v-html="selectedStep.description"></p>
+                        <div v-for="(b, index) in selectedStep.body" :key="'element' + index" :class="['body', b.titleClass]">
+                            <div class="detail">{{ b.detail }}</div>
+                            <h4 class="title">{{ b.title }}</h4>
+                            <div v-html="b.description"></div>
+                            <div v-if="index==2">
+                                <button class="main-button" @click="gotoComments()">Go to Comments</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="content two-col isMobile">
-            <div class="inner-content">
+            <div class="content two-col isMobile">
+                <div class="inner-content">
 
-                <div class="accordion-item"
-                    v-for="(d, index) in content.stepProcess" :key="'accordion'+index">
-                    <div class="clicker" @click="toggle">
-                        <h2>{{index+1}}. {{d.label}}</h2><span class="accordion-icon"></span>
-                    </div>
-                    <div>
-                        <div class="hidden-content">
-                            <p v-html="d.description"></p>
-                            <div v-for="(b, index) in d.body" :key="'element' + index" :class="['body', b.titleClass]">
-                                <div class="detail">{{ b.detail }}</div>
-                                <h4 class="title">{{ b.title }}</h4>
-                                <div v-html="b.description"></div>
-                                <div v-if="index==2">
-                                    <button class="main-button" @click="gotoComments()">Go to Comments</button>
+                    <div class="accordion-item"
+                        v-for="(d, index) in content.stepProcess" :key="'accordion'+index">
+                        <div class="clicker" @click="toggle">
+                            <h2>{{index+1}}. {{d.label}}</h2><span class="accordion-icon"></span>
+                        </div>
+                        <div>
+                            <div class="hidden-content">
+                                <p v-html="d.description"></p>
+                                <div v-for="(b, index) in d.body" :key="'element' + index" :class="['body', b.titleClass]">
+                                    <div class="detail">{{ b.detail }}</div>
+                                    <h4 class="title">{{ b.title }}</h4>
+                                    <div v-html="b.description"></div>
+                                    <div v-if="index==2">
+                                        <button class="main-button" @click="gotoComments()">Go to Comments</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-        </div>
-  </div>
+    </main>
 </template>
-<script>
 
+<script>
 export default {
     name: 'nepa-process',
     props:{

@@ -1,10 +1,10 @@
 <template>
-  <div :class="['template-page schedule intro',{spallaOpen :showSpalla}]">
-    <div class="overlay-spalla" @click="toggleSpalla">
+  <main role="main" :class="['template-page schedule intro',{spallaOpen :showSpalla}]">
+    
+    <div class="overlay-spalla" @click="toggleSpalla"></div>
 
-    </div>
-    <header class="intro-header">
-    </header>
+    <div class="intro-header"></div>
+
     <div class="main-content">
       <h1 class="title">{{ content.title }}</h1>
       <div class="content two-col">
@@ -21,25 +21,27 @@
       </div>
     </div>
     
-      <div :class="['spalla',{open:showSpalla}]">
-        <div class="button-container">
-          <div @click="toggleSpalla"></div>
-        </div>
-        <div :class="{'accordions': true, 'space': openAcc==0}">
-          <div :class="{'open': openAcc==index, 'closed': openAcc!=index, 'text-container': true}"
+    <div :class="['spalla',{open:showSpalla}]">
+      <div class="button-container">
+        <div @click="toggleSpalla"></div>
+      </div>
+      <div :class="{'accordions': true, 'space': openAcc==0}">
+        <div :class="{'open': openAcc==index, 'closed': openAcc!=index, 'text-container': true}"
             v-for="(a, index) in content.items" :key="'accordion'+index">
-            <a @click="openAccordion(index)" :class="{'open': openAcc==index}">{{ a.title }}</a>
-            <hr>
-            <div :class="{'open': openAcc==index, 'closed': openAcc!=index}">
-              <div v-for="(item, ind) in a.content" class="accordion" :key="'update'+ind">
-                <p><strong>{{ item.date }} - </strong>{{ item.description }}</p>
-              </div>
+          <a @click="openAccordion(index)" :class="{'open': openAcc==index}">{{ a.title }}</a>
+          <hr>
+          <div :class="{'open': openAcc==index, 'closed': openAcc!=index}">
+            <div v-for="(item, ind) in a.content" class="accordion" :key="'update'+ind">
+              <p><strong>{{ item.date }} - </strong>{{ item.description }}</p>
             </div>
           </div>
         </div>
       </div>
-  </div>
+    </div>
+
+  </main>
 </template>
+
 <script>
   export default {
     name: 'nepa-process-schedule',

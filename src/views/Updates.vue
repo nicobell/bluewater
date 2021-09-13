@@ -1,6 +1,6 @@
 <template>
-  <div class="template-page project-description intro">
-    <header class="intro-header"></header>
+  <main role="main" class="template-page project-description intro">
+    <div class="intro-header"></div>
 
     <div class="main-content">
       <h1 class="title">{{ content.updates.title }}</h1>
@@ -16,7 +16,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>

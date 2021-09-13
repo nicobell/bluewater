@@ -1,6 +1,6 @@
 <template>
-    <div class="template-page intro" >
-        <header class="intro-header"></header>
+    <main role="main" class="template-page intro" >
+        <div class="intro-header"></div>
 
         <div :class="['main-content', 'map-wrapper', 'lang-'+this.lang] ">
 
@@ -40,7 +40,7 @@
         </div>
 
         
-    </div>
+    </main>
 </template>
 
 <script>
