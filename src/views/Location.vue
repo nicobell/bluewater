@@ -54,7 +54,8 @@ import GeometryService from '@arcgis/core/tasks/GeometryService'
 import ProjectParameters from '@arcgis/core/tasks/support/ProjectParameters'
 import Legend from '@arcgis/core/widgets/Legend'
 import ZoomViewModel from '@arcgis/core/widgets/Zoom/ZoomViewModel'
-import Expand from '@arcgis/core/widgets/Expand'
+import Expand from '@arcgis/core/widgets/Expand';
+import Popup from '@arcgis/core/widgets/Popup'
 
 export default {
     name: 'location',
@@ -304,8 +305,9 @@ export default {
                 dockOptions: {
                     breakpoint: false,
                     buttonEnabled: false,
-                    position: 'top-center'
-                }    
+                    position: 'top-center',
+                    autoOpenEnabled: true
+                }
             }
             
         })
@@ -353,6 +355,51 @@ export default {
         //+ button style accordingly
         let activeWidget = null
         let vv = this.view
+
+        this.view.on('click', function(event) {
+            console.log(event)
+            /*vv.popup.open({
+                location: event.mapPoint,
+                title: 'prova'
+            })*/
+            /*vv.popup.open({
+                location: {latitude: 27.800, longitude: -97.0000},
+                title: 'prova'
+            })*/
+            
+            //vv.popup.location = {latitude: 27.800, longitude: -98.0000}
+            
+        })
+
+        var p = new Popup({
+            view: this.view,
+            location: {latitude: 27.800, longitude: -97.0000},
+            title: 'prova',
+            visible: true,
+            content: 'a',
+            actions: [],
+            includeDefaultActions: false
+        })
+        
+        var p1 = new Popup({
+            view: this.view,
+            location: {latitude: 27.800, longitude: -96.5000},
+            title: 'prova',
+            visible: true,
+            content: 'a',
+            overwriteActions: true,
+            includeDefaultActions: false,
+            actions: []
+        })
+        
+        this.view.popup.viewModel.actions.visible = false;
+        
+        this.view.ui.add(p);
+        this.view.ui.add(p1);
+        
+        p.open()
+        p1.open()
+
         document.getElementById("distanceButton").addEventListener("click", function() {
             setActiveWidget(null);
             if (!this.classList.contains("active")) {
@@ -463,6 +510,37 @@ export default {
                     document.getElementById("info").style.opacity = "0.2";
                     document.getElementById("info").style.right = "-50%";
                 }
+
+                var p = new Popup({
+                        view: vv,
+                        location: {latitude: 27.800, longitude: -97.0000},
+                        title: 'prova',
+                        visible: true,
+                        content: 'a',
+                        actions: [],
+                        includeDefaultActions: false
+                    })
+                    
+                    var p1 = new Popup({
+                        view: vv,
+                        location: {latitude: 27.800, longitude: -96.5000},
+                        title: 'prova',
+                        visible: true,
+                        content: 'a',
+                        overwriteActions: true,
+                        includeDefaultActions: false,
+                        actions: []
+                    })
+                    
+                    vv.popup.viewModel.actions.visible = false;
+                    
+                    vv.ui.add(p);
+                    vv.ui.add(p1);
+                    
+                    p.open() 
+                    p1.open()
+
+                    document.querySelectorAll('esri-popup').forEach(p => p.setAttribute('tabindex', 0))
             }
         })
         .then(function() {
@@ -698,5 +776,6 @@ export default {
 @media (max-width: 480px) {
 
 }
+
 
 </style>
