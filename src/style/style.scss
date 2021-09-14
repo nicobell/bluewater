@@ -180,7 +180,7 @@ button.icon-left::after {
 }
 
 .esri-view .esri-view-surface--inset-outline:focus::after {
-  outline: none !important; 
+  //outline: none !important; 
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 

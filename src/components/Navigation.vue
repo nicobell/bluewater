@@ -1,14 +1,15 @@
 <template>
-    <nav ref="menu" :class="[{show: isActive}]">
+    <nav ref="menu" :class="[{show: isActive}]" role="navigation" aria-label="main menu">
 
         <div class="btn" @click="isActive = !isActive">
         </div>
 
-        <ul @click="isActive = !isActive" role="navigation" aria-label="main menu">
+        <ul @click="isActive = !isActive" id="navigazione" tabindex="-1">
 
             <li role="none" aria-hidden>
                 <router-link role="menuitem" tabindex="0"
                     aria-labelledby="menulabel1"
+                    aria-current="page"
                     :to="{name: 'ProxyRouter',  params: { 
                     lang: this.lang, 
                     pagetitle: (this.lang=='es' ? 'localization' : 'location') 
@@ -177,6 +178,35 @@
                   this.$router.push({path: `/${lang}`})
                 }
             },
+        },
+        mounted() {
+            const tabs = document.querySelectorAll('[role="menuitem"]');
+            const tabList = document.querySelector('#navigazione');
+            let tabFocus = 0;
+
+            tabList.addEventListener("keydown", e => {
+                // Move right
+                if (e.keyCode === 40 || e.keyCode === 38) {
+                tabs[tabFocus].setAttribute("tabindex", -1);    
+                if (e.keyCode === 40) {
+                    tabFocus++;
+                    // If we're at the end, go to the start
+                    if (tabFocus >= tabs.length) {
+                    tabFocus = 0;
+                    }
+                    // Move left
+                } else if (e.keyCode === 38) {
+                    tabFocus--;
+                    // If we're at the start, move to the end
+                    if (tabFocus < 0) {
+                    tabFocus = tabs.length - 1;
+                    }
+                }
+
+                tabs[tabFocus].setAttribute("tabindex", 0);
+                tabs[tabFocus].focus({});
+                }
+            });
         }
     }
 </script>

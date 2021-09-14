@@ -3,32 +3,44 @@
 
         <div class="intro-header"></div>
 
-        <div class="main-content">
-            <h1 class="title">{{content.title}}</h1>
+        <div class="main-content" id="contenuto" aria-labelledby="title1" tabindex="0">
+            <h1 id="title1" class="title"><span class="tohide">page title: </span>{{content.title}}</h1>
 
-            <div class="content two-col isDesktop" ref="container" >
+            <div class="content two-col isDesktop" ref="container">
                 <div class="inner-content-left">
-                    <ul class="menu">
-                        <li v-for="(d, index) in content.stepProcess" 
-                            :key="'label'+index">
-                            <button :class="{'item-menu': true, 'active-section': isActive==index+1}" 
+                    <div role="tablist" id="menu" tabindex="0" class="menu" aria-label="rulings menu, use arrows to select">
+                            <button 
+                                v-for="(d, index) in content.stepProcess" :key="'label'+index"
+                                :class="{'item-menu': true, 'active-section': isActive==index+1}" 
                                 @click="openSection(index+1)"
-                                :tabindex="isActive==index+1 ? '0' : '-1'"
-                                :aria-controls="'section' + (index+1)" aria-expanded="false"
+                                role="tab"
+                                tabindex="-1"
+                                
+                                :aria-controls="'section' + (index+1)" 
                                 :id="'btn'+(index+1)">
                                 
-                                <span class="num"> 0{{index+1}} </span>
-                                <span>{{d.label}}</span>
+                                    <span class="num"> 0{{index+1}} </span>
+                                    <span>{{d.label}}</span>
                             </button>
-                        </li>
-                    </ul>
+                            <!-- :aria-selected="index==0 ? true : false" -->
+                    </div>  
                 </div>
 
                 <div class="inner-content-right">
-                    <div class="item-content" :id="'section' + selectedStep.id" role="region" :aria-labelledby="'btn'+selectedStep.id" tabindex="0">
-                        <h2 :id="'region'+selectedStep.id" tabindex="0">{{ selectedStep.title }}</h2>
-                        <p v-html="selectedStep.description" tabindex="0"></p>
-                        <div v-for="(b, index) in selectedStep.body" :key="'element' + index" :class="['body', b.titleClass]" tabindex="0">
+                    <div v-if="isActive!=0" 
+                        class="item-content" 
+                        :id="'section' + selectedStep.id" 
+                        role="tabpanel" 
+                        :aria-labelledby="'region'+selectedStep.id"
+                        tabindex="0"
+                        >
+
+                        <h2 :id="'region'+selectedStep.id" tabindex="-1">{{ selectedStep.title }}</h2>
+                        <p v-html="selectedStep.description" ></p>
+                        <div v-for="(b, index) in selectedStep.body" 
+                            :key="'element' + index" 
+                            :class="['body', b.titleClass]"
+                            > 
                             <div class="detail">{{ b.detail }}</div>
                             <h4 class="title">{{ b.title }}</h4>
                             <div v-html="b.description"></div>
@@ -60,28 +72,48 @@
 
                 </div>
             </div>
+
+            <aside>
+                <button id="back-to-menu" tabindex="0" @click="backtomenu()" aria-label="back to menu" class="tohide">
+                    back to menu
+                </button>
+                <button id="back-to-nav" tabindex="0" @click="backtonav()" class="tohide" aria-label="back to navbar">
+                    back navbar
+                </button>
+            </aside>
         </div>
     </main>
 </template>
 
 <script>
 export default {
-    name: 'nepa-process',
+    name: 'dwp-act-license',
     props:{
         langData: String
     },
     data: () => {
         return {
-            isActive: 1
+            isActive: 0 
         }
     },
-    methods:{
+    methods: {
+        backtonav() {
+            console.log(document.getElementById('navigazione'))
+            document.getElementById('navigazione').focus();
+        },
+        backtomenu() {
+            document.getElementById('menu').focus();
+        },
         openSection(id){
-            document.getElementById('btn'+this.isActive).setAttribute('aria-expanded', 'false');
+            //document.getElementById('btn'+this.isActive).setAttribute('aria-expanded', 'false');
             this.isActive = id
-            document.getElementById('btn'+id).setAttribute('aria-expanded', 'true');
+            //document.getElementById('btn'+id).setAttribute('aria-expanded', 'true');
+            this.changeTabs(event)
             setTimeout(() => {
-                document.getElementById('section'+id).focus();    
+                //document.getElementById('section'+id)
+                document.getElementById('btn'+id).setAttribute('tabindex', '-1')
+                document.querySelectorAll('[role=tab]').forEach(tt => tt.setAttribute('tabindex', -1))
+                //console.log('ao')
             }, 100);
             
         },
@@ -98,6 +130,40 @@ export default {
             
             e.target.parentNode.scrollIntoView(true);
             window.scrollBy(0, -70);
+        },
+        changeTabs(event) {
+            const target = event.target;
+            
+            const parent = target.parentNode;
+            const grandparent = parent.parentNode;
+
+            // Remove all current selected tabs
+            parent
+                .querySelectorAll('[aria-selected="true"]')
+                .forEach(t => t.setAttribute("aria-selected", false));
+
+            // Set this tab as selected
+            target.setAttribute("aria-selected", true);
+
+            // Hide all tab panels
+            grandparent
+                .querySelectorAll('[role="tabpanel"]')
+                .forEach(p => p.setAttribute("hidden", true));
+
+            // Show the selected panel
+            setTimeout(() => {
+                grandparent.parentNode
+                    .querySelector(`#${target.getAttribute("aria-controls")}`)
+                    .removeAttribute("hidden");
+
+                    grandparent.parentNode
+                    .querySelector(`#${target.getAttribute("aria-controls")}`)
+                    .focus({preventScroll: true});
+            }, 100);
+
+            const tabs = document.querySelectorAll('[role="tab"]');
+            tabs.forEach(tab => tab.setAttribute("tabindex", -1))
+            
         }
     },
     computed: {
@@ -118,7 +184,44 @@ export default {
     mounted() {
         //console.log('visiting ' + this.$route.name)
         this.$store.commit('SET_LASTPAGE', this.$route.name)
-        document.getElementsByClassName('main-content')[0].focus();
+        //document.getElementsByClassName('main-content')[0].focus();
+
+        //window.addEventListener("DOMContentLoaded", () => {
+            const tabs = document.querySelectorAll('[role="tab"]');
+            const tabList = document.querySelector('[role="tablist"]');
+
+            // Add a click event handler to each tab
+            /*tabs.forEach(tab => {
+                tab.addEventListener("click", this.changeTabs);
+            });*/
+
+            // Enable arrow navigation between tabs in the tab list
+            let tabFocus = 0;
+
+            tabList.addEventListener("keydown", e => {
+                // Move right
+                if (e.keyCode === 40 || e.keyCode === 38) {
+                tabs[tabFocus].setAttribute("tabindex", -1);
+                if (e.keyCode === 40) {
+                    tabFocus++;
+                    // If we're at the end, go to the start
+                    if (tabFocus >= tabs.length) {
+                    tabFocus = 0;
+                    }
+                    // Move left
+                } else if (e.keyCode === 38) {
+                    tabFocus--;
+                    // If we're at the start, move to the end
+                    if (tabFocus < 0) {
+                    tabFocus = tabs.length - 1;
+                    }
+                }
+
+                tabs[tabFocus].setAttribute("tabindex", 0);
+                tabs[tabFocus].focus();
+                }
+            });
+        //});
     },
     watch: {
         route() {

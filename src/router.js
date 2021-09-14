@@ -23,7 +23,12 @@ const router = new VueRouter({
 })
 
 router.afterEach((to, from, next) => {
-    document.getElementsByClassName('main-content')[0].tabindex = "0";
+    if(document.getElementById('contenuto'))
+        setTimeout(() => {
+            document.getElementById('contenuto').focus({
+                preventScroll: true
+            });    
+        }, 100);
 })
 
 export default router

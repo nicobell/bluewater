@@ -2,9 +2,8 @@
     <main role="main" class="template-page project-description intro">
         <div class="intro-header"></div>
 
-        <div class="main-content">
-
-            <h1 class="title">Comments</h1>
+        <div class="main-content" id="contenuto" aria-labelledby="title1" tabindex="0">
+            <h1 class="title" id="title1"><span class="tohide">page title: </span>{{ content.title }}</h1>
 
             <div class="content two-col">
                 <div class="inner-content-left">

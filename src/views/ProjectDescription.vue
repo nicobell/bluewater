@@ -3,21 +3,18 @@
     <div class="intro-header"></div>
     
     <div class="main-content" id="contenuto" aria-labelledby="title1" tabindex="0">
-      <header>
-        <hgroup>
-          <h1 class="title" id="title1"><span class="tohide">page title: </span>{{ content.title }}</h1>
-        </hgroup>
-      </header>
+      <h1 class="title" id="title1" tabindex="-1"><span class="tohide">page title: </span>{{ content.title }}</h1>
       
-
       <div class="content two-col">
-        <article class="inner-content-left" tabindex="0">
+        <article aria-label="description" class="inner-content-left" tabindex="0">
           <div v-html="content.description"></div>
         </article>
 
-        <div class="inner-content-right">
-          <article aria-hidden="false" tabindex="0">
-            hidden info for reader
+        <div class="inner-content-right" style="position: relative;">
+          <article class="tohide" aria-hidden="false" tabindex="0" aria-label="gathered data">
+            <p>
+            Two single point mooring buoy systems. Depths of 88 to 90 feet, location 15 nautical miles off the coast of San Jose Island. 56.48 miles of two 30-inch outside diameter crude oil pipelines, onshore, inshore and offshore. The Harbor Island Facility occupies 12 acres. 16 very large crude carriers with loading rates of 80 bph and 40 bph for simultaneous operations.
+            </p>
           </article>
 
           <section aria-hidden="true" class="data">
@@ -91,7 +88,7 @@ export default {
   mounted() {
     //console.log('visiting ' + this.$route.name)
     this.$store.commit('SET_LASTPAGE', this.$route.name)
-    document.getElementById('contenuto').focus();
+    
   }
 }
 </script>
@@ -481,12 +478,6 @@ export default {
   }
 }
 
-.tohide {
-  width: 1px;
-  height: 1px;
-  font-size: 0px;
-  position: absolute;
-  left: -1px;
-}
+
 
 </style>
