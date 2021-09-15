@@ -228,3 +228,25 @@ button.icon-left::after {
     max-height: none;
   }
 }
+
+
+#viewDiv > .esri-view-root .esri-ui .esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-popup .esri-popup__main-container.esri-widget {
+  max-width: 200px;
+}
+
+#viewDiv > .esri-view-root .esri-ui .esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-popup .esri-popup__main-container.esri-widget > div {
+  display: none;
+}
+
+#viewDiv > .esri-view-root .esri-ui .esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-popup .esri-popup__main-container > header {
+  &> .esri-popup__header-buttons > div {
+    display: none;
+  }
+  > button:hover {
+    all: unset; 
+  }
+}
+
+/*#viewDiv > .esri-view-root .esri-ui .esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-popup .esri-popup__main-container > article {
+  display: none;
+}*/
