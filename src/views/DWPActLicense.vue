@@ -73,14 +73,14 @@
                 </div>
             </div>
 
-            <aside>
-                <button id="back-to-menu" tabindex="0" @click="backtomenu()" aria-label="back to menu" class="tohide">
+            <div>
+                <button id="back-to-menu" tabindex="0" @click="backtomenu()" aria-label="back to internal menu" class="tohide">
                     back to menu
                 </button>
                 <button id="back-to-nav" tabindex="0" @click="backtonav()" class="tohide" aria-label="back to navbar">
                     back navbar
                 </button>
-            </aside>
+            </div>
         </div>
     </main>
 </template>
@@ -99,10 +99,10 @@ export default {
     methods: {
         backtonav() {
             console.log(document.getElementById('navigazione'))
-            document.getElementById('navigazione').focus();
+            document.getElementById('navigazione').focus({preventScroll: true});
         },
         backtomenu() {
-            document.getElementById('menu').focus();
+            document.getElementById('menu').focus({preventScroll: true});
         },
         openSection(id){
             //document.getElementById('btn'+this.isActive).setAttribute('aria-expanded', 'false');
@@ -184,7 +184,7 @@ export default {
     mounted() {
         //console.log('visiting ' + this.$route.name)
         this.$store.commit('SET_LASTPAGE', this.$route.name)
-        //document.getElementsByClassName('main-content')[0].focus();
+        //document.getElementsByClassName('main-content')[0].focus({preventScroll: true});
 
         //window.addEventListener("DOMContentLoaded", () => {
             const tabs = document.querySelectorAll('[role="tab"]');
@@ -218,7 +218,7 @@ export default {
                 }
 
                 tabs[tabFocus].setAttribute("tabindex", 0);
-                tabs[tabFocus].focus();
+                tabs[tabFocus].focus({preventScroll: true});
                 }
             });
         //});

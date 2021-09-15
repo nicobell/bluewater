@@ -28,7 +28,7 @@ router.afterEach((to, from, next) => {
             document.getElementById('contenuto').focus({
                 preventScroll: true
             });    
-        }, 100);
+        }, 200);
 })
 
 export default router

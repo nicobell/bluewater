@@ -229,9 +229,18 @@ button.icon-left::after {
   }
 }
 
-
 #viewDiv > .esri-view-root .esri-ui .esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-popup .esri-popup__main-container.esri-widget {
-  max-width: 200px;
+  width: 1px;
+  height: 1px;
+  
+  overflow: hidden;
+  * {
+    font-size: 1px; 
+  }
+}
+#viewDiv > .esri-view-root .esri-ui .esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-popup > div.esri-popup__pointer > div {
+  background: #1A3C6E;
+  opacity: 0;
 }
 
 #viewDiv > .esri-view-root .esri-ui .esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-popup .esri-popup__main-container.esri-widget > div {

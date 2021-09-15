@@ -1,5 +1,5 @@
 <template>
-    <nav ref="menu" :class="[{show: isActive}]" role="navigation" aria-label="main menu">
+    <nav ref="menu" :class="[{show: isActive}]" role="navigation" aria-label="main menu, use arrows to select">
 
         <div class="btn" @click="isActive = !isActive">
         </div>
@@ -185,26 +185,29 @@
             let tabFocus = 0;
 
             tabList.addEventListener("keydown", e => {
+                
                 // Move right
                 if (e.keyCode === 40 || e.keyCode === 38) {
-                tabs[tabFocus].setAttribute("tabindex", -1);    
-                if (e.keyCode === 40) {
-                    tabFocus++;
-                    // If we're at the end, go to the start
-                    if (tabFocus >= tabs.length) {
-                    tabFocus = 0;
+                    e.preventDefault()
+                    tabs[tabFocus].setAttribute("tabindex", -1);    
+                    if (e.keyCode === 40) {
+                        tabFocus++;
+                        // If we're at the end, go to the start
+                        if (tabFocus >= tabs.length) {
+                        tabFocus = 0;
+                        }
+                        // Move left
+                    } else if (e.keyCode === 38) {
+                        e.preventDefault()
+                        tabFocus--;
+                        // If we're at the start, move to the end
+                        if (tabFocus < 0) {
+                        tabFocus = tabs.length - 1;
+                        }
                     }
-                    // Move left
-                } else if (e.keyCode === 38) {
-                    tabFocus--;
-                    // If we're at the start, move to the end
-                    if (tabFocus < 0) {
-                    tabFocus = tabs.length - 1;
-                    }
-                }
 
-                tabs[tabFocus].setAttribute("tabindex", 0);
-                tabs[tabFocus].focus({});
+                    tabs[tabFocus].setAttribute("tabindex", 0);
+                    tabs[tabFocus].focus({preventScroll: true});
                 }
             });
         }

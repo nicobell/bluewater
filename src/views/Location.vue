@@ -22,11 +22,12 @@
                 </p>
             </div>
 
-            <button id="zoomout" @click="zoomOut()" class="esri-icon-zoom-out-fixed"></button>
+            <button id="zoomout" @click="zoomOut()" class="esri-icon-zoom-out-fixed" aria-label="reset zoom"></button>
 
 
             <div id="measure">
                 <button
+                    aria-hidden="true" tabindex="-1"    
                     class="esri-icon-measure-line"
                     id="distanceButton"
                     title="Measure distance between two or more points"
@@ -34,8 +35,8 @@
             </div>
 
             <div id="zoomer">
-                <button class="esri-icon-minus" @click="zoomminus()"></button>
-                <button class="esri-icon-plus" @click="zoomplus()"></button>
+                <button class="esri-icon-minus" @click="zoomminus()" aria-label="zoom out"></button>
+                <button class="esri-icon-plus" @click="zoomplus()" aria-label="zoom in"></button>
             </div>
         </div>
 
@@ -144,20 +145,25 @@ export default {
                                     title: p.attributes.en_title,
                                     content: p.attributes.en_description,
                                     visible: true,
+                                    collapsed: true,
                                     alignment: 'auto'
                                 })
                                 vv.ui.add(pop)
                             })
 
                             pa = true
+
+                            document.querySelectorAll('.esri-popup').forEach((p, i) => {
+                                if(i!=0) {
+                                    p.setAttribute('tabindex', 0)
+                                    p.setAttribute('aria-label', p.attributes.en_title)
+                                }
+                            })
                         })
                     }
                 })
             })
-            document.querySelectorAll('.esri-popup').forEach((p, i) => {
-                if(i!=0)
-                    p.setAttribute('tabindex', 0)
-            })
+            
         }
     },
     mounted() {
@@ -349,7 +355,7 @@ export default {
         }
         function setActiveButton(selectedButton) {
             // focus the view to activate keyboard shortcuts for sketching
-            //vv.focus();
+            //vv.focus({preventScroll: true});
             var elements = document.getElementsByClassName("active");
             for (var i = 0; i < elements.length; i++) {
                 elements[i].classList.remove("active");
@@ -436,7 +442,7 @@ export default {
                     document.getElementById("info").style.right = "-50%";
                 }
 
-                pa = false
+                /*pa = false
                 layerView.queryFeatures({
                     where: "en_description <> ''",
                     outFields: ["*"],
@@ -465,13 +471,14 @@ export default {
                         if(i!=0)
                             p.setAttribute('tabindex', 0)
                     })
-                })
+                })*/
 
                 
             }
         })
         .then(function() {
             document.getElementById('loader').style.visibility = 'hidden'
+            document.querySelector('.esri-expand [role=button]').setAttribute('aria-label', 'expand legend')
         }) 
     }
 }

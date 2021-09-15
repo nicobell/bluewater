@@ -6,16 +6,21 @@
       <h1 class="title" id="title1" tabindex="-1"><span class="tohide">page title: </span>{{ content.title }}</h1>
       
       <div class="content two-col">
-        <article aria-label="description" class="inner-content-left" tabindex="0">
-          <div v-html="content.description"></div>
-        </article>
+        <section aria-label="description" class="inner-content-left" tabindex="0">
+          <div role="region" v-html="content.description" aria-hidden="false"></div>
+        </section>
 
         <div class="inner-content-right" style="position: relative;">
-          <article class="tohide" aria-hidden="false" tabindex="0" aria-label="gathered data">
-            <p>
-            Two single point mooring buoy systems. Depths of 88 to 90 feet, location 15 nautical miles off the coast of San Jose Island. 56.48 miles of two 30-inch outside diameter crude oil pipelines, onshore, inshore and offshore. The Harbor Island Facility occupies 12 acres. 16 very large crude carriers with loading rates of 80 bph and 40 bph for simultaneous operations.
-            </p>
-          </article>
+          <section class="tohide" aria-hidden="false" tabindex="0" aria-labelledby="gather">
+            <h2 id="gather">Gathered Data</h2>
+            <div role="region" aria-hidden="false">
+              Two single point mooring buoy systems. 
+              Depths of 88 to 90 feet, location 15 nautical miles off the coast of San Jose Island. 
+              56.48 miles of two 30-inch outside diameter crude oil pipelines, onshore, inshore and offshore. 
+              The Harbor Island Facility occupies 12 acres. 
+              16 very large crude carriers with loading rates of 80 bph and 40 bph for simultaneous operations.
+            </div>
+          </section>
 
           <section aria-hidden="true" class="data">
             <div class="section-1">
@@ -59,6 +64,15 @@
             </div>
           </section>
         </div>
+      </div>
+
+      <div>
+        <button id="back-to-menu" tabindex="0" @click="backtomenu()" aria-label="back to internal menu" class="tohide">
+          back to menu
+        </button>
+        <button id="back-to-nav" tabindex="0" @click="backtonav()" class="tohide" aria-label="back to navbar">
+          back navbar
+        </button>
       </div>
     </div>
   </main>
