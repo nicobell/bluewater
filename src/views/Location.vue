@@ -67,13 +67,10 @@ export default {
             workspacesLayer: null,
             pipelineLayer: null,
             citiesLayer: null,
-            //facilityLayer: null,
             multiterminalLayer: null,
             valvesLayer: null,
-            showATWS: '',
-            showPE: '',
-            showPEBDB: '',
-            showTCW: ''
+            dataPoints: [],
+            popsAdded: false
         }
     },
     computed: {
@@ -121,97 +118,64 @@ export default {
             }
 
         },
-        //LAYER TOGGLE FUNCTIONS + FILTER BUTTONS STYLING
-        /*toggleATWS() {
-            if(this.showATWS=='')
-                this.showATWS = "Type <> 'ATWS'"
-            else 
-                this.showATWS = ''
-            this.toggleLayer()
-        },
-        togglePE() {
-            if(this.showPE=='')
-                this.showPE = "Type <> 'Permanent Easement'"
-            else 
-                this.showPE = ''
-            this.toggleLayer()
-        },
-        togglePEBDB() {
-            if(this.showPEBDB=='')
-                this.showPEBDB = "Type <> 'Permanent Easement - Between Drill Boxes'"
-            else 
-                this.showPEBDB = ''
-            this.toggleLayer()
-        },
-        toggleTCW() {
-            if(this.showTCW=='')
-                this.showTCW = "Type <> 'Temporary Construction Workspace'"
-            else 
-                this.showTCW = ''
-            this.toggleLayer()
-        },
-        toggleLayer() {
-            var qs = []
-            
-            if(this.showATWS) qs.push(this.showATWS)
-            else qs.slice(qs.indexOf(this.showATWS), 1)
+        addPopups() {
+            var pa = this.popsAdded
+            var vv = this.view
+            console.log(pa)
+            this.view.whenLayerView(this.valvesLayer).then(function (layerView) {
+                layerView.watch("updating", function (val) {
+                    if (!val && !pa) {
+                        layerView.queryFeatures({
+                            where: "en_description <> ''",
+                            outFields: ["*"],
+                            returnGeometry: true                        
+                        }).then(function (results) {
 
-            if(this.showPE) qs.push(this.showPE)
-            else qs.slice(qs.indexOf(this.showPE), 1)
+                            //console.log(results);
 
-            if(this.showPEBDB) qs.push(this.showPEBDB)
-            else qs.slice(qs.indexOf(this.showPEBDB), 1)
+                            results.features.forEach(p => {
+                                var pt = new Point({ 
+                                    latitude: p.geometry.latitude, 
+                                    longitude: p.geometry.longitude 
+                                })
+                                var pop = new Popup({
+                                    view: vv,
+                                    location: pt,
+                                    title: p.attributes.en_title,
+                                    content: p.attributes.en_description,
+                                    visible: true,
+                                    alignment: 'auto'
+                                })
+                                vv.ui.add(pop)
+                            })
 
-            if(this.showTCW) qs.push(this.showTCW)
-            else qs.slice(qs.indexOf(this.showTCW), 1)
-
-            var query = ''
-            qs.forEach((q, i) => {
-                if(i!=qs.length-1)
-                    query += (' ' + q + ' AND')
-                else
-                    query += (' ' + q)
+                            pa = true
+                        })
+                    }
+                })
             })
-
-            //console.log(query)
-            //console.log(qs)
-            this.workspacesLayer.definitionExpression = query
-        }*/
+            document.querySelectorAll('.esri-popup').forEach((p, i) => {
+                if(i!=0)
+                    p.setAttribute('tabindex', 0)
+            })
+        }
     },
     mounted() {
         this.workspacesLayer = new FeatureLayer({
-            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210722/FeatureServer/4",
+            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/4",
             outFields: ["*"]
         })
 
         this.pipelineLayer = new FeatureLayer({
-            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210722/FeatureServer/3",
+            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/3",
             outFields: ["*"]
         })
 
-        /*this.facilityLayer = new FeatureLayer({
-            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/21464066_Bluewater_Project_Data/FeatureServer/2",
-            outFields: ["*"]
-        })*/
-
-        /*const cityLabel = {
-            labelExpression: "[NAME]",
-            labelPlacement: "center-right",
-            symbol: {
-                type: "text", //autocasts as new TextSymbol()
-                font: {
-                    size: 10,
-                    weight: "bold"
-                },
-                color: "white"
-            }
-        }*/
-
         this.citiesLayer = new FeatureLayer({
-            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210722/FeatureServer/1",
-            //labelingInfo: [cityLabel],
+            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/1",
             outFields: ["*"],
             renderer: {
+                //to hide white circle at city location on map
                 type: "simple",
                 symbol: {
                     type: "picture-marker",
@@ -223,73 +187,63 @@ export default {
         })
 
         this.multiterminalLayer = new FeatureLayer({
-            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/ArcGIS/rest/services/BlueWaterData_update_20210722/FeatureServer/0",
+            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/0",
             outFields: ["*"],
             labelingInfo: {
                 labelExpression: "[LABEL]",
                 labelPlacement: "below-center",
                 symbol: {
                     type: "text",
-                    font: {
-                        size: 11
-                    },
+                    font: { size: 11 },
                     color: "#fff",
                     haloColor: "#1C2332",
                     haloSize: 2
                 }
             },
             renderer: {
-                type: "simple",  // autocasts as new SimpleRenderer()
+                type: "simple",
                 symbol: {
-                    type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
+                    type: "simple-marker",
                     size: 6,
                     color: "orange",
-                    outline: {  // autocasts as new SimpleLineSymbol()
-                        width: 0,
-                        color: "orange"
-                    }
+                    outline: { width: 0,  color: "orange" }
                 }
             }
         })
 
-        const labelclass = {
-            labelExpression: "  ["+this.lang+"_title]",
-            labelPlacement: "center-right",
-            symbol: {
-                type: "text", //autocasts as new TextSymbol()
-                font: {
-                    size: 13
-                },
-                color: "white",
-                haloColor: "#1C2332",
-                haloSize: 2
-                
-            }
-        }
-
-        //const template = { title: "{en_title}", overwriteActions: true, autoOpenEnabled: true }
         this.valvesLayer = new FeatureLayer({
-            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210722/FeatureServer/2",
+            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/2",
             outFields: ["*"],
-            //popupTemplate: template,
-            //popupEnabled: true,
-            labelingInfo: [labelclass],
+            labelingInfo: {
+                labelExpression: "  ["+this.lang+"_title]",
+                labelPlacement: "center-right",
+                symbol: {
+                    type: "text",
+                    font: { size: 13 },
+                    color: "#fff",
+                    haloColor: "#1C2332",
+                    haloSize: 2
+                    
+                }
+            },
             renderer: {
                 type: "simple",
                 symbol: {
                     type: "picture-marker",
                     url: "/point-1.png",
-                    //width: "220px",
                     width: "45px",
-                    height: "45px",
-                    //xoffset: "110px"
+                    height: "45px"
                 }
             }
         })
 
+        fetch('https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/2?f=json')
+        .then(res => res.json())
+        .then(json => console.log(json))
+
         const map = new Map({
             basemap: "satellite",
-            layers: [this.workspacesLayer, this.pipelineLayer, this.valvesLayer, this.citiesLayer, this.multiterminalLayer]//, this.facilityLayer
+            layers: [this.workspacesLayer, this.pipelineLayer, this.valvesLayer, this.citiesLayer, this.multiterminalLayer]
         })
 
         this.view = new MapView({
@@ -306,17 +260,22 @@ export default {
                     breakpoint: false,
                     buttonEnabled: false,
                     position: 'top-center',
-                    autoOpenEnabled: true
+                    autoOpenEnabled: false,
+                    actions: [],
+                    overwriteActions: true,
+                    includeDefaultActions: false
                 }
             }
-            
         })
+        //variable to use this.view inside functions
+        let vv = this.view
 
         //element to compute layer extent and zoom out correctly
         this.zoomViewModel = new ZoomViewModel()
         this.zoomViewModel.view = this.view
 
-         var legend = new Expand({
+        //collapsible element for legend
+        var legend = new Expand({
             content: new Legend({
                 view: this.view,
                 style: "classic",
@@ -328,9 +287,9 @@ export default {
             view: this.view,
             expanded: false
         })
-
         this.view.ui.add(legend, "bottom-left");
 
+        //search location widget
         var search = new Search({ 
             view: this.view, 
             popupTemplate: { 
@@ -338,67 +297,29 @@ export default {
                 title: '{Match_addr}'
             } 
         })
+        this.view.ui.add(search, "top-left");
+
         /*search.on("select-result", function(evt){
             this.view.popup.open({
                 title: evt.result.feature.attributes.Match_addr,
                 location: evt.result.extent.center
             });      
         });*/
-        this.view.ui.add(search, "top-left");
-        this.view.ui.add('measure', "top-left");
         //this.view.ui.add("toggles", "bottom-left");
-        
+
+        //add buttons for basing zooming functions to ovelap the map
+        this.view.ui.add('measure', "top-left");
         this.view.ui.add("zoomer", "bottom-right");
         this.view.ui.add("zoomout", "bottom-right");
+
+        //manually create a popup for every point in map,
+        //need to call the Popup({...}) constructor in order to repeat the process
+        //normally only one popup at time can be opened by the view
+        this.addPopups()
 
         //click on Measure Widget to activate/reset distance computation
         //+ button style accordingly
         let activeWidget = null
-        let vv = this.view
-
-        this.view.on('click', function(event) {
-            console.log(event)
-            /*vv.popup.open({
-                location: event.mapPoint,
-                title: 'prova'
-            })*/
-            /*vv.popup.open({
-                location: {latitude: 27.800, longitude: -97.0000},
-                title: 'prova'
-            })*/
-            
-            //vv.popup.location = {latitude: 27.800, longitude: -98.0000}
-            
-        })
-
-        var p = new Popup({
-            view: this.view,
-            location: {latitude: 27.800, longitude: -97.0000},
-            title: 'prova',
-            visible: true,
-            content: 'a',
-            actions: [],
-            includeDefaultActions: false
-        })
-        
-        var p1 = new Popup({
-            view: this.view,
-            location: {latitude: 27.800, longitude: -96.5000},
-            title: 'prova',
-            visible: true,
-            content: 'a',
-            overwriteActions: true,
-            includeDefaultActions: false,
-            actions: []
-        })
-        
-        this.view.popup.viewModel.actions.visible = false;
-        
-        this.view.ui.add(p);
-        this.view.ui.add(p1);
-        
-        p.open()
-        p1.open()
 
         document.getElementById("distanceButton").addEventListener("click", function() {
             setActiveWidget(null);
@@ -444,11 +365,13 @@ export default {
         //click on any vale point on the map to get infos and zoom in place
         //focus on object and data fetching
         let vsL = this.valvesLayer
+        let pa = this.popsAdded
         let lang = this.lang
         this.view.when()
         .then(function() {
             /*console.log(document.getElementById('loader').classList);
             document.getElementById('loader').classList.add('hidden');*/
+            
             return vsL.when();
         })
         .then(function(layer) {
@@ -461,19 +384,21 @@ export default {
                 const opts = {
                     include: vsL
                 }
+                
                 vv.hitTest(event, opts).then(getGraphics);
             }
 
             //let highlight, currentName
             function getGraphics(response) {
+                console.log(response)
                 if (response.results.length) {
+                    console.log(response.results[0].graphic)
                     const graphic = response.results[0].graphic;
                     
                     const attributes = graphic.attributes;
                     const name = attributes[lang+"_title"];
                     //const objid = attributes.OBJECTID;
                     const description = attributes[lang+"_description"]
-                    //console.log(attributes)
 
                     /*if ( highlight && (currentName !== name ) ) {
                         highlight.remove();
@@ -511,36 +436,38 @@ export default {
                     document.getElementById("info").style.right = "-50%";
                 }
 
-                var p = new Popup({
-                        view: vv,
-                        location: {latitude: 27.800, longitude: -97.0000},
-                        title: 'prova',
-                        visible: true,
-                        content: 'a',
-                        actions: [],
-                        includeDefaultActions: false
-                    })
-                    
-                    var p1 = new Popup({
-                        view: vv,
-                        location: {latitude: 27.800, longitude: -96.5000},
-                        title: 'prova',
-                        visible: true,
-                        content: 'a',
-                        overwriteActions: true,
-                        includeDefaultActions: false,
-                        actions: []
-                    })
-                    
-                    vv.popup.viewModel.actions.visible = false;
-                    
-                    vv.ui.add(p);
-                    vv.ui.add(p1);
-                    
-                    p.open() 
-                    p1.open()
+                pa = false
+                layerView.queryFeatures({
+                    where: "en_description <> ''",
+                    outFields: ["*"],
+                    returnGeometry: true                        
+                }).then(function (results) {
 
-                    document.querySelectorAll('esri-popup').forEach(p => p.setAttribute('tabindex', 0))
+                    console.log('after click', results);
+
+                    results.features.forEach(p => {
+                        var pt = new Point({ 
+                            latitude: p.geometry.latitude, 
+                            longitude: p.geometry.longitude 
+                        })
+                        var pop = new Popup({
+                            view: vv,
+                            location: pt,
+                            title: p.attributes.en_title,
+                            content: p.attributes.en_description,
+                            visible: true,
+                            alignment: 'auto'
+                        })
+                        vv.ui.add(pop)
+                    })
+
+                    document.querySelectorAll('.esri-popup').forEach((p, i) => {
+                        if(i!=0)
+                            p.setAttribute('tabindex', 0)
+                    })
+                })
+
+                
             }
         })
         .then(function() {
@@ -704,6 +631,10 @@ export default {
     color: black;
     padding: 10px;
     &:hover {
+        background: #0079c1;
+        color: #fff;
+    }
+    &.active {
         background: #0079c1;
         color: #fff;
     }
