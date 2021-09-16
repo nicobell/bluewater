@@ -67,9 +67,6 @@
       </div>
 
       <div>
-        <button id="back-to-menu" tabindex="0" @click="backtomenu()" aria-label="back to internal menu" class="tohide">
-          back to menu
-        </button>
         <button id="back-to-nav" tabindex="0" @click="backtonav()" class="tohide" aria-label="back to navbar">
           back navbar
         </button>
@@ -95,6 +92,10 @@ export default {
     },
   },
   methods: {
+    backtonav() {
+      console.log(document.getElementById('navigazione'))
+      document.getElementById('navigazione').focus({preventScroll: true});
+    },
     gotolink(link) {
       window.open(link, '_blank')
     }
@@ -102,7 +103,6 @@ export default {
   mounted() {
     //console.log('visiting ' + this.$route.name)
     this.$store.commit('SET_LASTPAGE', this.$route.name)
-    
   }
 }
 </script>

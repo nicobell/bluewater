@@ -4,30 +4,20 @@
 
         <div :class="['main-content', 'map-wrapper', 'lang-'+this.lang] ">
 
-            <div id="loader" class="loader">
-                <p>Loading . . .</p>
+            <div id="loader" class="loader"><p>Loading . . .</p></div>
+
+            <div id="viewDiv" tabindex="-1"></div>
+
+            <div id="info" aria-hidden="true" tabindex="-1">
+                <button id="close-spalla" tabindex="0" class="close" @click="hideInfo()"></button>
+                <div class="intro"><h2 style="color: #fff;" id="name"></h2></div>
+                <p id="objectid"></p>
+                <article id="category" tabindex="0">no data</article>
             </div>
-
-            <div id="viewDiv"></div>
-
-            <div id="info">
-                <div class="close" @click="hideInfo()"></div>
-
-                <div class="intro">
-                    <p><span id="name"></span></p>
-                </div>
-                <p><span id="objectid"></span></p>
-                <p id="category">
-                    ...
-                </p>
-            </div>
-
-            <button id="zoomout" @click="zoomOut()" class="esri-icon-zoom-out-fixed" aria-label="reset zoom"></button>
-
 
             <div id="measure">
                 <button
-                    aria-hidden="true" tabindex="-1"    
+                    aria-hidden="true" tabindex="-1"
                     class="esri-icon-measure-line"
                     id="distanceButton"
                     title="Measure distance between two or more points"
@@ -35,12 +25,13 @@
             </div>
 
             <div id="zoomer">
-                <button class="esri-icon-minus" @click="zoomminus()" aria-label="zoom out"></button>
                 <button class="esri-icon-plus" @click="zoomplus()" aria-label="zoom in"></button>
+                <button class="esri-icon-minus" @click="zoomminus()" aria-label="zoom out"></button>
             </div>
+
+            <button id="zoomout" @click="zoomOut()" class="esri-icon-zoom-out-fixed" aria-label="reset zoom"></button>
         </div>
 
-        
     </main>
 </template>
 
@@ -71,7 +62,9 @@ export default {
             multiterminalLayer: null,
             valvesLayer: null,
             dataPoints: [],
-            popsAdded: false
+            popsAdded: false,
+            activeWidget: null,
+            lastbutton: null
         }
     },
     computed: {
@@ -87,9 +80,16 @@ export default {
             this.zoomViewModel.zoomOut();
         },
         hideInfo() {
+            document.getElementById('viewDiv').focus(); 
+
             document.getElementById("info").style.visibility = "hidden";
             document.getElementById("info").style.opacity = "0.2";
             document.getElementById("info").style.right = "-50%";
+
+            document.getElementById("info").setAttribute('aria-hidden', true)
+            document.getElementById("category").setAttribute('tabindex', '-1')
+
+            document.getElementById(this.lastbutton).focus()
         },
         zoomOut() {
             if(this.workspacesLayer.fullExtent.spatialReference != this.view.SpatialReference) {
@@ -98,9 +98,9 @@ export default {
                     geometries: [this.workspacesLayer.fullExtent],              
                     outSpatialReference: this.view.spatialReference            
                 });            
-                var vv =  this.view
+                var tot =  this
                 geomSer.project(params).then(function(results){              
-                    vv.goTo({
+                    tot.view.goTo({
                         target: results[0],
                         zoom: 11.989
                     }, {
@@ -119,54 +119,165 @@ export default {
             }
 
         },
-        addPopups() {
-            var pa = this.popsAdded
-            var vv = this.view
-            console.log(pa)
-            this.view.whenLayerView(this.valvesLayer).then(function (layerView) {
-                layerView.watch("updating", function (val) {
-                    if (!val && !pa) {
-                        layerView.queryFeatures({
-                            where: "en_description <> ''",
-                            outFields: ["*"],
-                            returnGeometry: true                        
-                        }).then(function (results) {
-
-                            //console.log(results);
-
-                            results.features.forEach(p => {
-                                var pt = new Point({ 
-                                    latitude: p.geometry.latitude, 
-                                    longitude: p.geometry.longitude 
-                                })
-                                var pop = new Popup({
-                                    view: vv,
-                                    location: pt,
-                                    title: p.attributes.en_title,
-                                    content: p.attributes.en_description,
-                                    visible: true,
-                                    collapsed: true,
-                                    alignment: 'auto'
-                                })
-                                vv.ui.add(pop)
-                            })
-
-                            pa = true
-
-                            document.querySelectorAll('.esri-popup').forEach((p, i) => {
-                                if(i!=0) {
-                                    p.setAttribute('tabindex', 0)
-                                    p.setAttribute('aria-label', p.attributes.en_title)
-                                }
-                            })
-                        })
+        setActiveWidget(type) {
+            switch (type) {
+                case "distance":
+                    this.activeWidget = new DistanceMeasurement2D({ view: this.view });
+                    this.activeWidget.viewModel.start();
+                    //tot.view.ui.add(activeWidget, "top-right");
+                    this.setActiveButton(document.getElementById("distanceButton"));
+                    break;
+                case null:
+                    if (this.activeWidget) {
+                        this.view.ui.remove(this.activeWidget);
+                        this.activeWidget.destroy();
+                        this.activeWidget = null;
                     }
+                    break;
+            }
+        },
+        setActiveButton(selectedButton) {
+            // focus the view to activate keyboard shortcuts for sketching
+            //tot.view.focus({preventScroll: true});
+            var elements = document.getElementsByClassName("active");
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].classList.remove("active");
+            }
+            if (selectedButton) {
+                selectedButton.classList.add("active");
+            }
+        },
+        addPopups(layerView, val) {
+            var tot = this
+            //refresh on click of map only if not measuring (lag fix)
+            var refresh = document.querySelectorAll('.esri-view-surface')[0].getAttribute('data-cursor')!='crosshair' ? true : false
+            console.log(val, refresh)
+            if (!val && refresh) {
+                console.log('prova')
+                layerView.queryFeatures({
+                    where: "en_description <> ''",
+                    outFields: ["*"],
+                    returnGeometry: true
+
+                }).then(function (results) {
+                    console.log('remove all popups')
+                    document.querySelectorAll('.esri-popup').forEach(p => { p.parentElement.removeChild(p) })
+                    document.querySelectorAll('.esri-spinner').forEach(p => { p.parentElement.removeChild(p) })
+
+                    console.log('create all popups')
+                    results.features.forEach(p => {
+                        var pt = new Point({ 
+                            latitude: p.geometry.latitude, 
+                            longitude: p.geometry.longitude 
+                        })
+                        var pop = new Popup({
+                            view: tot.view,
+                            location: pt,
+                            title: p.attributes.en_title,
+                            content: p.attributes.en_description,
+                            visible: true,
+                            collapsed: true,
+                            alignment: 'auto'
+                        })
+                        tot.view.ui.add(pop)
+                    })
+
+                    // !! DANGER ZONE !!
+                    setTimeout(() => {
+                        document.querySelectorAll('.esri-popup').forEach((pp, i) => {
+                            console.log('popup')
+                            pp.setAttribute('id', i+1)
+                            pp.setAttribute('tabindex', 0)
+                        })
+                    }, 200);
+                    
+                    tot.accessiblePopups(layerView)
                 })
-            })
+            }
+        },
+        accessiblePopups(layerView) {
+            var tot = this
+
+            setTimeout(() => {
+                document.querySelectorAll('.esri-popup').forEach(p => {
+                    p.setAttribute('tabindex', 0)
+                })
+
+                document.querySelectorAll('.esri-popup__header-container--button').forEach((b, i) => {
+                    b.setAttribute('tabindex', '-1')
+
+                    b.parentNode.parentNode.parentNode.addEventListener('keydown', e => {
+                        if(e.keyCode===13) {
+                            b.click()
+                            tot.lastbutton = e.target.getAttribute('id')
+                            var q = "OBJECTID = " + e.target.getAttribute('id') + ""
+                            layerView.queryFeatures({
+                                where: q,
+                                outFields: ['*'],
+                                returnGeometry: true
+                            }).then(res => {
+                                const attributes = res.features[0].attributes;
+                                const name = attributes[tot.lang+"_title"];
+                                const description = attributes[tot.lang+"_description"]
+
+                                document.getElementById("info").style.visibility = "visible";
+                                document.getElementById("info").style.right = "0";
+                                document.getElementById("info").style.opacity = "1";
+                                document.getElementById("name").innerHTML = name;
+                                document.getElementById("category").innerHTML = description;
+
+                                setTimeout(() => {
+                                    document.getElementById('close-spalla').focus()
+                                }, 200);
+                            })
+                        }
+                    })
+                    b.addEventListener('click', e => {
+                        if(e.keyCode===13) {
+                            b.click()
+                            tot.lastbutton = e.target.parentNode.parentNode.parentNode.getAttribute('id')
+                            var q = "OBJECTID = " + e.target.parentNode.parentNode.parentNode.getAttribute('id') + ""
+                            layerView.queryFeatures({
+                                where: q,
+                                outFields: ['*'],
+                                returnGeometry: true
+                            }).then(res => {
+                                const attributes = res.features[0].attributes;
+                                const name = attributes[tot.lang+"_title"];
+                                const description = attributes[tot.lang+"_description"]
+
+                                document.getElementById("info").style.visibility = "visible";
+                                document.getElementById("info").style.right = "0";
+                                document.getElementById("info").style.opacity = "1";
+                                document.getElementById("name").innerHTML = name;
+                                document.getElementById("category").innerHTML = description;
+
+                                setTimeout(() => {
+                                    document.getElementById('close-spalla').focus()
+                                }, 200);
+                            })
+                        }
+                    })
+                })
+                
+            }, 200);
             
         }
     },
     mounted() {
+        document.getElementById('info').addEventListener('keydown', e => {
+            if(e.keyCode===27) {
+                this.hideInfo()
+            }
+        })
+        document.getElementById('close-spalla').addEventListener('keydown', e => {
+            if(e.keyCode==9 && e.shiftKey==true) {
+                setTimeout(() => {
+                    document.getElementById('category').focus()    
+                }, 200);
+            }
+        })
+
         this.workspacesLayer = new FeatureLayer({
             url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/4",
             outFields: ["*"]
@@ -221,7 +332,7 @@ export default {
             url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/2",
             outFields: ["*"],
             labelingInfo: {
-                labelExpression: "  ["+this.lang+"_title]",
+                labelExpression: "["+this.lang+"_title]",
                 labelPlacement: "center-right",
                 symbol: {
                     type: "text",
@@ -229,7 +340,6 @@ export default {
                     color: "#fff",
                     haloColor: "#1C2332",
                     haloSize: 2
-                    
                 }
             },
             renderer: {
@@ -243,9 +353,9 @@ export default {
             }
         })
 
-        fetch('https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/2?f=json')
+        /*fetch('https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/2?f=json')
         .then(res => res.json())
-        .then(json => console.log(json))
+        .then(json => console.log(json))*/
 
         const map = new Map({
             basemap: "satellite",
@@ -273,14 +383,15 @@ export default {
                 }
             }
         })
+
         //variable to use this.view inside functions
-        let vv = this.view
+        let tot =this
 
         //element to compute layer extent and zoom out correctly
         this.zoomViewModel = new ZoomViewModel()
         this.zoomViewModel.view = this.view
 
-        //collapsible element for legend
+        //collapsible element for Legend widget
         var legend = new Expand({
             content: new Legend({
                 view: this.view,
@@ -295,7 +406,7 @@ export default {
         })
         this.view.ui.add(legend, "bottom-left");
 
-        //search location widget
+        //Search location widget
         var search = new Search({ 
             view: this.view, 
             popupTemplate: { 
@@ -305,123 +416,68 @@ export default {
         })
         this.view.ui.add(search, "top-left");
 
-        /*search.on("select-result", function(evt){
-            this.view.popup.open({
-                title: evt.result.feature.attributes.Match_addr,
-                location: evt.result.extent.center
-            });      
-        });*/
-        //this.view.ui.add("toggles", "bottom-left");
-
-        //add buttons for basing zooming functions to ovelap the map
+        //add buttons for zooming functions to ovelap the map
         this.view.ui.add('measure', "top-left");
         this.view.ui.add("zoomer", "bottom-right");
         this.view.ui.add("zoomout", "bottom-right");
 
         //manually create a popup for every point in map,
-        //need to call the Popup({...}) constructor in order to repeat the process
+        //need to call the Popup({...}) constructor in order to repeat the process,
         //normally only one popup at time can be opened by the view
-        this.addPopups()
-
-        //click on Measure Widget to activate/reset distance computation
-        //+ button style accordingly
-        let activeWidget = null
-
-        document.getElementById("distanceButton").addEventListener("click", function() {
-            setActiveWidget(null);
-            if (!this.classList.contains("active")) {
-                setActiveWidget("distance");
-            } else {
-                setActiveButton(null);
-            }
+        this.view.whenLayerView(this.valvesLayer).then(function (layerView) {
+            layerView.watch("updating", val => tot.addPopups(layerView, val))
         })
 
-        function setActiveWidget(type) {
-            switch (type) {
-                case "distance":
-                    activeWidget = new DistanceMeasurement2D({ view: vv });
-                    activeWidget.viewModel.start();
-                    //vv.ui.add(activeWidget, "top-right");
-                    setActiveButton(document.getElementById("distanceButton"));
-                    break;
-                case null:
-                    if (activeWidget) {
-                        vv.ui.remove(activeWidget);
-                        activeWidget.destroy();
-                        activeWidget = null;
-                    }
-                    break;
+        //click on Measure widget to activate/reset distance computation
+        //+ button style accordingly
+        document.getElementById("distanceButton").addEventListener("click", function() {
+            tot.setActiveWidget(null);
+            if (!this.classList.contains("active")) {
+                tot.setActiveWidget("distance");
+            } else {
+                tot.setActiveButton(null);
             }
-        }
-        function setActiveButton(selectedButton) {
-            // focus the view to activate keyboard shortcuts for sketching
-            //vv.focus({preventScroll: true});
-            var elements = document.getElementsByClassName("active");
-            for (var i = 0; i < elements.length; i++) {
-                elements[i].classList.remove("active");
-            }
-            if (selectedButton) {
-                selectedButton.classList.add("active");
-            }
-        }
+        })
 
         //hide points without a label on the multiterminal layer (punto in mezzo al mare nascosto)
         this.multiterminalLayer.definitionExpression = "LABEL <> ''"
 
-        //click on any vale point on the map to get infos and zoom in place
-        //focus on object and data fetching
-        let vsL = this.valvesLayer
-        let pa = this.popsAdded
-        let lang = this.lang
+        //manage click and selection events on map canvas
         this.view.when()
         .then(function() {
-            /*console.log(document.getElementById('loader').classList);
-            document.getElementById('loader').classList.add('hidden');*/
-            
-            return vsL.when();
+            //wait for FeatureLayer to be built
+            return tot.valvesLayer.when();
         })
         .then(function(layer) {
-            return vv.whenLayerView(layer);
+            //create LayerView to query data
+            return tot.view.whenLayerView(layer);
         })
         .then(function(layerView) {
-            vv.on("click", eventHandler)
-
+            tot.view.on("click", eventHandler)
+            
             function eventHandler(event) {
-                const opts = {
-                    include: vsL
-                }
-                
-                vv.hitTest(event, opts).then(getGraphics);
+                //check if click position intersects the included layer
+                const opts = { include: tot.valvesLayer }
+                tot.view.hitTest(event, opts).then(getGraphics);
             }
 
-            //let highlight, currentName
             function getGraphics(response) {
-                console.log(response)
                 if (response.results.length) {
-                    console.log(response.results[0].graphic)
+                    //retrieve clicked point data
                     const graphic = response.results[0].graphic;
-                    
                     const attributes = graphic.attributes;
-                    const name = attributes[lang+"_title"];
-                    //const objid = attributes.OBJECTID;
-                    const description = attributes[lang+"_description"]
+                    const name = attributes[tot.lang+"_title"];
+                    const description = attributes[tot.lang+"_description"]
 
-                    /*if ( highlight && (currentName !== name ) ) {
-                        highlight.remove();
-                        highlight = null;
-                    }*/
-
-                    //SHOW info section if data is clicked
+                    //show info section if data is clicked
                     document.getElementById("info").style.visibility = "visible";
                     document.getElementById("info").style.right = "0";
                     document.getElementById("info").style.opacity = "1";
                     document.getElementById("name").innerHTML = name;
-                    //document.getElementById("objectid").innerHTML = "OBJECTID: " + objid;
                     document.getElementById("category").innerHTML = description;
 
-                    //HIGHLIGHT and ZOOM ON POINT (optional)
-                    //highlight = layerView.highlight(graphic);
-                    vv.goTo({
+                    //zoom in to point clicked
+                    tot.view.goTo({
                         target: new Point({
                             latitude: graphic.geometry.latitude,
                             longitude: graphic.geometry.longitude
@@ -431,54 +487,29 @@ export default {
                         animate: true,
                         duration: 1000
                     })
+
                 } else {
-                    //HIDE info section if empty point on map is clicked
-                    /*if (highlight){
-                        highlight.remove();
-                        highlight = null;
-                    }*/
+                    //if click on empty space in map, hide info section
                     document.getElementById("info").style.visibility = "hidden";
                     document.getElementById("info").style.opacity = "0.2";
                     document.getElementById("info").style.right = "-50%";
                 }
 
-                /*pa = false
-                layerView.queryFeatures({
-                    where: "en_description <> ''",
-                    outFields: ["*"],
-                    returnGeometry: true                        
-                }).then(function (results) {
-
-                    console.log('after click', results);
-
-                    results.features.forEach(p => {
-                        var pt = new Point({ 
-                            latitude: p.geometry.latitude, 
-                            longitude: p.geometry.longitude 
-                        })
-                        var pop = new Popup({
-                            view: vv,
-                            location: pt,
-                            title: p.attributes.en_title,
-                            content: p.attributes.en_description,
-                            visible: true,
-                            alignment: 'auto'
-                        })
-                        vv.ui.add(pop)
-                    })
-
-                    document.querySelectorAll('.esri-popup').forEach((p, i) => {
-                        if(i!=0)
-                            p.setAttribute('tabindex', 0)
-                    })
-                })*/
-
-                
+                //build hidden multiple popups for accessibility features
+                tot.addPopups(layerView, false)
             }
         })
         .then(function() {
             document.getElementById('loader').style.visibility = 'hidden'
             document.querySelector('.esri-expand [role=button]').setAttribute('aria-label', 'expand legend')
+            document.querySelector('.esri-attribution').setAttribute('aria-hidden', true)
+            document.querySelector('.esri-attribution__sources').setAttribute('aria-hidden', true)
+            document.querySelector('.esri-attribution__powered-by').setAttribute('aria-hidden', true)
+            document.querySelector('.esri-attribution__link').setAttribute('aria-hidden', true)
+            document.querySelector('.esri-attribution').setAttribute('tabindex', '-1')
+            document.querySelector('.esri-attribution__sources').setAttribute('tabindex', '-1')
+            document.querySelector('.esri-attribution__powered-by').setAttribute('tabindex', '-1')
+            document.querySelector('.esri-attribution__link').setAttribute('tabindex', '-1')
         }) 
     }
 }
@@ -572,6 +603,7 @@ export default {
     #category {
         padding: 30px;
         padding-right: 50px;
+        line-height: 1.5em;
         ::v-deep li {
             counter-increment: my-awesome-counter;
             position: relative;
@@ -593,10 +625,12 @@ export default {
 
     .close {
         cursor: pointer;
-        content: url(/close-button.svg);
+        background-image: url(/close-button.svg);
+        background-position: center center;
+        background-size: contain;
         display: block;
         border-radius: 0;
-        background: #0079c1;
+        background-color: #0079c1;
         color: #fff;
         width: 70px;
         height: 70px;

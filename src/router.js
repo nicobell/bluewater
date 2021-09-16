@@ -23,12 +23,7 @@ const router = new VueRouter({
 })
 
 router.afterEach((to, from, next) => {
-    if(document.getElementById('contenuto'))
-        setTimeout(() => {
-            document.getElementById('contenuto').focus({
-                preventScroll: true
-            });    
-        }, 200);
+    
 })
 
 export default router

@@ -21,7 +21,7 @@
       </div>
     </div>
     
-    <div :class="['spalla',{open:showSpalla}]">
+    <div :class="['spalla', {open: showSpalla}]">
       <div class="button-container">
         <div @click="toggleSpalla"></div>
       </div>

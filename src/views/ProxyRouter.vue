@@ -48,5 +48,13 @@ export default {
     this.$store.commit('SET_LANG', this.$route.params.lang)
     console.log('FIRE')
 	},
+  updated() {
+    setTimeout(() => {
+      if(document.getElementById('contenuto'))
+        document.getElementById('contenuto').focus({
+          preventScroll: true
+        });    
+    }, 200);
+  }
 }
 </script>

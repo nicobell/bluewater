@@ -64,7 +64,7 @@ export default {
 		this.checkIfMobile()
 		this.fetchData()
 		document.getElementById('app').addEventListener("keydown", e => {
-			console.log(e.keyCode)
+			//console.log(e.keyCode)
 			if(e.keyCode===78) {
 				document.getElementById('navigazione').focus({preventScroll: true})
 			}

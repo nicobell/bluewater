@@ -2,19 +2,19 @@
   <header role="banner">
     <div class="container">
       <div class="loghi">
-        <router-link :to="`/${this.lang}`"><img src="../assets/logo-ma.png" width="270" height="37" alt="logo homepage link"></router-link>
-        <img src="../assets/logo-uscg.png" width="43" height="41" alt="logo-uscg">
+        <router-link :to="`/${this.lang}`"><img src="../assets/logo-ma.png" width="270" height="37" alt="maritime administration logo"></router-link>
+        <img src="../assets/logo-uscg.png" width="43" height="41" alt="u.s. coastal guard logo">
       </div>
-      <div :class="['meeting-banner', this.$route.name.toLowerCase()]">
-        <img tabindex="-1" src="../assets/icon-meeting.svg" width="42" height="42" alt="">
-        <aside class="text">
+      <aside :class="['meeting-banner', this.$route.name.toLowerCase()]">
+        <img tabindex="-1" src="../assets/icon-meeting.svg" width="42" height="42" alt="meeting icon" aria-hidden="true">
+        <div class="text">
           <h2>{{content.headerInfo.publicMeetingTitle}}</h2>
           <p>{{content.headerInfo.publicMeetingData}}</p>
-        </aside>
+        </div>
         <div>
           <button>{{content.headerInfo.publicMeetingButton}}</button>
         </div>
-      </div>
+      </aside>
     </div>
   </header>
 </template>

@@ -8,41 +8,43 @@
 
             <div class="content two-col isDesktop" ref="container">
                 <div class="inner-content-left">
-                    <div role="tablist" id="menu" tabindex="0" class="menu" aria-label="rulings menu, use arrows to select">
-                            <button 
-                                v-for="(d, index) in content.stepProcess" :key="'label'+index"
-                                :class="{'item-menu': true, 'active-section': isActive==index+1}" 
-                                @click="openSection(index+1)"
-                                role="tab"
-                                tabindex="-1"
-                                
-                                :aria-controls="'section' + (index+1)" 
-                                :id="'btn'+(index+1)">
-                                
-                                    <span class="num"> 0{{index+1}} </span>
-                                    <span>{{d.label}}</span>
-                            </button>
-                            <!-- :aria-selected="index==0 ? true : false" -->
+                    <div role="tablist" tabindex="0" 
+                        id="menu" class="menu" 
+                        aria-label="rulings menu" aria-description="use arrows to select">
+
+                        <button 
+                            v-for="(d, index) in content.stepProcess" :key="'label'+index"
+                            :class="{'item-menu': true, 'active-section': isActive==index+1}" 
+                            @click="openSection(index+1)"
+                            role="tab"
+                            tabindex="-1"
+                            
+                            :aria-controls="'section' + (index+1)" 
+                            :id="'btn'+(index+1)">
+                            
+                                <span class="num"> 0{{index+1}} </span>
+                                <span >{{d.label}}</span>
+                        </button>
                     </div>  
                 </div>
 
                 <div class="inner-content-right">
                     <div v-if="isActive!=0" 
                         class="item-content" 
-                        :id="'section' + selectedStep.id" 
+                        :id="'section' + isActive" 
                         role="tabpanel" 
-                        :aria-labelledby="'region'+selectedStep.id"
+                        :aria-labelledby="'region'+isActive"
                         tabindex="0"
                         >
 
-                        <h2 :id="'region'+selectedStep.id" tabindex="-1">{{ selectedStep.title }}</h2>
+                        <h2 role="header" aria-level="2" :id="'region'+isActive" tabindex="-1">{{ selectedStep.title }}</h2>
                         <p v-html="selectedStep.description" ></p>
                         <div v-for="(b, index) in selectedStep.body" 
                             :key="'element' + index" 
                             :class="['body', b.titleClass]"
                             > 
                             <div class="detail">{{ b.detail }}</div>
-                            <h4 class="title">{{ b.title }}</h4>
+                            <h4 role="header" aria-level="3" class="title">{{ b.title }}</h4>
                             <div v-html="b.description"></div>
                         </div>
                     </div>
@@ -113,7 +115,6 @@ export default {
                 //document.getElementById('section'+id)
                 document.getElementById('btn'+id).setAttribute('tabindex', '-1')
                 document.querySelectorAll('[role=tab]').forEach(tt => tt.setAttribute('tabindex', -1))
-                //console.log('ao')
             }, 100);
             
         },
@@ -201,24 +202,24 @@ export default {
             tabList.addEventListener("keydown", e => {
                 // Move right
                 if (e.keyCode === 40 || e.keyCode === 38) {
-                tabs[tabFocus].setAttribute("tabindex", -1);
-                if (e.keyCode === 40) {
-                    tabFocus++;
-                    // If we're at the end, go to the start
-                    if (tabFocus >= tabs.length) {
-                    tabFocus = 0;
+                    tabs[tabFocus].setAttribute("tabindex", -1);
+                    if (e.keyCode === 40) {
+                        tabFocus++;
+                        // If we're at the end, go to the start
+                        if (tabFocus >= tabs.length) {
+                        tabFocus = 0;
+                        }
+                        // Move left
+                    } else if (e.keyCode === 38) {
+                        tabFocus--;
+                        // If we're at the start, move to the end
+                        if (tabFocus < 0) {
+                        tabFocus = tabs.length - 1;
+                        }
                     }
-                    // Move left
-                } else if (e.keyCode === 38) {
-                    tabFocus--;
-                    // If we're at the start, move to the end
-                    if (tabFocus < 0) {
-                    tabFocus = tabs.length - 1;
-                    }
-                }
 
-                tabs[tabFocus].setAttribute("tabindex", 0);
-                tabs[tabFocus].focus({preventScroll: true});
+                    tabs[tabFocus].setAttribute("tabindex", 0);
+                    tabs[tabFocus].focus({preventScroll: true});
                 }
             });
         //});
