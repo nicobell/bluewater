@@ -11,8 +11,8 @@
             <p class="tohide" tabindex="-1" id="istruzioni">use arrows to navigate, + and - to change zoom, press m to focus map, measure distance widget not available for keyboard</p>
 
             <div id="info" aria-hidden="true" tabindex="-1">
-                <button id="close-spalla" tabindex="0" class="close" @click="hideInfo()"></button>
-                <div class="intro"><h2 style="color: #fff;" id="name"></h2></div>
+                <button id="close-spalla" tabindex="0" class="close" aria-label="close panel" @click="hideInfo()"></button>
+                <div class="intro" tabindex="0"><h2 style="color: #fff;" id="name"></h2></div>
                 <p id="objectid"></p>
                 <article id="category" tabindex="0">no data</article>
             </div>
@@ -82,8 +82,6 @@ export default {
             this.zoomViewModel.zoomOut();
         },
         hideInfo() {
-            //document.getElementById('viewDiv').focus(); 
-
             document.getElementById("info").style.visibility = "hidden";
             document.getElementById("info").style.opacity = "0.2";
             document.getElementById("info").style.right = "-50%";
@@ -153,9 +151,9 @@ export default {
             var tot = this
             //refresh on click of map only if not measuring (lag fix)
             var refresh = document.querySelectorAll('.esri-view-surface')[0].getAttribute('data-cursor')!='crosshair' ? true : false
-            console.log(val, refresh)
+            
             if (!val && refresh) {
-                console.log('prova')
+                console.log('refresh')
                 layerView.queryFeatures({
                     where: "en_description <> ''",
                     outFields: ["*"],
@@ -163,16 +161,18 @@ export default {
 
                 }).then(function (results) {
                     console.log('remove all popups')
-                    document.querySelectorAll('.esri-popup').forEach(p => { p.parentElement.removeChild(p) })
-                    document.querySelectorAll('.esri-spinner').forEach(p => { p.parentElement.removeChild(p) })
+                    document.querySelectorAll('.esri-popup')[0].parentNode.innerHTML = ''
+                    //document.querySelectorAll('.esri-popup').forEach(p => { p.parentElement.removeChild(p) })
+                    //document.querySelectorAll('.esri-spinner').forEach(p => { p.parentElement.removeChild(p) })
 
                     console.log('create all popups')
+                    let pt, pop
                     results.features.forEach(p => {
-                        var pt = new Point({ 
+                        pt = new Point({ 
                             latitude: p.geometry.latitude, 
                             longitude: p.geometry.longitude 
                         })
-                        var pop = new Popup({
+                        pop = new Popup({
                             view: tot.view,
                             location: pt,
                             title: p.attributes.en_title,
@@ -185,14 +185,6 @@ export default {
                     })
 
                     // !! DANGER ZONE !!
-                    setTimeout(() => {
-                        document.querySelectorAll('.esri-popup').forEach((pp, i) => {
-                            console.log('popup')
-                            pp.setAttribute('id', i+1)
-                            pp.setAttribute('tabindex', 0)
-                        })
-                    }, 200);
-                    
                     tot.accessiblePopups(layerView)
                 })
             }
@@ -201,18 +193,23 @@ export default {
             var tot = this
 
             setTimeout(() => {
-                document.querySelectorAll('.esri-popup').forEach(p => {
-                    p.setAttribute('tabindex', 0)
+                document.querySelectorAll('.esri-popup').forEach((pp, i) => {
+                    pp.setAttribute('id', i+1)
+                    pp.setAttribute('tabindex', 0)
                 })
-
-                document.querySelectorAll('.esri-popup__header').forEach((b, i) => {
+                document.querySelectorAll('.esri-popup__header').forEach((h, i) => {
+                    h.setAttribute('tabindex', '-1')
+                })
+                document.querySelectorAll('.esri-popup__header-container--button').forEach((b, i) => {
                     b.setAttribute('tabindex', '-1')
 
                     b.parentNode.parentNode.parentNode.addEventListener('keydown', e => {
                         if(e.keyCode===13) {
                             b.click()
+
                             tot.lastbutton = e.target.getAttribute('id')
-                            var q = "OBJECTID = " + e.target.getAttribute('id') + ""
+                            let q = "OBJECTID = " + e.target.getAttribute('id') + ""
+                            
                             layerView.queryFeatures({
                                 where: q,
                                 outFields: ['*'],
@@ -225,6 +222,8 @@ export default {
                                 document.getElementById("info").style.visibility = "visible";
                                 document.getElementById("info").style.right = "0";
                                 document.getElementById("info").style.opacity = "1";
+                                document.getElementById("info").setAttribute('aria-hidden', false)
+
                                 document.getElementById("name").innerHTML = name;
                                 document.getElementById("category").innerHTML = description;
 
@@ -234,7 +233,7 @@ export default {
                             })
                         }
                     })
-                    b.addEventListener('click', e => {
+                    /*b.addEventListener('click', e => {
                         if(e.keyCode===13) {
                             b.click()
                             tot.lastbutton = e.target.parentNode.parentNode.parentNode.getAttribute('id')
@@ -251,15 +250,17 @@ export default {
                                 document.getElementById("info").style.visibility = "visible";
                                 document.getElementById("info").style.right = "0";
                                 document.getElementById("info").style.opacity = "1";
+                                document.getElementById("info").setAttribute('aria-hidden', false)
+
                                 document.getElementById("name").innerHTML = name;
                                 document.getElementById("category").innerHTML = description;
 
                                 setTimeout(() => {
                                     document.getElementById('close-spalla').focus()
-                                }, 200);
+                                }, 100);
                             })
                         }
-                    })
+                    })*/
                 })
                 
             }, 200);
@@ -449,9 +450,9 @@ export default {
         //need to call the Popup({...}) constructor in order to repeat the process,
         //normally only one popup at time can be opened by the view
         this.view.whenLayerView(this.valvesLayer).then(function (layerView) {
-            layerView.watch("updating", val => tot.addPopups(layerView, val))
+            layerView.watch("updating", val => { tot.addPopups(layerView, val) })
         })
-
+        
         //click on Measure widget to activate/reset distance computation
         //+ button style accordingly
         document.getElementById("distanceButton").addEventListener("click", function() {
@@ -479,6 +480,12 @@ export default {
         .then(function(layerView) {
             tot.view.on("click", eventHandler)
             
+            /*tot.view.on("pointer-up", eventh2)
+            function eventh2(event) {
+                console.log('UP')
+                tot.addPopups(layerView, false)
+            }*/
+            
             function eventHandler(event) {
                 //check if click position intersects the included layer
                 const opts = { include: tot.valvesLayer }
@@ -493,10 +500,14 @@ export default {
                     const name = attributes[tot.lang+"_title"];
                     const description = attributes[tot.lang+"_description"]
 
+                    tot.lastbutton = attributes.OBJECTID
+
                     //show info section if data is clicked
                     document.getElementById("info").style.visibility = "visible";
                     document.getElementById("info").style.right = "0";
                     document.getElementById("info").style.opacity = "1";
+                    document.getElementById("info").setAttribute('aria-hidden', false)
+
                     document.getElementById("name").innerHTML = name;
                     document.getElementById("category").innerHTML = description;
 
@@ -517,6 +528,7 @@ export default {
                     document.getElementById("info").style.visibility = "hidden";
                     document.getElementById("info").style.opacity = "0.2";
                     document.getElementById("info").style.right = "-50%";
+                    document.getElementById("info").setAttribute('aria-hidden', true)
                 }
 
                 //build hidden multiple popups for accessibility features
@@ -537,19 +549,19 @@ export default {
             document.querySelector('.esri-attribution__powered-by').setAttribute('tabindex', '-1')
             //document.querySelector('.esri-attribution__link').setAttribute('tabindex', '-1')
 
-            setTimeout(() => {
-                document.querySelector('.esri-view-surface').setAttribute('id', 'contenuto')
-                document.querySelector('.esri-view-surface').setAttribute('aria-describedby', 'istruzioni')
-                //map listens to zoom keyboard events 
-                document.querySelector('.esri-view-surface').addEventListener('keydown', e => {
-                    if(e.key==='+' && !e.ctrlKey)
-                        tot.zoomplus()
-                    else if(e.key==='-' && !e.ctrlKey)
-                        tot.zoomminus()
-                })
-                if(document.getElementById('contenuto'))
-                    document.getElementById('contenuto').focus({ preventScroll: true });    
-            }, 200);
+            
+            document.querySelector('.esri-view-surface').setAttribute('id', 'contenuto')
+            document.querySelector('.esri-view-surface').setAttribute('aria-describedby', 'istruzioni')
+
+            //map listens to zoom keyboard events 
+            document.querySelector('.esri-view-surface').addEventListener('keydown', e => {
+                if(e.key==='+' && !e.ctrlKey)
+                    tot.zoomplus()
+                else if(e.key==='-' && !e.ctrlKey)
+                    tot.zoomminus()
+            })
+            if(document.getElementById('contenuto'))
+                document.getElementById('contenuto').focus({ preventScroll: true });
             
         })
     }

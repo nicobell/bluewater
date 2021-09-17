@@ -10,7 +10,7 @@
                 <div class="inner-content-left">
                     <div role="tablist" tabindex="0" 
                         id="menu" class="menu" 
-                        aria-label="rulings menu" aria-description="use arrows to select">
+                        aria-label="internal menu" aria-description="use arrows to select">
 
                         <button 
                             v-for="(d, index) in content.stepProcess" :key="'label'+index"
@@ -101,10 +101,10 @@ export default {
     methods: {
         backtonav() {
             console.log(document.getElementById('navigazione'))
-            document.getElementById('navigazione').focus({preventScroll: true});
+            document.getElementById('navigazione').focus();
         },
         backtomenu() {
-            document.getElementById('menu').focus({preventScroll: true});
+            document.getElementById('menu').focus();
         },
         openSection(id){
             //document.getElementById('btn'+this.isActive).setAttribute('aria-expanded', 'false');

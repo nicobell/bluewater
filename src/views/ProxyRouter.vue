@@ -54,7 +54,7 @@ export default {
         document.getElementById('contenuto').focus({
           preventScroll: true
         });    
-    }, 200);
+    }, 50);
   }
 }
 </script>

@@ -94,7 +94,7 @@ export default {
   methods: {
     backtonav() {
       console.log(document.getElementById('navigazione'))
-      document.getElementById('navigazione').focus({preventScroll: true});
+      document.getElementById('navigazione').focus();
     },
     gotolink(link) {
       window.open(link, '_blank')
