@@ -280,3 +280,19 @@ button.icon-left::after {
 /*#viewDiv > .esri-view-root .esri-ui .esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-popup .esri-popup__main-container > article {
   display: none;
 }*/
+
+#viewDiv > .esri-view-root .esri-view-surface:focus {
+  
+  &::after {
+    content: '';
+    width: 99.6%;
+    height: 97.4%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: transparent;
+    margin: 3px 3px 3px 3px;
+    outline: 2px dashed #EEB23A;
+    pointer-events: none;
+  }
+}

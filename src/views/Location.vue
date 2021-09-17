@@ -1,12 +1,14 @@
 <template>
-    <main role="main" class="template-page intro" >
+    <main role="main" class="template-page intro">
         <div class="intro-header"></div>
 
-        <div :class="['main-content', 'map-wrapper', 'lang-'+this.lang] ">
+        <div :class="['main-content', 'map-wrapper', 'lang-'+this.lang]" tabindex="-1">
 
             <div id="loader" class="loader"><p>Loading . . .</p></div>
 
             <div id="viewDiv" tabindex="-1"></div>
+
+            <p class="tohide" tabindex="-1" id="istruzioni">use arrows to navigate, + and - to change zoom, press m to focus map, measure distance widget not available for keyboard</p>
 
             <div id="info" aria-hidden="true" tabindex="-1">
                 <button id="close-spalla" tabindex="0" class="close" @click="hideInfo()"></button>
@@ -80,7 +82,7 @@ export default {
             this.zoomViewModel.zoomOut();
         },
         hideInfo() {
-            document.getElementById('viewDiv').focus(); 
+            //document.getElementById('viewDiv').focus(); 
 
             document.getElementById("info").style.visibility = "hidden";
             document.getElementById("info").style.opacity = "0.2";
@@ -203,7 +205,7 @@ export default {
                     p.setAttribute('tabindex', 0)
                 })
 
-                document.querySelectorAll('.esri-popup__header-container--button').forEach((b, i) => {
+                document.querySelectorAll('.esri-popup__header').forEach((b, i) => {
                     b.setAttribute('tabindex', '-1')
 
                     b.parentNode.parentNode.parentNode.addEventListener('keydown', e => {
@@ -265,17 +267,39 @@ export default {
         }
     },
     mounted() {
+        //after creating the map, set id of mainView as focussable element
+        /*setTimeout(() => {
+            document.querySelector('.esri-view-surface').setAttribute('id', 'contenuto')
+            document.querySelector('.esri-view-surface').setAttribute('aria-describedby', 'use arrows to navigate, + and - to change zoom, press m to focus map, measure distance widget not available for keyboard')
+            //map listens to zoom keyboard events 
+            document.querySelector('.esri-view-surface').addEventListener('keydown', e => {
+                if(e.key==='+' && !e.ctrlKey)
+                    this.zoomplus()
+                else if(e.key==='-' && !e.ctrlKey)
+                    this.zoomminus()
+            })
+        }, 100);*/
+        
+        //close spalla with 'esc'
         document.getElementById('info').addEventListener('keydown', e => {
-            if(e.keyCode===27) {
+            if(e.key==='Escape') {
                 this.hideInfo()
             }
         })
-        document.getElementById('close-spalla').addEventListener('keydown', e => {
+
+        // ?? trap focus inside spalla ??
+        /*document.getElementById('close-spalla').addEventListener('keydown', e => {
             if(e.keyCode==9 && e.shiftKey==true) {
                 setTimeout(() => {
                     document.getElementById('category').focus()    
                 }, 200);
             }
+        })*/
+
+        //entire page listens to 'm' key pressed to return focus to map wrapper for navigation
+        document.addEventListener('keydown', e => {
+            if(e.key=='m')
+                document.querySelector('.esri-view-surface').focus()
         })
 
         this.workspacesLayer = new FeatureLayer({
@@ -501,7 +525,9 @@ export default {
         })
         .then(function() {
             document.getElementById('loader').style.visibility = 'hidden'
+
             document.querySelector('.esri-expand [role=button]').setAttribute('aria-label', 'expand legend')
+
             document.querySelector('.esri-attribution').setAttribute('aria-hidden', true)
             document.querySelector('.esri-attribution__sources').setAttribute('aria-hidden', true)
             document.querySelector('.esri-attribution__powered-by').setAttribute('aria-hidden', true)
@@ -509,8 +535,23 @@ export default {
             document.querySelector('.esri-attribution').setAttribute('tabindex', '-1')
             document.querySelector('.esri-attribution__sources').setAttribute('tabindex', '-1')
             document.querySelector('.esri-attribution__powered-by').setAttribute('tabindex', '-1')
-            document.querySelector('.esri-attribution__link').setAttribute('tabindex', '-1')
-        }) 
+            //document.querySelector('.esri-attribution__link').setAttribute('tabindex', '-1')
+
+            setTimeout(() => {
+                document.querySelector('.esri-view-surface').setAttribute('id', 'contenuto')
+                document.querySelector('.esri-view-surface').setAttribute('aria-describedby', 'istruzioni')
+                //map listens to zoom keyboard events 
+                document.querySelector('.esri-view-surface').addEventListener('keydown', e => {
+                    if(e.key==='+' && !e.ctrlKey)
+                        tot.zoomplus()
+                    else if(e.key==='-' && !e.ctrlKey)
+                        tot.zoomminus()
+                })
+                if(document.getElementById('contenuto'))
+                    document.getElementById('contenuto').focus({ preventScroll: true });    
+            }, 200);
+            
+        })
     }
 }
 </script>
