@@ -1,5 +1,5 @@
 <template>
-    <nav ref="menu" :class="[{show: isActive}]" role="navigation" aria-label="main menu, use arrows to select">
+    <nav ref="menu" :class="[{show: isActive}]" role="navigation" aria-label="navigation menu">
 
         <div class="btn" @click="isActive = !isActive">
         </div>

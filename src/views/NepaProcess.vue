@@ -1,56 +1,45 @@
 <template>
-    <main role="main" class="template-page project-description intro">
+    <main class="template-page project-description intro" role="main">
         <div class="intro-header"></div>
 
-        <div class="main-content" id="contenuto" aria-labelledby="title1" tabindex="0">
-            <h1 id="title1" class="title"><span class="tohide">page title: </span>{{content.title}}</h1>
+        <div class="main-content" id="contenuto" tabindex="0" aria-labelledby="title1">
+            <h1 class="title" id="title1"><span class="tohide">page title: </span>{{content.title}}</h1>
 
-            <div class="content two-col isDesktop" ref="container" >
-                <div class="inner-content-left">
-                    <div role="tablist" tabindex="0" 
-                        id="menu" class="menu" 
-                        aria-label="internal menu" aria-description="use arrows to select">
+            <div class="content two-col isDesktop" ref="container">
+                <section class="inner-content-left">
+                    <div class="menu" id="menu"
+                        role="tablist" tabindex="0" aria-label="internal menu" aria-describedby="instructions">
+                        <span class="tohide" id="instructions">use up and down arrows to select</span>
 
-                        <button 
-                            v-for="(d, index) in content.stepProcess" :key="'label'+index"
-                            :class="{'item-menu': true, 'active-section': isActive==index+1}" 
+                        <button v-for="(d, index) in content.stepProcess" :key="'label'+index"
+                            :class="{'item-menu': true, 'active-section': isActive==index+1}" :id="'btn'+(index+1)"
                             @click="openSection(index+1)"
-                            role="tab"
-                            tabindex="-1"
-                            
-                            :aria-controls="'section' + (index+1)" 
-                            :id="'btn'+(index+1)">
-                            
+                            role="tab" tabindex="-1" :aria-controls="'section' + (index+1)">
                                 <span class="num"> 0{{index+1}} </span>
                                 <span >{{d.label}}</span>
                         </button>
                     </div>
-                </div>
+                </section>
 
-                <div class="inner-content-right">
+                <section class="inner-content-right">
                     <div v-if="isActive!=0" 
-                        class="item-content" 
-                        :id="'section' + selectedStep.id" 
-                        role="tabpanel" 
-                        :aria-labelledby="'region'+selectedStep.id"
-                        tabindex="0"
-                        >
+                        class="item-content" :id="'section'+isActive" 
+                        role="tabpanel" tabindex="0" :aria-labelledby="'region'+isActive">
+                        <h2 :id="'region'+isActive" role="header" tabindex="-1" aria-level="2">{{ selectedStep.title }}</h2>
 
-                        <h2 role="header" aria-level="2" :id="'region'+selectedStep.id" tabindex="-1">{{ selectedStep.title }}</h2>
-                        <p v-html="selectedStep.description" ></p>
-                        <div v-for="(b, index) in selectedStep.body" 
-                            :key="'element' + index" 
-                            :class="['body', b.titleClass]"
-                            > 
-                            <div class="detail">{{ b.detail }}</div>
-                            <h4 role="header" aria-level="3" class="title">{{ b.title }}</h4>
+                        <article v-html="selectedStep.description"></article>
+
+                        <article v-for="(b, index) in selectedStep.body" :key="'element' + index" 
+                            :class="['body', b.titleClass]"> 
+                            <div class="detail" :id="'detail'+index" tabindex="-1">{{ b.detail }}</div>
+                            <h3 class="title" role="header" :aria-level="b.title=='' ? null : '3'" :aria-describedby="'detail'+index">{{ b.title }}</h3>    
                             <div v-html="b.description"></div>
                             <div v-if="index==2">
                                 <button class="main-button" @click="gotoComments()">Go to Comments</button>
                             </div>
-                        </div>
+                        </article>
                     </div>
-                </div>
+                </section>
             </div>
 
             <div class="content two-col isMobile">
@@ -79,10 +68,10 @@
             </div>
 
             <div>
-                <button id="back-to-menu" tabindex="0" @click="backtomenu()" aria-label="back to internal menu" class="tohide">
+                <button class="tohide" id="back-to-menu" @click="backtomenu()" tabindex="0" aria-label="back to internal menu">
                     back to menu
                 </button>
-                <button id="back-to-nav" tabindex="0" @click="backtonav()" class="tohide" aria-label="back to navbar">
+                <button class="tohide" id="back-to-nav" @click="backtonav()" tabindex="0" aria-label="back to navbar">
                     back navbar
                 </button>
             </div>
@@ -98,7 +87,7 @@ export default {
     },
     data: () => {
         return{
-            isActive: 1
+            isActive: 0
         }
     },
     methods:{
@@ -224,7 +213,7 @@ export default {
     },
     watch: {
         route() {
-            this.isActive = 1
+            this.isActive = 0
             Array.from(document.getElementsByClassName('accordion-item')).forEach(el => {
                 //console.log(el, el.classList)
                 el.classList.remove('active')

@@ -1,14 +1,14 @@
 <template>
-    <main role="main" class="template-page intro">
+    <main role="main" class="template-page intro" aria-describedby="istruzioni">
+        <p class="tohide" tabindex="-1" id="istruzioni">use arrows to navigate, plus and minus to change zoom, press m to focus map, measure distance widget not available for keyboard</p>
+
         <div class="intro-header"></div>
 
-        <div :class="['main-content', 'map-wrapper', 'lang-'+this.lang]" tabindex="-1">
+        <div :class="['main-content', 'map-wrapper', 'lang-'+this.lang]" tabindex="-1" >
 
             <div id="loader" class="loader"><p>Loading . . .</p></div>
 
             <div id="viewDiv" tabindex="-1"></div>
-
-            <p class="tohide" tabindex="-1" id="istruzioni">use arrows to navigate, + and - to change zoom, press m to focus map, measure distance widget not available for keyboard</p>
 
             <div id="info" aria-hidden="true" tabindex="-1">
                 <button id="close-spalla" tabindex="0" class="close" aria-label="close panel" @click="hideInfo()"></button>
@@ -551,7 +551,7 @@ export default {
 
             
             document.querySelector('.esri-view-surface').setAttribute('id', 'contenuto')
-            document.querySelector('.esri-view-surface').setAttribute('aria-describedby', 'istruzioni')
+            //document.querySelector('.esri-view-surface').setAttribute('aria-describedby', 'istruzioni')
 
             //map listens to zoom keyboard events 
             document.querySelector('.esri-view-surface').addEventListener('keydown', e => {

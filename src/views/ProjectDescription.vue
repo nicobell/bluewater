@@ -1,78 +1,78 @@
 <template>
-  <main role="main" tabindex="-1" class="template-page project-description intro">
-    <div class="intro-header"></div>
-    
-    <div class="main-content" id="contenuto" aria-labelledby="title1" tabindex="0">
-      <h1 class="title" id="title1" tabindex="-1"><span class="tohide">page title: </span>{{ content.title }}</h1>
-      
-      <div class="content two-col">
-        <section aria-label="description" class="inner-content-left" tabindex="0">
-          <div role="region" v-html="content.description" aria-hidden="false"></div>
-        </section>
+    <main class="template-page project-description intro" role="main" tabindex="-1">
+        <div class="intro-header"></div>
+        
+        <div class="main-content" id="contenuto" tabindex="0" aria-labelledby="title1">
+            <h1 class="title" id="title1" tabindex="-1"><span class="tohide">page title: </span>{{ content.title }}</h1>
+            
+            <div class="content two-col">
+                <section class="inner-content-left" tabindex="0" aria-label="description">
+                <article v-html="content.description" role="region" aria-hidden="false"></article>
+                </section>
 
-        <div class="inner-content-right" style="position: relative;">
-          <section class="tohide" aria-hidden="false" tabindex="0" aria-labelledby="gather">
-            <h2 id="gather">Gathered Data</h2>
-            <div role="region" aria-hidden="false">
-              Two single point mooring buoy systems. 
-              Depths of 88 to 90 feet, location 15 nautical miles off the coast of San Jose Island. 
-              56.48 miles of two 30-inch outside diameter crude oil pipelines, onshore, inshore and offshore. 
-              The Harbor Island Facility occupies 12 acres. 
-              16 very large crude carriers with loading rates of 80 bph and 40 bph for simultaneous operations.
-            </div>
-          </section>
+                <div class="inner-content-right" style="position: relative;">
+                    <section class="tohide" tabindex="0" aria-hidden="false" aria-labelledby="gather">
+                        <h2 id="gather">Gathered Data</h2>
+                        <article role="region" tabindex="0" aria-hidden="false">
+                        <p>Two single point mooring buoy systems.</p>
+                        <p>Depths of 88 to 90 feet, location 15 nautical miles off the coast of San Jose Island.</p>
+                        <p>56.48 miles of two 30-inch outside diameter crude oil pipelines, onshore, inshore and offshore.</p>
+                        <p>The Harbor Island Facility occupies 12 acres.</p>
+                        <p>very large crude carriers with loading rates of 80 bph and 40 bph for simultaneous operations.</p>
+                        </article>
+                    </section>
 
-          <section aria-hidden="true" class="data">
-            <div class="section-1">
-              <img src="../assets/mooring-point.svg" alt="mooring point logo">
-              <div class="num"><span>{{ content.data.mooringPointd }}</span></div>
-              <h3>SINGLE POINT MOORING BUOY SYSTEMS</h3>
-            </div>
-            <div class="section-2">
-              <div class="depths"><span class="small">{{ content.data.depths }}</span>ft.</div>
-              <div class="location">
-                <span class="small">{{ content.data.location }}</span>
-                <div>nm off the coast of San Jose Island</div>
-              </div>
-            </div>
-            <div class="section-3">
-              <div class="main">
-                <div><span>{{ content.data.miles }}</span>miles</div>
-                <h3>{{ content.data.milesDescription }}</h3>
-              </div>
-              <div class="labels">
-                <div v-for="(l, index) in content.data.milesLabels" :key="'label'+index">
-                  {{ l.toUpperCase() }}
+                    <section class="data" aria-hidden="true">
+                        <div class="section-1">
+                            <img src="../assets/mooring-point.svg" alt="mooring point logo">
+                            <div class="num"><span>{{ content.data.mooringPointd }}</span></div>
+                            <h3>SINGLE POINT MOORING BUOY SYSTEMS</h3>
+                        </div>
+                        <div class="section-2">
+                            <div class="depths"><span class="small">{{ content.data.depths }}</span>ft.</div>
+                            <div class="location">
+                                <span class="small">{{ content.data.location }}</span>
+                                <div>nm off the coast of San Jose Island</div>
+                            </div>
+                        </div>
+                        <div class="section-3">
+                            <div class="main">
+                                <div><span>{{ content.data.miles }}</span>miles</div>
+                                <h3>{{ content.data.milesDescription }}</h3>
+                            </div>
+                            <div class="labels">
+                                <div v-for="(l, index) in content.data.milesLabels" :key="'label'+index">
+                                {{ l.toUpperCase() }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section-4">
+                            <div class="acres"><span class="small">{{ content.data.harborFacility }}</span><div>acres</div></div>
+                            <h4>Harbor Island Facility</h4>
+                        </div>
+                        <div class="section-1">
+                            <img src="../assets/carry.svg" alt="carry logo">
+                            <div class="num"><span>{{ content.data.carriersMonths }}</span></div>
+                            <h3>VERY LARGE CRUDE CARRIERS</h3>
+                        </div>
+                        <div class="section-2">
+                            <div class="loading"><span class="small">{{ content.data.loadingRates }}</span>bph</div>
+                            <div class="operations"><span class="small">{{ content.data.simultaneousOperations }}</span>
+                                <div>bph</div>
+                                <h4>Simultaneous Operations</h4>
+                            </div>
+                        </div>
+                    </section>
                 </div>
-              </div>
             </div>
-            <div class="section-4">
-              <div class="acres"><span class="small">{{ content.data.harborFacility }}</span><div>acres</div></div>
-              <h4>Harbor Island Facility</h4>
-            </div>
-            <div class="section-1">
-              <img src="../assets/carry.svg" alt="carry logo">
-              <div class="num"><span>{{ content.data.carriersMonths }}</span></div>
-              <h3>VERY LARGE CRUDE CARRIERS</h3>
-            </div>
-            <div class="section-2">
-              <div class="loading"><span class="small">{{ content.data.loadingRates }}</span>bph</div>
-              <div class="operations"><span class="small">{{ content.data.simultaneousOperations }}</span>
-                <div>bph</div>
-                <h4>Simultaneous Operations</h4>
-              </div>
-            </div>
-          </section>
-        </div>
-      </div>
 
-      <div>
-        <button id="back-to-nav" tabindex="0" @click="backtonav()" class="tohide" aria-label="back to navbar">
-          back navbar
-        </button>
-      </div>
-    </div>
-  </main>
+            <div>
+                <button class="tohide" id="back-to-nav" @click="backtonav()" tabindex="0" aria-label="back to navbar">
+                    back navbar
+                </button>
+            </div>
+        </div>
+    </main>
 </template>
 
 <script>

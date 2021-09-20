@@ -1,22 +1,27 @@
 <template>
-  <main role="main" class="template-page project-description intro">
-    <div class="intro-header"></div>
+    <main class="template-page project-description intro" role="main">
+        <div class="intro-header"></div>
 
-    <div class="main-content">
-      <h1 class="title">{{ content.updates.title }}</h1>
-      <div class="content">
-        <div class="inner-content">
-          <div class="item-update" v-for="(update, index) in content.updates.items" :key="index">
-            <p class="date"> {{ update.date }}</p>
-            <div class="text">
-              {{ update.subtitle }}
-              <p v-if="update.content" v-html="update.content"></p>
+        <div class="main-content" id="contenuto" tabindex="0" aria-labelledby="title1">
+            <h1 class="title" id="title1" tabindex="-1"><span class="tohide">page title: </span>{{ content.title }}</h1>
+            
+            <div class="content">
+                <section class="inner-content" tabindex="0" aria-label="updates calendar">
+                    <article v-for="(update, index) in content.items" :key="index"
+                        class="item-update"
+                        aria-hidden="false" :aria-labelledby="'titledate'+index" :aria-describedby="'date'+index">
+
+                        <p class="date" tabindex="-1" :id="'date'+index"> {{ update.date }}</p>
+                        <div class="text">
+                            <h3 :id="'titledate'+index" tabindex="-1" aria-level="2">{{ update.subtitle }}</h3>
+                            <p v-if="update.content" v-html="update.content" ></p>
+                        </div>
+                        
+                    </article>
+                </section>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </main>
+    </main>
 </template>
 
 <script>
@@ -32,7 +37,7 @@ computed: {
       return this.$store.state.lang
     },
     content () {
-      return this.$store.state.data[this.lang]
+      return this.$store.state.data[this.lang].updates
     }
   },
   mounted() {
