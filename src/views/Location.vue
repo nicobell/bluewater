@@ -512,7 +512,7 @@ export default {
                     document.getElementById("category").innerHTML = description;
 
                     //zoom in to point clicked
-                    tot.view.goTo({
+                    /*tot.view.goTo({
                         target: new Point({
                             latitude: graphic.geometry.latitude,
                             longitude: graphic.geometry.longitude
@@ -521,7 +521,7 @@ export default {
                     }, {
                         animate: true,
                         duration: 1000
-                    })
+                    })*/
 
                 } else {
                     //if click on empty space in map, hide info section
