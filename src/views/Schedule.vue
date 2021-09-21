@@ -1,132 +1,174 @@
 <template>
-  <main role="main" :class="['template-page schedule intro',{spallaOpen :showSpalla}]">
-    
-    <div class="overlay-spalla" @click="toggleSpalla"></div>
+    <main :class="['template-page schedule intro',{spallaOpen :showSpalla}]" role="main" tabindex="-1" aria-describedby="help">
+        <div id="help" class="tohide">press 'N' to return to navigation</div>
+        
+        <div class="overlay-spalla" @click="toggleSpalla"></div>
 
-    <div class="intro-header"></div>
+        <div class="intro-header"></div>
 
-    <div class="main-content">
-      <h1 class="title">{{ content.title }}</h1>
-      <div class="content two-col">
+        <div class="main-content" id="contenuto" aria-labelledby="title1" tabindex="0">
+            <h1 class="title" id="title1"><span class="tohide">page title: </span>{{ content.title }}</h1>
 
-        <div class="inner-content">
-          <div class="view-more">
-            <button @click="toggleSpalla">VIEW <br> MORE</button>
-          </div>
+            <section class="content two-col">
+                <div class="inner-content">
+                    <article class="tohide" id="hiddendescription" tabindex="0" aria-labelledby="hiddendescriptiontitle" aria-hidden="false">
+                        <h2 id="hiddendescriptiontitle" tabindex="-1">hidden image description paragraph</h2>
+                        <p class="tohide">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam commodi magni nesciunt, optio corporis mollitia debitis voluptates similique eum expedita officiis cupiditate a voluptatibus aperiam, ad voluptatem nihil aspernatur reprehenderit.</p>
+                    </article>
 
-          <div class="image-container">
-            <img src="../assets/timeline.png" alt="">
-          </div>
+                    <div class="view-more">
+                        <button id="view-more" @click="toggleSpalla" tabindex="0">VIEW MORE</button>
+                    </div>
+
+                    <div class="image-container" tabindex="-1" aria-hidden="true">
+                        <img src="../assets/timeline.png" alt="">
+                    </div>
+                </div>
+            </section>
         </div>
-      </div>
-    </div>
-    
-    <div :class="['spalla', {open: showSpalla}]">
-      <div class="button-container">
-        <div @click="toggleSpalla"></div>
-      </div>
-      <div :class="{'accordions': true, 'space': openAcc==0}">
-        <div :class="{'open': openAcc==index, 'closed': openAcc!=index, 'text-container': true}"
-            v-for="(a, index) in content.items" :key="'accordion'+index">
-          <a @click="openAccordion(index)" :class="{'open': openAcc==index}">{{ a.title }}</a>
-          <hr>
-          <div :class="{'open': openAcc==index, 'closed': openAcc!=index}">
-            <div v-for="(item, ind) in a.content" class="accordion" :key="'update'+ind">
-              <p><strong>{{ item.date }} - </strong>{{ item.description }}</p>
+        
+        <div :class="['spalla', {open: showSpalla}]" id="spalla">
+            <div class="button-container">
+                <button id="close-spalla" @click="toggleSpalla" tabindex="-1" aria-label="toggle view more section"></button>
             </div>
-          </div>
+            <div :class="{'accordions': true, 'space': openAcc==0}">
+                <section :class="{'open': openAcc==index, 'closed': openAcc!=index, 'text-container': true}"
+                    v-for="(a, index) in content.items" :key="'accordion'+index">
+                    <button :class="{'open': openAcc==index}" :id="'accordion'+index"
+                        @click="openAccordion(index)"
+                        tabindex="0" :aria-expanded="openAcc==index ? true : false" :aria-controls="'inner'+index"
+                    >{{ a.title }}</button>
+                    <hr>
+                    <div :class="{'open': openAcc==index, 'closed': openAcc!=index}" :id="'inner'+index"
+                        :aria-labelledby="'accordion'+index">
+                        <article v-for="(item, ind) in a.content" class="accordion" :key="'update'+ind">
+                            <p><strong>{{ item.date }} - </strong>{{ item.description }}</p>
+                        </article>
+                    </div>
+                </section>
+            </div>
         </div>
-      </div>
-    </div>
 
-  </main>
+        <div>
+            <button class="tohide" id="back-to-nav" @click="backtonav()" tabindex="0" aria-label="back to navbar">
+                back navbar
+            </button>
+        </div>
+
+    </main>
 </template>
 
 <script>
-  export default {
-    name: 'nepa-process-schedule',
-    data: () => {
-      return {
-        data: null,
-        showSpalla: false,
-        openAcc1: false,
-        openAcc2: false,
-        openAcc: -1
-      }
-    },
-    props: {
-      langData: String
-    },
-    methods: {
-      toggleSpalla() {
-        this.showSpalla = !this.showSpalla
-        if (this.showSpalla)
-          this.$store.commit('SET_OBSCURE', true)
-        else
-          this.$store.commit('SET_OBSCURE', false)
-      },
-      openAccordion(index) {
-        if (this.openAcc == index)
-          this.openAcc = -1
-        else
-          this.openAcc = index
-      },
-      accordionStyle(index) {
-        if (index == 1 && this.openAcc1)
-          return 'display: block;'
-        if (index == 2 && this.openAcc2)
-          return 'display: block;'
-      }
-    },
-    computed: {
-      lang() {
-        return this.$store.state.lang
-      },
-      content() {
-        return this.$store.state.data[this.lang].schedule
-      },
-      route() {
-        return this.$route
-      }
-    },
-    mounted() {
-      //console.log('visiting ' + this.$route.name)
-      this.$store.commit('SET_LASTPAGE', this.$route.name)
-      //console.log(this.content)
-    },
-    watch: {
-      route() {
-        console.log(this.route)
-        this.$store.commit('SET_OBSCURE', false);
-        this.showSpalla = false;
-      }
+    export default {
+        name: 'nepa-process-schedule',
+        data: () => {
+            return {
+                data: null,
+                showSpalla: false,
+                openAcc: -1
+            }
+        },
+        props: {
+            langData: String
+        },
+        methods: {
+            toggleSpalla() {
+                this.showSpalla = !this.showSpalla
+                if (this.showSpalla) {
+                    setTimeout(() => {  
+                        document.getElementById('close-spalla').setAttribute('tabindex', 0)
+                        document.getElementById('close-spalla').focus({preventScroll: true})
+
+                        document.getElementById('contenuto').setAttribute('tabindex', '-1')
+                        document.getElementById('view-more').setAttribute('tabindex', '-1')
+                        document.getElementById('hiddendescription').setAttribute('tabindex', '-1')
+
+                        document.getElementById('spalla').addEventListener('keydown', e => {
+                            if(e.keyCode==27) { 
+                                document.getElementById('close-spalla').setAttribute('tabindex', '-1')
+                                document.getElementById('view-more').focus({preventScroll: true})
+                                this.$store.commit('SET_OBSCURE', false)
+                                this.showSpalla = false
+                            }
+                        })
+                    }, 100);
+                        
+                    this.$store.commit('SET_OBSCURE', true)
+                } else {
+                    document.getElementById('contenuto').setAttribute('tabindex', 0)
+                    document.getElementById('view-more').setAttribute('tabindex', 0)
+                    document.getElementById('hiddendescription').setAttribute('tabindex', 0)
+
+                    document.getElementById('spalla').setAttribute('tabindex', '-1')
+                    document.getElementById('close-spalla').setAttribute('tabindex', '-1')
+                    document.getElementById('view-more').focus({preventScroll: true})
+                    this.$store.commit('SET_OBSCURE', false)
+                }
+            },
+            openAccordion(index) {
+                if (this.openAcc == index)
+                    this.openAcc = -1
+                else
+                    this.openAcc = index
+            },
+            backtonav() {
+                console.log(document.getElementById('navigazione'))
+                document.getElementById('navigazione').focus();
+            }
+        },
+        computed: {
+            lang() {
+                return this.$store.state.lang
+            },
+            content() {
+                return this.$store.state.data[this.lang].schedule
+            },
+            route() {
+                return this.$route
+            }
+        },
+        mounted() {
+            //console.log('visiting ' + this.$route.name)
+            this.$store.commit('SET_LASTPAGE', this.$route.name)
+            //console.log(this.content)
+        },
+        watch: {
+            route() {
+                console.log(this.route)
+                this.$store.commit('SET_OBSCURE', false);
+                this.showSpalla = false;
+            }
+        }
     }
-  }
 </script>
 
 <style scoped lang="scss">
- .button-container {
+.button-container {
     position: relative;
-    div {
-      content: url(/close-button-dark.svg);
-      position: fixed;
-      cursor: pointer;
-      display: block;
-      width: 70px;
-      height: 70px;
-      z-index: 99;
-      transform: translate(-110px, -81px);
+    button {
+        background-image: url(/close-button-dark.svg);
+        content: '';
+        position: fixed;
+        background-position: center center;
+        background-size: contain;
+        cursor: pointer;
+        display: block;
+        width: 70px;
+        height: 70px;
+        z-index: 99;
+        transform: translate(-110px, -81px);
+        border-radius: 0;
     }
-  }
-.schedule.spallaOpen{
-  position: absolute;
-  height: 100%;
-  overflow: hidden;
-  .overlay-spalla{
-    display: block;
-  }
 }
-  .overlay-spalla {
+.schedule.spallaOpen{
+    position: absolute;
+    height: 100%;
+    overflow: hidden;
+    .overlay-spalla{
+        display: block;
+    }
+}
+.overlay-spalla {
     background: rgba(0, 0, 0, 0.3);
     position: fixed;
     width: 100%;
@@ -135,136 +177,137 @@
     left: 0;
     display: none;
     z-index: 1;
-  }
+}
 
 .spalla{
-  position: fixed;
-  top: 84px;
-  background: #f2f6ff;
-  width: 500px;
-  z-index: 99;
-  overflow-y: scroll;
-  display: none;
-  height: calc( 100% - 184px);
-  padding: 80px 110px 50px 110px;
-  &.open{
-    right: 0px;
-    display: block;
-  }
+    position: fixed;
+    top: 84px;
+    background: #f2f6ff;
+    width: 500px;
+    z-index: 99;
+    overflow-y: scroll;
+    display: none;
+    height: calc( 100% - 184px);
+    padding: 80px 110px 50px 110px;
+    &.open{
+        right: 0px;
+        display: block;
+    }
 }
 
 .accordions{
-  margin-bottom: 90px;
+    margin-bottom: 90px;
 }
 
-  .main-content {
+.main-content {
     overflow: hidden;
 
     .content.two-col {
-      position: relative;
+        position: relative;
     }
-  }
+}
 
-  .image-container {
+.image-container {
     width: 100%;
     position: relative;
     z-index: 0;
 
     img {
-      width: 100%;
+        width: 100%;
     }
-  }
+}
 
-  .view-more {
+.view-more {
     button {
-      border-radius: 50px;
-      background: #1C2332;
-      color: #fff;
-      font-weight: 300;
-      font-size: .9em;
-      z-index: 10;
-      margin: 1rem 0;
-      padding: 13px 30px;
+        border-radius: 50px;
+        background: #1C2332;
+        color: #fff;
+        font-weight: 300;
+        font-size: .9em;
+        z-index: 10;
+        margin: 1rem 0;
+        padding: 13px 30px;
 
-      br {
-        display: none;
-      }
+        br {
+            display: none;
+        }
     }
-  }
+}
 
   .text-container {
     margin: 0px 0px 40px 0px;
     cursor: pointer;
 
     &.closed {
-      height: unset;
+        height: unset;
     }
 
     &.open {
-      height: 85%;
-      position: relative;
+        height: 85%;
+        position: relative;
     }
 
-    >a {
-      width: 90%;
-      position: relative;
-      font-size: 1.25rem;  
-      display: block;
-      margin-bottom: 5px;
-
-    
-
-      &::after {
-        content: url('/dropdown.svg');
-        width: 1em;
-        display: inline-block;
-        position: absolute;
-        right: -10%;
-        bottom: 0;
-        transform: rotateZ(0deg);
-        transition: all .3s;
-      }
-
-      &.open::after {
-        display: inline-block;
-        bottom: -5px;
-        transform: rotateZ(-180deg);
-        transition: all .3s;
-      }
-    }
-
-    >div.closed {
-      display: none;
-
-      .accordion {
-        display: none;
-      }
-    }
-
-    >div.open {
-      overflow: scroll;
-      position: relative;
-      max-height: calc(100% - 100px);
-
-      //hide scrollbar on all browsers
-      &::-webkit-scrollbar {
-        display: none;
-      }
-
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-
-      .accordion {
+    > button {
         width: 100%;
+        position: relative;
+        font-size: 1.25rem;  
+        display: block;
+        margin-bottom: 5px;
+        background-color: transparent;
+        color: #125D91;
+        padding: 0;
 
-        p {
-          width: 100%;
-          color: #12315F;
-          font-size: .95em;
-          line-height: 1.8rem;
-          margin: 15px 0;
+        &::after {
+            content: url('/dropdown.svg');
+            width: 1em;
+            display: inline-block;
+            position: absolute;
+            right: 5%;
+            bottom: 0;
+            transform: rotateZ(0deg);
+            transition: all .3s;
         }
-      }
+
+        &.open::after {
+            display: inline-block;
+            bottom: -5px;
+            transform: rotateZ(-180deg);
+            transition: all .3s;
+        }
+    }
+
+    > div.closed {
+        display: none;
+
+        .accordion {
+            display: none;
+        }
+    }
+
+    > div.open {
+        overflow: scroll;
+        position: relative;
+        max-height: calc(100% - 100px);
+
+        //hide scrollbar on all browsers
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        .accordion {
+            width: 100%;
+
+            p {
+                width: 100%;
+                color: #12315F;
+                font-size: .95em;
+                line-height: 1.8rem;
+                margin: 15px 0;
+            }
+        }
     }
 
   }
@@ -304,21 +347,21 @@
     }
 
     .image-container {
-      height: 50vh;
-      overflow-y: hidden;
-      overflow-x: scroll;
-      margin-bottom: 160px;
-      display: block;
+        height: 50vh;
+        overflow-y: hidden;
+        overflow-x: scroll;
+        margin-bottom: 160px;
+        display: block;
 
-      img {
-        width: auto;
-        height: 100%;
-      }
+        img {
+            width: auto;
+            height: 100%;
+        }
     }
     .schedule.spallaOpen {
-      .image-container {
-        display: none;
-    }
+        .image-container {
+            display: none;
+        }
     }
   }
 </style>

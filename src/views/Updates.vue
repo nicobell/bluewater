@@ -1,5 +1,5 @@
 <template>
-    <main class="template-page project-description intro" role="main">
+    <main class="template-page intro" role="main">
         <div class="intro-header"></div>
 
         <div class="main-content" id="contenuto" tabindex="0" aria-labelledby="title1">

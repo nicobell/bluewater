@@ -1,6 +1,6 @@
 <template>
    <main class="template-page project-description intro" role="main" tabindex="-1" aria-describedby="help">
-      <div id="help" class="tohide">press n to return to navigation</div>
+      <div id="help" class="tohide">press 'N' to return to navigation</div>
 
       <div class="intro-header"></div>
       
@@ -15,13 +15,13 @@
             <div class="inner-content-right" style="position: relative;">
                <section class="tohide" tabindex="0" aria-hidden="false" aria-labelledby="gather">
                   <h2 id="gather">Gathered Data</h2>
-                  <article role="region" tabindex="0" aria-hidden="false">
-                     <p>Two single point mooring buoy systems.</p>
-                     <p>Depths of 88 to 90 feet, location 15 nautical miles off the coast of San Jose Island.</p>
-                     <p>56.48 miles of two 30-inch outside diameter crude oil pipelines, onshore, inshore and offshore.</p>
-                     <p>The Harbor Island Facility occupies 12 acres.</p>
-                     <p>very large crude carriers with loading rates of 80 bph and 40 bph for simultaneous operations.</p>
-                  </article>
+                  <ul tabindex="0" aria-hidden="false">
+                     <li>Two single point mooring buoy systems.</li>
+                     <li>Depths of 88 to 90 feet, location 15 nautical miles off the coast of San Jose Island.</li>
+                     <li>56.48 miles of two 30-inch outside diameter crude oil pipelines, onshore, inshore and offshore.</li>
+                     <li>The Harbor Island Facility occupies 12 acres.</li>
+                     <li>very large crude carriers with loading rates of 80 bph and 40 bph for simultaneous operations.</li>
+                  </ul>
                </section>
 
                <section class="data" aria-hidden="true">

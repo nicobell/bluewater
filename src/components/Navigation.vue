@@ -1,10 +1,10 @@
 <template>
-    <nav ref="menu" :class="[{show: isActive}]" role="navigation" aria-label="navigation menu">
+    <nav ref="menu" :class="[{show: isActive}]" id="navigazione" role="navigation" tabindex="-1" aria-label="navigation menu">
 
         <div class="btn" @click="isActive = !isActive">
         </div>
 
-        <ul @click="isActive = !isActive" id="navigazione" tabindex="-1">
+        <ul @click="isActive = !isActive"  tabindex="-1">
 
             <li role="none" aria-hidden>
                 <router-link role="menuitem" tabindex="0"
@@ -228,7 +228,7 @@
     cursor: pointer;
     width: 60px;
 
-    &:hover {
+    &:hover, &:focus {
         background: rgba(255, 255, 255, 0.096);
     }
 
@@ -246,7 +246,7 @@
         color: #fff;
     }
 
-    a:hover {
+    a:hover, a:focus {
         text-decoration: underline;
     }
 
@@ -362,12 +362,12 @@ nav {
 //animations
 @media (min-width: 1024px) {
     nav {
-        &:hover {
+        &:hover, &:focus-within {
             transition: 0.3s ease;
             width: 400px;
         }
 
-        li:hover {
+        li:hover, li:focus-within {
             background-color: lighten(#1C2332, 10%);
 
             &:before {
@@ -382,7 +382,7 @@ nav {
         }
 
         //nav
-        &:hover {
+        &:hover, &:focus-within {
             .label {
                 opacity: 1;
                 transform: translateY(0);

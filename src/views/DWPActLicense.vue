@@ -1,6 +1,6 @@
 <template>
-    <main class="template-page project-description intro" role="main" aria-describedby="help">
-        <div id="help" class="tohide">press n to return to navigation</div>
+    <main class="template-page intro" role="main" aria-describedby="help">
+        <div id="help" class="tohide">press 'N' to return to navigation</div>
         <div class="intro-header"></div>
 
         <div class="main-content" id="contenuto" tabindex="0" aria-labelledby="title1">

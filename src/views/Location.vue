@@ -1,6 +1,6 @@
 <template>
     <main role="main" class="template-page intro" aria-describedby="istruzioni">
-        <p class="tohide" tabindex="-1" id="istruzioni">use arrows to navigate, plus and minus to change zoom, press m to focus map, measure distance widget not available for keyboard</p>
+        <p class="tohide" tabindex="-1" id="istruzioni">use arrows to navigate, plus and minus to change zoom, press 'M' to focus map, measure distance widget not available for keyboard, press 'N' to return to navigation</p>
 
         <div class="intro-header"></div>
 
