@@ -197,13 +197,16 @@ export default {
                     pp.setAttribute('id', i+1)
                     pp.setAttribute('tabindex', 0)
                 })
-                document.querySelectorAll('.esri-popup__header').forEach((h, i) => {
+                /*document.querySelectorAll('.esri-popup__header-title').forEach((h, i) => {
                     h.setAttribute('tabindex', '-1')
-                })
-                document.querySelectorAll('.esri-popup__header-container--button').forEach((b, i) => {
+                })*/
+                document.querySelectorAll('.esri-popup__header').forEach((b, i) => {
                     b.setAttribute('tabindex', '-1')
+                //})
+                //document.querySelectorAll('.esri-popup__header-container--button').forEach((b, i) => {
+                    //b.setAttribute('tabindex', '-1')
 
-                    b.parentNode.parentNode.parentNode.addEventListener('keydown', e => {
+                    b.parentNode.parentNode.addEventListener('keydown', e => {
                         if(e.keyCode===13) {
                             b.click()
 
