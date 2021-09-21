@@ -1,30 +1,34 @@
 <template>
-    <main role="main" class="template-page project-description intro">
-        <div class="intro-header"></div>
+    <main class="template-page project-description intro" role="main" tabindex="-1" aria-describedby="help">
+        <div id="help" class="tohide">press n to return to navigation</div>
 
+        <div class="intro-header"></div>
+    
         <div class="main-content" id="contenuto" aria-labelledby="title1" tabindex="0">
             <h1 class="title" id="title1"><span class="tohide">page title: </span>{{ content.title }}</h1>
 
             <div class="content two-col">
-                <div class="inner-content-left">
-                    <div class="important">
-                        <h2 v-html="content.alertMessage"></h2>
+                <section class="inner-content-left" tabindex="0" aria-labelledby="sectiontitle">
+                    <div tabindex="-1" class="important">
+                        <p tabindex="1" class="heading" role="heading" v-html="content.alertMessage"></p>
                     </div>
-                    <h3>{{ content.secondTitle }}</h3>
-                    <div v-for="(c, index) in content.body" :key="'body'+index">
-                        <h4>{{ c.title }}</h4>
+                    <h2 id="sectiontitle">{{ content.secondTitle }}</h2>
+                    <article v-for="(c, index) in content.body" :key="'body'+index"
+                        :aria-labelledby="'bodytitle'+index">
+                        <h3 :id="'bodytitle'+index" tabindex="-1">{{ c.title }}</h3>
                         <p v-html="c.content"></p>
                         <button v-if="index==0" class="main-button icon-left">Submit Your Comment</button>
-                    </div>
-                </div>
+                    </article>
+                </section>
 
-                <div class="inner-content-right">
-                    <h5>{{ content.sidebarTitle }}</h5>
-                    <div v-for="(card, index) in content.cards" :key="'card'+index" class="card">
-                        <h2>{{ card.title }}</h2>
+                <section class="inner-content-right" tabindex="0" aria-labelledby="sidecolumntitle">
+                    <h2 id="sidecolumntitle" tabindex="-1">{{ content.sidebarTitle }}</h2>
+                    <article v-for="(card, index) in content.cards" :key="'card'+index" 
+                        class="card" :aria-labelledby="'insidetitle'+index">
+                        <h3 :id="'insidetitle'+index" tabindex="-1">{{ card.title }}</h3>
                         <p v-html="card.description"></p>
-                        <button @click="gotolink(card.link)" class="outline icon-left">{{ card.button }}</button>
-                    </div>
+                        <a :href="card.link" class="button outline icon-left">{{ card.button }}</a>
+                    </article>
 
                     <!--<form action="">
                         <h2>Need help, contact us</h2>
@@ -52,51 +56,62 @@
                         </div>    
                     </form>-->
 
-                    <div class="needhelp">
-                        <h2>Need help, contact us.</h2>
+                    <article class="needhelp" aria-labelledby="needhelp">
+                        <h2 id="needhelp">Need help, contact us.</h2>
                         <div>
                             <div>
-                                <label for="">Telephone Number</label>
-                                <p>(XXX) XXX-XXXX</p>
+                                <span>Telephone Number</span>
+                                <p>no number yet</p>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                </div>
+                </section>
             </div>
+
+            <div>
+                <button class="tohide" id="back-to-nav" @click="backtonav()" tabindex="0" aria-label="back to navbar">
+                back navbar
+                </button>
+            </div>
+
         </div>
     </main>
 </template>
 
 <script>
 export default {
-  name: 'comments',
-   data: () => {
-        return {
+    name: 'comments',
+    data: () => {
+            return {
+            }
+    },
+    computed: {
+        lang() {
+            return this.$store.state.lang
+        },
+        content () {
+            //console.log(this.$store.state.data[this.lang].comments)
+            return this.$store.state.data[this.lang].comments
+        },
+    },
+    methods: {
+        gotolink(link) {
+            window.open(link, '_blank')
+        },
+        backtonav() {
+            console.log(document.getElementById('navigazione'))
+            document.getElementById('navigazione').focus();
         }
-  },
-  computed: {
-    lang() {
-        return this.$store.state.lang
     },
-    content () {
-        //console.log(this.$store.state.data[this.lang].comments)
-        return this.$store.state.data[this.lang].comments
-    },
-  },
-  methods: {
-      gotolink(link) {
-        window.open(link, '_blank')
-      }
-  },
-  mounted() {
+    mounted() {
         //console.log('visiting ' + this.$route.name)
         this.$store.commit('SET_LASTPAGE', this.$route.name)
     }
 }
 </script>
-<style scoped lang="scss">
 
+<style scoped lang="scss">
 .content.two-col{
     display: flex;
     .inner-content-right {
@@ -112,7 +127,7 @@ export default {
     background-color: #D2E9F7;
     padding: 20px 20px 20px 90px;
     border-radius: 10px;
-    h2 {
+    p.heading {
         color: #125D91;
         font-weight: 400;
         font-size: 1.125rem;
@@ -133,38 +148,38 @@ export default {
     }
 }
 
-h3 {
+h2 {
     font-size: 24px;
     font-weight: 300;
     text-transform: uppercase;
 }
-h4 {
+h3 {
     font-size: 1.125rem;
     font-weight: 600;
     margin-bottom: 10px;
 }
-h4+p {
-    margin-top: 0;
-}
 
-h5 {
+.inner-content-right > h2,
+.inner-content-right > article h2 {
     color: #7896C4;
     text-transform: uppercase;
     font-weight: 600;
+    font-size: 1rem;
 }
 
 
 
 .card {
     background-color: #1A3C6E;
-    padding: 20px 30px;
+    padding: 40px 30px;
     border-radius: 10px;
     margin-bottom: 2rem;
    
-    h2 {
+    h3 {
         font-size: 1.5625rem;
         font-weight: 300;
         color: #FFFFFF;
+        margin:  0;
     }
     p {
         color: #B1BFD5;
@@ -182,7 +197,7 @@ h5 {
         font-weight: 300;
         color: #FFFFFF;
     }
-    label {
+    span {
         font-size: 0.875rem;
         font-weight: 600;
         margin: 9px 0px;

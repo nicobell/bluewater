@@ -1,61 +1,78 @@
 <template>
-    <main role="main" class="template-page project-description intro">
-        <div class="intro-header"></div>
+    <main class="template-page project-description intro" role="main" tabindex="-1" aria-describedby="help">
+        <div id="help" class="tohide">press n to return to navigation</div>
 
-        <div class="main-content">
-            <h1 class="title">{{ content.title }}</h1>
+        <div class="intro-header"></div>
+        
+        <div class="main-content" id="contenuto" tabindex="0" aria-labelledby="title1">
+            <h1 class="title" id="title1" tabindex="-1"><span class="tohide">page title: </span>{{ content.title }}</h1>
+            
             <div class="content three-col">
-                <div v-for="(s, index) in content.sections" :key="'section'+index">
-                    <h2>{{ s.title }}</h2>
-                    <p>{{ s.subtitle }}</p>
-                    <div class="contacts" v-for="(c, index) in s.body" :key="'contact'+index">
+                <section v-for="(s, index) in content.sections" :key="'section'+index" 
+                    tabindex="0" :aria-labelledby="'title2_'+index">
+                    <h2 :id="'title2_'+index" tabindex="-1">{{ s.title }}</h2>
+                    <p aria-label="contact name" :aria-hidden="s.subtitle=='' ? true : false">{{ s.subtitle }}</p>
+                    <div class="contacts" v-for="(c, ii) in s.body" :key="'contact'+ii" :aria-labelledby="'title3_'+ii">
                         <div>
-                            <h3>{{ c.title }}</h3>
+                            <h3 :id="'title3_'+ii" tabindex="-1">{{ c.title }}</h3>
                             <p v-html="c.content"></p>
                         </div>
                     </div>
-                </div>        
+                </section>        
             </div>
+            
+            <div>
+                <button class="tohide" id="back-to-nav" @click="backtonav()" tabindex="0" aria-label="back to navbar">
+                    back navbar
+                </button>
+            </div>
+
         </div>
     </main>
 </template>
+
 <script>
-
 export default {
-  name: 'contacts',
-   data: () => {
-    return {
-    }
-  },
-  props:{
-    langData: String
-  },
-  mounted() {
-    //console.log('visiting ' + this.$route.name)
-    this.$store.commit('SET_LASTPAGE', this.$route.name)
-
-    if(this.lang=='es')
-        this.$route.params.pagetitle = 'contactos'
-    else if(this.lang=='en')
-        this.$route.params.pagetitle = 'contacts'
-  },
-  computed: {
+    name: 'contacts',
+    data: () => {
+        return {
+        }
+    },
+    props:{
+        langData: String
+    },
+    methods: {
+        backtonav() {
+            console.log(document.getElementById('navigazione'))
+            document.getElementById('navigazione').focus();
+        }
+    },
+    computed: {
         lang () {
             return this.$store.state.lang
         },
         content () {
             //console.log(this.$store.state.data[this.lang].contacts)
             return this.$store.state.data[this.lang].contacts
-        },
-  },
-  watch: {
-    /*lang()  {
-        if(this.lang=='en')
-            this.$route.params.pagetitle = 'contacts'
-        else if(this.lang=='es')
+        }
+    },
+    mounted() {
+        //console.log('visiting ' + this.$route.name)
+        this.$store.commit('SET_LASTPAGE', this.$route.name)
+
+        if(this.lang=='es')
             this.$route.params.pagetitle = 'contactos'
-    }*/
-  }
+        else if(this.lang=='en')
+            this.$route.params.pagetitle = 'contacts'
+    },
+    watch: {
+        /*lang()  {
+            if(this.lang=='en')
+                this.$route.params.pagetitle = 'contacts'
+            else if(this.lang=='es')
+                this.$route.params.pagetitle = 'contactos'
+        }*/
+    }
 }
 </script>
 
@@ -67,13 +84,13 @@ export default {
 .three-col {
     display: flex;
     flex-direction: row;
-    &>div{
+    &>div, &>section{
         width: 33.33%;
         border-left: 1px solid rgb(238, 238, 238);
         padding: 40px 50px 0px 50px;
   
     }
-    &>div:first-child{
+    &>div:first-child, &>section:first-child{
         border-left: 0px solid rgb(238, 238, 238)
     }
 }
@@ -120,7 +137,7 @@ h3 {
 @media (max-width:1024px){ 
     .three-col {
         display:block;
-        &>div {
+        &>div, &>section {
             width: auto;
         }
         .contacts {
@@ -134,7 +151,8 @@ h3 {
     }
 }
 @media (max-width:768px){ 
-    .three-col > div {
+    .three-col > div,
+    .three-col > section {
         padding: 40px 15px 0px 15px;
         h2 {
             margin-top: 0px;

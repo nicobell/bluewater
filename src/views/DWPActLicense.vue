@@ -1,5 +1,6 @@
 <template>
-    <main class="template-page project-description intro" role="main">
+    <main class="template-page project-description intro" role="main" aria-describedby="help">
+        <div id="help" class="tohide">press n to return to navigation</div>
         <div class="intro-header"></div>
 
         <div class="main-content" id="contenuto" tabindex="0" aria-labelledby="title1">
@@ -9,12 +10,12 @@
                 <section class="inner-content-left">
                     <div class="menu" id="menu"
                         role="tablist" tabindex="0" aria-label="internal menu" aria-describedby="instructions">
-                        <span class="tohide" id="instructions">use up and down arrows to select</span>
+                        <div class="tohide" tabindex="0" id="instructions">use up and down arrows to select</div>
 
                         <button v-for="(d, index) in content.stepProcess" :key="'label'+index"
                             :class="{'item-menu': true, 'active-section': isActive==index+1}" :id="'btn'+(index+1)"
                             @click="openSection(index+1)"
-                            role="tab" tabindex="-1" :aria-controls="'section' + (index+1)">
+                            role="tab" :aria-controls="'section' + (index+1)">
                                 <span class="num"> 0{{index+1}} </span>
                                 <span >{{d.label}}</span>
                         </button>
@@ -24,14 +25,14 @@
                 <section class="inner-content-right">
                     <div v-if="isActive!=0" 
                         class="item-content" :id="'section'+isActive" 
-                        role="tabpanel" tabindex="0" :aria-labelledby="'region'+isActive">
-                        <h2 :id="'region'+isActive" role="header" tabindex="-1" aria-level="2">{{ selectedStep.title }}</h2>
+                        role="tabpanel" tabindex="0" :aria-labelledby="'region'+isActive" aria-live="polite">
+                        <h2 :id="'region'+isActive" role="header" aria-level="2">{{ selectedStep.title }}</h2>
 
                         <article v-html="selectedStep.description"></article>
 
                         <article v-for="(b, index) in selectedStep.body" :key="'element' + index"
                             :class="['body', b.titleClass]">
-                            <div class="detail" :id="'detail'+index" tabindex="-1">{{ b.detail }}</div>
+                            <div class="detail" :id="'detail'+index">{{ b.detail }}</div>
                             <h3 class="title" role="header" :aria-level="b.title=='' ? null : '3'" :aria-describedby="'detail'+index">{{ b.title }}</h3>
                             <div v-html="b.description"></div>
                         </article>
@@ -186,12 +187,12 @@ export default {
             });*/
 
             // Enable arrow navigation between tabs in the tab list
-            let tabFocus = 0;
+            let tabFocus = -1;
 
             tabList.addEventListener("keydown", e => {
                 // Move right
                 if (e.keyCode === 40 || e.keyCode === 38) {
-                    tabs[tabFocus].setAttribute("tabindex", -1);
+                    e.preventDefault()
                     if (e.keyCode === 40) {
                         tabFocus++;
                         // If we're at the end, go to the start
@@ -207,7 +208,7 @@ export default {
                         }
                     }
 
-                    tabs[tabFocus].setAttribute("tabindex", 0);
+                    tabs[tabFocus].setAttribute("tabindex", -1);
                     tabs[tabFocus].focus({preventScroll: true});
                 }
             });
