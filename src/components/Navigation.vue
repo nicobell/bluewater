@@ -8,45 +8,60 @@
 
             <li role="none" aria-hidden>
                 <router-link role="menuitem" tabindex="0"
-                    aria-labelledby="menulabel1"
-                    aria-current="page"
-                    :to="{name: 'ProxyRouter',  params: { 
-                    lang: this.lang, 
-                    pagetitle: (this.lang=='es' ? 'localization' : 'location') 
-                    }}">
+                    aria-labelledby="menulabel1" :aria-current="this.$route.params.pagetitle=='location' ? 'page' : null"
+                    :to="{
+                        name: 'ProxyRouter',  
+                        params: { 
+                            lang: this.lang, 
+                            tabtitle: 'Location',
+                            pagetitle: (this.lang=='es' ? 'localization' : 'location') 
+                        }
+                    }">
                     <span class="icon map"></span><span id="menulabel1" class="label">{{content.menu.menuLabel1}}</span>
                 </router-link>
             </li>
             
             <li role="none" aria-hidden>
                 <router-link role="menuitem" tabindex="-1"
-                    aria-labelledby="menulabel2"
-                    :to="{name: 'ProxyRouter',  params: { 
-                    lang: this.lang, 
-                    pagetitle: (this.lang=='es' ? 'descripcion-de-proyecto' : 'project-description') 
-                    }}" >
+                    aria-labelledby="menulabel2" :aria-current="this.$route.params.pagetitle=='project-description' ? 'page' : null"
+                    :to="{
+                        name: 'ProxyRouter',  
+                        params: { 
+                            lang: this.lang, 
+                            tabtitle: 'Project Description',
+                            pagetitle: (this.lang=='es' ? 'descripcion-de-proyecto' : 'project-description') 
+                        }
+                    }">
                         <span class="icon description"></span><span id="menulabel2" class="label">{{content.menu.menuLabel2}}</span>
                     </router-link>
             </li>
             
             <li role="none">
                 <router-link role="menuitem" tabindex="-1"
-                    aria-label="deepwater port act license"
-                    :to="{name: 'ProxyRouter',  params: { 
-                    lang: this.lang, 
-                    pagetitle: (this.lang=='es' ? 'ley-licencia-dwp' : 'dwp-act-license') 
-                    }}">
+                    aria-label="deepwater port act license" :aria-current="this.$route.params.pagetitle=='dwp-act-license' ? 'page' : null"
+                    :to="{
+                        name: 'ProxyRouter',  
+                        params: { 
+                            lang: this.lang, 
+                            tabtitle: 'DWP PA License',
+                            pagetitle: (this.lang=='es' ? 'ley-licencia-dwp' : 'dwp-act-license') 
+                        }
+                    }">
                         <span class="icon license"></span><span id="menulabel3" class="label">{{content.menu.menuLabel4}}</span>
                     </router-link>
             </li>
             
             <li role="none">
                 <router-link role="menuitem" tabindex="-1"
-                    aria-labelledby="menulabel4"
-                    :to="{name: 'ProxyRouter',  params: { 
-                    lang: this.lang, 
-                    pagetitle: (this.lang=='es' ? 'proceso-nepa' : 'nepa-process') 
-                    }}" >
+                    aria-labelledby="menulabel4" :aria-current="this.$route.params.pagetitle=='nepa-process' ? 'page' : null"
+                    :to="{
+                        name: 'ProxyRouter',  
+                        params: { 
+                            lang: this.lang, 
+                            tabtitle: 'NEPA Process',
+                            pagetitle: (this.lang=='es' ? 'proceso-nepa' : 'nepa-process') 
+                        }
+                    }">
                         <span class="icon process"></span><span id="menulabel4" class="label">{{content.menu.menuLabel3}}</span>
                     </router-link>
             </li>
@@ -54,22 +69,30 @@
             
             <li role="none">
                 <router-link role="menuitem" tabindex="-1"
-                    aria-labelledby="menulabel5"
-                    :to="{name: 'ProxyRouter',  params: { 
-                    lang: this.lang, 
-                    pagetitle: (this.lang=='es' ? 'cronograma-de-proceso-nepa' : 'nepa-process-schedule') 
-                    }}" >
+                    aria-labelledby="menulabel5" :aria-current="this.$route.params.pagetitle=='nepa-process-schedule' ? 'page' : null"
+                    :to="{
+                        name: 'ProxyRouter',  
+                        params: { 
+                            lang: this.lang, 
+                            tabtitle: 'Schedule',
+                            pagetitle: (this.lang=='es' ? 'cronograma-de-proceso-nepa' : 'nepa-process-schedule') 
+                        }
+                    }">
                         <span class="icon schedule"></span><span id="menulabel5" class="label">{{content.menu.menuLabel5}}</span>
                     </router-link>
             </li>
             
             <li role="none">
                 <router-link role="menuitem" tabindex="-1"
-                    aria-labelledby="menulabel6"
-                    :to="{name: 'ProxyRouter',  params: { 
-                    lang: this.lang, 
-                    pagetitle: (this.lang=='es' ? 'actulizationes' : 'updates') 
-                    }}" >
+                    aria-labelledby="menulabel6" :aria-current="this.$route.params.pagetitle=='updates' ? 'page' : null"
+                    :to="{
+                        name: 'ProxyRouter',
+                        params: { 
+                            lang: this.lang, 
+                            tabtitle: 'Updates',
+                            pagetitle: (this.lang=='es' ? 'actulizationes' : 'updates') 
+                        }
+                    }">
                         <span class="icon updates"></span><span id="menulabel6" class="label">{{content.menu.menuLabel6}}</span>
                     </router-link>
             </li>
@@ -78,22 +101,30 @@
             
             <li role="none">
                 <router-link role="menuitem" tabindex="-1"
-                    aria-labelledby="menulabel7"
-                    :to="{name: 'ProxyRouter',  params: { 
-                    lang: this.lang, 
-                    pagetitle: (this.lang=='es' ? 'comentarios' : 'comments') 
-                    }}">
+                    aria-labelledby="menulabel7" :aria-current="this.$route.params.pagetitle=='comments' ? 'page' : null"
+                    :to="{
+                        name: 'ProxyRouter',  
+                        params: { 
+                            lang: this.lang, 
+                            tabtitle: 'Comments',
+                            pagetitle: (this.lang=='es' ? 'comentarios' : 'comments') 
+                        }
+                    }">
                         <span class="icon opinion"></span><span id="menulabel7" class="label">{{content.menu.menuLabel7}}</span>
                 </router-link>
             </li>
             
             <li role="none">
                 <router-link role="menuitem" tabindex="-1"
-                aria-labelledby="menulabel8"
-                :to="{name: 'ProxyRouter',  params: { 
-                lang: this.lang, 
-                pagetitle: (this.lang=='es' ? 'contactos' : 'contacts') 
-                }}">
+                aria-labelledby="menulabel8" :aria-current="this.$route.params.pagetitle=='contacts' ? 'page' : null"
+                :to="{
+                    name: 'ProxyRouter',  
+                    params: { 
+                        lang: this.lang, 
+                        tabtitle: 'Contacts',
+                        pagetitle: (this.lang=='es' ? 'contactos' : 'contacts') 
+                    }
+                }">
                     <span class="icon contacts"></span><span id="menulabel8" class="label">{{content.menu.menuLabel8}}</span>
                 </router-link>
             </li>
@@ -210,6 +241,9 @@
                     tabs[tabFocus].focus({preventScroll: true});
                 }
             });
+        },
+        updated() {
+            console.log(this.$route)
         }
     }
 </script>

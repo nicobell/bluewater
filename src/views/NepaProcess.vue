@@ -26,8 +26,8 @@
                 <section class="inner-content-right">
                     <div v-if="isActive!=0" 
                         class="item-content" :id="'section'+isActive" 
-                        role="tabpanel" tabindex="-1" :aria-labelledby="'region'+isActive" aria-live="polite">
-                        <h2 :id="'region'+isActive" role="header" aria-level="2">{{ selectedStep.title }}</h2>
+                        role="tabpanel" tabindex="0" :aria-labelledby="'region'+isActive" aria-live="polite">
+                        <h2 :id="'region'+isActive" role="header">{{ selectedStep.title }}</h2>
 
                         <article v-html="selectedStep.description"></article>
 
@@ -89,18 +89,17 @@ export default {
     },
     data: () => {
         return{
-            isActive: 0
+            isActive: 1
         }
     },
     methods:{
          backtonav() {
-            console.log(document.getElementById('navigazione'))
             document.getElementById('navigazione').focus();
         },
         backtomenu() {
             document.getElementById('menu').focus();
         },
-        openSection(id){
+        openSection(id) {
             this.isActive = id
             this.changeTabs(event)
             setTimeout(() => {
@@ -109,7 +108,6 @@ export default {
             }, 100);
         },
         toggle(e) {
-            //console.log(e.target.parentNode)
             if(Array.from(e.target.parentNode.classList).includes('active')) {
                 e.target.parentNode.classList.toggle('active')
             } else {
@@ -145,7 +143,7 @@ export default {
                 .forEach(p => p.setAttribute("hidden", true));
 
             // Show the selected panel
-            setTimeout(() => {
+            /*setTimeout(() => {
                 grandparent.parentNode
                     .querySelector(`#${target.getAttribute("aria-controls")}`)
                     .removeAttribute("hidden");
@@ -153,7 +151,7 @@ export default {
                     grandparent.parentNode
                     .querySelector(`#${target.getAttribute("aria-controls")}`)
                     .focus({preventScroll: true});
-            }, 100);
+            }, 100);*/
 
             const tabs = document.querySelectorAll('[role="tab"]');
             tabs.forEach(tab => tab.setAttribute("tabindex", -1))
@@ -188,7 +186,7 @@ export default {
 
         // Enable arrow navigation between tabs in the tab list
         let tabFocus = -1;
-        console.log(tabs)
+        //console.log(tabs)
 
         tabList.addEventListener("keydown", e => {
             // Move right
@@ -216,7 +214,7 @@ export default {
     },
     watch: {
         route() {
-            this.isActive = 0
+            this.isActive = 1
             Array.from(document.getElementsByClassName('accordion-item')).forEach(el => {
                 //console.log(el, el.classList)
                 el.classList.remove('active')

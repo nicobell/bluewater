@@ -11,17 +11,16 @@
 
             <section class="content two-col">
                 <div class="inner-content">
-                    <article class="tohide" id="hiddendescription" tabindex="0" aria-labelledby="hiddendescriptiontitle" aria-hidden="false">
-                        <h2 id="hiddendescriptiontitle" tabindex="-1">hidden image description paragraph</h2>
-                        <p class="tohide">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam commodi magni nesciunt, optio corporis mollitia debitis voluptates similique eum expedita officiis cupiditate a voluptatibus aperiam, ad voluptatem nihil aspernatur reprehenderit.</p>
-                    </article>
+                    
 
-                    <div class="view-more">
-                        <button id="view-more" @click="toggleSpalla" tabindex="0">VIEW MORE</button>
-                    </div>
+                    <!--<div class="view-more">-->
+                    <button class="view-more" id="view-more" @click="toggleSpalla" tabindex="0">VIEW MORE</button>
+                    <!--</div>-->
 
-                    <div class="image-container" tabindex="-1" aria-hidden="true">
-                        <img src="../assets/timeline.png" alt="">
+                    <div class="image-container" tabindex="0">
+                        <img src="../assets/timeline.png" alt="schedule image" aria-describedby="hiddendescription">
+                        <article class="tohide" id="hiddendescription" aria-label="hidden description" tabindex="-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam commodi magni nesciunt, optio corporis mollitia debitis voluptates similique eum expedita officiis cupiditate a voluptatibus aperiam, ad voluptatem nihil aspernatur reprehenderit.
+                        </article>
                     </div>
                 </div>
             </section>
@@ -32,20 +31,19 @@
                 <button id="close-spalla" @click="toggleSpalla" tabindex="-1" aria-label="toggle view more section"></button>
             </div>
             <div :class="{'accordions': true, 'space': openAcc==0}">
-                <section :class="{'open': openAcc==index, 'closed': openAcc!=index, 'text-container': true}"
+                <article :class="{'open': openAcc==index, 'closed': openAcc!=index, 'text-container': true}"
                     v-for="(a, index) in content.items" :key="'accordion'+index">
                     <button :class="{'open': openAcc==index}" :id="'accordion'+index"
                         @click="openAccordion(index)"
                         tabindex="0" :aria-expanded="openAcc==index ? true : false" :aria-controls="'inner'+index"
                     >{{ a.title }}</button>
-                    <hr>
                     <div :class="{'open': openAcc==index, 'closed': openAcc!=index}" :id="'inner'+index"
-                        :aria-labelledby="'accordion'+index">
-                        <article v-for="(item, ind) in a.content" class="accordion" :key="'update'+ind">
-                            <p><strong>{{ item.date }} - </strong>{{ item.description }}</p>
-                        </article>
+                        tabindex="-1" :aria-labelledby="'accordion'+index">
+                        <p v-for="(item, ind) in a.content" class="accordion" :key="'update'+ind">
+                            <strong>{{ item.date }} - </strong>{{ item.description }}
+                        </p>
                     </div>
-                </section>
+                </article>
             </div>
         </div>
 
@@ -217,24 +215,22 @@
     }
 }
 
-.view-more {
-    button {
-        border-radius: 50px;
-        background: #1C2332;
-        color: #fff;
-        font-weight: 300;
-        font-size: .9em;
-        z-index: 10;
-        margin: 1rem 0;
-        padding: 13px 30px;
+button.view-more {
+    border-radius: 50px;
+    background: #1C2332;
+    color: #fff;
+    font-weight: 300;
+    font-size: .9em;
+    z-index: 10;
+    margin: 1rem 0;
+    padding: 13px 30px;
 
-        br {
-            display: none;
-        }
+    br {
+        display: none;
     }
 }
 
-  .text-container {
+.text-container {
     margin: 0px 0px 40px 0px;
     cursor: pointer;
 
@@ -254,8 +250,11 @@
         display: block;
         margin-bottom: 5px;
         background-color: transparent;
+        border-radius: 0;
         color: #125D91;
         padding: 0;
+        padding-bottom: 10px;
+        border-bottom: #7070702a solid 1px;
 
         &::after {
             content: url('/dropdown.svg');
@@ -263,14 +262,14 @@
             display: inline-block;
             position: absolute;
             right: 5%;
-            bottom: 0;
+            bottom: 10px;
             transform: rotateZ(0deg);
             transition: all .3s;
         }
 
         &.open::after {
             display: inline-block;
-            bottom: -5px;
+            bottom: 5px;
             transform: rotateZ(-180deg);
             transition: all .3s;
         }
@@ -299,18 +298,14 @@
 
         .accordion {
             width: 100%;
-
-            p {
-                width: 100%;
-                color: #12315F;
-                font-size: .95em;
-                line-height: 1.8rem;
-                margin: 15px 0;
-            }
+            color: #12315F;
+            font-size: .95em;
+            line-height: 1.8rem;
+            margin: 15px 0;
         }
     }
 
-  }
+}
 
 
   @media (max-width: 992px) {

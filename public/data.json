@@ -346,12 +346,14 @@
                     "title":"License Application",
                     "description":"The License Application is available for viewing at the <span>Regulations.gov</span> website",
                     "button":"Go to Website",
-                    "link": "http://regulations.gov"
+                    "link": "http://regulations.gov",
+                    "label": "go to license application website"
                 }, {
                     "title":"Draft EIS",
                     "description":"The Draft EIS is available for viewing at the <span>Regulations.gov</span> website",
                     "button":"Go to Website",
-                    "link": "http://regulations.gov"
+                    "link": "http://regulations.gov",
+                    "label": "go to draft eis website"
                 }
             ],
             "alertMessage":"Scoping Comments must be submitted by <span>July 8, 2021.</span>",

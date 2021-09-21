@@ -27,7 +27,7 @@
                         class="card" :aria-labelledby="'insidetitle'+index">
                         <h3 :id="'insidetitle'+index" tabindex="-1">{{ card.title }}</h3>
                         <p v-html="card.description"></p>
-                        <a :href="card.link" class="button outline icon-left">{{ card.button }}</a>
+                        <a :href="card.link" class="button outline icon-left" :aria-label="card.label">{{ card.button }}</a>
                     </article>
 
                     <!--<form action="">
@@ -57,7 +57,7 @@
                     </form>-->
 
                     <article class="needhelp" aria-labelledby="needhelp">
-                        <h2 id="needhelp">Need help, contact us.</h2>
+                        <h3 id="needhelp">Need help, contact us.</h3>
                         <div>
                             <div>
                                 <span>Telephone Number</span>
@@ -192,7 +192,7 @@ h3 {
 
 .needhelp {
     margin-top: 4rem;
-    h2 {
+    h3 {
         font-size: 1.5625rem;
         font-weight: 300;
         color: #FFFFFF;

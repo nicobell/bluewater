@@ -23,7 +23,13 @@ const router = new VueRouter({
 })
 
 router.afterEach((to, from, next) => {
-    
+    console.log(to)
+    Vue.nextTick(() => {
+        if(to.params.tabtitle!= undefined)
+            document.title = to.params.tabtitle + ' | Bluewater Project';
+        else 
+            document.title = 'Bluewater Project';
+    });
 })
 
 export default router

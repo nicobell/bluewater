@@ -76,6 +76,11 @@ export default {
     .text {
         font-size: 1.125rem;
         width: 76%;
+        h3 {
+            color: #1C6DA6;
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
     }
 }
 
@@ -88,7 +93,7 @@ export default {
             width: auto;
             text-align: left;
         }
-        .text{
+        .text {
             width: auto ;
             margin: 5px 0px;
         }

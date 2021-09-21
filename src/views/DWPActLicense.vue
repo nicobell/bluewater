@@ -26,7 +26,7 @@
                     <div v-if="isActive!=0" 
                         class="item-content" :id="'section'+isActive" 
                         role="tabpanel" tabindex="0" :aria-labelledby="'region'+isActive" aria-live="polite">
-                        <h2 :id="'region'+isActive" role="header" aria-level="2">{{ selectedStep.title }}</h2>
+                        <h2 :id="'region'+isActive" role="header">{{ selectedStep.title }}</h2>
 
                         <article v-html="selectedStep.description"></article>
 
@@ -85,7 +85,7 @@ export default {
     },
     data: () => {
         return {
-            isActive: 0 
+            isActive: 1
         }
     },
     methods: {
@@ -216,7 +216,7 @@ export default {
     },
     watch: {
         route() {
-            this.isActive = 0
+            this.isActive = 1
             Array.from(document.getElementsByClassName('accordion-item')).forEach(el => {
                 //console.log(el, el.classList)
                 el.classList.remove('active')
