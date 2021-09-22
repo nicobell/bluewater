@@ -63,10 +63,10 @@ export default {
             citiesLayer: null,
             multiterminalLayer: null,
             valvesLayer: null,
-            dataPoints: [],
             popsAdded: false,
             activeWidget: null,
-            lastbutton: null
+            lastbutton: null,
+            showspalla: false
         }
     },
     computed: {
@@ -89,7 +89,14 @@ export default {
             document.getElementById("info").setAttribute('aria-hidden', true)
             document.getElementById("category").setAttribute('tabindex', '-1')
 
-            document.getElementById(this.lastbutton).focus()
+            //ritorna al focus dell'ultimo punto selezionato
+            document.getElementById(this.lastbutton).children[0].children[0].children[0].focus()
+
+            //click che non apre la spalla, solo simulato per chiudere la proprietà 'expanded' dello screen reader
+            document.getElementById(this.lastbutton).children[0].children[0].children[0].click()
+
+            //solo ora chiudiamo veramente la spalla nella logica
+            this.showspalla = false
         },
         zoomOut() {
             if(this.workspacesLayer.fullExtent.spatialReference != this.view.SpatialReference) {
@@ -147,25 +154,124 @@ export default {
                 selectedButton.classList.add("active");
             }
         },
+        createMapAndLayers() {
+            this.workspacesLayer = new FeatureLayer({
+                url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/4",
+                outFields: ["*"]
+            })
+
+            this.pipelineLayer = new FeatureLayer({
+                url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/3",
+                outFields: ["*"]
+            })
+
+            this.citiesLayer = new FeatureLayer({
+                url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/1",
+                outFields: ["*"],
+                renderer: {
+                    //to hide white circle at city location on map
+                    type: "simple",
+                    symbol: {
+                        type: "picture-marker",
+                        url: "/point-1.png",
+                        width: "1px",
+                        height: "1px"
+                    }
+                }
+            })
+
+            this.multiterminalLayer = new FeatureLayer({
+                url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/0",
+                outFields: ["*"],
+                labelingInfo: {
+                    labelExpression: "[LABEL]",
+                    labelPlacement: "below-center",
+                    symbol: {
+                        type: "text",
+                        font: { size: 11 },
+                        color: "#fff",
+                        haloColor: "#1C2332",
+                        haloSize: 2
+                    }
+                },
+                renderer: {
+                    type: "simple",
+                    symbol: {
+                        type: "simple-marker",
+                        size: 6,
+                        color: "orange",
+                        outline: { width: 0,  color: "orange" }
+                    }
+                }
+            })
+
+            this.valvesLayer = new FeatureLayer({
+                url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/2",
+                outFields: ["*"],
+                labelingInfo: {
+                    labelExpression: "["+this.lang+"_title]",
+                    labelPlacement: "center-right",
+                    symbol: {
+                        type: "text",
+                        font: { size: 13 },
+                        color: "#fff",
+                        haloColor: "#1C2332",
+                        haloSize: 2
+                    }
+                },
+                renderer: {
+                    type: "simple",
+                    symbol: {
+                        type: "picture-marker",
+                        url: "/point-1.png",
+                        width: "45px",
+                        height: "45px"
+                    }
+                }
+            })
+
+            this.map = new Map({
+                basemap: "satellite",
+                layers: [this.workspacesLayer, this.pipelineLayer, this.valvesLayer, this.citiesLayer, this.multiterminalLayer]
+            })
+
+            this.view = new MapView({
+                container: "viewDiv",
+                map: this.map,
+                center: [-97, 27.90],
+                zoom: 11.989,
+                highlightOptions: {
+                    color: "rgba(115, 223, 255, 0)"
+                },
+                popup: {
+                    dockEnabled: false,
+                    dockOptions: {
+                        breakpoint: false,
+                        buttonEnabled: false,
+                        position: 'top-center',
+                        autoOpenEnabled: false,
+                        actions: [],
+                        overwriteActions: true,
+                        includeDefaultActions: false
+                    }
+                }
+            })
+        },
         addPopups(layerView, val) {
             var tot = this
             //refresh on click of map only if not measuring (lag fix)
             var refresh = document.querySelectorAll('.esri-view-surface')[0].getAttribute('data-cursor')!='crosshair' ? true : false
             
             if (!val && refresh) {
-                console.log('refresh')
+                console.log('refresh popups')
                 layerView.queryFeatures({
                     where: "en_description <> ''",
                     outFields: ["*"],
                     returnGeometry: true
 
                 }).then(function (results) {
-                    console.log('remove all popups')
                     document.querySelectorAll('.esri-popup')[0].parentNode.innerHTML = ''
-                    //document.querySelectorAll('.esri-popup').forEach(p => { p.parentElement.removeChild(p) })
-                    //document.querySelectorAll('.esri-spinner').forEach(p => { p.parentElement.removeChild(p) })
-
-                    console.log('create all popups')
+                    
                     let pt, pop
                     results.features.forEach(p => {
                         pt = new Point({ 
@@ -184,7 +290,6 @@ export default {
                         tot.view.ui.add(pop)
                     })
 
-                    // !! DANGER ZONE !!
                     tot.accessiblePopups(layerView)
                 })
             }
@@ -194,25 +299,23 @@ export default {
 
             setTimeout(() => {
                 document.querySelectorAll('.esri-popup').forEach((pp, i) => {
-                    pp.setAttribute('id', i+1)
-                    pp.setAttribute('tabindex', 0)
+                    pp.setAttribute('id', i + 1)
                 })
                 /*document.querySelectorAll('.esri-popup__header-title').forEach((h, i) => {
                     h.setAttribute('tabindex', '-1')
+                })
+                document.querySelectorAll('.esri-popup__header').forEach((h, i) => {
+                    h.setAttribute('tabindex', '-1')
                 })*/
-                document.querySelectorAll('.esri-popup__header').forEach((b, i) => {
-                    b.setAttribute('tabindex', '-1')
-                //})
-                //document.querySelectorAll('.esri-popup__header-container--button').forEach((b, i) => {
-                    //b.setAttribute('tabindex', '-1')
-
-                    b.parentNode.parentNode.addEventListener('keydown', e => {
-                        if(e.keyCode===13) {
-                            b.click()
-
-                            tot.lastbutton = e.target.getAttribute('id')
-                            let q = "OBJECTID = " + e.target.getAttribute('id') + ""
-                            
+                document.querySelectorAll('.esri-popup__header-container--button').forEach((b, i) => {
+                    b.setAttribute('tabindex', 0)
+                    b.setAttribute('aria-controls', 'info')
+                
+                    b.addEventListener('click', e => {
+                        if(!tot.showspalla) {
+                            tot.lastbutton = e.target.parentNode.parentNode.parentNode.getAttribute('id')
+                            let q = "OBJECTID = " + tot.lastbutton + ""
+                                                        
                             layerView.queryFeatures({
                                 where: q,
                                 outFields: ['*'],
@@ -227,199 +330,49 @@ export default {
                                 document.getElementById("info").style.opacity = "1";
                                 document.getElementById("info").setAttribute('aria-hidden', false)
 
+                                document.querySelector('.esri-view-surface').setAttribute('tabindex', '-1')
+
                                 document.getElementById("name").innerHTML = name;
                                 document.getElementById("category").innerHTML = description;
 
                                 setTimeout(() => {
                                     document.getElementById('close-spalla').focus()
+                                    tot.showspalla = true
                                 }, 200);
                             })
+                        } else {
+                            console.log('chiudi spalla')
                         }
                     })
-                    /*b.addEventListener('click', e => {
-                        if(e.keyCode===13) {
-                            b.click()
-                            tot.lastbutton = e.target.parentNode.parentNode.parentNode.getAttribute('id')
-                            var q = "OBJECTID = " + e.target.parentNode.parentNode.parentNode.getAttribute('id') + ""
-                            layerView.queryFeatures({
-                                where: q,
-                                outFields: ['*'],
-                                returnGeometry: true
-                            }).then(res => {
-                                const attributes = res.features[0].attributes;
-                                const name = attributes[tot.lang+"_title"];
-                                const description = attributes[tot.lang+"_description"]
-
-                                document.getElementById("info").style.visibility = "visible";
-                                document.getElementById("info").style.right = "0";
-                                document.getElementById("info").style.opacity = "1";
-                                document.getElementById("info").setAttribute('aria-hidden', false)
-
-                                document.getElementById("name").innerHTML = name;
-                                document.getElementById("category").innerHTML = description;
-
-                                setTimeout(() => {
-                                    document.getElementById('close-spalla').focus()
-                                }, 100);
-                            })
-                        }
-                    })*/
+                    
                 })
                 
-            }, 200);
+            }, 100);
             
         }
     },
-    mounted() {
-        //after creating the map, set id of mainView as focussable element
-        /*setTimeout(() => {
-            document.querySelector('.esri-view-surface').setAttribute('id', 'contenuto')
-            document.querySelector('.esri-view-surface').setAttribute('aria-describedby', 'use arrows to navigate, + and - to change zoom, press m to focus map, measure distance widget not available for keyboard')
-            //map listens to zoom keyboard events 
-            document.querySelector('.esri-view-surface').addEventListener('keydown', e => {
-                if(e.key==='+' && !e.ctrlKey)
-                    this.zoomplus()
-                else if(e.key==='-' && !e.ctrlKey)
-                    this.zoomminus()
-            })
-        }, 100);*/
-        
+    mounted() {        
         //close spalla with 'esc'
-        document.getElementById('info').addEventListener('keydown', e => {
+        window.addEventListener('keydown', e => {
             if(e.key==='Escape') {
                 this.hideInfo()
             }
         })
 
-        // ?? trap focus inside spalla ??
-        /*document.getElementById('close-spalla').addEventListener('keydown', e => {
-            if(e.keyCode==9 && e.shiftKey==true) {
-                setTimeout(() => {
-                    document.getElementById('category').focus()    
-                }, 200);
-            }
-        })*/
-
         //entire page listens to 'm' key pressed to return focus to map wrapper for navigation
-        document.addEventListener('keydown', e => {
+        window.addEventListener('keydown', e => {
             if(e.key=='m')
                 document.querySelector('.esri-view-surface').focus()
         })
 
-        this.workspacesLayer = new FeatureLayer({
-            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/4",
-            outFields: ["*"]
-        })
-
-        this.pipelineLayer = new FeatureLayer({
-            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/3",
-            outFields: ["*"]
-        })
-
-        this.citiesLayer = new FeatureLayer({
-            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/1",
-            outFields: ["*"],
-            renderer: {
-                //to hide white circle at city location on map
-                type: "simple",
-                symbol: {
-                    type: "picture-marker",
-                    url: "/point-1.png",
-                    width: "1px",
-                    height: "1px"
-                }
-            }
-        })
-
-        this.multiterminalLayer = new FeatureLayer({
-            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/0",
-            outFields: ["*"],
-            labelingInfo: {
-                labelExpression: "[LABEL]",
-                labelPlacement: "below-center",
-                symbol: {
-                    type: "text",
-                    font: { size: 11 },
-                    color: "#fff",
-                    haloColor: "#1C2332",
-                    haloSize: 2
-                }
-            },
-            renderer: {
-                type: "simple",
-                symbol: {
-                    type: "simple-marker",
-                    size: 6,
-                    color: "orange",
-                    outline: { width: 0,  color: "orange" }
-                }
-            }
-        })
-
-        this.valvesLayer = new FeatureLayer({
-            url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/2",
-            outFields: ["*"],
-            labelingInfo: {
-                labelExpression: "["+this.lang+"_title]",
-                labelPlacement: "center-right",
-                symbol: {
-                    type: "text",
-                    font: { size: 13 },
-                    color: "#fff",
-                    haloColor: "#1C2332",
-                    haloSize: 2
-                }
-            },
-            renderer: {
-                type: "simple",
-                symbol: {
-                    type: "picture-marker",
-                    url: "/point-1.png",
-                    width: "45px",
-                    height: "45px"
-                }
-            }
-        })
-
-        /*fetch('https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/2?f=json')
-        .then(res => res.json())
-        .then(json => console.log(json))*/
-
-        const map = new Map({
-            basemap: "satellite",
-            layers: [this.workspacesLayer, this.pipelineLayer, this.valvesLayer, this.citiesLayer, this.multiterminalLayer]
-        })
-
-        this.view = new MapView({
-            container: "viewDiv",
-            map: map,
-            center: [-97, 27.90],
-            zoom: 11.989,
-            highlightOptions: {
-                color: "rgba(115, 223, 255, 0)"
-            },
-            popup: {
-                dockEnabled: false,
-                dockOptions: {
-                    breakpoint: false,
-                    buttonEnabled: false,
-                    position: 'top-center',
-                    autoOpenEnabled: false,
-                    actions: [],
-                    overwriteActions: true,
-                    includeDefaultActions: false
-                }
-            }
-        })
-
-        //variable to use this.view inside functions
-        let tot =this
+        this.createMapAndLayers() //create map and all provided layers
+        let tot = this //variable to use this.view inside functions
 
         //element to compute layer extent and zoom out correctly
         this.zoomViewModel = new ZoomViewModel()
         this.zoomViewModel.view = this.view
 
-        //collapsible element for Legend widget
+        //Legend WIDGET - collapsible element
         var legend = new Expand({
             content: new Legend({
                 view: this.view,
@@ -434,7 +387,7 @@ export default {
         })
         this.view.ui.add(legend, "bottom-left");
 
-        //Search location widget
+        //Search WIDGET
         var search = new Search({ 
             view: this.view, 
             popupTemplate: { 
@@ -444,20 +397,21 @@ export default {
         })
         this.view.ui.add(search, "top-left");
 
-        //add buttons for zooming functions to ovelap the map
+        //Zoom WIDGETS - buttons over map
         this.view.ui.add('measure', "top-left");
         this.view.ui.add("zoomer", "bottom-right");
         this.view.ui.add("zoomout", "bottom-right");
 
         //manually create a popup for every point in map,
         //need to call the Popup({...}) constructor in order to repeat the process,
-        //normally only one popup at time can be opened by the view
+        //usually only one popup at time is opened by the view automatically
         this.view.whenLayerView(this.valvesLayer).then(function (layerView) {
+            //every time layer is refreshed/updated, to re-position popups and re-open them
             layerView.watch("updating", val => { tot.addPopups(layerView, val) })
         })
         
-        //click on Measure widget to activate/reset distance computation
-        //+ button style accordingly
+        //click on Measure WIDGET to activate/reset distance computation
+        //+ style button accordingly
         document.getElementById("distanceButton").addEventListener("click", function() {
             tot.setActiveWidget(null);
             if (!this.classList.contains("active")) {
@@ -514,6 +468,8 @@ export default {
                     document.getElementById("name").innerHTML = name;
                     document.getElementById("category").innerHTML = description;
 
+                    tot.showspalla = true;
+
                     //zoom in to point clicked
                     /*tot.view.goTo({
                         target: new Point({
@@ -532,6 +488,8 @@ export default {
                     document.getElementById("info").style.opacity = "0.2";
                     document.getElementById("info").style.right = "-50%";
                     document.getElementById("info").setAttribute('aria-hidden', true)
+
+                    tot.showspalla = false;
                 }
 
                 //build hidden multiple popups for accessibility features
@@ -552,9 +510,7 @@ export default {
             document.querySelector('.esri-attribution__powered-by').setAttribute('tabindex', '-1')
             //document.querySelector('.esri-attribution__link').setAttribute('tabindex', '-1')
 
-            
             document.querySelector('.esri-view-surface').setAttribute('id', 'contenuto')
-            //document.querySelector('.esri-view-surface').setAttribute('aria-describedby', 'istruzioni')
 
             //map listens to zoom keyboard events 
             document.querySelector('.esri-view-surface').addEventListener('keydown', e => {
@@ -617,24 +573,11 @@ export default {
     opacity: 1;
     visibility: hidden;
     font-size: 16px;
-    transition: all 500ms ease-in-out;
+    transition: all 300ms ease-in-out;
 
     .intro{
         background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .6)), url("../assets/header-bg.jpg")  ;
     }
-       /*
-    &::before {
-        content: '';
-        width: 100%;
-        min-height: calc(190px + 2%);
-        
-        background-size: cover;
-        left: 0;
-        top: 0;
-        position: absolute;
-        z-index: -1;
-    }
-    */
 
     .intro, .intro p {
         color: #fff;
@@ -785,7 +728,6 @@ export default {
     }
 }
 
-
 @media (max-width: 992px) {
 
     .map-wrapper {
@@ -800,10 +742,5 @@ export default {
         position: absolute;
     }
 }
-
-@media (max-width: 480px) {
-
-}
-
 
 </style>
