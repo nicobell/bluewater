@@ -203,6 +203,16 @@
     border-radius: 7px;
     margin-bottom: 10px;
     background-color: #D2E9F7;
+
+    .clicker {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        background-color: transparent;
+    }
+
     .clicker > h2,
     .clicker > .accordion-icon {
         pointer-events: none;

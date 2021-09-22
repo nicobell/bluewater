@@ -45,28 +45,31 @@
             </div>
 
             <div class="content two-col isMobile">
-                <div class="inner-content">
+                <section class="inner-content">
 
-                    <div class="accordion-item"
-                        v-for="(d, index) in content.stepProcess" :key="'accordion'+index">
-                        <div class="clicker" @click="toggle">
-                            <h2>{{index+1}}. {{d.label}}</h2><span class="accordion-icon"></span>
-                        </div>
-                        <div>
-                            <div class="hidden-content">
-                                <p v-html="d.description"></p>
-                                <div v-for="(b, index) in d.body" :key="'element' + index" :class="['body', b.titleClass]">
-                                    <div class="detail">{{ b.detail }}</div>
-                                    <h4 class="title">{{ b.title }}</h4>
-                                    <div v-html="b.description"></div>
-                                    <div v-if="index==2">
-                                        <button class="main-button" id="gotocomments" @click="gotoComments()">Go to Comments</button>
-                                    </div>
-                                </div>
+                    <article v-for="(d, index) in content.stepProcess" :key="'accordion'+index"
+                        class="accordion-item">
+                        <button :id="'accordiontoggler'+index" class="clicker" @click="toggle"
+                            tabindex="0" :aria-controls="'accordioncontent'+index" aria-expanded="false" :aria-labelledby="'accordiontitle'+index">
+                            <h2 :id="'accordiontitle'+index" tabindex="-1">{{index+1}}. {{d.label}}</h2><span class="accordion-icon"></span>
+                        </button>
+                        <div class="hidden-content" :id="'accordioncontent'+index"
+                            role="region" tabindex="0" :aria-labelledby="'internaltitle'+index">
+                            <h3 :id="'internaltitle'+index" tabindex="-1">{{ d.title }}</h3>
+                            <p v-html="d.description"></p>
+                            <div v-for="(b, ii) in d.body" :key="'element' + ii" 
+                                :class="['body', b.titleClass]">
+                                <div class="detail" :id="'detail'+ii" tabindex="-1">{{ b.detail }}</div>
+                                <h4 class="title" :aria-describedby="'detail'+ii">{{ b.title }}</h4>
+                                <div v-html="b.description"></div>
+                            </div>
+                            <div v-if="index==2">
+                                <button class="main-button" id="gotocomments" @click="gotoComments()">Go to Comments</button>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </article>
+    
+                </section>
             </div>
 
             <div>
@@ -110,10 +113,17 @@ export default {
         toggle(e) {
             if(Array.from(e.target.parentNode.classList).includes('active')) {
                 e.target.parentNode.classList.toggle('active')
+                e.target.setAttribute('aria-expanded', false)
             } else {
                 Array.from(document.getElementsByClassName('accordion-item')).forEach(el => {
+                    e.target.setAttribute('aria-expanded', true)
                     el.classList.remove('active')
                 })
+                Array.from(document.getElementsByClassName('clicker')).forEach(el => {
+                    el.setAttribute('aria-expanded', false)
+                })
+
+                e.target.setAttribute('aria-expanded', true)
                 e.target.parentNode.classList.toggle('active')
             }
             

@@ -211,6 +211,17 @@
             },
         },
         mounted() {
+            window.addEventListener("keydown", e => {
+                //console.log(e.keyCode)
+                if(e.keyCode===78) {
+                    document.getElementById('navigazione').focus({preventScroll: true})
+                    this.isActive = true
+                }
+                if(e.keyCode===27) {
+                    this.isActive = false
+                }
+            })
+
             const tabs = document.querySelectorAll('[role="menuitem"]');
             const tabList = document.querySelector('#navigazione');
             let tabFocus = 0;
