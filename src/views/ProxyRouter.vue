@@ -17,8 +17,8 @@ export default {
     'Contacts': () => import('@/views/Contacts'),
     'Location': () => import('@/views/Location')
   },
-   data:()=>{
-    return{
+   data: () => {
+    return {
       componentsRoute: {
         'localization': 'Location',
         'location': 'Location',

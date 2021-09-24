@@ -135,7 +135,6 @@
         },
         watch: {
             route() {
-                console.log(this.route)
                 this.$store.commit('SET_OBSCURE', false);
                 this.showSpalla = false;
             }
