@@ -1,10 +1,15 @@
 <template>
-    <nav ref="menu" :class="[{show: isActive}]" id="navigazione" role="navigation" tabindex="-1" aria-label="navigation menu">
+    <nav ref="menu" :class="[{show: isActive}]" id="navigazione" role="navigation" tabindex="-1" aria-label="main menu">
 
         <div class="btn" @click="isActive = !isActive">
         </div>
 
         <ul @click="isActive = !isActive"  tabindex="-1">
+            <li role="none" aria-hidden>
+                <button class="tohide" id="skipbutton" role="menuitem" tabindex="0" @click="skip()">
+                    skip to main content
+                </button>
+            </li>
 
             <li role="none" aria-hidden>
                 <router-link role="menuitem" tabindex="0"
@@ -188,6 +193,10 @@
             },
         },
         methods: {
+            skip() {
+                console.log(document.getElementById('contenuto'))
+                document.getElementById('contenuto').focus()
+            },
             i18nRoute (lang) {
                 return this.$store.state.data[lang]['route']
             },
@@ -211,6 +220,7 @@
             },
         },
         mounted() {
+            console.log(this.$route)
             window.addEventListener("keydown", e => {
                 //console.log(e.keyCode)
                 if(e.keyCode===78) {
@@ -231,7 +241,7 @@
                 // Move right
                 if (e.keyCode === 40 || e.keyCode === 38) {
                     e.preventDefault()
-                    tabs[tabFocus].setAttribute("tabindex", -1);    
+                    if(tabFocus!=0) tabs[tabFocus].setAttribute("tabindex", -1);
                     if (e.keyCode === 40) {
                         tabFocus++;
                         // If we're at the end, go to the start

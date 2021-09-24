@@ -1,13 +1,14 @@
 <template>
   <div class="template-page intro" >
-    <div >
-      <h1>{{ content.intro.title }}</h1>
+    <section id="contenuto" tabindex="0" aria-labelledby="maintitle">
+      <h1 id="maintitle" tabindex="-1">{{ content.intro.title }}</h1>
       <p>{{ content.intro.description }}</p>
-      <router-link :to="'/' + lang + '/' +'location'"><button class="outline icon-left">
-        {{ content.intro.buttonLabel }}
-      </button>
+      <router-link :to="'/' + lang + '/' +'location'">
+        <button class="outline icon-left">
+          {{ content.intro.buttonLabel }}
+        </button>
       </router-link>
-    </div>
+    </section>
     <router-view></router-view>
   </div>
 </template>
@@ -35,6 +36,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  section {
+    display: block;
+  }
   .intro {
     background: url("../assets/bg-intro.jpg") center no-repeat;
     background-size: cover;
@@ -44,7 +48,7 @@ export default {
     top: 0;
     left: 0;
 
-    &>div{
+    &>div, &>section{
       position: absolute;
       transform: translate3d(-50%,-50%,0);
       left: 50%;
