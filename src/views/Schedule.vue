@@ -110,8 +110,11 @@
                     this.openAcc = index
             },
             backtonav() {
-                console.log(document.getElementById('navigazione'))
+                //console.log(document.getElementById('navigazione'))
+                if(this.showSpalla)
+                    this.toggleSpalla()
                 document.getElementById('navigazione').focus();
+                
             }
         },
         computed: {
