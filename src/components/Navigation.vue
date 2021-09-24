@@ -12,7 +12,7 @@
             </li>
 
             <li role="none" aria-hidden>
-                <router-link id="menuitem1" role="menuitem" tabindex="0"
+                <router-link id="menuitem1" role="menuitem" tabindex="0" @click="console.log('ao2')"
                     aria-labelledby="menulabel1" :aria-current="this.$route.params.pagetitle=='location' ? 'page' : null"
                     :to="{
                         name: 'ProxyRouter',  
@@ -27,7 +27,7 @@
             </li>
             
             <li role="none" aria-hidden>
-                <router-link id="menuitem2" role="menuitem" tabindex="0"
+                <router-link id="menuitem2" role="menuitem" tabindex="0" @click="console.log('ao2')"
                     aria-labelledby="menulabel2" :aria-current="this.$route.params.pagetitle=='project-description' ? 'page' : null"
                     :to="{
                         name: 'ProxyRouter',  
@@ -42,7 +42,7 @@
             </li>
             
             <li role="none">
-                <router-link id="menuitem3" role="menuitem" tabindex="0"
+                <router-link id="menuitem3" role="menuitem" tabindex="0" @click="console.log('ao2')"
                     aria-label="deepwater port act license" :aria-current="this.$route.params.pagetitle=='dwp-act-license' ? 'page' : null"
                     :to="{
                         name: 'ProxyRouter',  
@@ -57,7 +57,7 @@
             </li>
             
             <li role="none">
-                <router-link id="menuitem4" role="menuitem" tabindex="0"
+                <router-link id="menuitem4" role="menuitem" tabindex="0" @click="console.log('ao2')"
                     aria-labelledby="menulabel4" :aria-current="this.$route.params.pagetitle=='nepa-process' ? 'page' : null"
                     :to="{
                         name: 'ProxyRouter',  
@@ -73,7 +73,7 @@
             
             
             <li role="none">
-                <router-link id="menuitem5" role="menuitem" tabindex="0"
+                <router-link id="menuitem5" role="menuitem" tabindex="0" @click="console.log('ao2')"
                     aria-labelledby="menulabel5" :aria-current="this.$route.params.pagetitle=='nepa-process-schedule' ? 'page' : null"
                     :to="{
                         name: 'ProxyRouter',  
@@ -192,6 +192,9 @@
             content () {
               return this.$store.state.data[this.lang]
             },
+            route() {
+                return this.$route
+            }
         },
         methods: {
             skip() {
@@ -267,11 +270,18 @@
                 }
             });
         },
-        updated() {
+        watch: {
+            route() {
+                setTimeout(() => {
+                    document.getElementById('contenuto').focus()    
+                }, 50);
+            }
+        }
+        /*updated() {
             setTimeout(() => {
                 document.getElementById('contenuto').focus()    
             }, 50);
-        }
+        }*/
     }
 </script>
 
