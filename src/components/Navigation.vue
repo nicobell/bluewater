@@ -4,7 +4,7 @@
         <div class="btn" @click="isActive = !isActive">
         </div>
 
-        <ul @click="isActive = !isActive"  tabindex="-1">
+        <ul @click="isActive = !isActive" tabindex="-1">
             <li role="none" aria-hidden>
                 <button class="tohide" id="skipbutton" role="menuitem" tabindex="0" @click="skip()">
                     skip to main content
@@ -12,7 +12,7 @@
             </li>
 
             <li role="none" aria-hidden>
-                <router-link role="menuitem" tabindex="0"
+                <router-link id="menuitem1" role="menuitem" tabindex="0"
                     aria-labelledby="menulabel1" :aria-current="this.$route.params.pagetitle=='location' ? 'page' : null"
                     :to="{
                         name: 'ProxyRouter',  
@@ -27,7 +27,7 @@
             </li>
             
             <li role="none" aria-hidden>
-                <router-link role="menuitem" tabindex="-1"
+                <router-link id="menuitem2" role="menuitem" tabindex="0"
                     aria-labelledby="menulabel2" :aria-current="this.$route.params.pagetitle=='project-description' ? 'page' : null"
                     :to="{
                         name: 'ProxyRouter',  
@@ -42,7 +42,7 @@
             </li>
             
             <li role="none">
-                <router-link role="menuitem" tabindex="-1"
+                <router-link id="menuitem3" role="menuitem" tabindex="0"
                     aria-label="deepwater port act license" :aria-current="this.$route.params.pagetitle=='dwp-act-license' ? 'page' : null"
                     :to="{
                         name: 'ProxyRouter',  
@@ -57,7 +57,7 @@
             </li>
             
             <li role="none">
-                <router-link role="menuitem" tabindex="-1"
+                <router-link id="menuitem4" role="menuitem" tabindex="0"
                     aria-labelledby="menulabel4" :aria-current="this.$route.params.pagetitle=='nepa-process' ? 'page' : null"
                     :to="{
                         name: 'ProxyRouter',  
@@ -73,7 +73,7 @@
             
             
             <li role="none">
-                <router-link role="menuitem" tabindex="-1"
+                <router-link id="menuitem5" role="menuitem" tabindex="0"
                     aria-labelledby="menulabel5" :aria-current="this.$route.params.pagetitle=='nepa-process-schedule' ? 'page' : null"
                     :to="{
                         name: 'ProxyRouter',  
@@ -88,7 +88,7 @@
             </li>
             
             <li role="none">
-                <router-link role="menuitem" tabindex="-1"
+                <router-link id="menuitem6" role="menuitem" tabindex="0"
                     aria-labelledby="menulabel6" :aria-current="this.$route.params.pagetitle=='updates' ? 'page' : null"
                     :to="{
                         name: 'ProxyRouter',
@@ -105,7 +105,7 @@
             <!--<router-link  :to="'/' + lang+ '/' +'contacts'" >-->
             
             <li role="none">
-                <router-link role="menuitem" tabindex="-1"
+                <router-link id="menuitem7" role="menuitem" tabindex="0"
                     aria-labelledby="menulabel7" :aria-current="this.$route.params.pagetitle=='comments' ? 'page' : null"
                     :to="{
                         name: 'ProxyRouter',  
@@ -120,7 +120,7 @@
             </li>
             
             <li role="none">
-                <router-link role="menuitem" tabindex="-1"
+                <router-link id="menuitem8" role="menuitem" tabindex="0"
                 aria-labelledby="menulabel8" :aria-current="this.$route.params.pagetitle=='contacts' ? 'page' : null"
                 :to="{
                     name: 'ProxyRouter',  
@@ -160,6 +160,7 @@
         data() {
             return {
                 isActive: null,
+                tabFocus: 0,
                 componentsRoute: {
                     "en": {
                         "location": "localization",
@@ -234,32 +235,35 @@
 
             const tabs = document.querySelectorAll('[role="menuitem"]');
             const tabList = document.querySelector('#navigazione');
-            let tabFocus = 0;
 
             tabList.addEventListener("keydown", e => {
-                
+                //console.log(document.activeElement.getAttribute('id'))
+                this.tabFocus = (document.activeElement.getAttribute('id')=='navigazione' 
+                    || document.activeElement.getAttribute('id')=='skipbutton') ? 
+                    0 : document.activeElement.getAttribute('id')[8]
                 // Move right
                 if (e.keyCode === 40 || e.keyCode === 38) {
                     e.preventDefault()
-                    if(tabFocus!=0) tabs[tabFocus].setAttribute("tabindex", -1);
+                    //if(this.tabFocus!=0) tabs[this.tabFocus].setAttribute("tabindex", -1);
                     if (e.keyCode === 40) {
-                        tabFocus++;
+                        this.tabFocus++;
                         // If we're at the end, go to the start
-                        if (tabFocus >= tabs.length) {
-                        tabFocus = 0;
+                        if (this.tabFocus >= tabs.length) {
+                            this.tabFocus = 1;
                         }
                         // Move left
                     } else if (e.keyCode === 38) {
                         e.preventDefault()
-                        tabFocus--;
+                        this.tabFocus--;
                         // If we're at the start, move to the end
-                        if (tabFocus < 0) {
-                        tabFocus = tabs.length - 1;
+                        if (this.tabFocus < 1) {
+                            this.tabFocus = tabs.length;
                         }
                     }
 
-                    tabs[tabFocus].setAttribute("tabindex", 0);
-                    tabs[tabFocus].focus({preventScroll: true});
+                    //document.getElementById('menuitem'+this.tabFocus).focus({preventScroll: true});
+                    //tabs[this.tabFocus].setAttribute("tabindex", 0);
+                    tabs[this.tabFocus].focus({preventScroll: true});
                 }
             });
         },
