@@ -28,7 +28,7 @@
         
         <div :class="['spalla', {open: showSpalla}]" id="spalla">
             <div class="button-container">
-                <button id="close-spalla" @click="toggleSpalla" tabindex="-1" aria-label="toggle view more section"></button>
+                <button id="close-spalla" @click="toggleSpalla" tabindex="-1" aria-label="close view more section"></button>
             </div>
             <div :class="{'accordions': true, 'space': openAcc==0}">
                 <article :class="{'open': openAcc==index, 'closed': openAcc!=index, 'text-container': true}"

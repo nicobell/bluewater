@@ -264,7 +264,9 @@
             });
         },
         updated() {
-            console.log(this.$route)
+            setTimeout(() => {
+                document.getElementById('contenuto').focus()    
+            }, 50);
         }
     }
 </script>

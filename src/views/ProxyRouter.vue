@@ -49,12 +49,12 @@ export default {
     console.log('FIRE')
 	},
   updated() {
-    setTimeout(() => {
+    /*setTimeout(() => {
       if(document.getElementById('contenuto'))
         document.getElementById('contenuto').focus({
           preventScroll: true
         });    
-    }, 50);
+    }, 50);*/
   }
 }
 </script>

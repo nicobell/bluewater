@@ -1,5 +1,5 @@
 <template>
-    <main role="main" class="template-page intro" aria-describedby="istruzioni">
+    <main role="main" class="template-page intro" aria-label="map panel" aria-describedby="istruzioni">
         <p class="tohide" tabindex="-1" id="istruzioni">use arrows to navigate, plus and minus to change zoom, press 'M' to focus map, measure distance widget not available for keyboard, press 'N' to return to navigation</p>
 
         <div class="intro-header"></div>
@@ -33,6 +33,10 @@
 
             <button id="zoomout" @click="zoomOut()" class="esri-icon-zoom-out-fixed" aria-label="reset zoom"></button>
         </div>
+
+        <button class="tohide" id="back-to-nav" @click="backtonav()" tabindex="0" aria-label="back to navbar">
+            back navbar
+        </button>
 
     </main>
 </template>
@@ -75,6 +79,9 @@ export default {
         },
     },
     methods: {
+        backtonav() {
+            document.getElementById('navigazione').focus();
+        },
         zoomplus() {
             this.zoomViewModel.zoomIn();
         },

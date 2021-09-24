@@ -16,7 +16,7 @@
                         <button v-for="(d, index) in content.stepProcess" :key="'label'+index"
                             :class="{'item-menu': true, 'active-section': isActive==index+1}" :id="'btn'+(index+1)"
                             @click="openSection(index+1)"
-                            role="tab" :aria-controls="'section' + (index+1)">
+                            role="tab" tabindex="0" :aria-controls="'section' + (index+1)">
                                 <span class="num"> 0{{index+1}} </span>
                                 <span >{{d.label}}</span>
                         </button>
@@ -92,11 +92,12 @@ export default {
     },
     data: () => {
         return{
-            isActive: 1
+            isActive: 1,
+            tabFocus: -1
         }
     },
     methods:{
-         backtonav() {
+        backtonav() {
             document.getElementById('navigazione').focus();
         },
         backtomenu() {
@@ -106,9 +107,8 @@ export default {
             this.isActive = id
             this.changeTabs(event)
             setTimeout(() => {
-                document.getElementById('btn'+id).setAttribute('tabindex', '-1')
-                document.querySelectorAll('[role=tab]').forEach(tt => tt.setAttribute('tabindex', -1))
-            }, 100);
+                document.getElementById('section'+id).focus();
+            }, 50);
         },
         toggle(e) {
             if(Array.from(e.target.parentNode.classList).includes('active')) {
@@ -135,37 +135,15 @@ export default {
         },
         changeTabs(event) {
             const target = event.target;
-            
             const parent = target.parentNode;
-            const grandparent = parent.parentNode;
+            //const grandparent = parent.parentNode;
 
             // Remove all current selected tabs
-            parent
-                .querySelectorAll('[aria-selected="true"]')
+            parent.querySelectorAll('[aria-selected="true"]')
                 .forEach(t => t.setAttribute("aria-selected", false));
 
             // Set this tab as selected
             target.setAttribute("aria-selected", true);
-
-            // Hide all tab panels
-            grandparent
-                .querySelectorAll('[role="tabpanel"]')
-                .forEach(p => p.setAttribute("hidden", true));
-
-            // Show the selected panel
-            /*setTimeout(() => {
-                grandparent.parentNode
-                    .querySelector(`#${target.getAttribute("aria-controls")}`)
-                    .removeAttribute("hidden");
-
-                    grandparent.parentNode
-                    .querySelector(`#${target.getAttribute("aria-controls")}`)
-                    .focus({preventScroll: true});
-            }, 100);*/
-
-            const tabs = document.querySelectorAll('[role="tab"]');
-            tabs.forEach(tab => tab.setAttribute("tabindex", -1))
-            
         }
     },
     computed: {
@@ -184,42 +162,33 @@ export default {
         }
     },
     mounted() {
-        //console.log('visiting ' + this.$route.name)
-        this.$store.commit('SET_LASTPAGE', this.$route.name)
+       this.$store.commit('SET_LASTPAGE', this.$route.name)
+
         const tabs = document.querySelectorAll('[role="tab"]');
         const tabList = document.querySelector('[role="tablist"]');
 
-        // Add a click event handler to each tab
-        /*tabs.forEach(tab => {
-            tab.addEventListener("click", this.changeTabs);
-        });*/
-
-        // Enable arrow navigation between tabs in the tab list
-        let tabFocus = -1;
-        //console.log(tabs)
-
         tabList.addEventListener("keydown", e => {
+            this.tabFocus = document.activeElement.getAttribute('id')=='menu' ? 0 : document.activeElement.getAttribute('id')[3]
             // Move right
             if (e.keyCode === 40 || e.keyCode === 38) {
                 e.preventDefault()
                 if (e.keyCode === 40) {
-                    tabFocus++;
+                    this.tabFocus++;
                     // If we're at the end, go to the start
-                    if (tabFocus >= tabs.length) {
-                        tabFocus = 0;
+                    if (this.tabFocus >= tabs.length) {
+                        this.tabFocus = 1;
                     }
                     // Move left
                 } else if (e.keyCode === 38) {
-                    tabFocus--;
+                    this.tabFocus--;
                     // If we're at the start, move to the end
-                    if (tabFocus < 0) {
-                    tabFocus = tabs.length - 1;
+                    if (this.tabFocus < 1) {
+                        this.tabFocus = tabs.length;
                     }
                 }
-
-                tabs[tabFocus].setAttribute("tabindex", -1);
-                tabs[tabFocus].focus({preventScroll: true});
             }
+
+            document.getElementById('btn'+this.tabFocus).focus({preventScroll: true});
         });
     },
     watch: {
