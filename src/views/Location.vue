@@ -213,7 +213,7 @@ export default {
             })
 
             this.valvesLayer = new FeatureLayer({
-                url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWaterData_update_20210726/FeatureServer/2",
+                url: "https://services1.arcgis.com/HGtSnUkjNnIpVEaA/arcgis/rest/services/BlueWater_Update_locations_espanol_20210928/FeatureServer/0",
                 outFields: ["*"],
                 labelingInfo: {
                     labelExpression: "["+this.lang+"_title]",

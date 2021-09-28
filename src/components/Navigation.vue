@@ -200,7 +200,7 @@
             skip() {
                 //console.log(document.getElementById('contenuto'))
                 setTimeout(() => {
-                    document.getElementById('contenuto').focus()    
+                    document.getElementById('contenuto').focus({preventScroll: true})    
                 }, 100);
             },
             i18nRoute (lang) {
@@ -287,7 +287,7 @@
         watch: {
             route() {
                 setTimeout(() => {
-                    document.getElementById('contenuto').focus()    
+                    document.getElementById('contenuto').focus({preventScroll: true})    
                 }, 100);
             }
         }

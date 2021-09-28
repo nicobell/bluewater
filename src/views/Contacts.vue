@@ -59,19 +59,6 @@ export default {
     mounted() {
         //console.log('visiting ' + this.$route.name)
         this.$store.commit('SET_LASTPAGE', this.$route.name)
-
-        if(this.lang=='es')
-            this.$route.params.pagetitle = 'contactos'
-        else if(this.lang=='en')
-            this.$route.params.pagetitle = 'contacts'
-    },
-    watch: {
-        lang()  {
-            if(this.lang=='en')
-                this.$route.params.pagetitle = 'contacts'
-            else if(this.lang=='es')
-                this.$route.params.pagetitle = 'contactos'
-        }
     }
 }
 </script>

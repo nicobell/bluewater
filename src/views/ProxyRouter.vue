@@ -1,6 +1,6 @@
 <template>
   <keep-alive>
-    <component v-bind:is="myComponent"></component>
+    <component v-bind:is="myComponent" :key="this.$route.params.fullPath"></component>
   </keep-alive>
 </template>
 <script>
@@ -40,6 +40,9 @@ export default {
     }
   },
   computed: {
+    lang() {
+      return this.$store.state.lang
+    },
     myComponent () {
       return this.componentsRoute[this.$route.params.pagetitle]
     },

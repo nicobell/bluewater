@@ -1,10 +1,11 @@
 //COLUMN TEMPLATE
 .inner-content-left {
     min-width: 240px;
+    width: 30%;
 }
 .inner-content-right {
     border-left: 1px solid #70707036;
-    max-width: 55%;
+    width: 70%;
 }
 
 //BODY ITEMS & SPECIAL TEMPLATES
@@ -166,11 +167,12 @@
             border: 2px solid #175b8f00;
         }
     }
-    h2 {
+    span:last-child {
         color: #9AABD1;
         font-size: 1.125rem;
         font-weight: 400;
-        margin: 10px 20px ;
+        margin: 10px 20px;
+        text-align: left;
     }
     .num {
         transition: 0.3s ease;
@@ -192,7 +194,7 @@
         background-color: #175B8F;
         color: #fff;
     }
-    h2 {
+    span:last-child {
         color: #175B8F;
     }
 }

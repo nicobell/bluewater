@@ -90,7 +90,7 @@ export default {
          return '--depth: ' + (this.lang=='es' ? '"PROFUNDIDAD"' : '"DEPTHS"') + ';'
       },
       locationlabel() {
-         return '--location: ' + (this.lang=='es' ? '"UBICATIÓN"' : '"LOCATION"') + ';'
+         return '--location: ' + (this.lang=='es' ? '"UBICACIÓN"' : '"LOCATION"') + ';'
       },
       loadinglabel() {
          return '--loading: ' + (this.lang=='es' ? '"TASAS DE CARGA"' : '"LOADING RATES"' ) + ';'

@@ -430,7 +430,7 @@
     },
     "es":{
         "route": {
-            "location": "ubication",
+            "location": "ubicacion",
             "project-description": "descripcion-de-proyecto",
             "nepa-process-schedule": "calendario-proceso-nepa",
             "nepa-process": "proceso-nepa",
@@ -445,7 +445,7 @@
             "publicMeetingButton":"Register Now"
         },
         "menu": {
-            "menuLabel1":"Ubicatión",
+            "menuLabel1":"Ubicación",
             "menuLabel2":"Descripciòn del proyecto",
             "menuLabel3":"Proceso NEPA",
             "menuLabel4":"Acta y Licencia DWP",
@@ -460,7 +460,7 @@
             "buttonLabel":"Ir al Sitio Web"
         },
         "projectDescription":{
-            "title": "Descriptión del Proyecto",
+            "title": "Descripción del Proyecto",
             "description": "<p>Bluewater propone construir, poseer, operar y eventualmente desmantelar un puerto de aguas profundas (DWP), infraestructura de ductos asociados e instalaciones ubicadas dentro de los condados de Aransas, Nueces y San Patricio, Texas. El Proyecto propuesto implica el diseño, la ingeniería y la construcción de un DWP y aproximadamente 56.18 millas terrestres de infraestructura de tuberías. La instalación de Harbour Island de 12 acres, ubicada en Harbour Island en el condado de Nueces, consistiría en trampas de recibo y despacho, medidores y válvulas, edificio de operaciones e instalación de comunicaciones, sin almacenamiento de petróleo crudo en el sitio.</p><p>El DWP Bluewater permitiría la carga de dos (2) trasportadores de petróleo crudo muy grandes (VLC) en el DWP propuesto a través de dos sistemas de boyas de amarre de un solo punto (SPM) y se conectaría con el DWP a través de mangueras flotantes de conexión de petróleo crudo. El Proyecto propuesto sería capaz de cargar a velocidades de hasta aproximadamente 80,000 barriles por hora (bph). Se espera que el Proyecto propuesto preste servicio a 16 VLCC por mes.</p>",
             "data": {
                 "mooringPointd": 2,
@@ -806,35 +806,35 @@
             ]
         },
         "contacts": {
-            "title":"Contacts",
+            "title":"Contactos",
             "sections": [
                 {
-                    "title": "Federal Docket Management Facilities",
+                    "title": "INSTALACIONES DE ADMINISTRACIÓN DE DOCKET FEDERAL",
                     "subtitle": "",
                     "body": [
                         {
-                            "title": "Telephone Number",
+                            "title": "Número de Teléfono",
                             "content": "202–372–1451<br>202–372–1451"
                         }, {
-                            "title": "Fax Number",
+                            "title": "Número de Fax",
                             "content": "202–372–1451"
                         }, {
-                            "title": "Website",
+                            "title": "Sitio Web",
                             "content": "http://www.regulations.gov"
                         }, {
-                            "title": "Docket Number",
+                            "title": "Número de Expediente",
                             "content": "MARAD-2019-0094"
                         }
                     ]
                 }, {
-                    "title": "U.S. Coast Guard",
+                    "title": "Guardia Costera de EE.UU.",
                     "subtitle": "Mr. Roddy Bachman, USCG",
                     "body": [
                         {
-                            "title": "Telephone Number",
+                            "title": "Número de Teléfono",
                             "content": "202–372–1451"
                         }, {
-                            "title": "Email",
+                            "title": "Correo Electrónico",
                             "content": "Roddy.C.Bachman@uscg.mil"
                         }
                     ]
@@ -843,10 +843,10 @@
                     "subtitle": "Carlos I. Perez-Perez",
                     "body": [
                         {
-                            "title": "Telephone Number",
+                            "title": "Número de Teléfono",
                             "content": "202-366-7094"
                         }, {
-                            "title": "Email",
+                            "title": "Correo Electrónico",
                             "content": "c.perezperez@dot.gov"
                         }
                     ]
