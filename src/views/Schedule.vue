@@ -19,7 +19,7 @@
 
                     <div class="image-container" tabindex="0">
                         <img :src="sourceimage" alt="schedule image" aria-describedby="hiddendescription">
-                        <article class="tohide" id="hiddendescription" aria-label="hidden description" tabindex="-1">
+                        <article class="tohide" id="hiddendescription" tabindex="-1">
                             {{ content.imageDescription }}
                         </article>
                     </div>
@@ -50,7 +50,7 @@
 
         <div>
             <button class="tohide" id="back-to-nav" @click="backtonav()" tabindex="0" aria-label="back to navbar">
-                back navbar
+                back to navbar
             </button>
         </div>
 
@@ -367,4 +367,17 @@ button.view-more {
         }
     }
   }
+
+@media (max-width: 480px) {
+    .button-container {
+        position: relative;
+        button {
+            position: fixed;
+            transform: translate(0, 0);
+        }
+    }
+    .spalla .accordions {
+        padding-top: 80px;
+    }
+}
 </style>

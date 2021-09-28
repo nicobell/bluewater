@@ -23,7 +23,7 @@
             
             <div>
                 <button class="tohide" id="back-to-nav" @click="backtonav()" tabindex="0" aria-label="back to navbar">
-                    back navbar
+                    back to navbar
                 </button>
             </div>
 

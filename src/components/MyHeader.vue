@@ -2,7 +2,7 @@
   <header role="banner">
     <div class="container">
       <div class="loghi">
-        <router-link :to="`/${this.lang}`"><img src="../assets/logo-ma.svg" width="270" height="37" alt="maritime administration logo"></router-link>
+        <router-link :to="`/${this.lang}`"><img src="../assets/logo-ma.png" width="270" height="37" alt="maritime administration logo"></router-link>
         <img src="../assets/logo-uscg.png" width="43" height="41" alt="u.s. coastal guard logo">
       </div>
       <aside :class="['meeting-banner', this.$route.name.toLowerCase()]">

@@ -18,7 +18,7 @@
                         name: 'ProxyRouter',  
                         params: { 
                             lang: this.lang, 
-                            tabtitle: 'Location',
+                            tabtitle: (this.lang=='es' ? 'Ubicacion' : 'Location') ,
                             pagetitle: (this.lang=='es' ? 'ubicacion' : 'location') 
                         }
                     }">
@@ -33,7 +33,7 @@
                         name: 'ProxyRouter',  
                         params: { 
                             lang: this.lang, 
-                            tabtitle: 'Project Description',
+                            tabtitle: (this.lang=='es' ? 'Descripcion del Proyecto' : 'Project Description') ,
                             pagetitle: (this.lang=='es' ? 'descripcion-de-proyecto' : 'project-description') 
                         }
                     }">
@@ -48,7 +48,7 @@
                         name: 'ProxyRouter',  
                         params: { 
                             lang: this.lang, 
-                            tabtitle: 'DWP PA License',
+                            tabtitle: (this.lang=='es' ? 'Acta y Licencia DWP' : 'DWP Act & License'),
                             pagetitle: (this.lang=='es' ? 'acta-licencia-dwp' : 'dwp-act-license') 
                         }
                     }">
@@ -63,7 +63,7 @@
                         name: 'ProxyRouter',  
                         params: { 
                             lang: this.lang, 
-                            tabtitle: 'NEPA Process',
+                            tabtitle: (this.lang=='es' ? 'Proceso NEPA' : 'NEPA Process'),
                             pagetitle: (this.lang=='es' ? 'proceso-nepa' : 'nepa-process') 
                         }
                     }">
@@ -79,7 +79,7 @@
                         name: 'ProxyRouter',  
                         params: { 
                             lang: this.lang, 
-                            tabtitle: 'Schedule',
+                            tabtitle: (this.lang=='es' ? 'Calendario' : 'Schedule') ,
                             pagetitle: (this.lang=='es' ? 'calendario-proceso-nepa' : 'nepa-process-schedule') 
                         }
                     }">
@@ -94,8 +94,8 @@
                         name: 'ProxyRouter',
                         params: { 
                             lang: this.lang, 
-                            tabtitle: 'Updates',
-                            pagetitle: (this.lang=='es' ? 'actulizationes' : 'updates') 
+                            tabtitle: (this.lang=='es' ? 'Actualizationes' : 'Updates'),
+                            pagetitle: (this.lang=='es' ? 'actualizationes' : 'updates') 
                         }
                     }">
                         <span class="icon updates"></span><span id="menulabel6" class="label">{{content.menu.menuLabel6}}</span>
@@ -111,7 +111,7 @@
                         name: 'ProxyRouter',  
                         params: { 
                             lang: this.lang, 
-                            tabtitle: 'Comments',
+                            tabtitle: (this.lang=='es' ? 'Comentarios' : 'Comments') ,
                             pagetitle: (this.lang=='es' ? 'comentarios' : 'comments') 
                         }
                     }">
@@ -126,7 +126,7 @@
                     name: 'ProxyRouter',  
                     params: { 
                         lang: this.lang, 
-                        tabtitle: 'Contacts',
+                        tabtitle: (this.lang=='es' ? 'Contactos' : 'Contacts') ,
                         pagetitle: (this.lang=='es' ? 'contactos' : 'contacts') 
                     }
                 }">
@@ -135,15 +135,15 @@
             </li>
             
 
-            <div role="menuitem" class="lang-switch" id="menuitem9" tabindex="0" aria-label="change language">
+            <div role="menuitem" class="lang-switch" id="menuitem9" tabindex="-1" aria-label="change language">
                 <p>
-                    <button id="lang1" aria-label="translate in español" tabindex="0"
+                    <button id="lang1" aria-label="change language to spanish" tabindex="0"
                     @click="changeLang('es')"
                     :class="[this.$route.params.lang == 'es' ? 'active' : '', 'language']"
                     >
                         Es
                     </button> /
-                    <button id="lang2" aria-label="translate in english" tabindex="0"
+                    <button id="lang2" aria-label="change language to english" tabindex="0"
                     @click="changeLang('en')"
                     :class="[this.$route.params.lang == 'en' ? 'active' : '', 'language']"
                     >
@@ -170,7 +170,7 @@
                         "nepa-process-schedule": "calendario-proceso-nepa",
                         "nepa-process": "proceso-nepa",
                         "dwp-act-license": "acta-licencia-dwp",
-                        "updates": "actulizationes",
+                        "updates": "actualizationes",
                         "comments": "comentarios",
                         "contacts": "contactos",
                     },
@@ -180,7 +180,7 @@
                         "calendario-proceso-nepa": "nepa-process-schedule",
                         "proceso-nepa": "nepa-process",
                         "acta-licencia-dwp" : "dwp-act-license",
-                        "actulizationes": "updates",
+                        "actualizationes": "updates",
                         "comentarios": "comments",
                         "contactos": "contacts",
                     },
@@ -228,7 +228,7 @@
             },
         },
         mounted() {
-            console.log(this.$route)
+            //console.log(this.$route)
             window.addEventListener("keydown", e => {
                 //console.log(e.keyCode)
                 if(e.keyCode===78) {
@@ -242,7 +242,9 @@
 
             const tabs = document.querySelectorAll('[role="menuitem"]');
             tabs.forEach(t => t.addEventListener('click', () => {
-                document.getElementById('contenuto').focus({preventScroll: true})
+                setTimeout(() => {
+                    document.getElementById('contenuto').focus({preventScroll: true})    
+                }, 200);
             }))
             const tabList = document.querySelector('#navigazione');
 
@@ -294,7 +296,7 @@
             route() {
                 setTimeout(() => {
                     document.getElementById('contenuto').focus({preventScroll: true})    
-                }, 100);
+                }, 200);
             }
         }
         /*updated() {
@@ -569,6 +571,10 @@ nav {
 @media (max-width: 480px) {
     nav .label {
         padding: 14px 0px 14px 0px;
+    }
+
+    nav ul {
+        margin-top: 40px;
     }
 
     nav li .icon {

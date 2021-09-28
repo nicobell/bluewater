@@ -6,7 +6,7 @@
 
         <div :class="['main-content', 'map-wrapper', 'lang-'+this.lang]" tabindex="-1" >
 
-            <div id="loader" class="loader"><p>Loading . . .</p></div>
+            <div id="loader" class="loader"><p>{{ this.lang=='es' ? 'Cargando . . .' : 'Loading . . .' }}</p></div>
 
             <div id="viewDiv" tabindex="-1"></div>
 
@@ -34,8 +34,11 @@
             <button id="zoomout" @click="zoomOut()" class="esri-icon-zoom-out-fixed" aria-label="reset zoom"></button>
         </div>
 
+        <button class="tohide" id="back-to-nav" @click="backtomap()" tabindex="0" aria-label="back to navbar">
+            back to map
+        </button>
         <button class="tohide" id="back-to-nav" @click="backtonav()" tabindex="0" aria-label="back to navbar">
-            back navbar
+            back to navbar
         </button>
 
     </main>
@@ -81,6 +84,18 @@ export default {
     methods: {
         backtonav() {
             document.getElementById('navigazione').focus();
+        },
+        backtopmap() {
+            if(this.showspalla) {
+                document.getElementById("info").style.visibility = "hidden";
+                document.getElementById("info").style.opacity = "0.2";
+                document.getElementById("info").style.right = "-50%";
+                document.getElementById("info").setAttribute('aria-hidden', true)
+                document.getElementById("category").setAttribute('tabindex', '-1')
+                document.getElementById(this.lastbutton).children[0].children[0].children[0].click()
+                this.showspalla = false
+            }
+            document.querySelector('.esri-view-surface').focus();
         },
         zoomplus() {
             this.zoomViewModel.zoomIn();

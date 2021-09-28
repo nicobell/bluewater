@@ -97,7 +97,7 @@ export default {
   @media (max-width: 992px) { 
     .intro {
       padding-bottom: 100px;
-      &>div {
+      &>section {
         padding: 0 3rem;
         width: calc(100% - 6rem);
         h1 {
@@ -111,7 +111,7 @@ export default {
     }
   }
   @media (max-width: 480px) { 
-    .intro > div {
+    .intro > section {
         padding: 0 1rem;
         width: calc(100% - 2rem);
     }
