@@ -45,7 +45,8 @@
                 "carriersMonths": 16,
                 "loadingRates": 80,
                 "simultaneousOperations": 40
-            }
+            },
+            "hiddenDescription": "<li>Two single point mooring buoy systems.</li><li>Depths of 88 to 90 feet, location 15 nautical miles off the coast of San Jose Island.</li><li>56.48 miles of two 30-inch outside diameter crude oil pipelines, onshore, inshore and offshore.</li><li>The Harbor Island Facility occupies 12 acres.</li><li>16 very large crude carriers a month with loading rates of 80 bph and 40 bph for simultaneous operations.</li>"
 
         },
         "nepaProcess":{
@@ -302,7 +303,8 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "imageDescription": "an infographic image describing the statutory timeline of the deepwater port act and nepa process"
         },
         "updates": {
             "title":"Updates",
@@ -356,6 +358,11 @@
                     "label": "go to draft eis website"
                 }
             ],
+            "needhelp": {
+                "title": "Need help, contact us.",
+                "telephoneLabel": "Telephone Number",
+                "telephoneNumber": "no number yet"
+            },
             "alertMessage":"Scoping Comments must be submitted by <span>July 8, 2021.</span>",
             "secondTitle": "Public comments may be provided by:",
             "sidebarTitle":"Useful Documents",
@@ -448,7 +455,7 @@
             "menuLabel8":"Contactos"
         },
         "intro":{
-            "title":"Terminal de Bluewater Texas <br> Proyecto del Puerto de Aguas Profundas",
+            "title":"Terminal de Bluewater Texas, Proyecto del Puerto de Aguas Profundas",
             "description": "El propósito de este sitio es informar a las partes interesadas sobre el proyecto y brindar al público la oportunidad de enviar comentarios por escrito.",
             "buttonLabel":"Ir al Sitio Web"
         },
@@ -460,13 +467,14 @@
                 "depths": "88-90",
                 "location": 15,
                 "miles": 56.48,
-                "milesDescription": "Dos oleoductos de petróleo crudo de 30 pulgadas de diámetro exterio",
-                "milesLabels": ["En tierra", "Costa afuera"],
+                "milesDescription": "Dos oleoductos de petróleo crudo de 30 pulgadas de diámetro exterior",
+                "milesLabels": ["En tierra", "Costera", "Costa afuera"],
                 "harborFacility": 12,
                 "carriersMonths": 16,
                 "loadingRates": 80,
                 "simultaneousOperations": 40
-            }
+            },
+            "hiddenDescription": "<li>Dos sistemas de boyas de amarre de un solo punto.</li><li>Profundidad 88-90 pies, ubicación a 15 nm de la costa de la isla de San José.</li><li>56.48 millas en dos oleoductos de petróleo crudo de 30 pulgadas de diámetro exterior, en tierra, costera y costa afuera.</li><li>12 acres de instalaciones de Harbour Island.</li><li>16 transportistas de petróleo crudo muy grandes per mes, con tasas de carga 80 bph y 40 bph por operaciones simultáneas.</li>"
 
         },
         "nepaProcess":{
@@ -723,7 +731,8 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "imageDescription": "una imagen infográfica que describe el cronograma legal de la ley de puertos de aguas profundas y el proceso de nepa"
         },
         "updates": {
             "title":"Updates",
@@ -775,6 +784,11 @@
                     "link": "http://regulations.gov"
                 }
             ],
+            "needhelp": {
+                "title": "Necesitas ayuda, contáctanos.",
+                "telephoneLabel": "Número de teléfono",
+                "telephoneNumber": "todavía no hay número"
+            },
             "alertMessage": "Los comentarios públicos sobre el DEIS deben enviarse antes del <span>8 de julio del 2021</span>.",
             "secondTitle": "Los comentarios públicos pueden ser proporcionados por estos medios:",
             "sidebarTitle": "Documentos útiles",

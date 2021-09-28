@@ -15,31 +15,25 @@
             <div class="inner-content-right" style="position: relative;">
                <section class="tohide" tabindex="0" aria-hidden="false" aria-labelledby="gather">
                   <h2 id="gather">Gathered Data</h2>
-                  <ul tabindex="0" aria-hidden="false">
-                     <li>Two single point mooring buoy systems.</li>
-                     <li>Depths of 88 to 90 feet, location 15 nautical miles off the coast of San Jose Island.</li>
-                     <li>56.48 miles of two 30-inch outside diameter crude oil pipelines, onshore, inshore and offshore.</li>
-                     <li>The Harbor Island Facility occupies 12 acres.</li>
-                     <li>very large crude carriers with loading rates of 80 bph and 40 bph for simultaneous operations.</li>
-                  </ul>
+                  <ul tabindex="0" aria-hidden="false" v-html="content.hiddenDescription"></ul>
                </section>
 
                <section class="data" aria-hidden="true">
                   <div class="section-1">
                      <img src="../assets/mooring-point.svg" alt="mooring point logo">
                      <div class="num"><span>{{ content.data.mooringPointd }}</span></div>
-                     <h3>SINGLE POINT MOORING BUOY SYSTEMS</h3>
+                     <h3>{{ this.lang=='es' ? 'SISTEMAS DE BOYAS DE AMARRE DE UN SOLO PUNTO' : 'SINGLE POINT MOORING BUOY SYSTEMS' }}</h3>
                   </div>
                   <div class="section-2">
-                     <div class="depths"><span class="small">{{ content.data.depths }}</span>ft.</div>
-                     <div class="location">
+                     <div class="depths" :style="depthlabel"><span class="small">{{ content.data.depths }}</span>ft.</div>
+                     <div class="location" :style="locationlabel">
                         <span class="small">{{ content.data.location }}</span>
-                        <div>nm off the coast of San Jose Island</div>
+                        <div>{{ this.lang=='es' ? 'nm de la costa de la isla de San José' : 'nm off the coast of San Jose Island' }}</div>
                      </div>
                   </div>
                   <div class="section-3">
                      <div class="main">
-                        <div><span>{{ content.data.miles }}</span>miles</div>
+                        <div><span>{{ content.data.miles }}</span>{{ this.lang=='es' ? 'millas' : 'miles' }}</div>
                         <h3>{{ content.data.milesDescription }}</h3>
                      </div>
                      <div class="labels">
@@ -50,18 +44,18 @@
                   </div>
                   <div class="section-4">
                      <div class="acres"><span class="small">{{ content.data.harborFacility }}</span><div>acres</div></div>
-                     <h4>Harbor Island Facility</h4>
+                     <h4>{{this.lang=='es' ? 'de instalaciones de Harbour Island' : 'of Harbor Island Facility' }}</h4>
                   </div>
                   <div class="section-1">
                      <img src="../assets/carry.svg" alt="carry logo">
                      <div class="num"><span>{{ content.data.carriersMonths }}</span></div>
-                     <h3>VERY LARGE CRUDE CARRIERS</h3>
+                     <h3>{{ this.lang=='es' ? 'TRANSPORTISTAS DE PETRÓLEO CRUDO MUY GRANDES' : 'VERY LARGE CRUDE CARRIERS' }}</h3>
                   </div>
                   <div class="section-2">
-                     <div class="loading"><span class="small">{{ content.data.loadingRates }}</span>bph</div>
+                     <div class="loading" :style="loadinglabel"><span class="small">{{ content.data.loadingRates }}</span>bph</div>
                      <div class="operations"><span class="small">{{ content.data.simultaneousOperations }}</span>
                         <div>bph</div>
-                        <h4>Simultaneous Operations</h4>
+                        <h4>{{ this.lang=='es' ? 'Operaciones Simultáneas' : 'Simultaneous Operations' }}</h4>
                      </div>
                   </div>
                </section>
@@ -89,9 +83,18 @@ export default {
          return this.$store.state.lang
       },
       content () {
-         //console.log(this.$store.state.data[this.lang].projectDescription)
+         console.log(this.$store.state.data[this.lang].projectDescription)
          return this.$store.state.data[this.lang].projectDescription
       },
+      depthlabel() {
+         return '--depth: ' + (this.lang=='es' ? '"PROFUNDIDAD"' : '"DEPTHS"') + ';'
+      },
+      locationlabel() {
+         return '--location: ' + (this.lang=='es' ? '"UBICATIÓN"' : '"LOCATION"') + ';'
+      },
+      loadinglabel() {
+         return '--loading: ' + (this.lang=='es' ? '"TASAS DE CARGA"' : '"LOADING RATES"' ) + ';'
+      }
    },
    methods: {
       backtonav() {
@@ -225,7 +228,7 @@ export default {
       }
 
       .location::before {
-         content: 'LOCATION';
+         content: var(--location);
          font-size: .8rem;
          position: absolute;
          color: #98C3E1;
@@ -233,7 +236,7 @@ export default {
          top: -1.1em;
       }
       .depths::before {
-         content: 'DEPTHS';
+         content: var(--depth);
          font-size: .8rem;
          position: absolute;
          color: #98C3E1;
@@ -241,7 +244,7 @@ export default {
          top: -1.1em;
       }
       .loading::before {
-         content: 'LOADING RATES';
+         content: var(--loading);
          font-size: .8rem;
          width: 200px;
          position: absolute;

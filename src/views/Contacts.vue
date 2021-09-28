@@ -66,12 +66,12 @@ export default {
             this.$route.params.pagetitle = 'contacts'
     },
     watch: {
-        /*lang()  {
+        lang()  {
             if(this.lang=='en')
                 this.$route.params.pagetitle = 'contacts'
             else if(this.lang=='es')
                 this.$route.params.pagetitle = 'contactos'
-        }*/
+        }
     }
 }
 </script>

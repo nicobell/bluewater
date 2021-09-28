@@ -135,22 +135,22 @@
             </li>
             
         </ul>
-        <!--<div class="lang-switch">
+        <div class="lang-switch" id="lang-switch" tabindex="0" aria-label="change language">
             <p>
-                <a
+                <button id="lang1" aria-label="translate in español" tabindex="0"
                   @click="changeLang('es')"
-                  :class="this.$route.params.lang == 'es' ? 'active' : ''"
+                  :class="[this.$route.params.lang == 'es' ? 'active' : '', 'language']"
                 >
                     Es
-                </a> / 
-                <a
+                </button> /
+                <button id="lang2" aria-label="translate in english" tabindex="0"
                   @click="changeLang('en')"
-                  :class="this.$route.params.lang == 'en' ? 'active' : ''"
+                  :class="[this.$route.params.lang == 'en' ? 'active' : '', 'language']"
                 >
                     En
-                </a>
+                </button>
             </p>
-        </div>-->
+        </div>
     </nav>
 </template>
 
@@ -198,8 +198,10 @@
         },
         methods: {
             skip() {
-                console.log(document.getElementById('contenuto'))
-                document.getElementById('contenuto').focus()
+                //console.log(document.getElementById('contenuto'))
+                setTimeout(() => {
+                    document.getElementById('contenuto').focus()    
+                }, 100);
             },
             i18nRoute (lang) {
                 return this.$store.state.data[lang]['route']
@@ -241,9 +243,21 @@
 
             tabList.addEventListener("keydown", e => {
                 //console.log(document.activeElement.getAttribute('id'))
-                this.tabFocus = (document.activeElement.getAttribute('id')=='navigazione' 
-                    || document.activeElement.getAttribute('id')=='skipbutton') ? 
-                    0 : document.activeElement.getAttribute('id')[8]
+                this.tabFocus = -1
+                switch(document.activeElement.getAttribute('id')) {
+                    case 'navigazione':
+                    case 'skipbutton' :
+                        this.tabFocus = 0;
+                        break;
+                    case 'lang-switch':
+                    case 'lang1':
+                    case 'lang2':
+                        this.tabFocus = tabs.length;
+                        break;
+                    default:
+                        this.tabFocus = document.activeElement.getAttribute('id')[8]
+                        break;
+                }
                 // Move right
                 if (e.keyCode === 40 || e.keyCode === 38) {
                     e.preventDefault()
@@ -266,7 +280,7 @@
 
                     //document.getElementById('menuitem'+this.tabFocus).focus({preventScroll: true});
                     //tabs[this.tabFocus].setAttribute("tabindex", 0);
-                    tabs[this.tabFocus].focus({preventScroll: true});
+                    tabs[this.tabFocus].focus();
                 }
             });
         },
@@ -274,7 +288,7 @@
             route() {
                 setTimeout(() => {
                     document.getElementById('contenuto').focus()    
-                }, 50);
+                }, 100);
             }
         }
         /*updated() {
@@ -308,16 +322,16 @@
         color: rgba(255, 255, 255, 0.253);
     }
 
-    a {
+    button {
         color: rgba(255, 255, 255, 0.63);
     }
 
-    p a.active {
+    p button.active {
         font-weight: 600;
         color: #fff;
     }
 
-    a:hover, a:focus {
+    button:hover, button:focus {
         text-decoration: underline;
     }
 
@@ -560,5 +574,12 @@ nav {
         background: rgba(255, 255, 255, 0.048);
         margin-top: 8px;
     }
+}
+
+.language {
+    background: transparent;
+    color: #fff;
+    font-size: .95em;
+    padding: 0;
 }
 </style>

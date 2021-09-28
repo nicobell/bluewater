@@ -101,7 +101,7 @@ export default {
             this.isActive = id
             this.changeTabs(event)
             setTimeout(() => {
-                document.getElementById('section'+id).focus();
+                document.getElementById('section'+id).focus({preventScroll: true});
             }, 50);
         },
         toggle(e) {
@@ -179,7 +179,7 @@ export default {
                 }
             }
 
-            document.getElementById('btn'+this.tabFocus).focus({preventScroll: true});
+            document.getElementById('btn'+this.tabFocus).focus();
         });
     },
     watch: {

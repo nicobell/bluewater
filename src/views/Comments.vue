@@ -17,7 +17,7 @@
                         :aria-labelledby="'bodytitle'+index">
                         <h3 :id="'bodytitle'+index" tabindex="-1">{{ c.title }}</h3>
                         <p v-html="c.content"></p>
-                        <button v-if="index==0" class="main-button icon-left">Submit Your Comment</button>
+                        <button v-if="index==0" class="main-button icon-left">{{ lang=='es' ? "Envíe su comentario" : "Submit Your Comment" }}</button>
                     </article>
                 </section>
 
@@ -57,11 +57,11 @@
                     </form>-->
 
                     <article class="needhelp" aria-labelledby="needhelp">
-                        <h3 id="needhelp">Need help, contact us.</h3>
+                        <h3 id="needhelp">{{ content.needhelp.title }}</h3>
                         <div>
                             <div>
-                                <span>Telephone Number</span>
-                                <p>no number yet</p>
+                                <span>{{ content.needhelp.telephoneLabel }}</span>
+                                <p>{{ content.needhelp.telephoneNumber }}</p>
                             </div>
                         </div>
                     </article>

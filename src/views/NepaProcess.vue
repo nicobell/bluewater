@@ -37,7 +37,7 @@
                             <h3 class="title" role="header" :aria-level="b.title=='' ? null : '3'" :aria-describedby="'detail'+index">{{ b.title }}</h3>    
                             <div v-html="b.description"></div>
                             <div v-if="index==2">
-                                <button class="main-button" @click="gotoComments()">Go to Comments</button>
+                                <button class="main-button" @click="gotoComments()">{{ lang=='es' ? 'Ir a la sección de comentarios' : 'Go to Comments' }}</button>
                             </div>
                         </article>
                     </div>
@@ -64,7 +64,7 @@
                                 <div v-html="b.description"></div>
                             </div>
                             <div v-if="index==2">
-                                <button class="main-button" id="gotocomments" @click="gotoComments()">Go to Comments</button>
+                                <button class="main-button" id="gotocomments" @click="gotoComments()">{{ lang=='es' ? 'Ir a la sección de comentarios' : 'Go to Comments' }}</button>
                             </div>
                         </div>
                     </article>
@@ -107,7 +107,7 @@ export default {
             this.isActive = id
             this.changeTabs(event)
             setTimeout(() => {
-                document.getElementById('section'+id).focus();
+                document.getElementById('section'+id).focus({preventScroll: true});
             }, 50);
         },
         toggle(e) {
@@ -188,7 +188,7 @@ export default {
                 }
             }
 
-            document.getElementById('btn'+this.tabFocus).focus({preventScroll: true});
+            document.getElementById('btn'+this.tabFocus).focus();
         });
     },
     watch: {

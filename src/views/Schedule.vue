@@ -14,12 +14,13 @@
                     
 
                     <!--<div class="view-more">-->
-                    <button class="view-more" id="view-more" @click="toggleSpalla" tabindex="0">VIEW MORE</button>
+                    <button class="view-more" id="view-more" @click="toggleSpalla" tabindex="0">{{ lang=='es' ? 'VER MÁS' : 'VIEW MORE' }}</button>
                     <!--</div>-->
 
                     <div class="image-container" tabindex="0">
-                        <img src="../assets/timeline.png" alt="schedule image" aria-describedby="hiddendescription">
-                        <article class="tohide" id="hiddendescription" aria-label="hidden description" tabindex="-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam commodi magni nesciunt, optio corporis mollitia debitis voluptates similique eum expedita officiis cupiditate a voluptatibus aperiam, ad voluptatem nihil aspernatur reprehenderit.
+                        <img :src="sourceimage" alt="schedule image" aria-describedby="hiddendescription">
+                        <article class="tohide" id="hiddendescription" aria-label="hidden description" tabindex="-1">
+                            {{ content.imageDescription }}
                         </article>
                     </div>
                 </div>
@@ -118,6 +119,11 @@
             }
         },
         computed: {
+            sourceimage() {
+                return this.lang=='es' ? 
+                    "/BW_timeline_v.2_5ra_spagnolo.png" :
+                    "/BW_timeline_v.2_5ra.png"
+            },
             lang() {
                 return this.$store.state.lang
             },
