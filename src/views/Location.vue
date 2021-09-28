@@ -631,7 +631,7 @@ export default {
 
     .close {
         cursor: pointer;
-        background-image: url(/close-button.svg);
+        background-image: url(../assets/close-button.svg);
         background-position: center center;
         background-size: contain;
         display: block;

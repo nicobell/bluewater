@@ -29,22 +29,28 @@
         "intro":{
             "title":"Bluewater Texas Terminal Deepwater Port Project",
             "description": "The purpose of this site is to inform stakeholders about the project, and to provide the public an opportunity to submit written comments.",
-            "buttonLabel":"Go to Website"
+            "buttonLabel": "Go to Website"
         },
         "projectDescription":{
             "title":"Project Description",
             "description": "<p>Bluewater is proposing to construct, own, operate, and eventually decommission a deepwater port (DWP), associated pipeline infrastructure, and facility located within Aransas, Nueces, and San Patricio counties, Texas.  The proposed project involves the design, engineering, and construction of a DWP and approximately 56.18 statute miles of pipeline infrastructure.  The 12-acre Harbor Island Facility, located on Harbor Island in Nueces County, would consist of pig launchers/receivers, meters and valves, operations building, and communications facility, with no crude oil storage on site.</p><p>The Bluewater DWP would allow for the loading of two (2) very large crude carriers (VLCCs) at the proposed DWP via two single point mooring (SPM) buoy systems and connect with the DWP via floating connecting crude oil hoses.  The proposed Project would be capable of loading rates of up to approximately 80,000 barrels per hour (bph).  The proposed Project is expected to service 16 VLCCs per month.</p>",
             "data": {
                 "mooringPointd": 2,
+                "mooringPointLabel": "SINGLE POINT MOORING BUOY SYSTEMS",
                 "depths": "88-90",
                 "location": 15,
+                "locationNMs": "nm off the coast of San Jose Island",
                 "miles": 56.48,
+                "unit": "miles",
                 "milesDescription": "Two 30-inch Outside Diameter Crude Oil Pipelines",
                 "milesLabels": ["Onshore", "Inshore", "Offshore"],
                 "harborFacility": 12,
+                "acresOf": "of Harbor Island Facility",
                 "carriersMonths": 16,
-                "loadingRates": 80,
-                "simultaneousOperations": 40
+                "carriersLabel": "VERY LARGE CRUDE CARRIERS",
+                "loadingRates1": 80,
+                "loadingRates2": 40,
+                "simultaneousOperations": "Simultaneous Operations"
             },
             "hiddenDescription": "<li>Two single point mooring buoy systems.</li><li>Depths of 88 to 90 feet, location 15 nautical miles off the coast of San Jose Island.</li><li>56.48 miles of two 30-inch outside diameter crude oil pipelines, onshore, inshore and offshore.</li><li>The Harbor Island Facility occupies 12 acres.</li><li>16 very large crude carriers a month with loading rates of 80 bph and 40 bph for simultaneous operations.</li>"
 
@@ -464,15 +470,21 @@
             "description": "<p>Bluewater propone construir, poseer, operar y eventualmente desmantelar un puerto de aguas profundas (DWP), infraestructura de ductos asociados e instalaciones ubicadas dentro de los condados de Aransas, Nueces y San Patricio, Texas. El Proyecto propuesto implica el diseño, la ingeniería y la construcción de un DWP y aproximadamente 56.18 millas terrestres de infraestructura de tuberías. La instalación de Harbour Island de 12 acres, ubicada en Harbour Island en el condado de Nueces, consistiría en trampas de recibo y despacho, medidores y válvulas, edificio de operaciones e instalación de comunicaciones, sin almacenamiento de petróleo crudo en el sitio.</p><p>El DWP Bluewater permitiría la carga de dos (2) trasportadores de petróleo crudo muy grandes (VLC) en el DWP propuesto a través de dos sistemas de boyas de amarre de un solo punto (SPM) y se conectaría con el DWP a través de mangueras flotantes de conexión de petróleo crudo. El Proyecto propuesto sería capaz de cargar a velocidades de hasta aproximadamente 80,000 barriles por hora (bph). Se espera que el Proyecto propuesto preste servicio a 16 VLCC por mes.</p>",
             "data": {
                 "mooringPointd": 2,
+                "mooringPointLabel": "SISTEMAS DE BOYAS DE AMARRE DE UN SOLO PUNTO",
                 "depths": "88-90",
                 "location": 15,
+                "locationNMs": "nm de la costa de la isla de San José",
                 "miles": 56.48,
+                "unit": "millas",
                 "milesDescription": "Dos oleoductos de petróleo crudo de 30 pulgadas de diámetro exterior",
                 "milesLabels": ["En tierra", "Costera", "Costa afuera"],
                 "harborFacility": 12,
+                "acresOf": "de instalaciones de Harbour Island",
                 "carriersMonths": 16,
-                "loadingRates": 80,
-                "simultaneousOperations": 40
+                "carriersLabel": "TRANSPORTISTAS DE PETRÓLEO CRUDO MUY GRANDES",
+                "loadingRates1": 80,
+                "loadingRates2": 40,
+                "simultaneousOperations": "Operaciones Simultáneas"
             },
             "hiddenDescription": "<li>Dos sistemas de boyas de amarre de un solo punto.</li><li>Profundidad 88-90 pies, ubicación a 15 nm de la costa de la isla de San José.</li><li>56.48 millas en dos oleoductos de petróleo crudo de 30 pulgadas de diámetro exterior, en tierra, costera y costa afuera.</li><li>12 acres de instalaciones de Harbour Island.</li><li>16 transportistas de petróleo crudo muy grandes per mes, con tasas de carga 80 bph y 40 bph por operaciones simultáneas.</li>"
 
@@ -654,7 +666,7 @@
             "items": [
                 {
                     "id": 1,
-                    "title": "Actividades Clave",
+                    "title": "ACTIVIDADES CLAVE",
                     "content": [
                         {
                             "description": "Solicitud de DWP enviada",
@@ -699,7 +711,7 @@
                     ]
                 },{
                     "id": 2,
-                    "title": "Acciones Futuras Provisionales",
+                    "title": "ACCIONES FUTURAS PROVISIONALES",
                     "content": [
                         {
                             "description": "Fin del período de comentarios públicos sobre el borrador de la EIS",

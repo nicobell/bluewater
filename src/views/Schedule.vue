@@ -152,7 +152,7 @@
 .button-container {
     position: relative;
     button {
-        background-image: url(/close-button-dark.svg);
+        background-image: url(../assets/close-button-dark.svg);
         content: '';
         position: fixed;
         background-position: center center;
@@ -265,7 +265,7 @@ button.view-more {
         border-bottom: #7070702a solid 1px;
 
         &::after {
-            content: url('/dropdown.svg');
+            content: url(../assets/dropdown.svg);
             width: 1em;
             display: inline-block;
             position: absolute;
@@ -318,7 +318,7 @@ button.view-more {
 
   @media (max-width: 992px) {
     .button-container div {
-      content: url(/close-button-dark.svg);
+      content: url(../assets/close-button-dark.svg);
       position: fixed;
       top: auto;
       bottom: 40px;

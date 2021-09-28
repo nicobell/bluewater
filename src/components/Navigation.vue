@@ -400,7 +400,7 @@ nav {
         }
 
         .icon.license {
-            background-image: url("../assets/icon-menu-license-01.svg");
+            background-image: url("../assets/icon-menu-license.svg");
         }
 
         .icon.schedule {

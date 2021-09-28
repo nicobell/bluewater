@@ -22,18 +22,18 @@
                   <div class="section-1">
                      <img src="../assets/mooring-point.svg" alt="mooring point logo">
                      <div class="num"><span>{{ content.data.mooringPointd }}</span></div>
-                     <h3>{{ this.lang=='es' ? 'SISTEMAS DE BOYAS DE AMARRE DE UN SOLO PUNTO' : 'SINGLE POINT MOORING BUOY SYSTEMS' }}</h3>
+                     <h3>{{ content.data.mooringPointLabel }}</h3>
                   </div>
                   <div class="section-2">
                      <div class="depths" :style="depthlabel"><span class="small">{{ content.data.depths }}</span>ft.</div>
                      <div class="location" :style="locationlabel">
                         <span class="small">{{ content.data.location }}</span>
-                        <div>{{ this.lang=='es' ? 'nm de la costa de la isla de San José' : 'nm off the coast of San Jose Island' }}</div>
+                        <div>{{ content.data.locationNMs }}</div>
                      </div>
                   </div>
                   <div class="section-3">
                      <div class="main">
-                        <div><span>{{ content.data.miles }}</span>{{ this.lang=='es' ? 'millas' : 'miles' }}</div>
+                        <div><span>{{ content.data.miles }}</span>{{ content.data.unit }}</div>
                         <h3>{{ content.data.milesDescription }}</h3>
                      </div>
                      <div class="labels">
@@ -44,18 +44,18 @@
                   </div>
                   <div class="section-4">
                      <div class="acres"><span class="small">{{ content.data.harborFacility }}</span><div>acres</div></div>
-                     <h4>{{this.lang=='es' ? 'de instalaciones de Harbour Island' : 'of Harbor Island Facility' }}</h4>
+                     <h4>{{ content.data.acresOf }}</h4>
                   </div>
                   <div class="section-1">
                      <img src="../assets/carry.svg" alt="carry logo">
                      <div class="num"><span>{{ content.data.carriersMonths }}</span></div>
-                     <h3>{{ this.lang=='es' ? 'TRANSPORTISTAS DE PETRÓLEO CRUDO MUY GRANDES' : 'VERY LARGE CRUDE CARRIERS' }}</h3>
+                     <h3>{{ content.data.carriersLabel }}</h3>
                   </div>
                   <div class="section-2">
-                     <div class="loading" :style="loadinglabel"><span class="small">{{ content.data.loadingRates }}</span>bph</div>
-                     <div class="operations"><span class="small">{{ content.data.simultaneousOperations }}</span>
+                     <div class="loading" :style="loadinglabel"><span class="small">{{ content.data.loadingRates1 }}</span>bph</div>
+                     <div class="operations"><span class="small">{{ content.data.loadingRates2 }}</span>
                         <div>bph</div>
-                        <h4>{{ this.lang=='es' ? 'Operaciones Simultáneas' : 'Simultaneous Operations' }}</h4>
+                        <h4>{{ content.data.simultaneousOperations }}</h4>
                      </div>
                   </div>
                </section>
