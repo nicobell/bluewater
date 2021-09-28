@@ -19,7 +19,7 @@
                         params: { 
                             lang: this.lang, 
                             tabtitle: 'Location',
-                            pagetitle: (this.lang=='es' ? 'localization' : 'location') 
+                            pagetitle: (this.lang=='es' ? 'ubicacion' : 'location') 
                         }
                     }">
                     <span class="icon map"></span><span id="menulabel1" class="label">{{content.menu.menuLabel1}}</span>
@@ -49,7 +49,7 @@
                         params: { 
                             lang: this.lang, 
                             tabtitle: 'DWP PA License',
-                            pagetitle: (this.lang=='es' ? 'ley-licencia-dwp' : 'dwp-act-license') 
+                            pagetitle: (this.lang=='es' ? 'acta-licencia-dwp' : 'dwp-act-license') 
                         }
                     }">
                         <span class="icon license"></span><span id="menulabel3" class="label">{{content.menu.menuLabel4}}</span>
@@ -80,7 +80,7 @@
                         params: { 
                             lang: this.lang, 
                             tabtitle: 'Schedule',
-                            pagetitle: (this.lang=='es' ? 'cronograma-de-proceso-nepa' : 'nepa-process-schedule') 
+                            pagetitle: (this.lang=='es' ? 'calendario-proceso-nepa' : 'nepa-process-schedule') 
                         }
                     }">
                         <span class="icon schedule"></span><span id="menulabel5" class="label">{{content.menu.menuLabel5}}</span>
@@ -163,21 +163,21 @@
                 tabFocus: 0,
                 componentsRoute: {
                     "en": {
-                        "location": "localization",
+                        "location": "ubicacion",
                         "project-description": "descripcion-de-proyecto",
-                        "nepa-process-schedule": "cronograma-de-proceso-nepa",
+                        "nepa-process-schedule": "calendario-proceso-nepa",
                         "nepa-process": "proceso-nepa",
-                        "dwp-act-license": "ley-licencia-dwp",
+                        "dwp-act-license": "acta-licencia-dwp",
                         "updates": "actulizationes",
                         "comments": "comentarios",
                         "contacts": "contactos",
                     },
                     "es": {
-                        "localization": "location",
+                        "ubicacion": "location",
                         "descripcion-de-proyecto": "project-description",
-                        "cronograma-de-proceso-nepa": "nepa-process-schedule",
+                        "calendario-proceso-nepa": "nepa-process-schedule",
                         "proceso-nepa": "nepa-process",
-                        "ley-licencia-dwp" : "dwp-act-license",
+                        "acta-licencia-dwp" : "dwp-act-license",
                         "actulizationes": "updates",
                         "comentarios": "comments",
                         "contactos": "contacts",

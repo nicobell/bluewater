@@ -20,15 +20,15 @@ export default {
    data: () => {
     return {
       componentsRoute: {
-        'localization': 'Location',
+        'ubicacion': 'Location',
         'location': 'Location',
         'nepa-process-schedule': 'Schedule',
-        'cronograma-de-proceso-nepa': 'Schedule',
+        'calendario-proceso-nepa': 'Schedule',
         'descripcion-de-proyecto' : 'ProjectDescription',
         'project-description': 'ProjectDescription',
         'proceso-nepa' : 'NepaProcess',
         'nepa-process': 'NepaProcess',
-        'ley-licencia-dwp': 'DWPActLicense',
+        'acta-licencia-dwp': 'DWPActLicense',
         'dwp-act-license': 'DWPActLicense',
         'actulizationes' : 'Updates',
         'updates' : 'Updates',
