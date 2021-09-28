@@ -1,6 +1,6 @@
 <template>
   <keep-alive>
-    <component v-bind:is="myComponent" :key="this.$route.params.fullPath"></component>
+    <component v-bind:is="myComponent" :key="this.$route.fullPath"></component>
   </keep-alive>
 </template>
 <script>
@@ -30,7 +30,7 @@ export default {
         'nepa-process': 'NepaProcess',
         'acta-licencia-dwp': 'DWPActLicense',
         'dwp-act-license': 'DWPActLicense',
-        'actulizationes' : 'Updates',
+        'actualizationes' : 'Updates',
         'updates' : 'Updates',
         'comentarios' : 'Comments',
         'comments' : 'Comments',
