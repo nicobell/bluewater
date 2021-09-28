@@ -12,7 +12,7 @@
             </li>
 
             <li role="none" aria-hidden>
-                <router-link id="menuitem1" role="menuitem" tabindex="0" @click="console.log('ao2')"
+                <router-link id="menuitem1" role="menuitem" tabindex="0"
                     aria-labelledby="menulabel1" :aria-current="this.$route.params.pagetitle=='location' ? 'page' : null"
                     :to="{
                         name: 'ProxyRouter',  
@@ -27,7 +27,7 @@
             </li>
             
             <li role="none" aria-hidden>
-                <router-link id="menuitem2" role="menuitem" tabindex="0" @click="console.log('ao2')"
+                <router-link id="menuitem2" role="menuitem" tabindex="0"
                     aria-labelledby="menulabel2" :aria-current="this.$route.params.pagetitle=='project-description' ? 'page' : null"
                     :to="{
                         name: 'ProxyRouter',  
@@ -42,7 +42,7 @@
             </li>
             
             <li role="none">
-                <router-link id="menuitem3" role="menuitem" tabindex="0" @click="console.log('ao2')"
+                <router-link id="menuitem3" role="menuitem" tabindex="0"
                     aria-label="deepwater port act license" :aria-current="this.$route.params.pagetitle=='dwp-act-license' ? 'page' : null"
                     :to="{
                         name: 'ProxyRouter',  
@@ -57,7 +57,7 @@
             </li>
             
             <li role="none">
-                <router-link id="menuitem4" role="menuitem" tabindex="0" @click="console.log('ao2')"
+                <router-link id="menuitem4" role="menuitem" tabindex="0"
                     aria-labelledby="menulabel4" :aria-current="this.$route.params.pagetitle=='nepa-process' ? 'page' : null"
                     :to="{
                         name: 'ProxyRouter',  
@@ -73,7 +73,7 @@
             
             
             <li role="none">
-                <router-link id="menuitem5" role="menuitem" tabindex="0" @click="console.log('ao2')"
+                <router-link id="menuitem5" role="menuitem" tabindex="0"
                     aria-labelledby="menulabel5" :aria-current="this.$route.params.pagetitle=='nepa-process-schedule' ? 'page' : null"
                     :to="{
                         name: 'ProxyRouter',  
@@ -134,23 +134,25 @@
                 </router-link>
             </li>
             
+
+            <div role="menuitem" class="lang-switch" id="menuitem9" tabindex="0" aria-label="change language">
+                <p>
+                    <button id="lang1" aria-label="translate in español" tabindex="0"
+                    @click="changeLang('es')"
+                    :class="[this.$route.params.lang == 'es' ? 'active' : '', 'language']"
+                    >
+                        Es
+                    </button> /
+                    <button id="lang2" aria-label="translate in english" tabindex="0"
+                    @click="changeLang('en')"
+                    :class="[this.$route.params.lang == 'en' ? 'active' : '', 'language']"
+                    >
+                        En
+                    </button>
+                </p>
+            </div>
         </ul>
-        <div class="lang-switch" id="lang-switch" tabindex="0" aria-label="change language">
-            <p>
-                <button id="lang1" aria-label="translate in español" tabindex="0"
-                  @click="changeLang('es')"
-                  :class="[this.$route.params.lang == 'es' ? 'active' : '', 'language']"
-                >
-                    Es
-                </button> /
-                <button id="lang2" aria-label="translate in english" tabindex="0"
-                  @click="changeLang('en')"
-                  :class="[this.$route.params.lang == 'en' ? 'active' : '', 'language']"
-                >
-                    En
-                </button>
-            </p>
-        </div>
+        
     </nav>
 </template>
 
@@ -239,6 +241,9 @@
             })
 
             const tabs = document.querySelectorAll('[role="menuitem"]');
+            tabs.forEach(t => t.addEventListener('click', () => {
+                document.getElementById('contenuto').focus({preventScroll: true})
+            }))
             const tabList = document.querySelector('#navigazione');
 
             tabList.addEventListener("keydown", e => {
@@ -274,13 +279,14 @@
                         this.tabFocus--;
                         // If we're at the start, move to the end
                         if (this.tabFocus < 1) {
-                            this.tabFocus = tabs.length;
+                            this.tabFocus = tabs.length - 1;
                         }
                     }
 
                     //document.getElementById('menuitem'+this.tabFocus).focus({preventScroll: true});
                     //tabs[this.tabFocus].setAttribute("tabindex", 0);
-                    tabs[this.tabFocus].focus();
+                    if(this.tabFocus!=-1)
+                        tabs[this.tabFocus].focus();
                 }
             });
         },

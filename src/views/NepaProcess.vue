@@ -186,9 +186,9 @@ export default {
                         this.tabFocus = tabs.length;
                     }
                 }
-            }
 
-            document.getElementById('btn'+this.tabFocus).focus();
+                document.getElementById('btn'+this.tabFocus).focus();
+            }
         });
     },
     watch: {
