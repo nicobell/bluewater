@@ -121,8 +121,8 @@
         computed: {
             sourceimage() {
                 return this.lang=='es' ? 
-                    "/BW_timeline_v.2_5ra_spagnolo.png" :
-                    "/BW_timeline_v.2_5ra.png"
+                    "/BW_timeline_es.png" :
+                    "/BW_timeline_en.png"
             },
             lang() {
                 return this.$store.state.lang
