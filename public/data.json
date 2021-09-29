@@ -441,7 +441,7 @@
             "nepa-process-schedule": "calendario-proceso-nepa",
             "nepa-process": "proceso-nepa",
             "dwp-act-license": "acta-licencia-dwp",
-            "updates": "actualizationes",
+            "updates": "actualizaciones",
             "comments": "comentarios",
             "contacts": "contactos"
         },
@@ -456,7 +456,7 @@
             "menuLabel3":"Proceso NEPA",
             "menuLabel4":"Acta y Licencia DWP",
             "menuLabel5":"Calendario",
-            "menuLabel6":"Actualizationes",
+            "menuLabel6":"Actualizaciones",
             "menuLabel7":"Su opiniòn",
             "menuLabel8":"Contactos"
         },
@@ -747,7 +747,7 @@
             "imageDescription": "una imagen infográfica que describe el cronograma legal de la ley de puertos de aguas profundas y el proceso de nepa"
         },
         "updates": {
-            "title":"Updates",
+            "title":"Actualizaciones",
             "items":[
                 {
                     "date": "24 de mayo de 2021",
@@ -782,7 +782,7 @@
             ]
         },
         "comments": {
-            "title": "Comments",
+            "title": "Comentarios",
             "cards": [
                 {
                     "title": "Solicitud de Licencia",

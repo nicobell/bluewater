@@ -372,6 +372,7 @@ nav {
         align-items: center;
         cursor: pointer;
         position: relative;
+        width: 100%;
 
         &:before {
             content: "";
@@ -445,6 +446,7 @@ nav {
             align-items: center;
             cursor: pointer;
             position: relative;
+            width: 100%;
         }
     }
 
