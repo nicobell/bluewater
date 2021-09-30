@@ -13,7 +13,7 @@
         },
         "headerInfo":{
             "publicMeetingTitle":"Public Meeting",
-            "publicMeetingData":"April 19, 2021 | 3.00 PM",
+            "publicMeetingData":"Thursday November 21, 2021",
             "publicMeetingButton":"Register Now"
         },
         "menu":{
@@ -352,13 +352,13 @@
             "cards": [
                 {
                     "title":"License Application",
-                    "description":"The License Application is available for viewing at the <span>Regulations.gov</span> website",
+                    "description":"The License Application is available for viewing at the <span>Regulations.gov</span> website under docket number MARAD-2019-0094",
                     "button":"Go to Website",
                     "link": "http://regulations.gov",
                     "label": "go to license application website"
                 }, {
                     "title":"Draft EIS",
-                    "description":"The Draft EIS is available for viewing at the <span>Regulations.gov</span> website",
+                    "description":"The Draft EIS is available for viewing at the <span>Regulations.gov</span> website under docket number MARAD-2019-0094",
                     "button":"Go to Website",
                     "link": "http://regulations.gov",
                     "label": "go to draft eis website"
@@ -786,12 +786,12 @@
             "cards": [
                 {
                     "title": "Solicitud de Licencia",
-                    "description": "La solicitud de licencia está disponible para su visualización en el sitio web <span>Regulations.gov</span>",
+                    "description": "La solicitud de licencia está disponible para su visualización en el sitio web <span>Regulations.gov</span> con el número de expediente MARAD-2019-0094.",
                     "button": "Ir al sitio web",
                     "link": "http://regulations.gov"
                 }, {
                     "title": "Borrador de EIS",
-                    "description": "El borrador de la EIS está disponible para su visualización en el sitio web de <span>Regulatons.gov</span>",
+                    "description": "El borrador de la EIS está disponible para su visualización en el sitio web de <span>Regulatons.gov</span> con el número de expediente MARAD-2019-0094.",
                     "button": "Ir al sitio web",
                     "link": "http://regulations.gov"
                 }

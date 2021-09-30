@@ -56,7 +56,7 @@
                         </div>    
                     </form>-->
 
-                    <article class="needhelp" aria-labelledby="needhelp">
+                    <!--<article class="needhelp" aria-labelledby="needhelp">
                         <h3 id="needhelp">{{ content.needhelp.title }}</h3>
                         <div>
                             <div>
@@ -64,7 +64,7 @@
                                 <p>{{ content.needhelp.telephoneNumber }}</p>
                             </div>
                         </div>
-                    </article>
+                    </article>-->
 
                 </section>
             </div>
