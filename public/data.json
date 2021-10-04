@@ -31,6 +31,17 @@
             "description": "The purpose of this site is to inform stakeholders about the project, and to provide the public an opportunity to submit written comments.",
             "buttonLabel": "Go to Website"
         },
+        "location": {
+            "legend_title": "Workspaces Legend",
+            "legend": [
+                "ATWS",
+                "Permanent Easement", 
+                "Permanent Easement - Between Drill Boxes",
+                "Permanent Easement - Booster Station",
+                "Temporary Construction Workspace",
+                "Temporary Construction Workspace - Booster Station"
+            ]
+        },
         "projectDescription":{
             "title":"Project Description",
             "description": "<p>Bluewater is proposing to construct, own, operate, and eventually decommission a deepwater port (DWP), associated pipeline infrastructure, and facility located within Aransas, Nueces, and San Patricio counties, Texas.  The proposed project involves the design, engineering, and construction of a DWP and approximately 56.18 statute miles of pipeline infrastructure.  The 12-acre Harbor Island Facility, located on Harbor Island in Nueces County, would consist of pig launchers/receivers, meters and valves, operations building, and communications facility, with no crude oil storage on site.</p><p>The Bluewater DWP would allow for the loading of two (2) very large crude carriers (VLCCs) at the proposed DWP via two single point mooring (SPM) buoy systems and connect with the DWP via floating connecting crude oil hoses.  The proposed Project would be capable of loading rates of up to approximately 80,000 barrels per hour (bph).  The proposed Project is expected to service 16 VLCCs per month.</p>",
@@ -316,27 +327,27 @@
             "title":"Updates",
             "items":[
                 {
-                    "date":"May 24, 2021",
+                    "date":"October 22, 2021",
                     "subtitle":"Public Notice on Availability of the DEIS for the Bluewater Project and Public Meeting and Commenting info",
                     "content": ""
                 },
                 {
-                    "date":"May 24, 2021",
+                    "date":"October 22, 2021",
                     "subtitle":"Registration to participate in the Virtual Public Meeting",
                     "content": ""
                 },
                 {
-                    "date":"May 24, 2021",
+                    "date":"October 22, 2021",
                     "subtitle": "Public Repositories Locations",
                     "content": "Electronic versions of these documents are also available for viewing at the following libraries:<ul><li>Retama Public Library, 805 Comanche Street, Corpus Christi, Texas 78401; (361) 826-7055</li><li>Ingleside Public Library, 2775 Waco Street, Ingleside, Texas 78362; (361) 776-5355</li><li>Ed & Hazel Richmond Public Library, 110 North Lamont Street, Aransas Pass, Texas 78336; (361) 758-2350</li><li>Texas A&M University, Corpus Christi Mary & Jeff Bell Library/Federal Depository, 6300 Ocean Drive #5702, Corpus Christi, Texas 78412; (361) 825-2340</li><li>Owen R. Hopkins Public Library, 3202 McKinzie Road, Corpus Christi, Texas 78410; (361) 826-2350</li></ul>"
                 },
                 {
-                    "date":"Date",
+                    "date":"",
                     "subtitle":"Newspaper Notices",
                     "content": "<ul><li>The Aransas Pass Progress – 5/12/2021</li><li>Ingleside Index - 5/12/2021</li><li>Port Aransas South Jetty – 5/13/2021 & 5/27/2011</li><li>Corpus Christi Caller – 5/14/2021 & 5/28/2021</li><li>The Rockport Pilot – 5/8/2021 & 5/22/2021</li></ul>"
                 },
                 {
-                    "date":"Date",
+                    "date":"",
                     "subtitle":"NEPA Process - President’s Council on Environmental Quality (CEQ) in 40 CFR 1500-1508",
                     "content": ""
                 },
@@ -408,26 +419,26 @@
                     ]
                 }, {
                     "title": "U.S. Coast Guard",
-                    "subtitle": "Mr. Roddy Bachman, USCG",
+                    "subtitle": "Mr. Ken Smith",
                     "body": [
                         {
                             "title": "Telephone Number",
-                            "content": "202–372–1451"
+                            "content": "(202) 372-1413"
                         }, {
                             "title": "Email",
-                            "content": "Roddy.C.Bachman@uscg.mil"
+                            "content": " ken.a.smith@uscg.mil"
                         }
                     ]
                 }, {
                     "title": "Maritime Administration",
-                    "subtitle": "Carlos I. Perez-Perez",
+                    "subtitle": "Mr. Carlos I. Perez-Perez",
                     "body": [
                         {
                             "title": "Telephone Number",
-                            "content": "202-366-7094"
+                            "content": "(202) 366-7094"
                         }, {
                             "title": "Email",
-                            "content": "c.perezperez@dot.gov"
+                            "content": "C.PerezPerez@dot.gov"
                         }
                     ]
                 }
@@ -464,6 +475,17 @@
             "title":"Terminal de Bluewater Texas, Proyecto del Puerto de Aguas Profundas",
             "description": "El propósito de este sitio es informar a las partes interesadas sobre el proyecto y brindar al público la oportunidad de enviar comentarios por escrito.",
             "buttonLabel":"Ir al Sitio Web"
+        },
+        "location": {
+            "legend_title": "Leyenda de los Espacios",
+            "legend": [
+                "ATWS",
+                "Servidumbre Permanente", 
+                "Servidumbre Permanente - Entre Cajas de Taladro",
+                "Servidumbre Permanente - Estación de Refuerzo",
+                "Espacio de Trabajo de Construcción Temporal",
+                "Espacio de Trabajo de Construcción Temporal - Estación de Refuerzo"
+            ]
         },
         "projectDescription":{
             "title": "Descripción del Proyecto",
@@ -750,27 +772,27 @@
             "title":"Actualizaciones",
             "items":[
                 {
-                    "date": "24 de mayo de 2021",
+                    "date": "22 de octubre de 2021",
                     "subtitle": "Aviso público sobre la disponibilidad del DEIS para el proyecto Bluewater e información sobre reuniones públicas y comentarios",
                     "content": ""
                 },
                 {
-                    "date": "24 de mayo de 2021",
+                    "date": "22 de octubre de 2021",
                     "subtitle": "Inscripción para participar en el Encuentro Público Virtual",
                     "content": ""
                 },
                 {
-                    "date": "24 de mayo de 2021",
+                    "date": "22 de octubre de 2021",
                     "subtitle": "Ubicaciones de Repositorios Públicos",
                     "content": "Las versiones electrónicas de estos documentos también están disponibles para su visualización en las siguientes bibliotecas:<ul><li>Biblioteca Pública La Retama, 805 Comanche Street, Corpus Christi, Texas 78401; (361) 826-7055</li><li>Biblioteca Pública de Ingleside, 2775 Waco Street, Ingleside, Texas 78362; (361) 776-5355</li><li>Biblioteca Pública Ed & Hazel Richmond, 110 North Lamont Street, Aransas Pass, Texas 78336; (361) 758-2350</li><li>Universidad de Texas A&M, Biblioteca Corpus Christi Mary y Jeff Bell / Depósito federal, 6300 Ocean Drive # 5702, Corpus Christi, Texas 78412; (361) 825-2340</li><li>Biblioteca Pública Owen R. Hopkins, 3202 McKinzie Road, Corpus Christi, Texas 78410; (361) 826-2350</li></ul>"
                 },
                 {
-                    "date": "Fecha",
+                    "date": "",
                     "subtitle": "Avisos de periódicos",
                     "content": "<ul><li>The Aransas Pass Progress - 5/12/2021</li><li>Índice de Ingleside - 5/12/2021</li><li>Embarcadero sur del Puerto Aransas: 13/05/2021 y 27/05/2011</li><li>Corpus Christi Caller - 14/5/2021 y 28/5/2021</li><li>The Rockport Pilot - 8/5/2021 y 22/5/2021</li></ul>"
                 },
                 {
-                    "date": "Fecha",
+                    "date": "",
                     "subtitle": "Proceso NEPA - Consejo del Presidente sobre Calidad Ambiental (CEQ) en 40 CFR 1500-1508",
                     "content": ""
                 },
@@ -840,26 +862,26 @@
                     ]
                 }, {
                     "title": "Guardia Costera de EE.UU.",
-                    "subtitle": "Mr. Roddy Bachman, USCG",
+                    "subtitle": "Mr. Ken Smith",
                     "body": [
                         {
                             "title": "Número de Teléfono",
-                            "content": "202–372–1451"
+                            "content": "(202) 372-1413"
                         }, {
                             "title": "Correo Electrónico",
-                            "content": "Roddy.C.Bachman@uscg.mil"
+                            "content": "ken.a.smith@uscg.mil"
                         }
                     ]
                 }, {
                     "title": "Maritime Administration",
-                    "subtitle": "Carlos I. Perez-Perez",
+                    "subtitle": "Mr. Carlos I. Perez-Perez",
                     "body": [
                         {
                             "title": "Número de Teléfono",
-                            "content": "202-366-7094"
+                            "content": "(202) 366-7094"
                         }, {
                             "title": "Correo Electrónico",
-                            "content": "c.perezperez@dot.gov"
+                            "content": "C.PerezPerez@dot.gov"
                         }
                     ]
                 }

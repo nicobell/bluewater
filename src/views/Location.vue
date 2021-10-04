@@ -4,7 +4,7 @@
 
         <div class="intro-header"></div>
 
-        <div :class="['main-content', 'map-wrapper', 'lang-'+this.lang]" tabindex="-1" >
+        <div id="contenuto" :class="['main-content', 'map-wrapper', 'lang-'+this.lang]" tabindex="-1" >
 
             <div id="loader" class="loader"><p>{{ this.lang=='es' ? 'Cargando . . .' : 'Loading . . .' }}</p></div>
 
@@ -80,6 +80,9 @@ export default {
         lang () {
             return this.$store.state.lang
         },
+        content () {
+            return this.$store.state.data[this.lang].location
+        }
     },
     methods: {
         backtonav() {
@@ -394,21 +397,6 @@ export default {
         this.zoomViewModel = new ZoomViewModel()
         this.zoomViewModel.view = this.view
 
-        //Legend WIDGET - collapsible element
-        var legend = new Expand({
-            content: new Legend({
-                view: this.view,
-                style: "classic",
-                layerInfos: [{
-                    layer: this.workspacesLayer,
-                    title: "Workspaces Legend"
-                }]
-            }),
-            view: this.view,
-            expanded: false
-        })
-        this.view.ui.add(legend, "bottom-left");
-
         //Search WIDGET
         var search = new Search({ 
             view: this.view, 
@@ -451,12 +439,36 @@ export default {
         .then(function() {
             //wait for FeatureLayer to be built
             return tot.valvesLayer.when();
+            
         })
         .then(function(layer) {
             //create LayerView to query data
             return tot.view.whenLayerView(layer);
         })
         .then(function(layerView) {
+
+            var rend = tot.workspacesLayer.renderer
+            console.log(tot.workspacesLayer)
+            rend.uniqueValueInfos.forEach((info, index) => {
+                info.label = tot.content.legend[index]
+            })
+
+            //Legend WIDGET - collapsible element
+            var legend = new Expand({
+                content: new Legend({
+                    view: tot.view,
+                    style: "classic",
+                    layerInfos: [{
+                        layer: tot.workspacesLayer,
+                        title: tot.content.legend_title
+                    }]
+                }),
+                view: tot.view,
+                expanded: false
+            })
+
+            tot.view.ui.add(legend, "bottom-left");
+
             tot.view.on("click", eventHandler)
             
             /*tot.view.on("pointer-up", eventh2)
@@ -521,7 +533,8 @@ export default {
         .then(function() {
             document.getElementById('loader').style.visibility = 'hidden'
 
-            document.querySelector('.esri-expand [role=button]').setAttribute('aria-label', 'expand legend')
+            if(document.querySelector('.esri-expand [role=button]'))
+                document.querySelector('.esri-expand [role=button]').setAttribute('aria-label', 'expand legend')
 
             document.querySelector('.esri-attribution').setAttribute('aria-hidden', true)
             document.querySelector('.esri-attribution__sources').setAttribute('aria-hidden', true)
