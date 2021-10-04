@@ -30,7 +30,7 @@ export default {
         'nepa-process': 'NepaProcess',
         'acta-licencia-dwp': 'DWPActLicense',
         'dwp-act-license': 'DWPActLicense',
-        'actualizationes' : 'Updates',
+        'actualizaciones' : 'Updates',
         'updates' : 'Updates',
         'comentarios' : 'Comments',
         'comments' : 'Comments',
