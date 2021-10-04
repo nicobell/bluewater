@@ -190,6 +190,9 @@ button.icon-left::after {
   color: #fff;
   max-width: unset;
   width: unset;
+  h2 {
+    color: #fff;
+  }
 }
 
 #viewDiv > .esri-view-root > .esri-ui > .esri-ui-inner-container.esri-ui-manual-container > .esri-component.esri-popup > div.esri-popup__pointer > div {
@@ -230,7 +233,7 @@ button.icon-left::after {
   }
 }
 
-#viewDiv > .esri-view-root .esri-ui .esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-popup {
+#viewDiv > .esri-view-root .esri-ui .esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-popup:not(#search-result) {
   transform: translateY(40px);
   overflow: hidden;
   display: flex;
@@ -242,7 +245,7 @@ button.icon-left::after {
   }
 }
 
-#viewDiv > .esri-view-root .esri-ui .esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-popup {
+#viewDiv > .esri-view-root .esri-ui .esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-popup:not(#search-result) {
   box-shadow: none;
   /*&:focus {
     outline: #EEB23A 2px dashed;
@@ -256,7 +259,7 @@ button.icon-left::after {
   }*/
 }
 
-#viewDiv > .esri-view-root .esri-ui .esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-popup .esri-popup__main-container.esri-widget {
+#viewDiv > .esri-view-root .esri-ui .esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-popup:not(#search-result) .esri-popup__main-container.esri-widget {
     box-shadow: none;
     * { font-size: 0px; }
     background-color: transparent;
@@ -264,11 +267,11 @@ button.icon-left::after {
     height: 50px;
 }
 
-#viewDiv > .esri-view-root .esri-ui .esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-popup > div.esri-popup__pointer > div {
+#viewDiv > .esri-view-root .esri-ui .esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-popup:not(#search-result) > div.esri-popup__pointer > div {
   display: none;
 }
 
-#viewDiv > .esri-view-root .esri-ui .esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-popup .esri-popup__main-container.esri-widget > div {
+#viewDiv > .esri-view-root .esri-ui .esri-ui-inner-container.esri-ui-manual-container .esri-component.esri-popup:not(#search-result) .esri-popup__main-container.esri-widget > div {
   display: none;
 }
 

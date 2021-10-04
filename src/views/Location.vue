@@ -295,7 +295,28 @@ export default {
                     returnGeometry: true
 
                 }).then(function (results) {
-                    document.querySelectorAll('.esri-popup')[0].parentNode.innerHTML = ''
+                    var sr, parent
+                    
+                    document.querySelectorAll('.esri-spinner').forEach(el => {
+                        el.parentNode.removeChild(el)
+                    })
+
+                    document.querySelectorAll('.esri-popup').forEach(el => {
+                        if(!el.children[0] || !Array.from(el.children[0].classList).includes('esri-popup--is-collapsible')) {
+                            sr = el
+                            parent = el.parentNode
+                        } else {
+                            console.log(el)
+                            el.parentNode.removeChild(el)
+                        }
+                            //el.parentNode.remove(el)
+
+                            console.log('parent', parent)
+                            console.log('sr', sr.children.length)
+                    })
+
+                    //document.querySelectorAll('.esri-popup')[0].parentNode.innerHTML = ''
+
                     
                     let pt, pop
                     results.features.forEach(p => {
@@ -324,7 +345,13 @@ export default {
 
             setTimeout(() => {
                 document.querySelectorAll('.esri-popup').forEach((pp, i) => {
-                    pp.setAttribute('id', i + 1)
+                    if(pp.children[0] && Array.from(pp.children[0].classList).includes('esri-popup--is-collapsible')) {
+                        if(document.querySelectorAll('.esri-popup').length>6)
+                            pp.setAttribute('id', i)
+                        else 
+                            pp.setAttribute('id', i + 1)
+                    } else
+                        pp.setAttribute('id', 'search-result')
                 })
                 /*document.querySelectorAll('.esri-popup__header-title').forEach((h, i) => {
                     h.setAttribute('tabindex', '-1')
@@ -337,6 +364,7 @@ export default {
                     b.setAttribute('aria-controls', 'info')
                 
                     b.addEventListener('click', e => {
+                        console.log('ah ecco 5')
                         if(!tot.showspalla) {
                             tot.lastbutton = e.target.parentNode.parentNode.parentNode.getAttribute('id')
                             let q = "OBJECTID = " + tot.lastbutton + ""
@@ -379,6 +407,7 @@ export default {
     mounted() {        
         //close spalla with 'esc'
         window.addEventListener('keydown', e => {
+            console.log('ah ecco 2')
             if(e.key==='Escape') {
                 this.hideInfo()
             }
@@ -386,6 +415,7 @@ export default {
 
         //entire page listens to 'm' key pressed to return focus to map wrapper for navigation
         window.addEventListener('keydown', e => {
+            console.log('ah ecco 3')
             if(e.key=='m')
                 document.querySelector('.esri-view-surface').focus()
         })
@@ -423,6 +453,7 @@ export default {
         //click on Measure WIDGET to activate/reset distance computation
         //+ style button accordingly
         document.getElementById("distanceButton").addEventListener("click", function() {
+            console.log('ah ecco 6')
             tot.setActiveWidget(null);
             if (!this.classList.contains("active")) {
                 tot.setActiveWidget("distance");
@@ -478,6 +509,7 @@ export default {
             }*/
             
             function eventHandler(event) {
+                console.log('ma che')
                 //check if click position intersects the included layer
                 const opts = { include: tot.valvesLayer }
                 tot.view.hitTest(event, opts).then(getGraphics);
@@ -549,6 +581,7 @@ export default {
 
             //map listens to zoom keyboard events 
             document.querySelector('.esri-view-surface').addEventListener('keydown', e => {
+                console.log('ad ecco 4')
                 if(e.key==='+' && !e.ctrlKey)
                     tot.zoomplus()
                 else if(e.key==='-' && !e.ctrlKey)
