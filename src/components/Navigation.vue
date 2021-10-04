@@ -228,13 +228,14 @@
             },
         },
         mounted() {
-            //console.log(this.$route)
             window.addEventListener("keydown", e => {
-                //console.log(e.keyCode)
-                if(e.keyCode===78) {
+                
+                //!! CONFLITTO CON CAMPO DI RICERCA !!
+                /*if(e.keyCode===78) {
                     document.getElementById('navigazione').focus({preventScroll: true})
                     this.isActive = true
-                }
+                }*/
+
                 if(e.keyCode===27) {
                     this.isActive = false
                 }
