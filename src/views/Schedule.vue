@@ -329,15 +329,23 @@ button.view-more {
     }
     .spalla {
       width: 100%;
-      padding:0 ;
+      padding: 0;
       height: 100%;
-      .accordions{
-        padding: 45px 15px 105px 15px;
+      .accordions {
+        padding: 80px 15px 105px 15px;
       }
     }
 
     .schedule .main-content {
       overflow: visible;
+    }
+
+    .button-container {
+        position: relative;
+        button {
+            position: fixed;
+            transform: translate(0, 0);
+        }
     }
   }
 
@@ -369,15 +377,7 @@ button.view-more {
   }
 
 @media (max-width: 480px) {
-    .button-container {
-        position: relative;
-        button {
-            position: fixed;
-            transform: translate(0, 0);
-        }
-    }
-    .spalla .accordions {
-        padding-top: 80px;
-    }
+    
+    
 }
 </style>

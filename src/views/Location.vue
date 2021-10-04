@@ -95,7 +95,8 @@ export default {
                 document.getElementById("info").style.right = "-50%";
                 document.getElementById("info").setAttribute('aria-hidden', true)
                 document.getElementById("category").setAttribute('tabindex', '-1')
-                document.getElementById(this.lastbutton).children[0].children[0].children[0].click()
+                if(this.lastbutton)
+                    document.getElementById(this.lastbutton).children[0].children[0].children[0].click()
                 this.showspalla = false
             }
             document.querySelector('.esri-view-surface').focus();
@@ -115,10 +116,12 @@ export default {
             document.getElementById("category").setAttribute('tabindex', '-1')
 
             //ritorna al focus dell'ultimo punto selezionato
-            document.getElementById(this.lastbutton).children[0].children[0].children[0].focus()
+            if(this.lastbutton)
+                document.getElementById(this.lastbutton).children[0].children[0].children[0].focus()
 
             //click che non apre la spalla, solo simulato per chiudere la proprietà 'expanded' dello screen reader
-            document.getElementById(this.lastbutton).children[0].children[0].children[0].click()
+            if(this.lastbutton)
+                document.getElementById(this.lastbutton).children[0].children[0].children[0].click()
 
             //solo ora chiudiamo veramente la spalla nella logica
             this.showspalla = false
@@ -295,29 +298,18 @@ export default {
                     returnGeometry: true
 
                 }).then(function (results) {
-                    var sr, parent
-                    
                     document.querySelectorAll('.esri-spinner').forEach(el => {
                         el.parentNode.removeChild(el)
                     })
 
                     document.querySelectorAll('.esri-popup').forEach(el => {
-                        if(!el.children[0] || !Array.from(el.children[0].classList).includes('esri-popup--is-collapsible')) {
-                            sr = el
-                            parent = el.parentNode
-                        } else {
-                            console.log(el)
+                        if(el.children && el.children.length>0 && Array.from(el.children[0].classList).includes('esri-popup--is-collapsible')) {
                             el.parentNode.removeChild(el)
                         }
-                            //el.parentNode.remove(el)
-
-                            console.log('parent', parent)
-                            console.log('sr', sr.children.length)
                     })
 
                     //document.querySelectorAll('.esri-popup')[0].parentNode.innerHTML = ''
 
-                    
                     let pt, pop
                     results.features.forEach(p => {
                         pt = new Point({ 
@@ -327,8 +319,8 @@ export default {
                         pop = new Popup({
                             view: tot.view,
                             location: pt,
-                            title: p.attributes.en_title,
-                            content: p.attributes.en_description,
+                            title: p.attributes[tot.lang+"_title"],
+                            content: p.attributes[tot.lang+"_description"],
                             visible: true,
                             collapsed: true,
                             alignment: 'auto'
@@ -345,7 +337,7 @@ export default {
 
             setTimeout(() => {
                 document.querySelectorAll('.esri-popup').forEach((pp, i) => {
-                    if(pp.children[0] && Array.from(pp.children[0].classList).includes('esri-popup--is-collapsible')) {
+                    if(pp.children && pp.children.length>0 && Array.from(pp.children[0].classList).includes('esri-popup--is-collapsible')) {
                         if(document.querySelectorAll('.esri-popup').length>6)
                             pp.setAttribute('id', i)
                         else 
@@ -364,7 +356,7 @@ export default {
                     b.setAttribute('aria-controls', 'info')
                 
                     b.addEventListener('click', e => {
-                        console.log('ah ecco 5')
+                        
                         if(!tot.showspalla) {
                             tot.lastbutton = e.target.parentNode.parentNode.parentNode.getAttribute('id')
                             let q = "OBJECTID = " + tot.lastbutton + ""
@@ -393,8 +385,6 @@ export default {
                                     tot.showspalla = true
                                 }, 200);
                             })
-                        } else {
-                            console.log('chiudi spalla')
                         }
                     })
                     
@@ -407,7 +397,7 @@ export default {
     mounted() {        
         //close spalla with 'esc'
         window.addEventListener('keydown', e => {
-            console.log('ah ecco 2')
+            
             if(e.key==='Escape') {
                 this.hideInfo()
             }
@@ -415,9 +405,11 @@ export default {
 
         //entire page listens to 'm' key pressed to return focus to map wrapper for navigation
         window.addEventListener('keydown', e => {
-            console.log('ah ecco 3')
-            if(e.key=='m')
-                document.querySelector('.esri-view-surface').focus()
+            
+            if(e.keyCode==77) {
+                if(document.activeElement.parentNode.getAttribute('role')!='search')
+                    document.querySelector('.esri-view-surface').focus()
+            }
         })
 
         this.createMapAndLayers() //create map and all provided layers
@@ -453,7 +445,6 @@ export default {
         //click on Measure WIDGET to activate/reset distance computation
         //+ style button accordingly
         document.getElementById("distanceButton").addEventListener("click", function() {
-            console.log('ah ecco 6')
             tot.setActiveWidget(null);
             if (!this.classList.contains("active")) {
                 tot.setActiveWidget("distance");
@@ -479,7 +470,6 @@ export default {
         .then(function(layerView) {
 
             var rend = tot.workspacesLayer.renderer
-            console.log(tot.workspacesLayer)
             rend.uniqueValueInfos.forEach((info, index) => {
                 info.label = tot.content.legend[index]
             })
@@ -509,7 +499,6 @@ export default {
             }*/
             
             function eventHandler(event) {
-                console.log('ma che')
                 //check if click position intersects the included layer
                 const opts = { include: tot.valvesLayer }
                 tot.view.hitTest(event, opts).then(getGraphics);
@@ -581,7 +570,6 @@ export default {
 
             //map listens to zoom keyboard events 
             document.querySelector('.esri-view-surface').addEventListener('keydown', e => {
-                console.log('ad ecco 4')
                 if(e.key==='+' && !e.ctrlKey)
                     tot.zoomplus()
                 else if(e.key==='-' && !e.ctrlKey)

@@ -231,10 +231,12 @@
             window.addEventListener("keydown", e => {
                 
                 //!! CONFLITTO CON CAMPO DI RICERCA !!
-                /*if(e.keyCode===78) {
-                    document.getElementById('navigazione').focus({preventScroll: true})
-                    this.isActive = true
-                }*/
+                if(e.keyCode===78) {
+                    if(document.activeElement.parentNode.getAttribute('role')!='search') {
+                        document.getElementById('navigazione').focus({preventScroll: true})
+                        this.isActive = true
+                    }
+                }
 
                 if(e.keyCode===27) {
                     this.isActive = false
