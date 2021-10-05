@@ -94,8 +94,8 @@
                         name: 'ProxyRouter',
                         params: { 
                             lang: this.lang, 
-                            tabtitle: (this.lang=='es' ? 'Actualizationes' : 'Updates'),
-                            pagetitle: (this.lang=='es' ? 'actualizationes' : 'updates') 
+                            tabtitle: (this.lang=='es' ? 'Actualizaciones' : 'Updates'),
+                            pagetitle: (this.lang=='es' ? 'actualizaciones' : 'updates') 
                         }
                     }">
                         <span class="icon updates"></span><span id="menulabel6" class="label">{{content.menu.menuLabel6}}</span>
@@ -170,7 +170,7 @@
                         "nepa-process-schedule": "calendario-proceso-nepa",
                         "nepa-process": "proceso-nepa",
                         "dwp-act-license": "acta-licencia-dwp",
-                        "updates": "actualizationes",
+                        "updates": "actualizaciones",
                         "comments": "comentarios",
                         "contacts": "contactos",
                     },
@@ -180,7 +180,7 @@
                         "calendario-proceso-nepa": "nepa-process-schedule",
                         "proceso-nepa": "nepa-process",
                         "acta-licencia-dwp" : "dwp-act-license",
-                        "actualizationes": "updates",
+                        "actualizaciones": "updates",
                         "comentarios": "comments",
                         "contactos": "contacts",
                     },

@@ -169,7 +169,10 @@
     }
     span:last-child {
         color: #9AABD1;
-        font-size: 1.125rem;
+        font-size: 1.1rem;
+        max-height: 22px;
+        display: flex;
+        align-items: center;
         font-weight: 400;
         margin: 10px 20px;
         text-align: left;
