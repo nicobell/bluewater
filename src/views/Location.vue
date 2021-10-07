@@ -291,22 +291,31 @@ export default {
             var refresh = document.querySelectorAll('.esri-view-surface')[0].getAttribute('data-cursor')!='crosshair' ? true : false
             
             if (!val && refresh) {
-                console.log('refresh popups')
+                console.log('*** refresh popups ***')
                 layerView.queryFeatures({
                     where: "en_description <> ''",
                     outFields: ["*"],
                     returnGeometry: true
 
                 }).then(function (results) {
-                    document.querySelectorAll('.esri-spinner').forEach(el => {
+
+                    var sr 
+
+                    /*document.querySelectorAll('.esri-spinner').forEach(el => {
                         el.parentNode.removeChild(el)
-                    })
+                    })*/
 
                     document.querySelectorAll('.esri-popup').forEach(el => {
-                        if(el.children && el.children.length>0 && Array.from(el.children[0].classList).includes('esri-popup--is-collapsible')) {
-                            el.parentNode.removeChild(el)
+                        if(!(el.children && el.children.length>0 && Array.from(el.children[0].classList).includes('esri-popup--is-collapsible'))) {
+                            //el.parentNode.removeChild(el)
+                            sr = el    
                         }
                     })
+
+                    var ppt = document.querySelectorAll('.esri-popup')[0].parentNode
+                    ppt.innerHTML = ""
+                    ppt.appendChild(sr)
+
 
                     //document.querySelectorAll('.esri-popup')[0].parentNode.innerHTML = ''
 

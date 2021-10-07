@@ -35,11 +35,12 @@
             "legend_title": "Workspaces Legend",
             "legend": [
                 "ATWS",
+                "Access Road",
                 "Permanent Easement", 
                 "Permanent Easement - Between Drill Boxes",
-                "Permanent Easement - Booster Station",
+                "Permanent Easement - Harbor Island Facility ",
                 "Temporary Construction Workspace",
-                "Temporary Construction Workspace - Booster Station"
+                "Temporary Construction Workspace - Harbor Island Facility "
             ]
         },
         "projectDescription":{
@@ -344,7 +345,7 @@
                 {
                     "date":"",
                     "subtitle":"Newspaper Notices",
-                    "content": "<ul><li>The Aransas Pass Progress – 5/12/2021</li><li>Ingleside Index - 5/12/2021</li><li>Port Aransas South Jetty – 5/13/2021 & 5/27/2011</li><li>Corpus Christi Caller – 5/14/2021 & 5/28/2021</li><li>The Rockport Pilot – 5/8/2021 & 5/22/2021</li></ul>"
+                    "content": "<ul><li>The Aransas Pass Progress – week of 10/25/2021</li><li>Ingleside Index - week of 10/25/2021</li><li>Port Aransas South Jetty – week of 10/25/2021 & week of 11/08/2021</li><li>Corpus Christi Caller – week of 10/25/2021 & week of 11/08/2021</li><li>The Rockport Pilot – week of 10/25/2021 & week of 11/08/2021</li></ul>"
                 },
                 {
                     "date":"",
@@ -479,12 +480,13 @@
         "location": {
             "legend_title": "Leyenda de los Espacios",
             "legend": [
-                "ATWS",
-                "Servidumbre Permanente", 
-                "Servidumbre Permanente - Entre Cajas de Taladro",
-                "Servidumbre Permanente - Estación de Refuerzo",
-                "Espacio de Trabajo de Construcción Temporal",
-                "Espacio de Trabajo de Construcción Temporal - Estación de Refuerzo"
+                "Espacio Adicional para Trabajo Temporal",
+                "Camino de Acceso",
+                "Servidumbre de Paso Permanente", 
+                "Servidumbre de paso Permanente - entre espacios de barrenación",
+                "Servidumbre de Paso Permanente - Instalaciones en Harbor Island",
+                "Área de Trabajo Temporal Durante la Construcción",
+                "Área de trabajo Temporal Durante la Construcción - Instalaciones en Harbor Island"
             ]
         },
         "projectDescription":{
@@ -789,7 +791,7 @@
                 {
                     "date": "",
                     "subtitle": "Avisos de periódicos",
-                    "content": "<ul><li>The Aransas Pass Progress - 5/12/2021</li><li>Índice de Ingleside - 5/12/2021</li><li>Embarcadero sur del Puerto Aransas: 13/05/2021 y 27/05/2011</li><li>Corpus Christi Caller - 14/5/2021 y 28/5/2021</li><li>The Rockport Pilot - 8/5/2021 y 22/5/2021</li></ul>"
+                    "content": "<ul><li>The Aransas Pass Progress – semana del 25/10/2021</li><li>Ingleside Index - semana del 25/10/2021</li><li>Port Aransas South Jetty – semana del 25/10/2021 & semana del 08/11/2021</li><li>Corpus Christi Caller – semana del 25/10/2021 & semana del 08/11/2021</li><li>The Rockport Pilot – semana del 25/10/2021 & semana del 08/10/2021</li></ul>"
                 },
                 {
                     "date": "",
