@@ -12,7 +12,10 @@
           <p>{{content.headerInfo.publicMeetingData}}</p>
         </div>
         <div>
-          <button>{{content.headerInfo.publicMeetingButton}}</button>
+          <a :href="content.headerInfo.publicMeetingLink"
+          target="_blank"
+          class="button"
+          >{{content.headerInfo.publicMeetingButton}}</a>
         </div>
       </aside>
     </div>
@@ -85,7 +88,7 @@ header {
       margin: 0;
       line-height: 1.6rem;
     }
-    button {
+    button, a.button {
       background-color: #fff;
       color: #EEB23A;
       border: 0px;
@@ -93,6 +96,7 @@ header {
       font-size: 1rem;
       padding: 10px 20px;
       font-weight: 600;
+      text-decoration: none;
     }
   }
 }
