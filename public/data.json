@@ -13,8 +13,9 @@
         },
         "headerInfo":{
             "publicMeetingTitle":"Public Meeting",
-            "publicMeetingData":"Thursday November 21, 2021",
-            "publicMeetingButton":"Register Now"
+            "publicMeetingData":"Thursday November 18, 2021",
+            "publicMeetingButton":"Register Now",
+            "publicMeetingLink": "https://can01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fzoom.us%2Fwebinar%2Fregister%2FWN_ouySBkDWQVO3_EYAZNCRpw&data=04%7C01%7Cmterpin%40golder.it%7C5d50da9463494979e0fb08d9950625cb%7C46b66e8634824192842f3472ff5fe764%7C1%7C0%7C637704675897072144%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=mLBOpS9rxhO4u33S9pQLJQbPX6weuGm0A3bGW514wt4%3D&reserved=0"
         },
         "menu":{
             "menuLabel1":"Location",
@@ -328,24 +329,24 @@
             "title":"Updates",
             "items":[
                 {
-                    "date":"October 22, 2021",
+                    "date":"October 29, 2021",
                     "subtitle":"Public Notice on Availability of the DEIS for the Bluewater Project and Public Meeting and Commenting info",
                     "content": ""
                 },
                 {
-                    "date":"October 22, 2021",
+                    "date":"October 29, 2021",
                     "subtitle":"Registration to participate in the Virtual Public Meeting",
                     "content": ""
                 },
                 {
-                    "date":"October 22, 2021",
+                    "date":"October 29, 2021",
                     "subtitle": "Public Repositories Locations",
                     "content": "Electronic versions of these documents are also available for viewing at the following libraries:<ul><li>Retama Public Library, 805 Comanche Street, Corpus Christi, Texas 78401; (361) 826-7055</li><li>Ingleside Public Library, 2775 Waco Street, Ingleside, Texas 78362; (361) 776-5355</li><li>Ed & Hazel Richmond Public Library, 110 North Lamont Street, Aransas Pass, Texas 78336; (361) 758-2350</li><li>Texas A&M University, Corpus Christi Mary & Jeff Bell Library/Federal Depository, 6300 Ocean Drive #5702, Corpus Christi, Texas 78412; (361) 825-2340</li><li>Owen R. Hopkins Public Library, 3202 McKinzie Road, Corpus Christi, Texas 78410; (361) 826-2350</li></ul>"
                 },
                 {
                     "date":"",
                     "subtitle":"Newspaper Notices",
-                    "content": "<ul><li>The Aransas Pass Progress – week of 10/25/2021</li><li>Ingleside Index - week of 10/25/2021</li><li>Port Aransas South Jetty – week of 10/25/2021 & week of 11/08/2021</li><li>Corpus Christi Caller – week of 10/25/2021 & week of 11/08/2021</li><li>The Rockport Pilot – week of 10/25/2021 & week of 11/08/2021</li></ul>"
+                    "content": "<ul><li>The Aransas Pass Progress – week of 11/01/2021</li><li>Ingleside Index - week of 11/01/2021</li><li>Port Aransas South Jetty – week of 11/01/2021 & week of 11/08/2021</li><li>Corpus Christi Caller – week of 11/01/2021 & week of 11/08/2021</li><li>The Rockport Pilot – week of 11/01/2021 & week of 11/08/2021</li></ul>"
                 },
                 {
                     "date":"",
@@ -381,7 +382,7 @@
                 "telephoneLabel": "Telephone Number",
                 "telephoneNumber": "no number yet"
             },
-            "alertMessage":"Scoping Comments must be submitted by <span>July 8, 2021.</span>",
+            "alertMessage":"Scoping Comments must be submitted by <span>December 13, 2021.</span>",
             "secondTitle": "Public comments may be provided by:",
             "sidebarTitle":"Useful Documents",
             "body": [
@@ -459,8 +460,9 @@
         },
         "headerInfo": {
             "publicMeetingTitle":"Reunión Pública",
-            "publicMeetingData":"Jueves 21 de noviembre, 2021",
-            "publicMeetingButton":"Registrarse ahora"
+            "publicMeetingData":"Jueves 18 de noviembre, 2021",
+            "publicMeetingButton":"Registrarse ahora",
+            "publicMeetingLink": "https://can01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fzoom.us%2Fwebinar%2Fregister%2FWN_ouySBkDWQVO3_EYAZNCRpw&data=04%7C01%7Cmterpin%40golder.it%7C5d50da9463494979e0fb08d9950625cb%7C46b66e8634824192842f3472ff5fe764%7C1%7C0%7C637704675897072144%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=mLBOpS9rxhO4u33S9pQLJQbPX6weuGm0A3bGW514wt4%3D&reserved=0"
         },
         "menu": {
             "menuLabel1":"Ubicación",
@@ -774,24 +776,24 @@
             "title":"Actualizaciones",
             "items":[
                 {
-                    "date": "22 de octubre de 2021",
+                    "date": "29 de octubre de 2021",
                     "subtitle": "Aviso público sobre la disponibilidad del DEIS para el proyecto Bluewater e información sobre reuniones públicas y comentarios",
                     "content": ""
                 },
                 {
-                    "date": "22 de octubre de 2021",
+                    "date": "29 de octubre de 2021",
                     "subtitle": "Inscripción para participar en el Encuentro Público Virtual",
                     "content": ""
                 },
                 {
-                    "date": "22 de octubre de 2021",
+                    "date": "29 de octubre de 2021",
                     "subtitle": "Ubicaciones de Repositorios Públicos",
                     "content": "Las versiones electrónicas de estos documentos también están disponibles para su visualización en las siguientes bibliotecas:<ul><li>Biblioteca Pública La Retama, 805 Comanche Street, Corpus Christi, Texas 78401; (361) 826-7055</li><li>Biblioteca Pública de Ingleside, 2775 Waco Street, Ingleside, Texas 78362; (361) 776-5355</li><li>Biblioteca Pública Ed & Hazel Richmond, 110 North Lamont Street, Aransas Pass, Texas 78336; (361) 758-2350</li><li>Universidad de Texas A&M, Biblioteca Corpus Christi Mary y Jeff Bell / Depósito federal, 6300 Ocean Drive # 5702, Corpus Christi, Texas 78412; (361) 825-2340</li><li>Biblioteca Pública Owen R. Hopkins, 3202 McKinzie Road, Corpus Christi, Texas 78410; (361) 826-2350</li></ul>"
                 },
                 {
                     "date": "",
                     "subtitle": "Avisos de periódicos",
-                    "content": "<ul><li>The Aransas Pass Progress – semana del 25/10/2021</li><li>Ingleside Index - semana del 25/10/2021</li><li>Port Aransas South Jetty – semana del 25/10/2021 & semana del 08/11/2021</li><li>Corpus Christi Caller – semana del 25/10/2021 & semana del 08/11/2021</li><li>The Rockport Pilot – semana del 25/10/2021 & semana del 08/10/2021</li></ul>"
+                    "content": "<ul><li>The Aransas Pass Progress – semana del 01/11/2021</li><li>Ingleside Index - semana del 01/11/2021</li><li>Port Aransas South Jetty – semana del 01/11/2021 & semana del 08/11/2021</li><li>Corpus Christi Caller – semana del 01/11/2021 & semana del 08/11/2021</li><li>The Rockport Pilot – semana del 01/11/2021 & semana del 08/10/2021</li></ul>"
                 },
                 {
                     "date": "",
@@ -825,7 +827,7 @@
                 "telephoneLabel": "Número de teléfono",
                 "telephoneNumber": "todavía no hay número"
             },
-            "alertMessage": "Los comentarios públicos sobre el DEIS deben enviarse antes del <span>8 de julio del 2021</span>.",
+            "alertMessage": "Los comentarios públicos sobre el DEIS deben enviarse antes del <span>13 de diciembre del 2021</span>.",
             "secondTitle": "Los comentarios públicos pueden ser proporcionados por estos medios:",
             "sidebarTitle": "Documentos útiles",
             "body": [
