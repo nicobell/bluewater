@@ -4,11 +4,11 @@
 
         <div class="intro-header"></div>
 
-        <div id="contenuto" :class="['main-content', 'map-wrapper', 'lang-'+this.lang]" tabindex="-1" >
+        <div :class="['main-content', 'map-wrapper', 'lang-'+this.lang]">
 
             <div id="loader" class="loader"><p>{{ this.lang=='es' ? 'Cargando . . .' : 'Loading . . .' }}</p></div>
 
-            <div id="viewDiv" tabindex="-1"></div>
+            <div id="viewDiv"></div>
 
             <div id="info" aria-hidden="true" tabindex="-1">
                 <button id="close-spalla" tabindex="0" class="close" aria-label="close panel" @click="hideInfo()"></button>
@@ -88,43 +88,11 @@ export default {
         backtonav() {
             document.getElementById('navigazione').focus();
         },
-        backtopmap() {
-            if(this.showspalla) {
-                document.getElementById("info").style.visibility = "hidden";
-                document.getElementById("info").style.opacity = "0.2";
-                document.getElementById("info").style.right = "-50%";
-                document.getElementById("info").setAttribute('aria-hidden', true)
-                document.getElementById("category").setAttribute('tabindex', '-1')
-                if(this.lastbutton)
-                    document.getElementById(this.lastbutton).children[0].children[0].children[0].click()
-                this.showspalla = false
-            }
-            document.querySelector('.esri-view-surface').focus();
-        },
         zoomplus() {
             this.zoomViewModel.zoomIn();
         },
         zoomminus() {
             this.zoomViewModel.zoomOut();
-        },
-        hideInfo() {
-            document.getElementById("info").style.visibility = "hidden";
-            document.getElementById("info").style.opacity = "0.2";
-            document.getElementById("info").style.right = "-50%";
-
-            document.getElementById("info").setAttribute('aria-hidden', true)
-            document.getElementById("category").setAttribute('tabindex', '-1')
-
-            //ritorna al focus dell'ultimo punto selezionato
-            if(this.lastbutton)
-                document.getElementById(this.lastbutton).children[0].children[0].children[0].focus()
-
-            //click che non apre la spalla, solo simulato per chiudere la proprietà 'expanded' dello screen reader
-            if(this.lastbutton)
-                document.getElementById(this.lastbutton).children[0].children[0].children[0].click()
-
-            //solo ora chiudiamo veramente la spalla nella logica
-            this.showspalla = false
         },
         zoomOut() {
             if(this.workspacesLayer.fullExtent.spatialReference != this.view.SpatialReference) {
@@ -152,7 +120,6 @@ export default {
                     duration: 1500
                 })
             }
-
         },
         setActiveWidget(type) {
             switch (type) {
@@ -297,47 +264,45 @@ export default {
                     outFields: ["*"],
                     returnGeometry: true
 
-                }).then(function (results) {
+                }).then(async function (results) {
+                    var sr, pt, pop
+                    //document.querySelectorAll('.esri-spinner').forEach(el => { el.parentNode.removeChild(el) })
 
-                    var sr 
-
-                    /*document.querySelectorAll('.esri-spinner').forEach(el => {
-                        el.parentNode.removeChild(el)
-                    })*/
-
-                    document.querySelectorAll('.esri-popup').forEach(el => {
-                        if(!(el.children && el.children.length>0 && Array.from(el.children[0].classList).includes('esri-popup--is-collapsible'))) {
-                            //el.parentNode.removeChild(el)
-                            sr = el    
+                    document.querySelectorAll('.esri-popup').forEach((el, index) => {
+                        if(el.children.length>0) {
+                            if(!Array.from(el.children[0].classList).includes('esri-popup--is-collapsible'))
+                                sr = el
+                        } else if(index==0) {
+                            sr = el
                         }
                     })
 
                     var ppt = document.querySelectorAll('.esri-popup')[0].parentNode
                     ppt.innerHTML = ""
-                    ppt.appendChild(sr)
+                    if(sr)
+                        ppt.appendChild(sr)
 
-
-                    //document.querySelectorAll('.esri-popup')[0].parentNode.innerHTML = ''
-
-                    let pt, pop
-                    results.features.forEach(p => {
-                        pt = new Point({ 
-                            latitude: p.geometry.latitude, 
-                            longitude: p.geometry.longitude 
+                    setTimeout(() => {
+                        results.features.forEach(p => {
+                            pt = new Point({ 
+                                latitude: p.geometry.latitude, 
+                                longitude: p.geometry.longitude 
+                            })
+                            pop = new Popup({
+                                view: tot.view,
+                                location: pt,
+                                title: p.attributes[tot.lang+"_title"],
+                                content: p.attributes[tot.lang+"_description"],
+                                visible: true,
+                                collapsed: true,
+                                alignment: 'auto'
+                            })
+                            tot.view.ui.add(pop)
                         })
-                        pop = new Popup({
-                            view: tot.view,
-                            location: pt,
-                            title: p.attributes[tot.lang+"_title"],
-                            content: p.attributes[tot.lang+"_description"],
-                            visible: true,
-                            collapsed: true,
-                            alignment: 'auto'
-                        })
-                        tot.view.ui.add(pop)
-                    })
 
-                    tot.accessiblePopups(layerView)
+                        tot.accessiblePopups(layerView)    
+                    }, 100);
+                    
                 })
             }
         },
@@ -346,30 +311,35 @@ export default {
 
             setTimeout(() => {
                 document.querySelectorAll('.esri-popup').forEach((pp, i) => {
-                    if(pp.children && pp.children.length>0 && Array.from(pp.children[0].classList).includes('esri-popup--is-collapsible')) {
-                        if(document.querySelectorAll('.esri-popup').length>6)
-                            pp.setAttribute('id', i)
-                        else 
-                            pp.setAttribute('id', i + 1)
-                    } else
-                        pp.setAttribute('id', 'search-result')
+                    if(pp.children.length>0) {
+                        if(Array.from(pp.children[0].classList).includes('esri-popup--is-collapsible')) {
+                            if(document.querySelectorAll('.esri-popup').length>6)
+                                pp.setAttribute('id', i)
+                            else 
+                                pp.setAttribute('id', i + 1)
+                        } else {
+                            pp.setAttribute('id', 'search-result')    
+                        }
+                    } //else
+                        //pp.setAttribute('id', 'search-result')
                 })
-                /*document.querySelectorAll('.esri-popup__header-title').forEach((h, i) => {
-                    h.setAttribute('tabindex', '-1')
-                })
-                document.querySelectorAll('.esri-popup__header').forEach((h, i) => {
-                    h.setAttribute('tabindex', '-1')
-                })*/
-                document.querySelectorAll('.esri-popup__header-container--button').forEach((b, i) => {
-                    b.setAttribute('tabindex', 0)
-                    b.setAttribute('aria-controls', 'info')
                 
+                //document.querySelectorAll('.esri-popup__header-title').forEach((h, i) => { h.setAttribute('tabindex', '-1') })
+                //document.querySelectorAll('.esri-popup__header').forEach((h, i) => { h.setAttribute('tabindex', '-1') })
+
+                document.querySelectorAll('.esri-popup__header-container--button').forEach((b, i) => {
+                    
+                    b.setAttribute('tabindex', 0)
+                    b.setAttribute('aria-controls', 'info')                
                     b.addEventListener('click', e => {
-                        
+                        //se la spalla è nascosta
                         if(!tot.showspalla) {
+                            //prendo l'id del popup selezionato
                             tot.lastbutton = e.target.parentNode.parentNode.parentNode.getAttribute('id')
                             let q = "OBJECTID = " + tot.lastbutton + ""
-                                                        
+
+                            //e apro la spalla con i dati caricati al suo interno
+                            //se era già aperta, rimane aperta
                             layerView.queryFeatures({
                                 where: q,
                                 outFields: ['*'],
@@ -384,40 +354,55 @@ export default {
                                 document.getElementById("info").style.opacity = "1";
                                 document.getElementById("info").setAttribute('aria-hidden', false)
 
+                                //non passo la priorità del focus alla mappa per evitare di far uscire l'utente senza chiuderla
                                 document.querySelector('.esri-view-surface').setAttribute('tabindex', '-1')
 
                                 document.getElementById("name").innerHTML = name;
                                 document.getElementById("category").innerHTML = description;
 
+                                //focus sul pulsante di chiusura dopo un tempo di caricamento
                                 setTimeout(() => {
                                     document.getElementById('close-spalla').focus()
                                     tot.showspalla = true
                                 }, 200);
                             })
                         }
-                    })
-                    
+                    })  
                 })
-                
             }, 100);
-            
+        },
+        hideInfo() {
+            //inverto gli stili della spalla all'originale, per nasconderla
+            document.getElementById("info").style.visibility = "hidden";
+            document.getElementById("info").style.opacity = "0.2";
+            document.getElementById("info").style.right = "-50%";
+
+            document.getElementById("info").setAttribute('aria-hidden', true)
+            document.getElementById("category").setAttribute('tabindex', '-1')
+
+            //ritorna al focus dell'ultimo punto selezionato
+            if(this.lastbutton)
+                document.getElementById(this.lastbutton).children[0].children[0].children[0].focus()
+
+            //click simulato che non apre la spalla, per chiudere la proprietà 'expanded' dello screen reader
+            if(this.lastbutton)
+                document.getElementById(this.lastbutton).children[0].children[0].children[0].click()
+
+            //solo ora chiudiamo veramente la spalla nella logica della mappa
+            this.showspalla = false
         }
     },
-    mounted() {        
-        //close spalla with 'esc'
-        window.addEventListener('keydown', e => {
-            
-            if(e.key==='Escape') {
-                this.hideInfo()
-            }
-        })
-
+    mounted() {
         //entire page listens to 'm' key pressed to return focus to map wrapper for navigation
         window.addEventListener('keydown', e => {
-            
             if(e.keyCode==77) {
+                //if research is not active, to avoid interference with searchbar
+                //in order to make possible to search places beginning in 'M'
                 if(document.activeElement.parentNode.getAttribute('role')!='search')
+                    //entire page listens to 'm' key pressed to return focus to map wrapper for navigation
                     document.querySelector('.esri-view-surface').focus()
+            } else if(e.key==='Escape') {
+                this.hideInfo()
             }
         })
 
@@ -450,7 +435,7 @@ export default {
             //every time layer is refreshed/updated, to re-position popups and re-open them
             layerView.watch("updating", val => { tot.addPopups(layerView, val) })
         })
-        
+
         //click on Measure WIDGET to activate/reset distance computation
         //+ style button accordingly
         document.getElementById("distanceButton").addEventListener("click", function() {
@@ -496,17 +481,9 @@ export default {
                 view: tot.view,
                 expanded: false
             })
-
-            tot.view.ui.add(legend, "bottom-left");
+            tot.view.ui.add(legend, "bottom-left")
 
             tot.view.on("click", eventHandler)
-            
-            /*tot.view.on("pointer-up", eventh2)
-            function eventh2(event) {
-                console.log('UP')
-                tot.addPopups(layerView, false)
-            }*/
-            
             function eventHandler(event) {
                 //check if click position intersects the included layer
                 const opts = { include: tot.valvesLayer }
@@ -514,6 +491,7 @@ export default {
             }
 
             function getGraphics(response) {
+                console.log('click result: ', response)
                 if (response.results.length) {
                     //retrieve clicked point data
                     const graphic = response.results[0].graphic;
@@ -533,7 +511,6 @@ export default {
                     document.getElementById("category").innerHTML = description;
 
                     tot.showspalla = true;
-
                     //zoom in to point clicked
                     /*tot.view.goTo({
                         target: new Point({
@@ -563,8 +540,10 @@ export default {
         .then(function() {
             document.getElementById('loader').style.visibility = 'hidden'
 
-            if(document.querySelector('.esri-expand [role=button]'))
-                document.querySelector('.esri-expand [role=button]').setAttribute('aria-label', 'expand legend')
+            /*
+                if(document.querySelector('.esri-expand [role=button]'))
+                    document.querySelector('.esri-expand [role=button]').setAttribute('aria-label', 'expand legend')
+            */
 
             document.querySelector('.esri-attribution').setAttribute('aria-hidden', true)
             document.querySelector('.esri-attribution__sources').setAttribute('aria-hidden', true)
@@ -573,8 +552,7 @@ export default {
             document.querySelector('.esri-attribution').setAttribute('tabindex', '-1')
             document.querySelector('.esri-attribution__sources').setAttribute('tabindex', '-1')
             document.querySelector('.esri-attribution__powered-by').setAttribute('tabindex', '-1')
-            //document.querySelector('.esri-attribution__link').setAttribute('tabindex', '-1')
-
+            
             document.querySelector('.esri-view-surface').setAttribute('id', 'contenuto')
 
             //map listens to zoom keyboard events 
@@ -584,6 +562,7 @@ export default {
                 else if(e.key==='-' && !e.ctrlKey)
                     tot.zoomminus()
             })
+            
             if(document.getElementById('contenuto'))
                 document.getElementById('contenuto').focus({ preventScroll: true });
             
