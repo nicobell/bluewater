@@ -287,9 +287,6 @@
                     "title": "FUTURE ACTION",
                     "content": [
                         {
-                            "description": "End of Public Comment Period on the Draft EIS",
-                            "date": "August, 2021"
-                        }, {
                             "description": "Distribution of Final EIS; file w/ EPA; posto to docket",
                             "date": "November, 2021"
                         }, {
@@ -301,6 +298,9 @@
                         }, {
                             "description": "Draft EIS Public (Virtual) Meeting",
                             "date": "November, 2021"
+                        }, {
+                            "description": "End of Public Comment Period on the Draft EIS",
+                            "date": "December, 2021"
                         }, {
                             "description": "Final EIS and Application Public Hearings",
                             "date": "December, 2021"
@@ -577,12 +577,12 @@
                             "detail": "26 Días",
                             "description": "<p>Dentro de los 21 días posteriores a la presentación de una solicitud de licencia de DWP, la Guardia Costera y MARAD, en coordinación con las agencias federales de cooperación, deben determinar si una solicitud contiene suficiente información. Si está completo, se debe emitir un Aviso de Solicitud de FR (NOA) antes del día 26.</p>"
                         },{
-                            "title": "FASE DRAFT EIS",
+                            "title": "FASE DE BORRADOR DE EIS",
                             "titleClass": "bar",
                             "detail": "",
                             "description": "<p>Proceso del Acta de Política Ambiental Nacional (NEPA) y desarrollo de EIS.</p><p>El Aviso de Intención FR (NOI) para preparar la Declaración de Impacto Ambiental (EIS) se emite y comienza el Período de Alcance de la NEPA de 30 días, que incluye comentarios y reuniones públicas. El DEIS se prepara y publica mediante el Aviso de Disponibilidad de FR, período de comentarios de 45 días y reuniones públicas.</p>"
                         },{
-                            "title": "FASE FINAL EIS",
+                            "title": "FASE FINAL DE EIS",
                             "titleClass": "bar",
                             "detail": "266 Días",
                             "description": "<p>Toda la información y los análisis necesarios para cumplir con los requisitos ambientales federales y estatales se incorporan en un documento de la NEPA. El FEIS es preparado y se publica por FR NOA con un período de comentarios de 30 días y audiencias públicas de DWPA. El acta de Puertos de Aguas Profundas requiere al menos una audiencia de solicitud de licencia en cada estado costero adyacente para cada solicitud. La audiencia pública de solicitud de licencia pública final debe ocurrir a más tardar 240 días después de la publicación del Aviso de Solicitud en el Registro Federal.</p>"
@@ -722,8 +722,11 @@
                             "description": "El cronograma legal se restauró con carácter retroactivo al 23 de octubre de 2020, debido a un cambio reciente en la práctica histórica de la USCG de suspensión del cronograma para cumplir con el cronograma estatutario de la DWPA de 1974.",
                             "date": "8 de enero de 2021"
                         }, {
-                            "description": "Borrador de EIS presentado ante la EPA; Restart-the-Clock",
-                            "date": "24 de mayo de 2021"
+                            "description": "Borrador de EIS presentado ante la EPA",
+                            "date": "25 de octubre de 2021"
+                        }, {
+                            "description": "Aviso de disponibilidad (Borrador de EIS); Solicitud de comentarios públicos",
+                            "date": "29 de octubre de 2021"
                         }
                     ]
                 },{
@@ -731,16 +734,10 @@
                     "title": "ACCIONES FUTURAS PROVISIONALES",
                     "content": [
                         {
-                            "description": "Fin del período de comentarios públicos sobre el borrador de la EIS",
-                            "date": "Agosto de 2021"
-                        }, {
                             "description": "Distribución de la EIS final; presentar w / EPA; publicar en el expediente",
                             "date": "Noviembre de 2021"
                         }, {
                             "description": "Aviso de disponibilidad de FR (FEIS) y audiencias públicas",
-                            "date": "Noviembre de 2021"
-                        }, {
-                            "description": "Aviso de disponibilidad (Borrador de EIS); Solicitud de comentarios públicos",
                             "date": "Noviembre de 2021"
                         }, {
                             "description": "Aviso de reunión pública (virtual) para recibir comentarios sobre el borrador de la DIA",
@@ -748,6 +745,9 @@
                         }, {
                             "description": "Borrador de la reunión pública (virtual) de la EIS",
                             "date": "Noviembre de 2021"
+                        }, {
+                            "description": "Fin del período de comentarios públicos sobre el borrador de la EIS",
+                            "date": "Diciembre de 2021"
                         }, {
                             "description": "Audiencias públicas de solicitud y EIS final",
                             "date": "Diciembre de 2021"
