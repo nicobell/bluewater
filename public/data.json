@@ -277,15 +277,6 @@
                         }, {
                             "description": "Draft EIS filed with EPA; Re-Start Clock",
                             "date": "May 24, 2021"
-                        }, {
-                            "description": "Notice of Availability (Draft EIS); Request for Public Comments",
-                            "date": "July, 2021"
-                        }, {
-                            "description": "Notice of Public (Virtual) Meeting to Receive Comments on the Draft EIS",
-                            "date": "July, 2021"
-                        }, {
-                            "description": "Draft EIS Public (Virtual) Meeting",
-                            "date": "July, 2021"
                         }
                     ]
                 },{
@@ -300,6 +291,15 @@
                             "date": "November, 2021"
                         }, {
                             "description": "FR Notice of Availability (FEIS) and Public Hearings",
+                            "date": "November, 2021"
+                        },{
+                            "description": "Notice of Availability (Draft EIS); Request for Public Comments",
+                            "date": "November, 2021"
+                        }, {
+                            "description": "Notice of Public (Virtual) Meeting to Receive Comments on the Draft EIS",
+                            "date": "November, 2021"
+                        }, {
+                            "description": "Draft EIS Public (Virtual) Meeting",
                             "date": "November, 2021"
                         }, {
                             "description": "Final EIS and Application Public Hearings",
@@ -330,12 +330,12 @@
             "items":[
                 {
                     "date":"October 29, 2021",
-                    "subtitle":"Public Notice on Availability of the DEIS for the Bluewater Project and Public Meeting and Commenting info",
+                    "subtitle":"Public Notice on Availability of the DEIS for the Bluewater Project and Virtual Public Meeting",
                     "content": ""
                 },
                 {
                     "date":"October 29, 2021",
-                    "subtitle":"Registration to participate in the Virtual Public Meeting Opens",
+                    "subtitle":"Registration to participate in the Virtual Public Meeting opens",
                     "content": ""
                 },
                 {
@@ -382,7 +382,7 @@
                 "telephoneLabel": "Telephone Number",
                 "telephoneNumber": "no number yet"
             },
-            "alertMessage":"Scoping Comments must be submitted by <span>December 13, 2021.</span>",
+            "alertMessage":"Public comments must be submitted by <span>December 13, 2021</span>.",
             "secondTitle": "Public comments may be provided by:",
             "sidebarTitle":"Useful Documents",
             "body": [
@@ -724,15 +724,6 @@
                         }, {
                             "description": "Borrador de EIS presentado ante la EPA; Restart-the-Clock",
                             "date": "24 de mayo de 2021"
-                        }, {
-                            "description": "Aviso de disponibilidad (Borrador de EIS); Solicitud de comentarios públicos",
-                            "date": "Julio de 2021"
-                        }, {
-                            "description": "Aviso de reunión pública (virtual) para recibir comentarios sobre el borrador de la DIA",
-                            "date": "Julio de 2021"
-                        }, {
-                            "description": "Borrador de la reunión pública (virtual) de la EIS",
-                            "date": "Julio de 2021"
                         }
                     ]
                 },{
@@ -747,6 +738,15 @@
                             "date": "Noviembre de 2021"
                         }, {
                             "description": "Aviso de disponibilidad de FR (FEIS) y audiencias públicas",
+                            "date": "Noviembre de 2021"
+                        }, {
+                            "description": "Aviso de disponibilidad (Borrador de EIS); Solicitud de comentarios públicos",
+                            "date": "Noviembre de 2021"
+                        }, {
+                            "description": "Aviso de reunión pública (virtual) para recibir comentarios sobre el borrador de la DIA",
+                            "date": "Noviembre de 2021"
+                        }, {
+                            "description": "Borrador de la reunión pública (virtual) de la EIS",
                             "date": "Noviembre de 2021"
                         }, {
                             "description": "Audiencias públicas de solicitud y EIS final",
@@ -777,12 +777,12 @@
             "items":[
                 {
                     "date": "29 de octubre de 2021",
-                    "subtitle": "Aviso público sobre la disponibilidad del DEIS para el proyecto Bluewater e información sobre reuniones públicas y comentarios",
+                    "subtitle": "Aviso público sobre la disponibilidad del DEIS para el proyecto Bluewater y la reunión pública virtual",
                     "content": ""
                 },
                 {
                     "date": "29 de octubre de 2021",
-                    "subtitle": "Inscripción para participar en los Virtual Public Meeting Opens",
+                    "subtitle": "Se abre la inscripción para participar en el Encuentro Público Virtual",
                     "content": ""
                 },
                 {
@@ -827,7 +827,7 @@
                 "telephoneLabel": "Número de teléfono",
                 "telephoneNumber": "todavía no hay número"
             },
-            "alertMessage": "Los comentarios públicos sobre el DEIS deben enviarse antes del <span>13 de diciembre del 2021</span>.",
+            "alertMessage": "Los comentarios públicos deben enviarse antes del <span>13 de diciembre del 2021</span>.",
             "secondTitle": "Los comentarios públicos pueden ser proporcionados por estos medios:",
             "sidebarTitle": "Documentos útiles",
             "body": [
