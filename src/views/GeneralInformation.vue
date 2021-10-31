@@ -33,7 +33,7 @@
 
 <script>
 export default {
-    name: 'updates',
+    name: 'general-information',
     data: () => {
         return {
             data: null,

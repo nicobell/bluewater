@@ -7,7 +7,7 @@
             "nepa-process-schedule": "nepa-process-schedule",
             "nepa-process": "nepa-process",
             "dwp-act-license": "dwp-act-license",
-            "updates": "updates",
+            "updates": "general-information",
             "comments": "comments",
             "contacts": "contacts"
         },
@@ -23,7 +23,7 @@
             "menuLabel3":"NEPA Process",
             "menuLabel4":"DWP Act & License ",
             "menuLabel5":"Schedule",
-            "menuLabel6":"Updates",
+            "menuLabel6":"General Information",
             "menuLabel7":"Your Opinion",
             "menuLabel8":"Contacts"
         },
@@ -46,23 +46,23 @@
         },
         "projectDescription":{
             "title":"Project Description",
-            "description": "<p>Bluewater is proposing to construct, own, operate, and eventually decommission a deepwater port (DWP), associated pipeline infrastructure, and facility located within Aransas, Nueces, and San Patricio counties, Texas.  The proposed project involves the design, engineering, and construction of a DWP and approximately 56.18 statute miles of pipeline infrastructure.  The 12-acre Harbor Island Facility, located on Harbor Island in Nueces County, would consist of pig launchers/receivers, meters and valves, operations building, and communications facility, with no crude oil storage on site.</p><p>The Bluewater DWP would allow for the loading of two (2) very large crude carriers (VLCCs) at the proposed DWP via two single point mooring (SPM) buoy systems and connect with the DWP via floating connecting crude oil hoses.  The proposed Project would be capable of loading rates of up to approximately 80,000 barrels per hour (bph).  The proposed Project is expected to service 16 VLCCs per month.</p>",
+            "description": "<p>Bluewater Texas Terminal LLC is proposing to construct, own, operate, and eventually decommission a deepwater port (DWP), associated pipeline infrastructure, and facility located within Aransas, Nueces, and San Patricio counties, Texas.  The proposed project involves the design, engineering, and construction of a DWP and approximately 56.18 statute miles of pipeline infrastructure.  The 12-acre Harbor Island Facility, located on Harbor Island in Nueces County, would consist of pig launchers/receivers, meters and valves, operations building, and communications facility, with no crude oil storage on site.</p><p>The Bluewater DWP would allow for the loading of two (2) very large crude carriers (VLCCs) at the proposed DWP via two single point mooring (SPM) buoy systems and connect with the DWP via floating connecting crude oil hoses.  The proposed Project would be capable of loading rates of up to approximately 80,000 barrels per hour (bph).  The proposed Project is expected to service 16 VLCCs per month.</p>",
             "data": {
                 "mooringPointd": 2,
                 "mooringPointLabel": "SINGLE POINT MOORING BUOY SYSTEMS",
                 "depths": "88-90",
                 "location": 15,
                 "locationNMs": "nm off the coast of San Jose Island",
-                "miles": 56.48,
-                "unit": "miles",
+                "miles": 56.18,
+                "unit": "statute miles",
                 "milesDescription": "Two 30-inch Outside Diameter Crude Oil Pipelines",
                 "milesLabels": ["Onshore", "Inshore", "Offshore"],
                 "harborFacility": 12,
                 "acresOf": "of Harbor Island Facility",
                 "carriersMonths": 16,
                 "carriersLabel": "VERY LARGE CRUDE CARRIERS",
-                "loadingRates1": 80,
-                "loadingRates2": 40,
+                "loadingRates1": "80,000",
+                "loadingRates2": "40,000",
                 "simultaneousOperations": "Simultaneous Operations"
             },
             "hiddenDescription": "<li>Two single point mooring buoy systems.</li><li>Depths of 88 to 90 feet, location 15 nautical miles off the coast of San Jose Island.</li><li>56.48 miles of two 30-inch outside diameter crude oil pipelines, onshore, inshore and offshore.</li><li>The Harbor Island Facility occupies 12 acres.</li><li>16 very large crude carriers a month with loading rates of 80 bph and 40 bph for simultaneous operations.</li>"
@@ -75,23 +75,23 @@
                     "id": 1,
                     "label": "What is NEPA?",
                     "title":"What is NEPA?",
-                    "description":"<p>The National Environmental Policy Act (NEPA) was passed in 1969 and has two major objectives:</p><ul><li>To ensure that federal agencies consider the potential environmental effects of proposed programs, projects, and actions before initiating them.</li><li> To inform the public and encourage and facilitate public involvement in federal agency activities that may affect the quality of the human environment.</li></ul><p>Guidelines for Federal agencies to implement NEPA were established in regulations by the President’s Council on Environmental Quality (CEQ) in 40 CFR 1500-1508. In addition, the U.S. Coast Guard (Coast Guard) has issued implementing procedures and policy for considering environmental impacts under NEPA and related laws.</p><p>Documents prepared under NEPA include a Categorical Exclusion, and Environmental Assessment, and an Environmental Impact Statement (EIS). When a proposed action has the potential for significant impacts, and EIS, the most detailed analysis conducted under NEPA, is prepared.</p>"
+                    "description":"<p>The National Environmental Policy Act (NEPA) was passed in 1969 and has two major objectives:</p><ul><li>To ensure that federal agencies consider the potential environmental effects of proposed programs, projects, and actions before initiating them.</li><li> To inform the public and encourage and facilitate public involvement in federal agency activities that may affect the quality of the human environment.</li></ul><p>Guidelines for Federal agencies to implement NEPA were established in regulations by the President’s Council on Environmental Quality (CEQ) in 40 CFR 1500-1508. In addition, the USCG and MARAD have issued implementing procedures and policy for considering environmental impacts under NEPA and related laws.</p><p>Documents prepared under NEPA include a Categorical Exclusion, and Environmental Assessment, and an Environmental Impact Statement (EIS). When a proposed action has the potential for significant impacts, an EIS, the most detailed analysis conducted under NEPA, is prepared.</p>"
                 },
                 {
                     "id": 2,
                     "label": "Public Scoping",
                     "title":"Public Scoping",
-                    "description":"<p>The public scoping meeting provides opportunities for the public, federal, state, and local agencies, any affected Indian tribes, and other interested parties to provide input on the range of actions, alternatives, and impacts to be considered in the EIS.</p><h3>The open house and public scoping meeting, for the Bluewater Texas Terminal Project were held on July 22, 2019 in Corpus Christi, Texas.</h3>"
+                    "description":"<p>The public scoping meeting provides opportunities for the public, federal, state, and local agencies, any affected Indian tribes, and other interested parties to provide input on the range of actions, alternatives, and impacts to be considered in the EIS.</p><h3>The open house and public scoping meeting for the Bluewater Texas Terminal Project were held on July 22, 2019 in Corpus Christi, Texas.</h3>"
                 },
                 {
                     "id": 3,
                     "label": "Prepare Draft EIS",
                     "title":"Prepare Draft EIS",
-                    "description":"<p>Draft EIS is distributed to interested stakeholders including federal, state and local agencies, affected Indian tribes, private citizens and organizations and is placed in community libraries in the affected region. Open houses and public meetings provide the public an opportunity to make oral comments or submit written comments.</p>",
+                    "description":"<p>The Draft EIS was distributed to interested stakeholders including federal, state, and local agencies, affected Indian tribes, private citizens and organizations and was placed in community libraries in the affected region. The virtual public meeting is scheduled for November 18, 2021 and provides the public an opportunity to make oral comments or submit written comments.</p>",
                     "body": [
                         {
                             "title": "Public Involvement",
-                            "description": "<p>NEPA mandates that local, state, and federal agencies, any affected Indian tribes, and private citizens within the potentially affected areas be given the opportunity to comment of proposed actions throughout the NEPA process.</p>"
+                            "description": "<p>NEPA mandates that local, state, and Federal agencies, any affected Indian tribes, and private citizens within the potentially affected areas be given the opportunity to comment on the proposed actions throughout the NEPA process. The USCG and MARAD initiated the public scoping process on July 3, 2019, with the publication of a Notice of Intent (NOI) to prepare an EIS in the Federal Register.  A Dear Interested Party Letter, the NOI published in the Federal Register, and a map describing the proposed Project were sent to federal, tribal, state, and local agency representatives; and other potentially interested parties.  As an additional mechanism to facilitate public participation in the scoping process, the USCG and MARAD held an informational open house and scoping meeting at the Omni Corpus Christi located in Corpus Christi, Texas on July 22, 2019.</p>"
                         }, {
                             "title": "Agency coordination",
                             "description": "<p>The Deepwater Port Act directs the U.S. Coast Guard (Coast Guard) and MARAD to prepare the EIS in a manner that fulfills the requirements of all Federal agencies in carrying out their responsibilities under NEPA. U.S. Coast Guard (Coast Guard) and MARAD also ensure that all connected actions which may affect local, state, and Indian tribe interests are analyzed. The list of agencies contacted for coordination and comments are part of the EIS.</p>"
@@ -105,7 +105,7 @@
                     "id": 4,
                     "label": "Prepare Final EIS",
                     "title":"Prepare Final EIS",
-                    "description":"<p>The Final EIS includes copies of all comments and Coast Guard/MARAD responses.  The Notice of Availability (NOA) of the Final EIS will appear in the Federal Register and local newspapers.</p>"
+                    "description":"<p>The Final EIS will include responses to all comments received on the Draft EIS. The Notice of Availability (NOA) for the Final EIS will appear in the Federal Register and local newspapers.</p>"
                 }
             ]
         },
@@ -140,12 +140,12 @@
                             "detail": "266 Days",
                             "description": "<p>All necessary information and analyses to meet Federal and state environmental requirements is incorporated into one NEPA document. FEIS is prepared and by FR NOA is published with 30-day comment period and DWPA public hearings. Deepwater Port Act requires at least one public license application hearing in each adjacent coastal State for each application. Final public license application public hearing must occur no later than 240 days after the publication of the Notice of Application in the Federal Register.</p>"
                         },{
-                            "title": "Decision Phase",
+                            "title": "Governor's Decision",
                             "titleClass": "bar",
                             "detail": "45 Days",
                             "description": "<p>Governor(s) of the adjacent coastal State(s) have 45 days after the final public license application hearing to make their final comments on the application. Governor(s) may approve, approve with conditions, or disapprove the application.</p>"
                         },{
-                            "title": "Record Phase",
+                            "title": "Record of Decision",
                             "titleClass": "bar",
                             "detail": "90 Days",
                             "description": "<p>The Maritime Administrator has a total of 90 days to issue a Record of Decision (ROD) after the public license application hearing. The Administrator may approve, approve with conditions, or disapprove a deepwater port license application. License determination/development to follow.</p>"
@@ -161,7 +161,7 @@
                     "id": 3,
                     "label": "Independent Risk Assessment",
                     "title":"What is the Independent Risk Assessment (IRA)?",
-                    "description":"<ul><li>U.S. Coast Guard (Coast Guard) works with local stakeholders and the applicant to conduct an independent risk assessment (IRA).</li><li>Purpose of the IRA is to identify credible accidental and intentional scenarios that could lead to the release of oil during port operations, determine worst-case consequences, and identify any other maritime safety/ security issues that should be addressed.</li><li>Mitigation strategies to properly manage risks will be developed and required by license conditions and included in the Port Operations Manual.</li></ul>"
+                    "description":"<ul><li>U.S. Coast Guard (Coast Guard) works with local stakeholders and the applicant to conduct an independent risk assessment (IRA).</li><li>As part of DWP license application reviews, the USCG conducts a Two-Phase Risk Assessment Process. Phase I is a hazard identification process involving the USCG and local stakeholders to identify safety, security, and environmental risks. Results from the Phase I risk assessment is reported in Appendix Q of the Draft EIS. Phase II develops detailed prevention and mitigation strategies for both accidental and intentional release scenarios, including security measures, in a coordinated effort between the USCG, local law enforcement and emergency response officials, the Applicant, and other stakeholders.</li><li>Purpose of the IRA is to identify credible accidental and intentional scenarios that could lead to the release of oil during port operations, determine worst-case consequences, and identify any other maritime safety/ security issues that should be addressed.</li><li>Mitigation strategies to properly manage risks will be developed and required by license conditions and included in the Port Operations Manual.</li></ul>"
                 },
                 {
                     "id": 4,
@@ -221,11 +221,11 @@
                     "id": 5,
                     "label": "Conditions and Requirements",
                     "title": "Deepwater Port Record of Decision, License Conditions and Post Licensing Requirements – Part 1",
-                    "description": "<p>The following regulatory mechanisms will aid in the managing safety and environmental risks.</p><p>The Maritime Administration will issue a Record of Decision (ROD) and may issue a subsequent License that may include any necessary conditions.</p><p>Conditions of Licensing may include:</p>",
+                    "description": "<p>The Maritime Administration will issue a Record of Decision (ROD) that will state whether the License will be issued, denied, or issued with conditions. Many of the conditions are included throughout the Draft EIS and Appendices.</p><p>If the ROD is favorable, conditions of the License may include:</p>",
                     "body": [
                         {
                             "title": "Management of Change",
-                            "description": "<p>This requires additional evaluation for any substantive design, equipment, and/or operational changes that may have unanticipated effects on or changes in the environment that are not consistent with the environmental analysis, permits, Operations/ Security Manual, or ROD/ License conditions.</p>"
+                            "description": "<p>Any post-License change in the proposed project would require additional evaluation to determine if changes in design, equipment, and/or operation would have effects not evaluated in the EIS or that or inconsistent with relevant permits, Operations/Security Manual, or ROD/License conditions.</p>"
                         }, {
                             "title": "Federal and State Permits, Authorizations, and Regulatory Requirements",
                             "description": "<p>These include, but are not limited to:</p><ul><li>U.S. Environmental Protection Agency (EPA), Clean Water Act (CWA), National Pollutant Discharge</li><li>Elimination System (NPDES) Permits(s), Clean Air Act (CAA) Permits, and General Conformity Determination.</li><li> U.S. Army Corps of Engineers Section 10 Rivers and Harbors Act/ Section 404 CWA Permit(s).</li><li>Coastal Zone Management Act (CZMA) Consistency Certification.</li><li>National Oceanic and Atmospheric Administration (NOAA) and U.S. Fish and Wildlife Service (USFWS)</li><li>Endangered Species Act, National Marine Sanctuaries Act, Magnuson-Stevens Fishery Conservation and Management Act, Marine Mammal Protection Act, and associated consultations and authorizations.</li><li>Pipeline and Hazardous Material Safety Administration (PHMSA) requirements.</li><li>Bureau of Ocean Energy Management (BOEM) and Bureau of Safety and Environmental Enforcement (BSEE) requirements.</li><li>National Historic Preservation Act compliance.</li><li>Procedures for avoidance of geologic hazards and hazardous materials, and protection of cultural and archaeological resources.</li><li>Texas state approvals for onshore/inshore storage, pipeline and other applied-for infrastructure.</li><li>Other federal, state or local regulations, permits, and authorizations as applicable.</li></ul>"
@@ -326,7 +326,7 @@
             "imageDescription": "an infographic image describing the statutory timeline of the deepwater port act and nepa process"
         },
         "updates": {
-            "title":"Updates",
+            "title":"General Information",
             "items":[
                 {
                     "date":"October 29, 2021",
@@ -346,12 +346,7 @@
                 {
                     "date":"",
                     "subtitle":"Newspaper Notices",
-                    "content": "<ul><li>The Aransas Pass Progress – week of 11/01/2021</li><li>Ingleside Index - week of 11/01/2021</li><li>Port Aransas South Jetty – week of 11/01/2021 & week of 11/08/2021</li><li>Corpus Christi Caller – week of 11/01/2021 & week of 11/08/2021</li><li>The Rockport Pilot – week of 11/01/2021 & week of 11/08/2021</li></ul>"
-                },
-                {
-                    "date":"",
-                    "subtitle":"NEPA Process - President’s Council on Environmental Quality (CEQ) in 40 CFR 1500-1508",
-                    "content": ""
+                    "content": "<ul><li>The Aransas Pass Progress</li><li>Ingleside Index</li><li>Port Aransas South Jetty</li><li>Corpus Christi Caller</li><li>The Rockport Pilot</li></ul>"
                 },
                 {
                     "date":"July 3, 2019",
@@ -365,13 +360,13 @@
             "cards": [
                 {
                     "title":"License Application",
-                    "description":"The License Application is available for viewing at the <span>Regulations.gov</span> website under docket number MARAD-2019-0094.",
+                    "description":"The License Application is available for viewing at the <span>Regulations.gov</span> website. Type the docket number, MARAD-2019-0094, in the search bar.",
                     "button":"Go to Website",
                     "link": "http://regulations.gov",
                     "label": "go to license application website"
                 }, {
                     "title":"Draft EIS",
-                    "description":"The Draft EIS is available for viewing at the <span>Regulations.gov</span> website under docket number MARAD-2019-0094.",
+                    "description":"The Draft EIS is available for viewing at the <span>Regulations.gov</span> website. Type the docket number, MARAD-2019-0094, in the search bar.",
                     "button":"Go to Website",
                     "link": "http://regulations.gov",
                     "label": "go to draft eis website"
@@ -454,7 +449,7 @@
             "nepa-process-schedule": "calendario-proceso-nepa",
             "nepa-process": "proceso-nepa",
             "dwp-act-license": "acta-licencia-dwp",
-            "updates": "actualizaciones",
+            "updates": "information-general",
             "comments": "comentarios",
             "contacts": "contactos"
         },
@@ -470,7 +465,7 @@
             "menuLabel3":"Proceso NEPA",
             "menuLabel4":"Acta y Licencia DWP",
             "menuLabel5":"Calendario",
-            "menuLabel6":"Actualizaciones",
+            "menuLabel6":"Información General",
             "menuLabel7":"Su opiniòn",
             "menuLabel8":"Contactos"
         },
@@ -493,23 +488,23 @@
         },
         "projectDescription":{
             "title": "Descripción del Proyecto",
-            "description": "<p>Bluewater propone construir, poseer, operar y eventualmente desmantelar un puerto de aguas profundas (DWP), infraestructura de ductos asociados e instalaciones ubicadas dentro de los condados de Aransas, Nueces y San Patricio, Texas. El Proyecto propuesto implica el diseño, la ingeniería y la construcción de un DWP y aproximadamente 56.18 millas terrestres de infraestructura de tuberías. La instalación de Harbour Island de 12 acres, ubicada en Harbour Island en el condado de Nueces, consistiría en trampas de recibo y despacho, medidores y válvulas, edificio de operaciones e instalación de comunicaciones, sin almacenamiento de petróleo crudo en el sitio.</p><p>El DWP Bluewater permitiría la carga de dos (2) trasportadores de petróleo crudo muy grandes (VLC) en el DWP propuesto a través de dos sistemas de boyas de amarre de un solo punto (SPM) y se conectaría con el DWP a través de mangueras flotantes de conexión de petróleo crudo. El Proyecto propuesto sería capaz de cargar a velocidades de hasta aproximadamente 80,000 barriles por hora (bph). Se espera que el Proyecto propuesto preste servicio a 16 VLCC por mes.</p>",
+            "description": "<p>Bluewater Texas Terminal LLC propone construir, poseer, operar y eventualmente desmantelar un puerto de aguas profundas (DWP), infraestructura de ductos asociados e instalaciones ubicadas dentro de los condados de Aransas, Nueces y San Patricio, Texas. El Proyecto propuesto implica el diseño, la ingeniería y la construcción de un DWP y aproximadamente 56.18 millas terrestres de infraestructura de tuberías. La instalación de Harbour Island de 12 acres, ubicada en Harbour Island en el condado de Nueces, consistiría en trampas de recibo y despacho, medidores y válvulas, edificio de operaciones e instalación de comunicaciones, sin almacenamiento de petróleo crudo en el sitio.</p><p>El DWP Bluewater permitiría la carga de dos (2) trasportadores de petróleo crudo muy grandes (VLC) en el DWP propuesto a través de dos sistemas de boyas de amarre de un solo punto (SPM) y se conectaría con el DWP a través de mangueras flotantes de conexión de petróleo crudo. El Proyecto propuesto sería capaz de cargar a velocidades de hasta aproximadamente 80,000 barriles por hora (bph). Se espera que el Proyecto propuesto preste servicio a 16 VLCC por mes.</p>",
             "data": {
                 "mooringPointd": 2,
                 "mooringPointLabel": "SISTEMAS DE BOYAS DE AMARRE DE UN SOLO PUNTO",
                 "depths": "88-90",
                 "location": 15,
                 "locationNMs": "nm de la costa de la isla de San José",
-                "miles": 56.48,
-                "unit": "millas",
+                "miles": 56.18,
+                "unit": "millas terrestres",
                 "milesDescription": "Dos oleoductos de petróleo crudo de 30 pulgadas de diámetro exterior",
                 "milesLabels": ["En tierra", "Costera", "Costa afuera"],
                 "harborFacility": 12,
                 "acresOf": "de instalaciones de Harbour Island",
                 "carriersMonths": 16,
                 "carriersLabel": "TRANSPORTISTAS DE PETRÓLEO CRUDO MUY GRANDES",
-                "loadingRates1": 80,
-                "loadingRates2": 40,
+                "loadingRates1": "80,000",
+                "loadingRates2": "40,000",
                 "simultaneousOperations": "Operaciones Simultáneas"
             },
             "hiddenDescription": "<li>Dos sistemas de boyas de amarre de un solo punto.</li><li>Profundidad 88-90 pies, ubicación a 15 nm de la costa de la isla de San José.</li><li>56.48 millas en dos oleoductos de petróleo crudo de 30 pulgadas de diámetro exterior, en tierra, costera y costa afuera.</li><li>12 acres de instalaciones de Harbour Island.</li><li>16 transportistas de petróleo crudo muy grandes per mes, con tasas de carga 80 bph y 40 bph por operaciones simultáneas.</li>"
@@ -522,23 +517,23 @@
                     "id": 1,
                     "label": "¿Qué es NEPA?",
                     "title": "¿Qué es NEPA?",
-                    "description": "<p>El Acta de Política Ambiental Nacional (NEPA) se aprobó en 1969 y tiene dos objetivos principales:</p><ul><li>Asegurar que las agencias federales consideren los posibles. efectos ambientales de los programas, proyectos y acciones propuestos antes de iniciarlos.</li><li>Informar al público y alentar y facilitar la participación pública en las actividades de las agencias federales que pueden afectar la calidad del medio ambiente humano.</li></ul><p>Las pautas para que las agencias federales implementen la NEPA se establecieron en las regulaciones del Consejo Presidencial de Calidad Ambiental (CEQ) en el 40 CFR 1500-1508. Además, la Guardia Costera de los EE.UU. (Guardacostas) ha emitido procedimientos y políticas de implementación para considerar los impactos ambientales según la NEPA y las leyes relacionadas.</p><p>Los documentos preparados bajo NEPA incluyen una Exclusión Categórica y Evaluación Ambiental, y una Declaración de Impacto Ambiental (EIS). Cuando una acción propuesta tiene el potencial de tener impactos significativos, se prepara un EIS, el análisis más detallado realizado bajo NEPA.</p>"
+                    "description": "<p>El Acta de Política Ambiental Nacional (NEPA) se aprobó en 1969 y tiene dos objetivos principales:</p><ul><li>Asegurar que las agencias federales consideren los posibles. efectos ambientales de los programas, proyectos y acciones propuestos antes de iniciarlos.</li><li>Informar al público y alentar y facilitar la participación pública en las actividades de las agencias federales que pueden afectar la calidad del medio ambiente humano.</li></ul><p>Las pautas para que las agencias federales implementen la NEPA se establecieron en las regulaciones del Consejo Presidencial de Calidad Ambiental (CEQ) en el 40 CFR 1500-1508. Además, la USCG y MARAD han emitido procedimientos de implementación y políticas para considerar los impactos ambientales bajo NEPA y leyes relacionadas.</p><p>Los documentos preparados bajo NEPA incluyen una Exclusión Categórica y Evaluación Ambiental, y una Declaración de Impacto Ambiental (EIS). Cuando una acción propuesta tiene el potencial de tener impactos significativos, se prepara un EIS, el análisis más detallado realizado bajo NEPA.</p>"
                 },
                 {
                     "id": 2,
                     "label": "Alcance Público",
                     "title": "Alcance Público",
-                    "description": "<p>La reunión de alcance público brinda la oportunidades para que las agencias públicas, federales, estatales y locales, la tribus indígenas afectadas y otras partes interesadas proporcionen información sobre la gama de acciones, alternativas e impactos que se consideran en la EIS.</p><h3>La reunión de puertas abiertas y la reunión de alcance público para el Proyecto de la Terminal  Bluewater Texas se llevaron acabo el 22 de julio de 2019 en Corpus Christi, Texas.</h3>"
+                    "description": "<p>La reunión de alcance público brinda la oportunidades para que las agencias públicas, federales, estatales y locales, la tribus indígenas afectadas y otras partes interesadas proporcionen información sobre la gama de acciones, alternativas e impactos que se consideran en la EIS.</p><h3>La jornada de puertas abiertas y la reunión de alcance público para el Proyecto de la Terminal Bluewater Texas se llevaron a cabo el 22 de julio de 2019 en Corpus Christi, Texas.</h3>"
                 },
                 {
                     "id": 3,
                     "label": "Prepare Draft EIS",
                     "title": "Prepare Draft EIS",
-                    "description": "<p>El borrador de la EIS se distribuye a las partes interesadas, incluidas las agencias federales, estatales y locales, tribus indígenas afectadas, ciudadanos privados y organizaciones y se coloca en bibliotecas comunitarias de la región afectada. La jornadas de puertas abiertas y la reuniones públicas brindan al público la oportunidad de hacer comentarios orales o enviar comentarios por escrito.</p>",
+                    "description": "<p>El Borrador de la DIA se distribuyó a las partes interesadas, incluidas las agencias federales, estatales y locales, las tribus indígenas afectadas, los ciudadanos y las organizaciones privadas, y se colocó en las bibliotecas comunitarias de la región afectada. La reunión pública virtual está programada para el 18 de noviembre de 2021 y brinda al público la oportunidad de hacer comentarios orales o enviar comentarios por escrito.</p>",
                     "body": [
                         {
                             "title": "Participación Pública",
-                            "description": "<p>La NEPA exige que las agencias locales, estatales y federales, las tribus indígenas afectadas y los ciudadanos privados dentro de las áreas potencialmente afectadas, tengan la oportunidad de comentar las acciones propuestas a lo largo del proceso de la NEPA.</p>"
+                            "description": "<p>La NEPA exige que las agencias locales, estatales y federales, las tribus indígenas afectadas y los ciudadanos privados dentro de las áreas potencialmente afectadas tengan la oportunidad de comentar sobre las acciones propuestas a lo largo del proceso de la NEPA. La USCG y MARAD iniciaron el proceso de determinación del alcance público el 3 de julio de 2019, con la publicación de un Aviso de intención (NOI) para preparar una EIS en el Registro Federal. Se envió una Carta de Estimados Interesados, el NOI publicado en el Registro Federal y un mapa que describe el Proyecto propuesto a los representantes de las agencias federales, tribales, estatales y locales; y otras partes potencialmente interesadas. Como mecanismo adicional para facilitar la participación pública en el proceso de determinación del alcance, la USCG y MARAD celebraron una jornada de puertas abiertas informativa y una reunión de evaluación en el Omni Corpus Christi ubicado en Corpus Christi, Texas, el 22 de julio de 2019.</p>"
                         }, {
                             "title": "Coordinación de agencias",
                             "description": "<p>La Ley del Puerto de Aguas Profundas ordena a la Guardia Costera y al MARAD que preparen el EIS de manera que cumpla con los requisitos de todas las agencias federales en el desempeño de sus responsabilidades según la NEPA. La Guardia Costera y MARAD también se aseguran de que se analicen todas las acciones conectadas que puedan afectar los intereses de las tribus locales, estatales e indígenas. La lista de agencias contactadas para coordinación y comentarios son parte de la EIS.</p>"
@@ -552,7 +547,7 @@
                     "id": 4,
                     "label": "Prepare Final EIS",
                     "title":"Prepare Final EIS",
-                    "description":"<p>La EIS final incluye copias de todos los comentarios y las respuestas de la Guardia Costera / MARAD. El Aviso de Disponibilidad (NOA) del EIS final, aparecerá en el registro Federal y en los periódicos locales.</p>"
+                    "description":"<p>La EIS final incluirá respuestas a todos los comentarios recibidos sobre la EIS preliminar. El Aviso de disponibilidad (NOA) para la EIS final aparecerá en el Registro Federal y en los periódicos locales.</p>"
                 }
             ]
         },
@@ -587,7 +582,7 @@
                             "detail": "266 Días",
                             "description": "<p>Toda la información y los análisis necesarios para cumplir con los requisitos ambientales federales y estatales se incorporan en un documento de la NEPA. El FEIS es preparado y se publica por FR NOA con un período de comentarios de 30 días y audiencias públicas de DWPA. El acta de Puertos de Aguas Profundas requiere al menos una audiencia de solicitud de licencia en cada estado costero adyacente para cada solicitud. La audiencia pública de solicitud de licencia pública final debe ocurrir a más tardar 240 días después de la publicación del Aviso de Solicitud en el Registro Federal.</p>"
                         },{
-                            "title": "FASE DE DECISIÓN",
+                            "title": "DECISIÓN DEL GOBERNADOR",
                             "titleClass": "bar",
                             "detail": "45 Días",
                             "description": "<p>Los gobernadores de los estados costeros adyacentes, tienen 45 días después de la audiencia final de la solicitud de licencia pública para hacer sus comentarios finales sobre la solicitud. El (los) gobernador (es) pueden aprobar, aprobar con condiciones o desaprobar la solicitud.</p>"
@@ -608,7 +603,7 @@
                     "id": 3,
                     "label": "Evaluación de Riesgos Independiente",
                     "title": "¿Qué es la Evaluación de Riesgos Independiente (IRA)?",
-                    "description":"<ul><li>La Guardia Costera de EE.UU. trabaja con las partes interesadas locales y el solicitante para realizar una Evaluación de Riesgos Independiente (IRA).</li><li>El propósito de la IRA es identificar escenarios accidentales e intencionales creíbles que podrían conducir a la liberación de hidrocarburos durante las operaciones portuarias, determinar las peores consecuencias e identificar otros problemas de seguridad marítima que deben abordarse.</li><li>Las estrategias de mitigación para gestionar adecuadamente los riesgos serán desarrolladas y requeridas por las condiciones de la licencia e incluidas en el Manual de Operaciones Portuarias.</li></ul>"
+                    "description":"<ul><li>La Guardia Costera de EE.UU. trabaja con las partes interesadas locales y el solicitante para realizar una Evaluación de Riesgos Independiente (IRA).</li><li>Como parte de las revisiones de la solicitud de licencia de DWP, la USCG lleva a cabo un proceso de evaluación de riesgos de dos fases. La Fase I es un proceso de identificación de peligros que involucra a la USCG y las partes interesadas locales para identificar los riesgos de seguridad, protección y medio ambiente. Los resultados de la evaluación de riesgos de la Fase I se informan en el Apéndice Q del Borrador de la EIS. La Fase II desarrolla estrategias detalladas de prevención y mitigación para escenarios de liberación tanto accidental como intencional, incluidas las medidas de seguridad, en un esfuerzo coordinado entre el USCG, las fuerzas del orden local y los funcionarios de respuesta a emergencias, el Solicitante y otras partes interesadas.</li><li>El propósito de la IRA es identificar escenarios accidentales e intencionales creíbles que podrían conducir a la liberación de hidrocarburos durante las operaciones portuarias, determinar las peores consecuencias e identificar otros problemas de seguridad marítima que deben abordarse.</li><li>Las estrategias de mitigación para gestionar adecuadamente los riesgos serán desarrolladas y requeridas por las condiciones de la licencia e incluidas en el Manual de Operaciones Portuarias.</li></ul>"
                 },
                 {
                     "id": 4,
@@ -668,11 +663,11 @@
                     "id": 5,
                     "label": "Condiciones y Requerimientos",
                     "title": "Registro de decisiones, condiciones de licencia y requisitos posteriores a la licencia del puerto de aguas profundas - Parte 1",
-                    "description": "<p>Los siguientes mecanismos regulatorios ayudarán en la gestión de riesgos ambientales y de seguridad.</p><p>La Administración Marítima emitirá un Registro de Decisión (ROD) y podrá emitir una Licencia posterior que puede incluir las condiciones necesarias. Las condiciones de concesión de licencias pueden incluir:</p>",
+                    "description": "<p>La Administración Marítima emitirá un Registro de Decisión (ROD) que indicará si la Licencia será emitida, negada o emitida con condiciones. Muchas de las condiciones se incluyen en el Borrador de la EIS y los Apéndices.</p><p>Si el ROD es favorable, las condiciones de la licencia pueden incluir:</p>",
                     "body": [
                         {
                             "title": "Gestión del Cambio",
-                            "description": "<p>Esto requiere una evaluación adicional para cualquier diseño sustantivo, equipo y / o cambios operativos que pueden tener efectos imprevistos o cambios en el medio ambiente que no sean consistentes con el análisis ambiental, los permisos, el Manual de operaciones / seguridad o las condiciones de ROD / Licencia.</p>"
+                            "description": "<p>Cualquier cambio posterior a la licencia en el proyecto propuesto requeriría una evaluación adicional para determinar si los cambios en el diseño, el equipo y / o la operación tendrían efectos no evaluados en el EIS o que serían inconsistentes con los permisos relevantes, el Manual de Operaciones / Seguridad o el ROD / Condiciones de licencia.</p>"
                         }, {
                             "title": "Permisos, autorizaciones y requisitos reglamentarios federales y estatales",
                             "description": "<p>Estos incluyen, pero no se limitan a:</p><ul><li>Agencia de Protección Ambiental de EE. UU. (EPA), Ley de Agua Limpia (CWA), Descarga Nacional de Contaminantes.</li><li>Permisos del Sistema de Eliminación (NPDES), Permisos del Acta de Aire Limpio (CAA) y Determinación de Conformidad General.</li><li>Permisos de la Sección 10 de la Ley de Ríos y Puertos del Cuerpo de Ingenieros del Ejército de los EE. UU. / Sección 404 de la CWA.</li><li>Certificación de coherencia del Acta de gestión de la zona costera (CZMA).</li><li>Administración Nacional Oceánica y Atmosférica (NOAA) y Servicio de Pesca y Vida Silvestre de EE. UU. (USFWS).</li><li>Ley de especies en peligro de extinción, Ley de santuarios marinos nacionales, Ley de gestión y conservación de la pesca Magnuson-Stevens, Ley de protección de mamíferos marinos y consultas y autorizaciones asociadas.</li><li>Requisitos de la Administración de Seguridad de Materiales Peligrosos y Tuberías (PHMSA).</li><li>Requisitos de la Oficina de Gestión de la Energía Oceánica (BOEM) y la Oficina de Seguridad y Cumplimiento Ambiental (BSEE).</li><li>Cumplimiento de la Ley Nacional de Preservación Histórica.</li><li>Procedimientos para evitar peligros geológicos y materiales peligrosos, y protección de recursos culturales y arqueológicos.</li><li>Aprobaciones del estado de Texas para almacenamiento en tierra / costera, tuberías y otra infraestructura solicitada.</li><li>Otras regulaciones, permisos y autorizaciones federales, estatales o locales, según corresponda.</li></ul>"
@@ -773,7 +768,7 @@
             "imageDescription": "una imagen infográfica que describe el cronograma legal de la ley de puertos de aguas profundas y el proceso de nepa"
         },
         "updates": {
-            "title":"Actualizaciones",
+            "title":"Información General",
             "items":[
                 {
                     "date": "29 de octubre de 2021",
@@ -793,12 +788,7 @@
                 {
                     "date": "",
                     "subtitle": "Avisos de periódicos",
-                    "content": "<ul><li>The Aransas Pass Progress – semana del 01/11/2021</li><li>Ingleside Index - semana del 01/11/2021</li><li>Port Aransas South Jetty – semana del 01/11/2021 & semana del 08/11/2021</li><li>Corpus Christi Caller – semana del 01/11/2021 & semana del 08/11/2021</li><li>The Rockport Pilot – semana del 01/11/2021 & semana del 08/10/2021</li></ul>"
-                },
-                {
-                    "date": "",
-                    "subtitle": "Proceso NEPA - Consejo del Presidente sobre Calidad Ambiental (CEQ) en 40 CFR 1500-1508",
-                    "content": ""
+                    "content": "<ul><li>The Aransas Pass Progress</li><li>Ingleside Index</li><li>Port Aransas South Jetty</li><li>Corpus Christi Caller</li><li>The Rockport Pilot</li></ul>"
                 },
                 {
                     "date": "3 de julio de 2019",
@@ -812,12 +802,12 @@
             "cards": [
                 {
                     "title": "Solicitud de Licencia",
-                    "description": "La solicitud de licencia está disponible para su visualización en el sitio web <span>Regulations.gov</span> con el número de expediente MARAD-2019-0094.",
+                    "description": "La Solicitud de licencia está disponible para su visualización en el sitio web <span>Regulations.gov</span>. Escriba el número de expediente, MARAD-2019-0094, en la barra de búsqueda.",
                     "button": "Ir al sitio web",
                     "link": "http://regulations.gov"
                 }, {
                     "title": "Borrador de EIS",
-                    "description": "El borrador de la EIS está disponible para su visualización en el sitio web de <span>Regulatons.gov</span> con el número de expediente MARAD-2019-0094.",
+                    "description": "El borrador de la EIS está disponible para su visualización en el sitio web <span>Regulations.gov</span>. Escriba el número de expediente, MARAD-2019-0094, en la barra de búsqueda.",
                     "button": "Ir al sitio web",
                     "link": "http://regulations.gov"
                 }

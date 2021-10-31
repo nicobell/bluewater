@@ -46,17 +46,16 @@
                      <div class="acres"><span class="small">{{ content.data.harborFacility }}</span><div>acres</div></div>
                      <h4>{{ content.data.acresOf }}</h4>
                   </div>
-                  <div class="section-1">
+                  <div class="section-1" :style="carryerslabel">
                      <img src="../assets/carry.svg" alt="carry logo">
                      <div class="num"><span>{{ content.data.carriersMonths }}</span></div>
                      <h3>{{ content.data.carriersLabel }}</h3>
                   </div>
                   <div class="section-2">
-                     <div class="loading" :style="loadinglabel"><span class="small">{{ content.data.loadingRates1 }}</span>bph</div>
-                     <div class="operations"><span class="small">{{ content.data.loadingRates2 }}</span>
-                        <div>bph</div>
-                        <h4>{{ content.data.simultaneousOperations }}</h4>
-                     </div>
+                     <div class="loading" id="loading1" :style="bph1label"><span class="small">{{ content.data.loadingRates1 }}</span>bph</div>
+                     <div class="loading" id="loading2" :style="bph2label"><span class="small">{{ content.data.loadingRates2 }}</span>bph</div>
+                        <!--<h4>{{ content.data.simultaneousOperations }}</h4>-->
+                     <!--</div>-->
                   </div>
                </section>
             </div>
@@ -92,8 +91,15 @@ export default {
       locationlabel() {
          return '--location: ' + (this.lang=='es' ? '"UBICACIÓN"' : '"LOCATION"') + ';'
       },
-      loadinglabel() {
-         return '--loading: ' + (this.lang=='es' ? '"TASAS DE CARGA"' : '"LOADING RATES"' ) + ';'
+      carryerslabel() {
+         return '--carryers: ' + (this.lang=='es' ? '"VLCC de 155.000 a 320.000 toneladas de peso muerto"' : '"155,000 to 320,000 deadweight tonnage VLCCs"' ) + ';'
+      },
+      bph1label() {
+         return '--loading: ' + (this.lang=='es' ? '"TASAS DE CARGA"' : '"LOADING RATES"' ) + ';' +
+                '--bph1: ' + (this.lang=='es' ? '"Carga de un solo barco"' : '"Single Vessel Loading"') + ';'
+      },
+      bph2label() {
+         return '--bph2: ' + (this.lang=='es' ? '"Carga simultánea de buques"' : '"Simultaneous Vessel Loading"') + ';'
       }
    },
    methods: {
@@ -162,6 +168,7 @@ export default {
       display: flex;
       flex-direction: row;
       align-items: center;
+      position: relative;
       img {
          width: 100px;
          height: 100px;
@@ -186,13 +193,26 @@ export default {
          max-width: 50%;
          margin-left: 1em;
       }
+      &::after {
+         display: block;
+         content: var(--carryers);
+         color: rgba(#fff, .7);
+         font-weight: 300;
+         font-size: 1em;
+         position: absolute;
+         bottom: 0;
+         top: unset;
+      }
    }
 
    .section-2 {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      border-bottom: 1px rgba(255, 255, 255, .7) solid;
+      &:last-child {
+         margin-top: 4em;
+      }
+         display: flex;
+         flex-direction: row;
+         justify-content: space-between;
+         border-bottom: 1px rgba(255, 255, 255, .7) solid;
       &> div {
          max-width: 50%;
          color: rgba(255, 255, 255, .7);
@@ -205,25 +225,25 @@ export default {
       }
 
       .location {
-         display: flex;
-         flex-direction: row;
-         align-content: center;
+            display: flex;
+            flex-direction: row;
+            align-content: center;
          div {
-         margin: auto 0;
+            margin: auto 0;
          }
       }
 
       .operations {
-         display: flex;
+            display: flex;
          div {
-         line-height: 2.6em;
-         margin-top: auto;
+            line-height: 2.6em;
+            margin-top: auto;
          }
          h4 {
-         margin: auto 0;
-         margin-left: 20px;
-         position: relative;
-         top: 0;
+            margin: auto 0;
+            margin-left: 20px;
+            position: relative;
+            top: 0;
          }
       }
 
@@ -252,6 +272,20 @@ export default {
          font-weight: 700;
          top: -1.1em;
       }
+      #loading1::after {
+         position: absolute;
+         top: 4em;
+         font-size: .9rem;
+         content: var(--bph1);
+         display: block;
+      }
+      #loading2::after {
+         position: absolute;
+         top: 4em;
+         font-size: .9rem;
+         content: var(--bph2);
+         display: block;
+      }
    }
 
    .section-3 {
@@ -271,7 +305,7 @@ export default {
          flex-direction: column;
          width: 65%;
          h3 {
-         margin: 0;
+            margin: 0;
          }
       }
 
@@ -282,23 +316,24 @@ export default {
          color: #fff;
          font-size: 1em;
          margin: 20px 0;
-         &:first-child {
-            margin-top: 10px;
-         }
-         &:last-child {
-            margin-bottom: 10px;
-         }
+            &:first-child {
+               margin-top: 10px;
+            }
+            &:last-child {
+               margin-bottom: 10px;
+            }
          }
          &:before {
-         content: url(../assets/graffa.svg);
-         height: 100%;
-         width: 20px;
-         position: absolute;
-         left: -50%;
+            content: url(../assets/graffa.svg);
+            height: 100%;
+            width: 20px;
+            position: absolute;
+            left: -50%;
          }
       }
 
       span {
+         font-size: 2.8rem;
          margin-right: 10px;
       }
    }
@@ -321,7 +356,7 @@ export default {
          align-content: center;
          margin-right: 20px;
          div {
-         margin: 0 auto;
+            margin: 0 auto;
          }
       }
       h4 {
@@ -340,6 +375,10 @@ export default {
         position: absolute;
         top: 100px;
         margin-left: 0;
+      }
+      &::after {
+         top: 150px;
+         bottom: unset;
       }
     }
 
@@ -388,13 +427,17 @@ export default {
 
       .data {
          .section-1 {
-         position: relative;
-         h3 {
-            max-width: 50%;
             position: relative;
-            top: 0;
-            margin-left: unset;
-         }
+            h3 {
+               max-width: 50%;
+               position: relative;
+               top: 0;
+               margin-left: unset;
+            }
+            &::after {
+               bottom: 0;
+               top: unset;
+            }
          }
 
          .section-2 {
@@ -462,6 +505,10 @@ export default {
             position: absolute;
             top: 100px;
             margin-left: 0;
+         }
+         &::after {
+            top: 170px;
+            bottom: unset;
          }
       }
 
