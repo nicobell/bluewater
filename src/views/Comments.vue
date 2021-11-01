@@ -17,7 +17,7 @@
                         :aria-labelledby="'bodytitle'+index">
                         <h3 :id="'bodytitle'+index" tabindex="-1">{{ c.title }}</h3>
                         <p v-html="c.content"></p>
-                        <button v-if="index==0" class="main-button icon-left">{{ lang=='es' ? "Envíe su comentario" : "Submit Your Comment" }}</button>
+                        <a target="_blank" href="https://www.regulations.gov/" v-if="index==0" class="button main-button icon-left">{{ lang=='es' ? "Envíe su comentario" : "Submit Your Comment" }}</a>
                     </article>
                 </section>
 
@@ -27,7 +27,7 @@
                         class="card" :aria-labelledby="'insidetitle'+index">
                         <h3 :id="'insidetitle'+index" tabindex="-1">{{ card.title }}</h3>
                         <p v-html="card.description"></p>
-                        <a :href="card.link" class="button outline icon-left" :aria-label="card.label">{{ card.button }}</a>
+                        <a target="_blank" :href="card.link" class="button outline icon-left" :aria-label="card.label">{{ card.button }}</a>
                     </article>
 
                     <!--<form action="">

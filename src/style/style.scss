@@ -51,8 +51,10 @@ a.outline {
   }
 }
 
+a.button.icon-left,
 button.icon-left {
   padding: 15px 60px 15px 20px;
+  border: 1px solid #fff;
   &:hover {
     transition: 0.3s ease;
     &:after {
@@ -61,6 +63,16 @@ button.icon-left {
   }
 }
 
+a.button.icon-left {
+  margin: 20px 0;
+  display: block;
+  width: fit-content;
+  &:hover {
+    border: 1px solid #1A3C6E;
+  }
+}
+
+a.button.icon-left::after,
 button.icon-left::after {
   background-image: url("../assets/icon-nuova-scheda.svg");
   width: 20px;
