@@ -327,7 +327,7 @@ export default {
                 //document.querySelectorAll('.esri-popup__header-title').forEach((h, i) => { h.setAttribute('tabindex', '-1') })
                 //document.querySelectorAll('.esri-popup__header').forEach((h, i) => { h.setAttribute('tabindex', '-1') })
 
-                document.querySelectorAll('.esri-popup__header-container--button').forEach((b, i) => {
+                document.querySelectorAll('.esri-popup__header-container--button').forEach(b => {
                     
                     b.setAttribute('tabindex', 0)
                     b.setAttribute('aria-controls', 'info')                
@@ -491,7 +491,7 @@ export default {
             }
 
             function getGraphics(response) {
-                console.log('click result: ', response)
+                //console.log('click result: ', response)
                 if (response.results.length) {
                     //retrieve clicked point data
                     const graphic = response.results[0].graphic;

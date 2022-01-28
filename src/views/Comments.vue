@@ -100,7 +100,7 @@ export default {
             window.open(link, '_blank')
         },
         backtonav() {
-            console.log(document.getElementById('navigazione'))
+            //console.log(document.getElementById('navigazione'))
             document.getElementById('navigazione').focus();
         }
     },
