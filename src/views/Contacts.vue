@@ -43,7 +43,7 @@ export default {
     },
     methods: {
         backtonav() {
-            console.log(document.getElementById('navigazione'))
+            //console.log(document.getElementById('navigazione'))
             document.getElementById('navigazione').focus();
         }
     },

@@ -13,7 +13,6 @@ export default {
     'Schedule': () => import('@/views/Schedule'),
     'NepaProcess': () => import('@/views/NepaProcess'),
     'DWPActLicense': () => import('@/views/DWPActLicense'),
-    'Comments': () => import('@/views/Comments'),
     'Contacts': () => import('@/views/Contacts'),
     'Location': () => import('@/views/Location')
   },
@@ -49,7 +48,7 @@ export default {
   },
   mounted(){
     this.$store.commit('SET_LANG', this.$route.params.lang)
-    console.log('FIRE')
+    //console.log('FIRE')
 	},
   updated() {
     /*setTimeout(() => {

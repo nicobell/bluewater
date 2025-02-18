@@ -82,7 +82,7 @@ export default {
          return this.$store.state.lang
       },
       content () {
-         console.log(this.$store.state.data[this.lang].projectDescription)
+         //console.log(this.$store.state.data[this.lang].projectDescription)
          return this.$store.state.data[this.lang].projectDescription
       },
       depthlabel() {
@@ -104,7 +104,7 @@ export default {
    },
    methods: {
       backtonav() {
-         console.log(document.getElementById('navigazione'))
+         //console.log(document.getElementById('navigazione'))
          document.getElementById('navigazione').focus();
       },
       gotolink(link) {

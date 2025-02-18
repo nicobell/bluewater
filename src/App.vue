@@ -14,10 +14,9 @@ import path from 'path';
 
 export default {
 	name: 'App',
-	components: {
-    	MyHeader,
-		Navigation
-  	},
+	components: { 
+		MyHeader, 
+		Navigation },
 	computed: {
 		langDefault() {
 			return this.$store.getters.langDefault
@@ -31,7 +30,7 @@ export default {
 			dataLoaded: false,
 			isMobile:null,
 		}
-  	},
+	},
 	methods:{
 		checkIfMobile(){
 			if(window.innerWidth<1024){
@@ -41,7 +40,7 @@ export default {
 			}
 		},
 		fetchData(){
-			console.log(path.join(__dirname, 'data.json'))
+			//console.log(path.join(__dirname, 'data.json'))
 			fetch(path.join(__dirname, 'data.json'))
 				.then(response=>{
 					return response.json()

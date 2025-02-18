@@ -22,11 +22,10 @@ const router = new VueRouter({
     ]
 })
 
-router.afterEach((to, from, next) => {
-    //console.log(to)
+//router.afterEach((to, from, next) => {
+router.afterEach(() => {
     Vue.nextTick(() => {
-        /*console.log('from', from)
-        if(to.params.tabtitle!=undefined)
+        /*if(to.params.tabtitle!=undefined)
             document.title = to.params.tabtitle + ' | Bluewater Project';
         else if(from.params.tabtitle!=undefined)
             document.title = from.params.tabtitle + ' | Bluewater Project';
